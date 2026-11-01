@@ -1,0 +1,6 @@
+# generated (XST, netgen, iverilog); keep tb_ps.v, ps.prj, ps.xst
+*
+!.gitignore
+!tb_ps.v
+!ps.prj
+!ps.xst

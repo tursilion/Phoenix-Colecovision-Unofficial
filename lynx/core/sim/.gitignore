@@ -1,0 +1,9 @@
+obj_dir/
+gen/
+out/
+*.img
+*.log
+lynxboot.hex
+lynx_loader.hex
+hello/*.o
+out_bad.lnx

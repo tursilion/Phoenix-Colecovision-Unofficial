@@ -1,0 +1,4 @@
+*.o
+pff/*.o
+lynx_boot.bin
+lynx_boot.map
