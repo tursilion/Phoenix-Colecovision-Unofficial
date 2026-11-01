@@ -1,0 +1,12 @@
+# Master System core: the 25MHz and 32.22MHz domains only meet in
+# synchronizers and the dual-clock line buffer (see rtl/sms_phoenix.v).
+NET "clk_25m0_s" TNM_NET = "GRP_25";
+NET "clk_32_s"   TNM_NET = "GRP_SMS";
+TIMESPEC "TS_25_to_sms_ignore" = FROM "GRP_25" TO "GRP_SMS" TIG;
+TIMESPEC "TS_sms_to_25_ignore" = FROM "GRP_SMS" TO "GRP_25" TIG;
+
+# SRAM: fast edges.  A read has one 31ns clock.
+NET "sram_addr_o<*>" SLEW = FAST;
+NET "sram_data_io<*>" SLEW = FAST;
+NET "sram_oe_n_o"     SLEW = FAST;
+NET "sram_we_n_o"     SLEW = FAST;
