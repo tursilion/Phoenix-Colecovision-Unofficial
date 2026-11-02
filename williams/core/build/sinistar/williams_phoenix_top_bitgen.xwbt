@@ -1,0 +1,7 @@
+INFILE=/workspace/williams/core/build/sinistar/williams_phoenix_top.ncd
+OUTFILE=/workspace/williams/core/build/sinistar/williams_phoenix_top.bit
+FAMILY=Spartan6
+PART=xc6slx16-2csg324
+WORKINGDIR=/workspace/williams/core/build/sinistar
+LICENSE=WebPack
+USER_INFO=211634681_0_0_058

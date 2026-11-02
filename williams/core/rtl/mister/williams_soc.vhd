@@ -1,0 +1,424 @@
+-----------------------------------------------------------------------
+--
+-- A SOC-like top-level for robotron-fpga
+-- (C) 2020 Slingshot
+--
+-- MC6809 Cycle-Accurate 6809 Core
+-- (c) 2016, Greg Miller
+--
+-- Defender sound board by Dar (darfpga@aol.fr)
+--
+-- robotron-fpga is free software: you can redistribute
+-- it and/or modify it under the terms of the GNU General
+-- Public License as published by the Free Software
+-- Foundation, either version 3 of the License, or (at your
+-- option) any later version.
+--
+-- robotron-fpga is distributed in the hope that it will
+-- be useful, but WITHOUT ANY WARRANTY; without even the
+-- implied warranty of MERCHANTABILITY or FITNESS FOR A
+-- PARTICULAR PURPOSE. See the GNU General Public License
+-- for more details.
+--
+-- You should have received a copy of the GNU General
+-- Public License along with robotron-fpga. If not, see
+-- <http://www.gnu.org/licenses/>.
+--
+-----------------------------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity williams_soc is
+generic (
+	SPEECH           : integer := 1;  -- Phoenix: 0 leaves out the speech ROM (only Sinistar talks)
+	CPU09            : integer := 1   -- Phoenix: 0 = MiSTer's mc6809is (simulation comparisons; too big for the LX16)
+);
+port (
+	clock            : in    std_logic; -- 12MHz
+
+	-- Cellular RAM / StrataFlash
+	MemWR            : out   std_logic;
+
+	RamCS            : out   std_logic;
+	RamLB            : out   std_logic;
+	RamUB            : out   std_logic;
+
+	MemAdr           : out   std_logic_vector(15 downto 0);
+	MemDin           : out   std_logic_vector(7 downto 0);
+	MemDout          : in    std_logic_vector(7 downto 0);
+
+	blitter_sc2      : in    std_logic;
+	sinistar         : in    std_logic;
+	game             : in    std_logic_vector(7 downto 0);
+	ROM_BANK         : out   std_logic_vector(3 downto 0);
+	JOY_X            : in    std_logic_vector(3 downto 0);
+	JOY_Y            : in    std_logic_vector(3 downto 0);
+	DIGITAL_X        : in    std_logic_vector(3 downto 0);
+	DIGITAL_Y        : in    std_logic_vector(3 downto 0);
+	BLASTER_BTN      : in    std_logic_vector(3 downto 0);
+	sg_state         : out   std_logic;
+
+	-- Switches
+	SW               : in    std_logic_vector(7 downto 0);
+
+	-- Buttons
+	BTN              : in    std_logic_vector(3 downto 0);
+	SIN_FIRE         : in    std_logic;
+	SIN_BOMB         : in    std_logic;
+
+	-- VGA connector
+	vgaRed           : out   std_logic_vector(2 downto 0);
+	vgaGreen         : out   std_logic_vector(2 downto 0);
+	vgaBlue          : out   std_logic_vector(1 downto 0);
+	Hsync            : out   std_logic;
+	Vsync            : out   std_logic;
+
+	-- Audio
+	audio_out        : out   std_logic_vector(7 downto 0);
+	audio_out_r      : out   std_logic_vector(7 downto 0);
+	speech_out       : out   std_logic_vector(15 downto 0);
+
+	-- 12-pin connectors
+	JA               : in    std_logic_vector(7 downto 0);
+	JB               : in    std_logic_vector(7 downto 0);
+	
+	pause            : in    std_logic;
+	
+	dl_clock         : in    std_logic;
+	dl_addr          : in    std_logic_vector(24 downto 0);
+	dl_data          : in    std_logic_vector(7 downto 0);
+	dl_wr            : in    std_logic;
+	dl_upload        : in    std_logic;
+
+	-- Phoenix additions (see williams_cpu.vhd)
+	PHASE            : out   std_logic_vector(11 downto 0);
+	VCOUNT           : out   std_logic_vector(14 downto 0);
+	BOOT             : in    std_logic;
+	EXT_A            : out   std_logic_vector(7 downto 0);
+	EXT_DOUT         : out   std_logic_vector(7 downto 0);
+	EXT_WR           : out   std_logic;
+	EXT_RD           : out   std_logic;
+	EXT_DIN          : in    std_logic_vector(7 downto 0)
+);
+end williams_soc;
+
+architecture Behavioral of williams_soc is
+
+	-- Phoenix: a component, so that the simulation (GHDL + Yosys) can leave
+	-- it to a Verilog model (Yosys can't take its two clocks)
+	component dpram
+		generic (dWidth : integer := 8; aWidth : integer := 10);
+		port (
+			clk_a  : in  std_logic;
+			we_a   : in  std_logic := '0';
+			addr_a : in  std_logic_vector((aWidth-1) downto 0);
+			d_a    : in  std_logic_vector((dWidth-1) downto 0) := (others => '0');
+			q_a    : out std_logic_vector((dWidth-1) downto 0);
+			clk_b  : in  std_logic;
+			we_b   : in  std_logic := '0';
+			addr_b : in  std_logic_vector((aWidth-1) downto 0);
+			d_b    : in  std_logic_vector((dWidth-1) downto 0) := (others => '0');
+			q_b    : out std_logic_vector((dWidth-1) downto 0));
+	end component;
+-- (Phoenix: the CPU is cpu09, rtl/cpu09)
+
+component mc6809is is
+port (
+	clk      : in  std_logic;
+	D        : in  std_logic_vector( 7 downto 0);
+	Dout     : out std_logic_vector( 7 downto 0);
+	ADDR     : out std_logic_vector(15 downto 0);
+	RnW      : out std_logic;
+	E        : in  std_logic;
+	Q        : in  std_logic;
+	BS       : out std_logic;
+	BA       : out std_logic;
+	nIRQ     : in  std_logic := '1';
+	nFIRQ    : in  std_logic := '1';
+	nNMI     : in  std_logic := '1';
+	AVMA     : out std_logic;
+	BUSY     : out std_logic;
+	LIC      : out std_logic;
+	nHALT    : in  std_logic := '1';
+	nRESET   : in  std_logic := '1';
+	nDMABREQ : in  std_logic := '1'
+);
+end component mc6809is;
+
+signal  cpu_a        : std_logic_vector(15 downto 0);
+signal  cpu_dout     : std_logic_vector( 7 downto 0);
+signal  cpu_din      : std_logic_vector( 7 downto 0);
+signal  cpu_reset_n  : std_logic;
+signal  cpu_nmi_n    : std_logic;
+signal  cpu_firq_n   : std_logic;
+signal  cpu_irq_n    : std_logic;
+signal  cpu_lic      : std_logic;
+signal  cpu_avma     : std_logic;
+signal  cpu_rwn      : std_logic;
+signal  cpu_halt_n   : std_logic;
+signal  cpu_ba       : std_logic;
+signal  cpu_bs       : std_logic;
+signal  cpu_busy     : std_logic;
+signal  cpu_e        : std_logic;
+signal  cpu_q        : std_logic;
+signal  mpu_step     : std_logic;   -- Phoenix: cpu09 steps when E falls
+signal  cpu_hold     : std_logic;
+signal  cpu_rst      : std_logic;
+signal  cpu_halt     : std_logic;
+signal  cpu_halted   : std_logic;
+signal  cpu_irq      : std_logic;
+signal  cpu_firq     : std_logic;
+signal  cpu_nmi      : std_logic;
+
+signal  hand         : std_logic;
+signal  select_sound : std_logic_vector( 7 downto 0);
+signal  blaster      : std_logic;
+signal  blaster_stereo : std_logic;
+signal  cpu_btn      : std_logic_vector(3 downto 0);
+signal  cpu_ja       : std_logic_vector(7 downto 0);
+signal  joystick_x   : std_logic_vector(3 downto 0);
+signal  joystick_y   : std_logic_vector(3 downto 0);
+signal  sound_hand   : std_logic;
+signal  cpu_sc2      : std_logic;
+signal  sound_select : std_logic;
+signal  snd_addr_r   : std_logic_vector(13 downto 0);
+signal  snd_do_r     : std_logic_vector(7 downto 0);
+
+signal  snd_addr     : std_logic_vector(13 downto 0);
+signal  snd_do       : std_logic_vector( 7 downto 0);
+signal  spch_do      : std_logic_vector( 7 downto 0);
+signal  snd_rom_we   : std_logic;
+signal  spch_rom_we  : std_logic;
+
+begin
+
+blaster <= '1' when game = x"08" or game = x"09" else '0';
+blaster_stereo <= '1' when game = x"09" else '0';
+joystick_x <= DIGITAL_X when JOY_X = x"7" else JOY_X;
+joystick_y <= DIGITAL_Y when JOY_Y = x"7" else JOY_Y;
+cpu_btn <= BLASTER_BTN(3 downto 1) & BTN(0) when blaster = '1' else BTN;
+cpu_ja <= not (joystick_x & joystick_y) when blaster = '1' else JA;
+sound_hand <= '1' when blaster = '1' else hand;
+cpu_sc2 <= '1' when blaster = '1' else blitter_sc2;
+sound_select <= select_sound(6) when blaster_stereo = '1' else '1';
+
+-- Phoenix: cpu09 (John Kent) instead of the cycle-accurate mc6809is, which
+-- alone is half of the LX16.  It makes one bus cycle per E cycle, stepping
+-- at the clock where E falls (as the 6809 takes its data); "halted" stands
+-- for BA = BS = 1.
+cpu_hold <= not mpu_step;
+cpu_rst  <= not cpu_reset_n;
+cpu_halt <= not (cpu_halt_n and (not dl_upload) and (not pause));
+cpu_irq  <= not cpu_irq_n;
+cpu_firq <= not cpu_firq_n;
+cpu_nmi  <= not cpu_nmi_n;
+cpu09_gen: if CPU09 /= 0 generate
+cpu_ba   <= cpu_halted;
+cpu_bs   <= cpu_halted;
+cpu_lic  <= '0';
+cpu_avma <= '0';
+cpu_busy <= '0';
+
+mc6809: entity work.cpu09
+port map (
+	clk      => clock,
+	rst      => cpu_rst,
+	rw       => cpu_rwn,
+	vma      => open,
+	address  => cpu_a,
+	data_in  => cpu_din,
+	data_out => cpu_dout,
+	halt     => cpu_halt,
+	hold     => cpu_hold,
+	irq      => cpu_irq,
+	firq     => cpu_firq,
+	nmi      => cpu_nmi,
+	opc_in   => cpu_din,
+	halted   => cpu_halted
+);
+end generate;
+
+mc6809is_gen: if CPU09 = 0 generate
+	signal clock_n : std_logic;
+	signal halt_n  : std_logic;
+begin
+clock_n <= not clock;
+halt_n  <= not cpu_halt;
+mc6809: mc6809is
+port map (
+	clk      => clock_n,
+	ADDR     => cpu_a,
+	Dout     => cpu_dout,
+	D        => cpu_din,
+	nRESET   => cpu_reset_n,
+	nNMI     => cpu_nmi_n,
+	nFIRQ    => cpu_firq_n,
+	nIRQ     => cpu_irq_n,
+	LIC      => cpu_lic,
+	AVMA     => cpu_avma,
+	RnW      => cpu_rwn,
+	nHALT    => halt_n,
+	BA       => cpu_ba,
+	BS       => cpu_bs,
+	BUSY     => cpu_busy,
+	E        => cpu_e,
+	Q        => cpu_q,
+	nDMABREQ => '1'
+);
+end generate;
+
+process (clock) 
+begin
+	if rising_edge(clock) then 
+		if cpu_rwn = '0' and cpu_a = x"9C92" then
+			if cpu_dout = X"FD" then
+				sg_state <= '1';
+			else
+				sg_state <= '0';
+			end if;
+		end if;
+	end if;
+end process;
+
+cpu_board: entity work.williams_cpu
+port map (
+	clock            => clock,
+	blitter_sc2      => cpu_sc2,
+	sinistar         => sinistar,
+	blaster          => blaster,
+	blaster_stereo   => blaster_stereo,
+	BLASTER_FIRE     => not BLASTER_BTN(0),
+	ROM_BANK         => ROM_BANK,
+
+	A                => cpu_a,
+	Dout             => cpu_dout,
+	Din              => cpu_din,
+	RESET_N          => cpu_reset_n,
+	NMI_N            => cpu_nmi_n,
+	FIRQ_N           => cpu_firq_n,
+	IRQ_N            => cpu_irq_n,
+	LIC              => cpu_lic,
+	AVMA             => cpu_avma,
+	R_W_N            => cpu_rwn,
+	TSC              => open,
+	HALT_N           => cpu_halt_n,
+	BA               => cpu_ba,
+	BS               => cpu_bs,
+	BUSY             => cpu_busy,
+	E                => cpu_e,
+	Q                => cpu_q,
+
+	-- Cellular RAM / StrataFlash
+	MemWR            => MemWR,
+
+	RamCS            => RamCS,
+	RamLB            => RamLB,
+	RamUB            => RamUB,
+
+	MemAdr           => MemAdr,
+	MemDin           => MemDin,
+	MemDout          => MemDout,
+
+        -- 7-segment display
+--	SEG              => SEG,
+--	DP               => DP,
+--	AN               => AN,
+
+	-- LEDs
+--	LED              => LED,
+
+	-- Switches
+	SW               => SW,
+
+	-- Buttons
+	BTN              => cpu_btn,
+	SIN_FIRE         => SIN_FIRE,
+	SIN_BOMB         => SIN_BOMB,
+
+	-- VGA connector
+	vgaRed           => vgaRed,
+	vgaGreen         => vgaGreen,
+	vgaBlue          => vgaBlue,
+	Hsync            => Hsync,
+	Vsync            => Vsync,
+
+	-- 12-pin connectors
+	JA               => cpu_ja,
+	JB               => JB,
+	
+	-- Sound board
+	PB               => select_sound,
+	HAND             => hand,
+
+	dl_clock         => dl_clock,
+	dl_addr          => dl_addr,
+	dl_data          => dl_data,
+	dl_wr            => dl_wr,
+
+	MPU_STEP         => mpu_step,
+	PHASE            => PHASE,
+	VCOUNT           => VCOUNT,
+	BOOT             => BOOT,
+	EXT_A            => EXT_A,
+	EXT_DOUT         => EXT_DOUT,
+	EXT_WR           => EXT_WR,
+	EXT_RD           => EXT_RD,
+	EXT_DIN          => EXT_DIN
+);
+
+snd_rom : dpram
+generic map( dWidth => 8, aWidth => 12)
+port map(
+	clk_a  => clock,
+	addr_a => snd_addr(11 downto 0),
+	q_a    => snd_do,
+	clk_b  => dl_clock,
+	we_b   => snd_rom_we,
+	addr_b => dl_addr(11 downto 0),
+	d_b    => dl_data
+);
+
+speech_gen: if SPEECH /= 0 generate
+spch_rom : dpram
+generic map( dWidth => 8, aWidth => 14)
+port map(
+	clk_a  => clock,
+	addr_a => snd_addr,
+	q_a    => spch_do,
+	clk_b  => dl_clock,
+	we_b   => spch_rom_we,
+	addr_b => (dl_addr(13 downto 12) - "10") & dl_addr(11 downto 0),
+	d_b    => dl_data
+);
+
+end generate;
+no_speech_gen: if SPEECH = 0 generate
+	spch_do <= x"55";   -- (silence for the speech chip)
+end generate;
+
+snd_rom_we  <= '1' when dl_wr = '1' and dl_addr(24 downto 12) = 12 else '0'; -- 0C000-0CFFF
+spch_rom_we <= '1' when dl_wr = '1' and dl_addr(24 downto 12) >= 14 and dl_addr(24 downto 12) <= 17 else '0'; -- 0E000-11FFF
+
+-- sound board
+sound_board : entity work.williams_sound_board
+port map(
+	clock         => clock,
+	reset         => not cpu_reset_n,
+	hand          => sound_hand,
+	select_sound  => select_sound(5 downto 0),
+	select_board  => sound_select,
+	blaster       => blaster,
+	audio_out     => audio_out,
+	speech_out    => speech_out,
+	rom_addr      => snd_addr,
+	rom_do        => snd_do,
+	spch_do		  => spch_do
+);
+
+-- (Phoenix: Blaster's second sound board is left out)
+audio_out_r <= (others => '0');
+
+end Behavioral;

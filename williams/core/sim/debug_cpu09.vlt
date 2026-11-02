@@ -1,0 +1,6 @@
+`verilator_config
+public_flat_rd -module "cpu09" -var "pc"
+public_flat_rd -module "cpu09" -var "op_code"
+public_flat_rd -module "cpu09" -var "acca"
+public_flat_rd -module "cpu09" -var "accb"
+public_flat_rd -module "cpu09" -var "state"

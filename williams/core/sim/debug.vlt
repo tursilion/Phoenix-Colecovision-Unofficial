@@ -1,0 +1,15 @@
+`verilator_config
+// Board internals the testbench watches (--watch)
+public_flat_rd -module "williams_cpu" -var "screen_control"
+public_flat_rd -module "williams_cpu" -var "blt_win_en"
+public_flat_rd -module "williams_cpu" -var "e_rom"
+public_flat_rd -module "williams_cpu" -var "mpu_data_in"
+public_flat_rd -module "sc1" -var "reg_ctrl"
+public_flat_rd -module "sc1" -var "reg_solid"
+public_flat_rd -module "sc1" -var "reg_src_base"
+public_flat_rd -module "sc1" -var "reg_dst_base"
+public_flat_rd -module "sc1" -var "reg_width"
+public_flat_rd -module "sc1" -var "reg_height"
+public_flat_rd -module "sc1" -var "state"
+public_flat_rd -module "sc1" -var "dst_address"
+public_flat_rd -module "sc1" -var "src_address"

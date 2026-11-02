@@ -1,0 +1,31 @@
+XH2
+H 5 areas 4 global symbols 2 banks 1 modes
+M crt0
+G 00 00 80 81 82 83 84 85 86 87 88 89 8A 8B 8C 8D 8E 8F
+B _CSEG base 0 size 0 map 0 flags 0
+B _DSEG base 0 size 0 map 0 flags 4 fsfx _DS
+S l_.bss Ref0000
+S _main Ref0000
+S s_.bss Ref0000
+S .__.ABS. Def0000
+A _CODE size 0 flags CC80 bank 0
+A _DATA size 0 flags CCC0 bank 1
+A .text size 1A flags D00
+A .bss size 0 flags C00
+A VECTORS size 0 flags D0C
+T 00 00
+R 00 00 00 02
+T 00 00 1A 50 10 CE BF 00 8E 00 00 10 8E 00 00
+R 00 00 00 02 81 09 00 02 81 0D 00 00
+T 00 0D 27 06 6F 80 31 3F 26 FA BD 00 00 20 FE
+R 00 00 00 02 81 0B 00 01
+T FF F0
+R 00 00 00 04
+T FF F0 00 00 00 00
+R 00 00 00 04 01 02 00 02 01 04 00 02
+T FF F4 00 00 00 00
+R 00 00 00 04 01 02 00 02 01 04 00 02
+T FF F8 00 00 00 00
+R 00 00 00 04 01 02 00 02 01 04 00 02
+T FF FC 00 00 00 00
+R 00 00 00 04 01 02 00 02 01 04 00 02

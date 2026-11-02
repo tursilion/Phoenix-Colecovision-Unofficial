@@ -1,0 +1,20 @@
+CS 1 t=0 us
+W 08034 00  t=123
+W 08074 00  t=139
+W 080b4 00  t=155
+W 080f4 00  t=171
+W 08134 00  t=187
+t=1 ms  writes 55  sclk 0
+t=2 ms  writes 118  sclk 0
+t=3 ms  writes 180  sclk 0
+t=4 ms  writes 243  sclk 0
+t=5 ms  writes 305  sclk 0
+t=6 ms  writes 368  sclk 0
+t=7 ms  writes 427  sclk 34
+CS 0 t=7555 us
+t=8 ms  writes 446  sclk 143
+CS 1 t=8806 us
+t=9 ms  writes 465  sclk 232
+t=10 ms  writes 475  sclk 232
+t=11 ms  writes 475  sclk 232
+tb_ps.v:51: $finish called at 12000000000 (1ps)

@@ -1,0 +1,13 @@
+set -tmpdir xst_tmp
+set -xsthdpdir xst_hdp
+run
+-ifn ps.prj
+-ofn williams_phoenix
+-ofmt NGC
+-p xc6slx16-2-csg324
+-top williams_phoenix
+-opt_mode Speed
+-opt_level 1
+-iobuf NO
+-generics {GAME=0}
+-keep_hierarchy soft

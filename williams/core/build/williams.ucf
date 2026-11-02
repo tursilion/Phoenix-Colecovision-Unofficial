@@ -1,0 +1,16 @@
+# Williams cores: the 25MHz domain only meets the 48/12MHz ones in
+# synchronizers and dual-clock block RAMs (see rtl/williams_phoenix.v).
+# 48MHz and 12MHz come from one DCM (CLKFX and CLKFXDV), so their paths
+# are timed together.
+NET "clk_25m0_s" TNM_NET = "GRP_25";
+# the DCM outputs (the groups follow them through the BUFGs)
+NET "clk_fx_s"   TNM_NET = "GRP_W";
+NET "clk_fxdv_s" TNM_NET = "GRP_W";
+TIMESPEC "TS_25_to_w_ignore" = FROM "GRP_25" TO "GRP_W" TIG;
+TIMESPEC "TS_w_to_25_ignore" = FROM "GRP_W" TO "GRP_25" TIG;
+
+# SRAM: fast edges.
+NET "sram_addr_o<*>" SLEW = FAST;
+NET "sram_data_io<*>" SLEW = FAST;
+NET "sram_oe_n_o"     SLEW = FAST;
+NET "sram_we_n_o"     SLEW = FAST;

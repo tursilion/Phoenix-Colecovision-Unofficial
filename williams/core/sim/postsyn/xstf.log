@@ -1,0 +1,2178 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst_tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.02 secs
+ 
+--> 
+Parameter xsthdpdir set to xst_hdp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.02 secs
+ 
+--> 
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "ps.prj"
+
+---- Target Parameters
+Output File Name                   : "williams_flat"
+Output Format                      : NGC
+Target Device                      : xc6slx16-2-csg324
+
+---- Source Options
+Top Module Name                    : williams_phoenix
+Generics, Parameters               : {GAME=0}
+
+---- Target Options
+Add IO Buffers                     : NO
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "/workspace/williams/core/rtl/mister/mc6809is.v" into library work
+Parsing module <mc6809is>.
+Analyzing Verilog file "/workspace/williams/core/rtl/williams_phoenix.v" into library work
+Parsing module <williams_phoenix>.
+Parsing module <williams_lowpass>.
+Parsing VHDL file "/workspace/williams/core/rtl/cpu09/cpu09.vhd" into library work
+Parsing entity <cpu09>.
+Parsing architecture <CPU_ARCH> of entity <cpu09>.
+Parsing VHDL file "/workspace/williams/core/rtl/mister/gen_ram.vhd" into library work
+Parsing entity <gen_ram>.
+Parsing architecture <rtl> of entity <gen_ram>.
+Parsing VHDL file "/workspace/williams/core/rtl/mister/dpram.vhd" into library work
+Parsing entity <dpram>.
+Parsing architecture <rtl> of entity <dpram>.
+Parsing VHDL file "/workspace/williams/core/rtl/mister/CEGen.vhd" into library work
+Parsing entity <CEGen>.
+Parsing architecture <SYN> of entity <cegen>.
+Parsing VHDL file "/workspace/williams/core/rtl/mister/pia6821.vhd" into library work
+Parsing entity <pia6821>.
+Parsing architecture <pia_arch> of entity <pia6821>.
+Parsing VHDL file "/workspace/williams/core/rtl/mister/sc1.vhd" into library work
+Parsing entity <sc1>.
+Parsing architecture <RTL> of entity <sc1>.
+WARNING:HDLCompiler:946 - "/workspace/williams/core/rtl/mister/sc1.vhd" Line 146: Actual for formal port addr_b is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "/workspace/williams/core/rtl/mister/sc1.vhd" Line 158: Actual for formal port addr_b is neither a static name nor a globally static expression
+Parsing VHDL file "/workspace/williams/core/rtl/mister/cpu68.vhd" into library work
+Parsing entity <cpu68>.
+Parsing architecture <CPU_ARCH> of entity <cpu68>.
+Parsing VHDL file "/workspace/williams/core/rtl/mister/hc55564.vhd" into library work
+Parsing entity <hc55564>.
+Parsing architecture <hdl> of entity <hc55564>.
+Parsing VHDL file "/workspace/williams/core/rtl/mister/williams_sound_board.vhd" into library work
+Parsing entity <williams_sound_board>.
+Parsing architecture <struct> of entity <williams_sound_board>.
+WARNING:HDLCompiler:946 - "/workspace/williams/core/rtl/mister/williams_sound_board.vhd" Line 104: Actual for formal port rst_n is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "/workspace/williams/core/rtl/mister/williams_sound_board.vhd" Line 152: Actual for formal port hold is neither a static name nor a globally static expression
+Parsing VHDL file "/workspace/williams/core/rtl/mister/williams_cpu.vhd" into library work
+Parsing entity <williams_cpu>.
+Parsing architecture <Behavioral> of entity <williams_cpu>.
+WARNING:HDLCompiler:946 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" Line 850: Actual for formal port we_a is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" Line 864: Actual for formal port we_a is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" Line 887: Actual for formal port win_en is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" Line 941: Actual for formal port rw is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" Line 1020: Actual for formal port rw is neither a static name nor a globally static expression
+Parsing VHDL file "/workspace/williams/core/rtl/mister/williams_soc.vhd" into library work
+Parsing entity <williams_soc>.
+Parsing architecture <Behavioral> of entity <williams_soc>.
+WARNING:HDLCompiler:946 - "/workspace/williams/core/rtl/mister/williams_soc.vhd" Line 293: Actual for formal port blaster_fire is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "/workspace/williams/core/rtl/mister/williams_soc.vhd" Line 393: Actual for formal port addr_b is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "/workspace/williams/core/rtl/mister/williams_soc.vhd" Line 409: Actual for formal port reset is neither a static name nor a globally static expression
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <williams_phoenix(GAME=0)>.
+Reading initialization file \"williams_loader.hex\".
+WARNING:HDLCompiler:413 - "/workspace/williams/core/rtl/williams_phoenix.v" Line 120: Result of 32-bit expression is truncated to fit in 10-bit target.
+WARNING:HDLCompiler:413 - "/workspace/williams/core/rtl/williams_phoenix.v" Line 122: Result of 11-bit expression is truncated to fit in 10-bit target.
+WARNING:HDLCompiler:413 - "/workspace/williams/core/rtl/williams_phoenix.v" Line 148: Result of 32-bit expression is truncated to fit in 12-bit target.
+Going to vhdl side to elaborate module williams_soc
+
+Elaborating entity <williams_soc> (architecture <Behavioral>) with generics from library <work>.
+Going to verilog side to elaborate module mc6809is
+
+Elaborating module <mc6809is(ILLEGAL_INSTRUCTIONS="GHOST")>.
+Back to vhdl to continue elaboration
+
+Elaborating entity <williams_cpu> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <dpram> (architecture <rtl>) with generics from library <work>.
+
+Elaborating entity <sc1> (architecture <RTL>) from library <work>.
+
+Elaborating entity <dpram> (architecture <rtl>) with generics from library <work>.
+INFO:HDLCompiler:679 - "/workspace/williams/core/rtl/mister/sc1.vhd" Line 218. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "/workspace/williams/core/rtl/mister/sc1.vhd" Line 306. Case statement is complete. others clause is never selected
+
+Elaborating entity <pia6821> (architecture <pia_arch>) from library <work>.
+INFO:HDLCompiler:679 - "/workspace/williams/core/rtl/mister/pia6821.vhd" Line 174. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "/workspace/williams/core/rtl/mister/pia6821.vhd" Line 247. Case statement is complete. others clause is never selected
+
+Elaborating entity <dpram> (architecture <rtl>) with generics from library <work>.
+
+Elaborating entity <williams_sound_board> (architecture <struct>) from library <work>.
+
+Elaborating entity <CEGen> (architecture <SYN>) from library <work>.
+
+Elaborating entity <cpu68> (architecture <CPU_ARCH>) from library <work>.
+INFO:HDLCompiler:679 - "/workspace/williams/core/rtl/mister/cpu68.vhd" Line 234. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "/workspace/williams/core/rtl/mister/cpu68.vhd" Line 267. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "/workspace/williams/core/rtl/mister/cpu68.vhd" Line 1219. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "/workspace/williams/core/rtl/mister/cpu68.vhd" Line 1378. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "/workspace/williams/core/rtl/mister/cpu68.vhd" Line 1388. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "/workspace/williams/core/rtl/mister/cpu68.vhd" Line 1729. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "/workspace/williams/core/rtl/mister/cpu68.vhd" Line 1871. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "/workspace/williams/core/rtl/mister/cpu68.vhd" Line 2267. Case statement is complete. others clause is never selected
+
+Elaborating entity <gen_ram> (architecture <rtl>) with generics from library <work>.
+
+Elaborating entity <hc55564> (architecture <hdl>) from library <work>.
+Back to verilog to continue elaboration
+WARNING:HDLCompiler:413 - "/workspace/williams/core/rtl/williams_phoenix.v" Line 346: Result of 32-bit expression is truncated to fit in 7-bit target.
+WARNING:HDLCompiler:413 - "/workspace/williams/core/rtl/williams_phoenix.v" Line 361: Result of 4-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "/workspace/williams/core/rtl/williams_phoenix.v" Line 418: Result of 32-bit expression is truncated to fit in 16-bit target.
+WARNING:HDLCompiler:413 - "/workspace/williams/core/rtl/williams_phoenix.v" Line 439: Result of 21-bit expression is truncated to fit in 20-bit target.
+WARNING:HDLCompiler:413 - "/workspace/williams/core/rtl/williams_phoenix.v" Line 519: Result of 10-bit expression is truncated to fit in 9-bit target.
+WARNING:HDLCompiler:413 - "/workspace/williams/core/rtl/williams_phoenix.v" Line 779: Result of 32-bit expression is truncated to fit in 7-bit target.
+
+Elaborating module <williams_lowpass>.
+WARNING:HDLCompiler:413 - "/workspace/williams/core/rtl/williams_phoenix.v" Line 830: Result of 23-bit expression is truncated to fit in 22-bit target.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <williams_phoenix>.
+    Related source file is "/workspace/williams/core/rtl/williams_phoenix.v".
+        GAME = 0
+        LOADER_FILE = "williams_loader.hex"
+        CPU09 = 0
+WARNING:Xst:647 - Input <snes<7:6>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <kb_keys<6:1>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <kb_keys<12:8>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <kb_keys<15:14>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/williams_phoenix.v" line 245: Output port <ROM_BANK> of the instance <soc> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/williams_phoenix.v" line 245: Output port <audio_out_r> of the instance <soc> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/williams_phoenix.v" line 245: Output port <speech_out> of the instance <soc> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/williams_phoenix.v" line 245: Output port <sg_state> of the instance <soc> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/williams_phoenix.v" line 245: Output port <Hsync> of the instance <soc> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/williams_phoenix.v" line 245: Output port <Vsync> of the instance <soc> is unconnected or connected to loadless signal.
+WARNING:Xst:2999 - Signal 'loader_rom', unconnected in block 'williams_phoenix', is tied to its initial value.
+    Found 16384x8-bit single-port Read Only RAM <Mram_loader_rom> for signal <loader_rom>.
+    Found 512x8-bit dual-port RAM <Mram_colbuf> for signal <colbuf>.
+    Found 16x8-bit dual-port RAM <Mram_pal> for signal <pal>.
+    Found 4096x8-bit dual-port RAM <Mram_lbuf> for signal <lbuf>.
+    Found 10-bit register for signal <vc>.
+    Found 3-bit register for signal <reset_s>.
+    Found 3-bit register for signal <game_reset_s>.
+    Found 1-bit register for signal <boot_mode>.
+    Found 12-bit register for signal <soc_rst_cnt>.
+    Found 2-bit register for signal <soc_reset_g>.
+    Found 2-bit register for signal <boot_g>.
+    Found 6-bit register for signal <p1>.
+    Found 6-bit register for signal <p2>.
+    Found 4-bit register for signal <fire4>.
+    Found 3-bit register for signal <sys>.
+    Found 19-bit register for signal <in_m>.
+    Found 19-bit register for signal <in_s>.
+    Found 19-bit register for signal <in_g>.
+    Found 1-bit register for signal <sc_tog>.
+    Found 1-bit register for signal <sc_tog48>.
+    Found 7-bit register for signal <spi_div>.
+    Found 8-bit register for signal <spi_tx>.
+    Found 1-bit register for signal <spi_busy>.
+    Found 3-bit register for signal <spi_bit>.
+    Found 1-bit register for signal <sd_sclk>.
+    Found 8-bit register for signal <spi_rx>.
+    Found 8-bit register for signal <spi_data>.
+    Found 1-bit register for signal <spi_start>.
+    Found 1-bit register for signal <start_game>.
+    Found 1-bit register for signal <dl_wr>.
+    Found 1-bit register for signal <dl_wr_d>.
+    Found 20-bit register for signal <ld_addr>.
+    Found 16-bit register for signal <fwd_count>.
+    Found 1-bit register for signal <fwd_active>.
+    Found 8-bit register for signal <fwd_lo>.
+    Found 8-bit register for signal <ld_data>.
+    Found 1-bit register for signal <ld_pend>.
+    Found 1-bit register for signal <spi_sel>.
+    Found 1-bit register for signal <spi_slow>.
+    Found 1-bit register for signal <fwd_discard>.
+    Found 8-bit register for signal <spi_txd>.
+    Found 1-bit register for signal <fwd_wait>.
+    Found 25-bit register for signal <dl_addr>.
+    Found 8-bit register for signal <dl_data>.
+    Found 8-bit register for signal <ext_din>.
+    Found 8-bit register for signal <loader_q>.
+    Found 9-bit register for signal <rk>.
+    Found 9-bit register for signal <rrem>.
+    Found 8-bit register for signal <rf_row>.
+    Found 9-bit register for signal <rf_col>.
+    Found 1-bit register for signal <lw_done>.
+    Found 1-bit register for signal <rf_we>.
+    Found 8-bit register for signal <rf_q>.
+    Found 1-bit register for signal <rf_rd>.
+    Found 2-bit register for signal <st>.
+    Found 1-bit register for signal <b_wr>.
+    Found 1-bit register for signal <b_rom>.
+    Found 1-bit register for signal <b_lb>.
+    Found 1-bit register for signal <b_ub>.
+    Found 8-bit register for signal <b_di>.
+    Found 19-bit register for signal <sram_addr>.
+    Found 1-bit register for signal <sram_doe>.
+    Found 1-bit register for signal <sram_oe_n>.
+    Found 1-bit register for signal <we_next>.
+    Found 8-bit register for signal <mem_do>.
+    Found 8-bit register for signal <sram_dout>.
+    Found 1-bit register for signal <sram_we_n>.
+    Found 1-bit register for signal <release_tog>.
+    Found 3-bit register for signal <rel_sync>.
+    Found 1-bit register for signal <waiting>.
+    Found 1-bit register for signal <run>.
+    Found 8-bit register for signal <pix>.
+    Found 8-bit register for signal <cb_q>.
+    Found 1-bit register for signal <rnib1>.
+    Found 10-bit register for signal <hc1>.
+    Found 10-bit register for signal <vc1>.
+    Found 1-bit register for signal <pic1>.
+    Found 1-bit register for signal <vid_blank>.
+    Found 1-bit register for signal <vid_hsync_n>.
+    Found 1-bit register for signal <vid_vsync_n>.
+    Found 8-bit register for signal <vid_r>.
+    Found 8-bit register for signal <vid_g>.
+    Found 8-bit register for signal <vid_b>.
+    Found 7-bit register for signal <af_div>.
+    Found 32-bit register for signal <dc>.
+    Found 16-bit register for signal <aud_m>.
+    Found 16-bit register for signal <aud_s>.
+    Found 16-bit register for signal <audio_l>.
+    Found 16-bit register for signal <audio_r>.
+    Found 10-bit register for signal <hc>.
+    Found finite state machine <FSM_0> for signal <st>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 4                                              |
+    | Inputs             | 0                                              |
+    | Outputs            | 3                                              |
+    | Clock              | clk48 (rising_edge)                            |
+    | Reset              | sc_go (positive)                               |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 01                                             |
+    | Power Up State     | 00                                             |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 9-bit subtractor for signal <rq> created at line 524.
+    Found 9-bit subtractor for signal <n0868> created at line 726.
+    Found 10-bit subtractor for signal <hcol> created at line 737.
+    Found 10-bit subtractor for signal <rcol> created at line 743.
+    Found 32-bit subtractor for signal <n0758> created at line 791.
+    Found 17-bit subtractor for signal <hp> created at line 792.
+    Found 11-bit adder for signal <n0845[10:0]> created at line 120.
+    Found 10-bit adder for signal <hc[9]_GND_1_o_add_5_OUT> created at line 122.
+    Found 8-bit adder for signal <n0849[7:0]> created at line 346.
+    Found 3-bit adder for signal <spi_bit[2]_GND_1_o_add_57_OUT> created at line 361.
+    Found 20-bit adder for signal <ld_addr[19]_GND_1_o_add_110_OUT> created at line 439.
+    Found 10-bit adder for signal <n0796> created at line 511.
+    Found 9-bit adder for signal <rk[8]_GND_1_o_add_141_OUT> created at line 520.
+    Found 8-bit adder for signal <rf_row[7]_GND_1_o_add_178_OUT> created at line 566.
+    Found 18-bit adder for signal <n0863[17:0]> created at line 608.
+    Found 19-bit adder for signal <GND_1_o_ld_addr[18]_add_200_OUT> created at line 610.
+    Found 17-bit adder for signal <n0867[16:0]> created at line 611.
+    Found 9-bit adder for signal <px> created at line 726.
+    Found 9-bit adder for signal <sline> created at line 736.
+    Found 9-bit adder for signal <hcol[9]_GND_1_o_add_272_OUT> created at line 748.
+    Found 8-bit adder for signal <n0879[7:0]> created at line 779.
+    Found 32-bit adder for signal <dc[31]_lp32[31]_add_306_OUT> created at line 791.
+    Found 12-bit subtractor for signal <GND_1_o_GND_1_o_sub_17_OUT<11:0>> created at line 148.
+    Found 16-bit subtractor for signal <GND_1_o_GND_1_o_sub_102_OUT<15:0>> created at line 418.
+    Found 9-bit subtractor for signal <rrem_n[9]_GND_1_o_sub_141_OUT<8:0>> created at line 519.
+    Found 16x2-bit Read Only RAM for signal <_n1324>
+    Found 19-bit comparator equal for signal <in_s[18]_in_m[18]_equal_38_o> created at line 183
+    Found 1-bit comparator equal for signal <_n1084> created at line 304
+    Found 10-bit comparator greater for signal <n0226> created at line 514
+    Found 10-bit comparator greater for signal <n0231> created at line 518
+    Found 20-bit comparator greater for signal <ld_addr[19]_GND_1_o_LessThan_204_o> created at line 610
+    Found 4-bit comparator lessequal for signal <n0349> created at line 640
+    Found 10-bit comparator lessequal for signal <n0459> created at line 738
+    Found 10-bit comparator greater for signal <hc[9]_PWR_1_o_LessThan_267_o> created at line 738
+    Found 10-bit comparator lessequal for signal <n0484> created at line 760
+    Found 10-bit comparator lessequal for signal <n0486> created at line 760
+    Found 10-bit comparator lessequal for signal <n0489> created at line 761
+    Found 10-bit comparator greater for signal <hc1[9]_PWR_1_o_LessThan_287_o> created at line 761
+    Found 10-bit comparator lessequal for signal <n0494> created at line 762
+    Found 10-bit comparator greater for signal <vc1[9]_GND_1_o_LessThan_289_o> created at line 762
+    Found 17-bit comparator greater for signal <hp[16]_GND_1_o_LessThan_311_o> created at line 793
+    Found 17-bit comparator greater for signal <PWR_1_o_hp[16]_LessThan_312_o> created at line 793
+    Found 16-bit comparator equal for signal <aud_s[15]_aud_m[15]_equal_316_o> created at line 799
+    WARNING:Xst:2404 -  FFs/Latches <rot1<16:16>> (without init value) have a constant value of 0 in block <williams_phoenix>.
+    WARNING:Xst:2404 -  FFs/Latches <ron_m<0:0>> (without init value) have a constant value of 0 in block <williams_phoenix>.
+    WARNING:Xst:2404 -  FFs/Latches <ron_s<0:0>> (without init value) have a constant value of 0 in block <williams_phoenix>.
+    WARNING:Xst:2404 -  FFs/Latches <rtag1<8:0>> (without init value) have a constant value of 1 in block <williams_phoenix>.
+    Summary:
+	inferred   5 RAM(s).
+	inferred  25 Adder/Subtractor(s).
+	inferred 547 D-type flip-flop(s).
+	inferred  17 Comparator(s).
+	inferred  33 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <williams_phoenix> synthesized.
+
+Synthesizing Unit <williams_soc>.
+    Related source file is "/workspace/williams/core/rtl/mister/williams_soc.vhd".
+        SPEECH = 0
+        CPU09 = 0
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_soc.vhd" line 250: Output port <RegData> of the instance <mc6809is_gen.mc6809> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_soc.vhd" line 286: Output port <LED> of the instance <cpu_board> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_soc.vhd" line 286: Output port <TSC> of the instance <cpu_board> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_soc.vhd" line 286: Output port <MPU_STEP> of the instance <cpu_board> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_soc.vhd" line 372: Output port <q_b> of the instance <snd_rom> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_soc.vhd" line 406: Output port <rom_vma> of the instance <sound_board> is unconnected or connected to loadless signal.
+    Found 1-bit register for signal <sg_state>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <williams_soc> synthesized.
+
+Synthesizing Unit <mc6809is>.
+    Related source file is "/workspace/williams/core/rtl/mister/mc6809is.v".
+        ILLEGAL_INSTRUCTIONS = "GHOST"
+    Found 1-bit register for signal <NMILatched>.
+    Found 1-bit register for signal <old_Q>.
+    Found 1-bit register for signal <NMISample>.
+    Found 1-bit register for signal <IRQSample>.
+    Found 1-bit register for signal <FIRQSample>.
+    Found 1-bit register for signal <HALTSample>.
+    Found 1-bit register for signal <old_E>.
+    Found 1-bit register for signal <rnRESET>.
+    Found 1-bit register for signal <NMISample2>.
+    Found 1-bit register for signal <IRQSample2>.
+    Found 1-bit register for signal <IRQLatched>.
+    Found 1-bit register for signal <FIRQSample2>.
+    Found 1-bit register for signal <FIRQLatched>.
+    Found 1-bit register for signal <HALTSample2>.
+    Found 1-bit register for signal <HALTLatched>.
+    Found 7-bit register for signal <CpuState>.
+    Found 7-bit register for signal <NextState>.
+    Found 8-bit register for signal <a>.
+    Found 8-bit register for signal <b>.
+    Found 16-bit register for signal <x>.
+    Found 16-bit register for signal <y>.
+    Found 16-bit register for signal <s>.
+    Found 16-bit register for signal <u>.
+    Found 8-bit register for signal <cc>.
+    Found 8-bit register for signal <dp>.
+    Found 16-bit register for signal <pc>.
+    Found 16-bit register for signal <tmp>.
+    Found 16-bit register for signal <addr>.
+    Found 16-bit register for signal <ea>.
+    Found 1-bit register for signal <InstPage2>.
+    Found 1-bit register for signal <InstPage3>.
+    Found 8-bit register for signal <Inst1>.
+    Found 8-bit register for signal <Inst2>.
+    Found 8-bit register for signal <Inst3>.
+    Found 1-bit register for signal <NMIClear>.
+    Found 3-bit register for signal <IntType>.
+    Found 1-bit register for signal <NMIMask>.
+    Found 17-bit subtractor for signal <GND_8_o_GND_8_o_sub_154_OUT> created at line 1032.
+    Found 8-bit subtractor for signal <ALU_A[7]_GND_8_o_sub_180_OUT> created at line 1232.
+    Found 9-bit subtractor for signal <n1739[8:0]> created at line 1251.
+    Found 9-bit subtractor for signal <GND_8_o_GND_8_o_sub_182_OUT> created at line 1251.
+    Found 16-bit subtractor for signal <s_m1> created at line 1671.
+    Found 16-bit subtractor for signal <u_m1> created at line 1673.
+    Found 8-bit subtractor for signal <a[7]_GND_8_o_sub_1002_OUT> created at line 3433.
+    Found 4-bit subtractor for signal <tmp[3]_GND_8_o_sub_1228_OUT> created at line 4035.
+    Found 17-bit adder for signal <n2556> created at line 1014.
+    Found 8-bit adder for signal <ALU_A[7]_GND_8_o_add_165_OUT> created at line 1129.
+    Found 9-bit adder for signal <n2562> created at line 1169.
+    Found 9-bit adder for signal <BUS_0687_GND_8_o_add_177_OUT> created at line 1213.
+    Found 8-bit adder for signal <ALU_A[7]_GND_8_o_add_178_OUT> created at line 1226.
+    Found 16-bit adder for signal <pc_p1> created at line 1667.
+    Found 16-bit adder for signal <pc_p2> created at line 1668.
+    Found 16-bit adder for signal <pc_p3> created at line 1669.
+    Found 16-bit adder for signal <s_p1> created at line 1670.
+    Found 16-bit adder for signal <u_p1> created at line 1672.
+    Found 16-bit adder for signal <addr_p1> created at line 1674.
+    Found 16-bit adder for signal <ea_p1> created at line 1675.
+    Found 9-bit adder for signal <n2583> created at line 1925.
+    Found 16-bit adder for signal <x[15]_GND_8_o_add_315_OUT> created at line 1981.
+    Found 16-bit adder for signal <pc[15]_Inst2[7]_add_603_OUT> created at line 2252.
+    Found 16-bit adder for signal <pc[15]_Inst2[7]_add_608_OUT> created at line 2281.
+    Found 16-bit adder for signal <tmp[15]_ea[15]_add_999_OUT> created at line 3429.
+    Found 16x3-bit Read Only RAM for signal <Inst1[3]_GND_8_o_wide_mux_187_OUT>
+    Found 64x7-bit Read Only RAM for signal <_n3327>
+    Found 4x3-bit Read Only RAM for signal <_n3295>
+    Found 8x34-bit Read Only RAM for signal <_n5366>
+    Found 16-bit 7-to-1 multiplexer for signal <ALU16<15:0>> created at line 1011.
+    Found 8-bit 26-to-1 multiplexer for signal <n1688[7:0]> created at line 1126.
+    Found 1-bit 16-to-1 multiplexer for signal <Inst1[3]_GND_8_o_Mux_260_o> created at line 1573.
+    Found 16-bit 12-to-1 multiplexer for signal <EXGTFRRegA> created at line 1630.
+    Found 16-bit 12-to-1 multiplexer for signal <EXGTFRRegB> created at line 1630.
+    Found 8-bit 7-to-1 multiplexer for signal <StoreRegisterNum[2]_GND_8_o_wide_mux_679_OUT> created at line 2619.
+    Found 16-bit 7-to-1 multiplexer for signal <StoreRegisterNum[2]_GND_8_o_wide_mux_680_OUT> created at line 2619.
+    Found 16-bit 7-to-1 multiplexer for signal <n2172> created at line 2769.
+    Found 8-bit 7-to-1 multiplexer for signal <StoreRegisterNum[2]_GND_8_o_wide_mux_873_OUT> created at line 2816.
+    Found 16-bit 7-to-1 multiplexer for signal <ALU16Reg[2]_GND_8_o_wide_mux_874_OUT> created at line 2847.
+    Found 16-bit 7-to-1 multiplexer for signal <IndexedRegister[2]_GND_8_o_wide_mux_895_OUT> created at line 2956.
+    Found 16-bit 7-to-1 multiplexer for signal <IndexedRegister[2]_GND_8_o_wide_mux_964_OUT> created at line 3188.
+    Found 16-bit 7-to-1 multiplexer for signal <IndexedRegister[2]_x[15]_wide_mux_973_OUT> created at line 3241.
+    Found 1-bit 4-to-1 multiplexer for signal <_n3321> created at line 840.
+    Found 1-bit 4-to-1 multiplexer for signal <_n3360> created at line 860.
+    Found 16-bit 4-to-1 multiplexer for signal <_n3311> created at line 2975.
+    Found 16-bit comparator not equal for signal <n0079> created at line 636
+    Found 4-bit comparator lessequal for signal <n0219> created at line 831
+    Found 4-bit comparator lessequal for signal <n0221> created at line 831
+    Found 4-bit comparator greater for signal <PWR_9_o_a[7]_LessThan_302_o> created at line 1911
+    Found 4-bit comparator greater for signal <PWR_9_o_a[7]_LessThan_303_o> created at line 1912
+    Found 4-bit comparator greater for signal <PWR_9_o_a[3]_LessThan_304_o> created at line 1912
+    Found 4-bit comparator lessequal for signal <n0601> created at line 862
+    Found 4-bit comparator lessequal for signal <n0803> created at line 1459
+    Found 4-bit comparator lessequal for signal <n0805> created at line 1461
+    Found 8-bit comparator greater for signal <Inst1[7]_GND_8_o_LessThan_695_o> created at line 2694
+    Found 8-bit comparator greater for signal <GND_8_o_Inst1[7]_LessThan_696_o> created at line 2694
+    Summary:
+	inferred   4 RAM(s).
+	inferred  25 Adder/Subtractor(s).
+	inferred 220 D-type flip-flop(s).
+	inferred  11 Comparator(s).
+	inferred 1236 Multiplexer(s).
+Unit <mc6809is> synthesized.
+
+Synthesizing Unit <williams_cpu>.
+    Related source file is "/workspace/williams/core/rtl/mister/williams_cpu.vhd".
+WARNING:Xst:647 - Input <SW<5:3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <SW<7:7>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <LIC> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <AVMA> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <BUSY> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 846: Output port <q_a> of the instance <cpu_video_addr_decoder> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 860: Output port <q_a> of the instance <video_scan_addr_decoder> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 934: Output port <ca2_o> of the instance <rom_pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 934: Output port <ca2_oe> of the instance <rom_pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 934: Output port <cb2_o> of the instance <rom_pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 934: Output port <cb2_oe> of the instance <rom_pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 1013: Output port <pa_o> of the instance <widget_pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 1013: Output port <pa_oe> of the instance <widget_pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 1013: Output port <pb_o> of the instance <widget_pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 1013: Output port <pb_oe> of the instance <widget_pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 1013: Output port <irqa> of the instance <widget_pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 1013: Output port <irqb> of the instance <widget_pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 1013: Output port <ca2_o> of the instance <widget_pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 1013: Output port <ca2_oe> of the instance <widget_pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_cpu.vhd" line 1013: Output port <cb2_oe> of the instance <widget_pia> is unconnected or connected to loadless signal.
+    Found 1-bit register for signal <ram_lower_enable>.
+    Found 1-bit register for signal <ram_upper_enable>.
+    Found 1-bit register for signal <memory_write>.
+    Found 8-bit register for signal <memory_data_out>.
+    Found 1-bit register for signal <blt_reg_cs>.
+    Found 1-bit register for signal <blt_blt_ack>.
+    Found 1-bit register for signal <EXT_WR>.
+    Found 1-bit register for signal <EXT_RD>.
+    Found 1-bit register for signal <rom_pia_cs>.
+    Found 1-bit register for signal <rom_pia_write>.
+    Found 1-bit register for signal <widget_pia_cs>.
+    Found 1-bit register for signal <widget_pia_write>.
+    Found 16-bit register for signal <memory_address>.
+    Found 1-bit register for signal <video_blank>.
+    Found 3-bit register for signal <vgaRed>.
+    Found 3-bit register for signal <vgaGreen>.
+    Found 2-bit register for signal <vgaBlue>.
+    Found 8-bit register for signal <pixel_nibbles>.
+    Found 1-bit register for signal <pixel_visible>.
+    Found 16-bit register for signal <video_erase_address>.
+    Found 1-bit register for signal <video_erase_enable>.
+    Found 8-bit register for signal <scanline_color>.
+    Found 8-bit register for signal <background_default>.
+    Found 8-bit register for signal <background_color>.
+    Found 1-bit register for signal <erase_behind>.
+    Found 8-bit register for signal <pixel_byte_l>.
+    Found 8-bit register for signal <pixel_byte_h>.
+    Found 1-bit register for signal <pixel_blank>.
+    Found 8-bit register for signal <EXT_DOUT>.
+    Found 3-bit register for signal <blt_rs>.
+    Found 8-bit register for signal <blt_reg_data_in>.
+    Found 1-bit register for signal <blt_win_en>.
+    Found 1-bit register for signal <screen_control>.
+    Found 1-bit register for signal <e_rom>.
+    Found 7-bit register for signal <remap_select>.
+    Found 4-bit register for signal <rom_bank_select>.
+    Found 2-bit register for signal <video_control>.
+    Found 8-bit register for signal <color_table<0>>.
+    Found 8-bit register for signal <color_table<1>>.
+    Found 8-bit register for signal <color_table<2>>.
+    Found 8-bit register for signal <color_table<3>>.
+    Found 8-bit register for signal <color_table<4>>.
+    Found 8-bit register for signal <color_table<5>>.
+    Found 8-bit register for signal <color_table<6>>.
+    Found 8-bit register for signal <color_table<7>>.
+    Found 8-bit register for signal <color_table<8>>.
+    Found 8-bit register for signal <color_table<9>>.
+    Found 8-bit register for signal <color_table<10>>.
+    Found 8-bit register for signal <color_table<11>>.
+    Found 8-bit register for signal <color_table<12>>.
+    Found 8-bit register for signal <color_table<13>>.
+    Found 8-bit register for signal <color_table<14>>.
+    Found 8-bit register for signal <color_table<15>>.
+    Found 8-bit register for signal <mpu_data_out>.
+    Found 1-bit register for signal <RESET_N>.
+    Found 1-bit register for signal <HALT_N>.
+    Found 1-bit register for signal <IRQ_N>.
+    Found 16-bit register for signal <mpu_address>.
+    Found 1-bit register for signal <mpu_halted>.
+    Found 1-bit register for signal <mpu_write>.
+    Found 1-bit register for signal <mpu_read>.
+    Found 8-bit register for signal <mpu_data_in>.
+    Found 12-bit register for signal <clock_12_phase>.
+    Found 1-bit register for signal <clock_q>.
+    Found 1-bit register for signal <clock_e>.
+    Found 8-bit register for signal <reset_counter>.
+    Found 1-bit register for signal <reset>.
+    Found 15-bit register for signal <video_count>.
+    Found 14-bit register for signal <video_address>.
+    Found 1-bit register for signal <ram_enable>.
+    Found 8-bit adder for signal <reset_counter[7]_GND_11_o_add_427_OUT> created at line 1241.
+    Found 15-bit adder for signal <video_count[14]_GND_11_o_add_432_OUT> created at line 1241.
+    Found 8-bit 16-to-1 multiplexer for signal <pixel_nibbles[3]_color_table[15][7]_wide_mux_197_OUT> created at line 624.
+    Found 8-bit 16-to-1 multiplexer for signal <pixel_nibbles[7]_color_table[15][7]_wide_mux_198_OUT> created at line 625.
+    Found 16-bit comparator greater for signal <address[15]_PWR_17_o_LessThan_5_o> created at line 452
+    Found 16-bit comparator greater for signal <address[15]_PWR_17_o_LessThan_8_o> created at line 454
+    Found 16-bit comparator lessequal for signal <n0032> created at line 457
+    Found 8-bit comparator lessequal for signal <n0206> created at line 521
+    Found 8-bit comparator lessequal for signal <n0208> created at line 521
+    Found 6-bit comparator lessequal for signal <n0210> created at line 522
+    Found 6-bit comparator lessequal for signal <n0212> created at line 522
+    Found 6-bit comparator lessequal for signal <n0216> created at line 523
+    Found 6-bit comparator lessequal for signal <n0221> created at line 524
+    Found 16-bit comparator equal for signal <video_erase_address[15]_memory_address[15]_equal_206_o> created at line 636
+    Found 8-bit comparator greater for signal <reset_counter[7]_GND_11_o_LessThan_427_o> created at line 1181
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred 366 D-type flip-flop(s).
+	inferred  11 Comparator(s).
+	inferred 108 Multiplexer(s).
+Unit <williams_cpu> synthesized.
+
+Synthesizing Unit <dpram_1>.
+    Related source file is "/workspace/williams/core/rtl/mister/dpram.vhd".
+        dWidth = 8
+        aWidth = 9
+    Found 512x8-bit dual-port RAM <Mram_mem> for signal <mem>.
+    Found 8-bit register for signal <q_b>.
+    Found 8-bit register for signal <q_a>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred  16 D-type flip-flop(s).
+	inferred   2 Multiplexer(s).
+Unit <dpram_1> synthesized.
+
+Synthesizing Unit <sc1>.
+    Related source file is "/workspace/williams/core/rtl/mister/sc1.vhd".
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/sc1.vhd" line 138: Output port <q_a> of the instance <remap_upper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/sc1.vhd" line 150: Output port <q_a> of the instance <remap_lower> is unconnected or connected to loadless signal.
+    Found 8-bit register for signal <reg_solid>.
+    Found 16-bit register for signal <reg_src_base>.
+    Found 16-bit register for signal <reg_dst_base>.
+    Found 8-bit register for signal <reg_width>.
+    Found 8-bit register for signal <reg_height>.
+    Found 2-bit register for signal <state>.
+    Found 16-bit register for signal <src_address>.
+    Found 16-bit register for signal <dst_address>.
+    Found 8-bit register for signal <x_count>.
+    Found 8-bit register for signal <y_count>.
+    Found 4-bit register for signal <blt_shift>.
+    Found 8-bit register for signal <blt_raw_data>.
+    Found 8-bit register for signal <blt_src_data>.
+    Found 8-bit register for signal <reg_ctrl>.
+    Found finite state machine <FSM_1> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 11                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 5                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Power Up State     | state_idle                                     |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 8-bit adder for signal <x_count_next> created at line 177.
+    Found 8-bit adder for signal <y_count_next> created at line 178.
+    Found 16-bit adder for signal <src_address[15]_GND_31_o_add_60_OUT> created at line 273.
+    Found 16-bit adder for signal <dst_address[15]_GND_31_o_add_63_OUT> created at line 279.
+    Found 8-bit adder for signal <reg_src_base[7]_y_count_next[7]_add_68_OUT> created at line 292.
+    Found 16-bit adder for signal <src_address[15]_GND_31_o_add_69_OUT> created at line 294.
+    Found 8-bit adder for signal <reg_dst_base[7]_y_count_next[7]_add_71_OUT> created at line 298.
+    Found 16-bit adder for signal <dst_address[15]_GND_31_o_add_72_OUT> created at line 300.
+    Found 16-bit comparator greater for signal <dst_address[15]_clip[15]_LessThan_9_o> created at line 166
+    Found 16-bit comparator lessequal for signal <n0014> created at line 166
+    Found 8-bit comparator greater for signal <x_count_next[7]_reg_width[7]_LessThan_60_o> created at line 269
+    Found 8-bit comparator greater for signal <n0090> created at line 287
+    Summary:
+	inferred   6 Adder/Subtractor(s).
+	inferred 132 D-type flip-flop(s).
+	inferred   4 Comparator(s).
+	inferred  25 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <sc1> synthesized.
+
+Synthesizing Unit <dpram_2>.
+    Related source file is "/workspace/williams/core/rtl/mister/dpram.vhd".
+        dWidth = 4
+        aWidth = 11
+    Found 2048x4-bit dual-port RAM <Mram_mem> for signal <mem>.
+    Found 4-bit register for signal <q_b>.
+    Found 4-bit register for signal <q_a>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred   8 D-type flip-flop(s).
+	inferred   2 Multiplexer(s).
+Unit <dpram_2> synthesized.
+
+Synthesizing Unit <pia6821>.
+    Related source file is "/workspace/williams/core/rtl/mister/pia6821.vhd".
+    Found 8-bit register for signal <porta_data>.
+    Found 8-bit register for signal <portb_ddr>.
+    Found 8-bit register for signal <portb_data>.
+    Found 8-bit register for signal <porta_ddr>.
+    Found 6-bit register for signal <porta_ctrl>.
+    Found 6-bit register for signal <portb_ctrl>.
+    Found 1-bit register for signal <portb_write>.
+    Found 1-bit register for signal <ca1_del>.
+    Found 1-bit register for signal <ca1_rise>.
+    Found 1-bit register for signal <ca1_fall>.
+    Found 1-bit register for signal <irqa1>.
+    Found 1-bit register for signal <ca2_del>.
+    Found 1-bit register for signal <ca2_rise>.
+    Found 1-bit register for signal <ca2_fall>.
+    Found 1-bit register for signal <irqa2>.
+    Found 1-bit register for signal <ca2_out>.
+    Found 1-bit register for signal <cb1_del>.
+    Found 1-bit register for signal <cb1_rise>.
+    Found 1-bit register for signal <cb1_fall>.
+    Found 1-bit register for signal <irqb1>.
+    Found 1-bit register for signal <cb2_del>.
+    Found 1-bit register for signal <cb2_rise>.
+    Found 1-bit register for signal <cb2_fall>.
+    Found 1-bit register for signal <irqb2>.
+    Found 1-bit register for signal <cb2_out>.
+    Found 8-bit 4-to-1 multiplexer for signal <data_out> created at line 131.
+    Summary:
+	inferred  63 D-type flip-flop(s).
+	inferred  65 Multiplexer(s).
+Unit <pia6821> synthesized.
+
+Synthesizing Unit <dpram_3>.
+    Related source file is "/workspace/williams/core/rtl/mister/dpram.vhd".
+        dWidth = 8
+        aWidth = 12
+    Found 4096x8-bit dual-port RAM <Mram_mem> for signal <mem>.
+    Found 8-bit register for signal <q_b>.
+    Found 8-bit register for signal <q_a>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred  16 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <dpram_3> synthesized.
+
+Synthesizing Unit <williams_sound_board>.
+    Related source file is "/workspace/williams/core/rtl/mister/williams_sound_board.vhd".
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_sound_board.vhd" line 143: Output port <test_alu> of the instance <main_cpu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_sound_board.vhd" line 143: Output port <test_cc> of the instance <main_cpu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_sound_board.vhd" line 175: Output port <pa_oe> of the instance <pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_sound_board.vhd" line 175: Output port <pb_o> of the instance <pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_sound_board.vhd" line 175: Output port <pb_oe> of the instance <pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_sound_board.vhd" line 175: Output port <ca2_oe> of the instance <pia> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/workspace/williams/core/rtl/mister/williams_sound_board.vhd" line 175: Output port <cb2_oe> of the instance <pia> is unconnected or connected to loadless signal.
+    Found 2-bit subtractor for signal <n0048[1:0]> created at line 29.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   4 Multiplexer(s).
+Unit <williams_sound_board> synthesized.
+
+Synthesizing Unit <CEGen>.
+    Related source file is "/workspace/williams/core/rtl/mister/CEGen.vhd".
+    Found 1-bit register for signal <CE>.
+    Found 32-bit register for signal <CLK_SUM>.
+    Found 32-bit adder for signal <CLK_SUM[31]_OUT_CLK[31]_add_0_OUT> created at line 27.
+    Found 32-bit subtractor for signal <CLK_SUM[31]_IN_CLK[31]_sub_3_OUT<31:0>> created at line 29.
+    Found 32-bit comparator lessequal for signal <n0003> created at line 28
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  33 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred   1 Multiplexer(s).
+Unit <CEGen> synthesized.
+
+Synthesizing Unit <cpu68>.
+    Related source file is "/workspace/williams/core/rtl/mister/cpu68.vhd".
+    Found 16-bit register for signal <ea>.
+    Found 8-bit register for signal <acca>.
+    Found 8-bit register for signal <accb>.
+    Found 16-bit register for signal <xreg>.
+    Found 16-bit register for signal <sp>.
+    Found 16-bit register for signal <md>.
+    Found 8-bit register for signal <cc>.
+    Found 2-bit register for signal <iv>.
+    Found 8-bit register for signal <op_code>.
+    Found 1-bit register for signal <nmi_req>.
+    Found 1-bit register for signal <nmi_ack>.
+    Found 7-bit register for signal <state>.
+    Found 16-bit register for signal <pc>.
+INFO:Xst:1799 - State halt_state is never reached in FSM <state>.
+INFO:Xst:1799 - State error_state is never reached in FSM <state>.
+    Found finite state machine <FSM_2> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 71                                             |
+    | Transitions        | 282                                            |
+    | Inputs             | 24                                             |
+    | Outputs            | 21                                             |
+    | Clock              | clk (falling_edge)                             |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | synchronous                                    |
+    | Reset State        | reset_state                                    |
+    | Power Up State     | reset_state                                    |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 16-bit adder for signal <pc_ctrl[2]_pc_ctrl[2]_add_6_OUT> created at line 316.
+    Found 16-bit adder for signal <ea_ctrl[2]_ea_ctrl[2]_add_11_OUT> created at line 361.
+    Found 16-bit adder for signal <n0687> created at line 692.
+    Found 16-bit adder for signal <left[15]_GND_75_o_add_58_OUT> created at line 692.
+    Found 16-bit adder for signal <left[15]_GND_75_o_add_66_OUT> created at line 720.
+    Found 16-bit subtractor for signal <GND_75_o_GND_75_o_sub_60_OUT<15:0>> created at line 696.
+    Found 16-bit subtractor for signal <GND_75_o_GND_75_o_sub_61_OUT<15:0>> created at line 696.
+    Found 16-bit subtractor for signal <GND_75_o_GND_75_o_sub_65_OUT<15:0>> created at line 712.
+    Found 16x94-bit Read Only RAM for signal <_n1590>
+    Found 16x4-bit Read Only RAM for signal <_n2017>
+    Found 16-bit 6-to-1 multiplexer for signal <address> created at line 201.
+    Found 8-bit 9-to-1 multiplexer for signal <data_out> created at line 248.
+    Found 16-bit 8-to-1 multiplexer for signal <pc_mux.temppc> created at line 294.
+    Found 16-bit 8-to-1 multiplexer for signal <ea_mux.tempea> created at line 340.
+    Found 16-bit 7-to-1 multiplexer for signal <left> created at line 592.
+    Found 16-bit 4-to-1 multiplexer for signal <right> created at line 619.
+    Found 4-bit comparator lessequal for signal <n0048> created at line 651
+    Found 4-bit comparator lessequal for signal <n0050> created at line 652
+    Found 4-bit comparator lessequal for signal <n0055> created at line 669
+    Summary:
+	inferred   2 RAM(s).
+	inferred   8 Adder/Subtractor(s).
+	inferred 114 D-type flip-flop(s).
+	inferred   3 Comparator(s).
+	inferred 320 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <cpu68> synthesized.
+
+Synthesizing Unit <gen_ram>.
+    Related source file is "/workspace/williams/core/rtl/mister/gen_ram.vhd".
+        dWidth = 8
+        aWidth = 8
+    Found 256x8-bit single-port RAM <Mram_ram> for signal <ram>.
+    Found 8-bit register for signal <q>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred   8 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <gen_ram> synthesized.
+
+Synthesizing Unit <hc55564>.
+    Related source file is "/workspace/williams/core/rtl/mister/hc55564.vhd".
+WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 3-bit register for signal <shiftreg>.
+    Found 12-bit register for signal <sylfilter>.
+    Found 10-bit register for signal <intfilter>.
+    Found 16-bit register for signal <next_sample>.
+    Found 1-bit register for signal <old_cen>.
+    Found 7-bit subtractor for signal <GND_89_o_unary_minus_23_OUT> created at line 168.
+    Found 12-bit adder for signal <n0123> created at line 122.
+    Found 12-bit adder for signal <sylfilter[11]_PWR_34_o_add_8_OUT> created at line 122.
+    Found 10-bit adder for signal <intfilter[9]_GND_89_o_add_13_OUT> created at line 1253.
+    Found 11-bit adder for signal <n0082> created at line 135.
+    Found 11-bit adder for signal <n0089> created at line 175.
+    Found 10-bit comparator lessequal for signal <n0002> created at line 104
+    Found 10-bit comparator lessequal for signal <n0006> created at line 105
+    Found 6-bit comparator greater for signal <sylfilter[11]_GND_89_o_LessThan_21_o> created at line 160
+    Summary:
+	inferred   6 Adder/Subtractor(s).
+	inferred  42 D-type flip-flop(s).
+	inferred   3 Comparator(s).
+	inferred   7 Multiplexer(s).
+Unit <hc55564> synthesized.
+
+Synthesizing Unit <williams_lowpass>.
+    Related source file is "/workspace/williams/core/rtl/williams_phoenix.v".
+    Found 23-bit register for signal <avg>.
+    Found 22-bit register for signal <s1>.
+    Found 22-bit register for signal <s2>.
+    Found 23-bit register for signal <acc>.
+    Found 23-bit subtractor for signal <n0025> created at line 830.
+    Found 22-bit subtractor for signal <n0027> created at line 831.
+    Found 23-bit adder for signal <acc[22]_x[15]_add_1_OUT> created at line 825.
+    Found 23-bit adder for signal <n0026> created at line 830.
+    Found 22-bit adder for signal <s2[21]_s1[21]_add_9_OUT> created at line 831.
+    Found 23x8-bit multiplier for signal <n0024> created at line 830.
+    Summary:
+	inferred   1 Multiplier(s).
+	inferred   5 Adder/Subtractor(s).
+	inferred  90 D-type flip-flop(s).
+Unit <williams_lowpass> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 17
+ 16384x8-bit single-port Read Only RAM                 : 1
+ 16x2-bit single-port Read Only RAM                    : 1
+ 16x3-bit single-port Read Only RAM                    : 1
+ 16x4-bit single-port Read Only RAM                    : 1
+ 16x8-bit dual-port RAM                                : 1
+ 16x94-bit single-port Read Only RAM                   : 1
+ 2048x4-bit dual-port RAM                              : 2
+ 256x8-bit single-port RAM                             : 1
+ 4096x8-bit dual-port RAM                              : 2
+ 4x3-bit single-port Read Only RAM                     : 1
+ 512x8-bit dual-port RAM                               : 3
+ 64x7-bit single-port Read Only RAM                    : 1
+ 8x34-bit single-port Read Only RAM                    : 1
+# Multipliers                                          : 1
+ 23x8-bit multiplier                                   : 1
+# Adders/Subtractors                                   : 80
+ 10-bit adder                                          : 3
+ 10-bit subtractor                                     : 2
+ 11-bit adder                                          : 3
+ 12-bit adder                                          : 2
+ 12-bit subtractor                                     : 1
+ 15-bit adder                                          : 1
+ 16-bit adder                                          : 18
+ 16-bit subtractor                                     : 6
+ 17-bit adder                                          : 2
+ 17-bit subtractor                                     : 2
+ 18-bit adder                                          : 1
+ 19-bit adder                                          : 1
+ 2-bit subtractor                                      : 1
+ 20-bit adder                                          : 1
+ 22-bit adder                                          : 1
+ 22-bit subtractor                                     : 1
+ 23-bit adder                                          : 2
+ 23-bit subtractor                                     : 1
+ 3-bit adder                                           : 1
+ 32-bit adder                                          : 2
+ 32-bit subtractor                                     : 2
+ 4-bit subtractor                                      : 1
+ 7-bit subtractor                                      : 1
+ 8-bit adder                                           : 10
+ 8-bit subtractor                                      : 2
+ 9-bit adder                                           : 7
+ 9-bit subtractor                                      : 5
+# Registers                                            : 309
+ 1-bit register                                        : 142
+ 10-bit register                                       : 5
+ 12-bit register                                       : 3
+ 14-bit register                                       : 1
+ 15-bit register                                       : 1
+ 16-bit register                                       : 27
+ 19-bit register                                       : 5
+ 2-bit register                                        : 5
+ 20-bit register                                       : 1
+ 22-bit register                                       : 2
+ 23-bit register                                       : 2
+ 25-bit register                                       : 1
+ 3-bit register                                        : 9
+ 32-bit register                                       : 2
+ 4-bit register                                        : 6
+ 6-bit register                                        : 6
+ 7-bit register                                        : 5
+ 8-bit register                                        : 83
+ 9-bit register                                        : 3
+# Comparators                                          : 50
+ 1-bit comparator equal                                : 1
+ 10-bit comparator greater                             : 5
+ 10-bit comparator lessequal                           : 7
+ 16-bit comparator equal                               : 2
+ 16-bit comparator greater                             : 3
+ 16-bit comparator lessequal                           : 2
+ 16-bit comparator not equal                           : 1
+ 17-bit comparator greater                             : 2
+ 19-bit comparator equal                               : 1
+ 20-bit comparator greater                             : 1
+ 32-bit comparator lessequal                           : 1
+ 4-bit comparator greater                              : 3
+ 4-bit comparator lessequal                            : 9
+ 6-bit comparator greater                              : 1
+ 6-bit comparator lessequal                            : 4
+ 8-bit comparator greater                              : 5
+ 8-bit comparator lessequal                            : 2
+# Multiplexers                                         : 1939
+ 1-bit 16-to-1 multiplexer                             : 1
+ 1-bit 2-to-1 multiplexer                              : 1019
+ 1-bit 4-to-1 multiplexer                              : 2
+ 10-bit 2-to-1 multiplexer                             : 4
+ 12-bit 2-to-1 multiplexer                             : 2
+ 15-bit 2-to-1 multiplexer                             : 1
+ 16-bit 12-to-1 multiplexer                            : 2
+ 16-bit 2-to-1 multiplexer                             : 457
+ 16-bit 4-to-1 multiplexer                             : 2
+ 16-bit 6-to-1 multiplexer                             : 1
+ 16-bit 7-to-1 multiplexer                             : 8
+ 16-bit 8-to-1 multiplexer                             : 2
+ 19-bit 2-to-1 multiplexer                             : 3
+ 2-bit 2-to-1 multiplexer                              : 3
+ 20-bit 2-to-1 multiplexer                             : 3
+ 3-bit 2-to-1 multiplexer                              : 21
+ 32-bit 2-to-1 multiplexer                             : 2
+ 4-bit 2-to-1 multiplexer                              : 14
+ 5-bit 2-to-1 multiplexer                              : 2
+ 6-bit 2-to-1 multiplexer                              : 29
+ 7-bit 2-to-1 multiplexer                              : 111
+ 8-bit 16-to-1 multiplexer                             : 2
+ 8-bit 2-to-1 multiplexer                              : 240
+ 8-bit 26-to-1 multiplexer                             : 1
+ 8-bit 4-to-1 multiplexer                              : 3
+ 8-bit 7-to-1 multiplexer                              : 2
+ 8-bit 9-to-1 multiplexer                              : 1
+ 9-bit 2-to-1 multiplexer                              : 1
+# FSMs                                                 : 3
+# Xors                                                 : 19
+ 1-bit xor2                                            : 13
+ 10-bit xor2                                           : 2
+ 16-bit xor2                                           : 1
+ 32-bit xor2                                           : 1
+ 8-bit xor2                                            : 2
+
+=========================================================================
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <cpu68>.
+INFO:Xst:3231 - The small RAM <Mram__n1590> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 94-bit                    |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <op_code<3:0>>  |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3231 - The small RAM <Mram__n2017> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 4-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <op_code<7:4>>  |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <cpu68> synthesized (advanced).
+
+Synthesizing (advanced) Unit <gen_ram>.
+INFO:Xst:3226 - The RAM <Mram_ram> will be implemented as a BLOCK RAM, absorbing the following register(s): <q>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 256-word x 8-bit                    |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <we>            | high     |
+    |     addrA          | connected to signal <addr>          |          |
+    |     diA            | connected to signal <d>             |          |
+    |     doA            | connected to signal <q>             |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+Unit <gen_ram> synthesized (advanced).
+
+Synthesizing (advanced) Unit <mc6809is>.
+INFO:Xst:3231 - The small RAM <Mram__n5366> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 8-word x 34-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <IntType>       |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3231 - The small RAM <Mram_Inst1[3]_GND_8_o_wide_mux_187_OUT> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 3-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <Inst1<3:0>>    |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3231 - The small RAM <Mram__n3327> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 64-word x 7-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <Inst1<5:0>>    |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3231 - The small RAM <Mram__n3295> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4-word x 3-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <(Inst1<3>,Inst1<1>)> |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <mc6809is> synthesized (advanced).
+
+Synthesizing (advanced) Unit <williams_cpu>.
+The following registers are absorbed into counter <video_count>: 1 register on signal <video_count>.
+The following registers are absorbed into counter <reset_counter>: 1 register on signal <reset_counter>.
+Unit <williams_cpu> synthesized (advanced).
+
+Synthesizing (advanced) Unit <williams_lowpass>.
+The following registers are absorbed into accumulator <s2>: 1 register on signal <s2>.
+The following registers are absorbed into accumulator <s1>: 1 register on signal <s1>.
+The following registers are absorbed into accumulator <acc>: 1 register on signal <acc>.
+Unit <williams_lowpass> synthesized (advanced).
+
+Synthesizing (advanced) Unit <williams_phoenix>.
+The following registers are absorbed into accumulator <dc>: 1 register on signal <dc>.
+The following registers are absorbed into counter <hc>: 1 register on signal <hc>.
+The following registers are absorbed into counter <ld_addr>: 1 register on signal <ld_addr>.
+The following registers are absorbed into counter <soc_rst_cnt>: 1 register on signal <soc_rst_cnt>.
+The following registers are absorbed into counter <spi_bit>: 1 register on signal <spi_bit>.
+The following registers are absorbed into counter <af_div>: 1 register on signal <af_div>.
+The following registers are absorbed into counter <spi_div>: 1 register on signal <spi_div>.
+INFO:Xst:3226 - The RAM <Mram_lbuf> will be implemented as a BLOCK RAM, absorbing the following register(s): <lb_q>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4096-word x 8-bit                   |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <clk12g>        | rise     |
+    |     weA            | connected to internal node          | high     |
+    |     addrA          | connected to signal <(vcount<8:6>,px)> |          |
+    |     diA            | connected to signal <(vr,vg,vb)>    |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 4096-word x 8-bit                   |          |
+    |     mode           | write-first                         |          |
+    |     clkB           | connected to signal <clk25>         | rise     |
+    |     addrB          | connected to signal <(sline,hcol[9]_GND_1_o_add_272_OUT)> |          |
+    |     doB            | connected to signal <pix>           |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3226 - The RAM <soc/cpu_board/blt/remap_lower/Mram_mem> will be implemented as a BLOCK RAM, absorbing the following register(s): <soc/cpu_board/blt/remap_lower/q_b>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 2048-word x 4-bit                   |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <clk48>         | rise     |
+    |     weA            | connected to signal <soc/cpu_board/remap_we> | high     |
+    |     addrA          | connected to signal <dl_addr<10:0>> |          |
+    |     diA            | connected to signal <dl_data<3:0>>  |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 2048-word x 4-bit                   |          |
+    |     mode           | write-first                         |          |
+    |     clkB           | connected to signal <clk12g>        | rise     |
+    |     weB            | connected to signal <GND>           | high     |
+    |     addrB          | connected to signal <(soc/cpu_board/remap_select,soc/cpu_board/blt/remap_data<3:0>)> |          |
+    |     diB            | connected to signal <GND>           |          |
+    |     doB            | connected to signal <soc/cpu_board/blt/remap_byte> |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3226 - The RAM <soc/cpu_board/blt/remap_upper/Mram_mem> will be implemented as a BLOCK RAM, absorbing the following register(s): <soc/cpu_board/blt/remap_upper/q_b>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 2048-word x 4-bit                   |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <clk48>         | rise     |
+    |     weA            | connected to signal <soc/cpu_board/remap_we> | high     |
+    |     addrA          | connected to signal <dl_addr<10:0>> |          |
+    |     diA            | connected to signal <dl_data<3:0>>  |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 2048-word x 4-bit                   |          |
+    |     mode           | write-first                         |          |
+    |     clkB           | connected to signal <clk12g>        | rise     |
+    |     weB            | connected to signal <GND>           | high     |
+    |     addrB          | connected to signal <(soc/cpu_board/remap_select,soc/cpu_board/blt/remap_data<7:4>)> |          |
+    |     diB            | connected to signal <GND>           |          |
+    |     doB            | connected to signal <soc/cpu_board/blt/remap_byte> |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3226 - The RAM <soc/snd_rom/Mram_mem> will be implemented as a BLOCK RAM, absorbing the following register(s): <soc/snd_rom/q_a>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4096-word x 8-bit                   |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <clk12g>        | rise     |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <soc/snd_addr>  |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <soc/snd_do>    |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 4096-word x 8-bit                   |          |
+    |     mode           | write-first                         |          |
+    |     clkB           | connected to signal <clk48>         | rise     |
+    |     weB            | connected to signal <soc/snd_rom_we> | high     |
+    |     addrB          | connected to signal <dl_addr<11:0>> |          |
+    |     diB            | connected to signal <dl_data>       |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3226 - The RAM <Mram_loader_rom> will be implemented as a BLOCK RAM, absorbing the following register(s): <loader_q>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16384-word x 8-bit                  |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <clk12g>        | rise     |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <mem_a<13:0>>   |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <loader_q>      |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3226 - The RAM <soc/cpu_board/cpu_video_addr_decoder/Mram_mem> will be implemented as a BLOCK RAM, absorbing the following register(s): <soc/cpu_board/cpu_video_addr_decoder/q_b>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 512-word x 8-bit                    |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <clk48>         | rise     |
+    |     weA            | connected to internal node          | high     |
+    |     addrA          | connected to signal <dl_addr<8:0>>  |          |
+    |     diA            | connected to signal <dl_data>       |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 512-word x 8-bit                    |          |
+    |     mode           | write-first                         |          |
+    |     clkB           | connected to signal <soc/cpu_board/clock_n> | rise     |
+    |     weB            | connected to signal <GND>           | high     |
+    |     addrB          | connected to signal <(soc/cpu_board/screen_control,soc/cpu_board/address)> |          |
+    |     diB            | connected to signal <GND>           |          |
+    |     doB            | connected to signal <soc/cpu_board/pseudo_address_d> |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3226 - The RAM <soc/cpu_board/video_scan_addr_decoder/Mram_mem> will be implemented as a BLOCK RAM, absorbing the following register(s): <soc/cpu_board/video_scan_addr_decoder/q_b>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 512-word x 8-bit                    |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <clk48>         | rise     |
+    |     weA            | connected to internal node          | high     |
+    |     addrA          | connected to signal <dl_addr<8:0>>  |          |
+    |     diA            | connected to signal <dl_data>       |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 512-word x 8-bit                    |          |
+    |     mode           | write-first                         |          |
+    |     clkB           | connected to signal <soc/cpu_board/clock_n> | rise     |
+    |     weB            | connected to signal <GND>           | high     |
+    |     addrB          | connected to signal <(soc/cpu_board/screen_control,vcount<13:6>)> |          |
+    |     diB            | connected to signal <GND>           |          |
+    |     doB            | connected to signal <soc/cpu_board/video_prom_address_d> |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n1324> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 2-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <ext_a>         |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <williams_phoenix> synthesized (advanced).
+WARNING:Xst:2677 - Node <shiftreg_2> of sequential type is unconnected in block <hc55564>.
+WARNING:Xst:2677 - Node <spi_rx_7> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <in_g_4> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <in_g_5> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <in_g_10> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <in_g_11> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/cpu_board/video_control_0> of sequential type is unconnected in block <williams_phoenix>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 15
+ 16384x8-bit single-port block Read Only RAM           : 1
+ 16x2-bit single-port distributed Read Only RAM        : 1
+ 16x3-bit single-port distributed Read Only RAM        : 1
+ 16x4-bit single-port distributed Read Only RAM        : 1
+ 16x94-bit single-port distributed Read Only RAM       : 1
+ 2048x4-bit dual-port block RAM                        : 2
+ 256x8-bit single-port block RAM                       : 1
+ 4096x8-bit dual-port block RAM                        : 2
+ 4x3-bit single-port distributed Read Only RAM         : 1
+ 512x8-bit dual-port block RAM                         : 2
+ 64x7-bit single-port distributed Read Only RAM        : 1
+ 8x34-bit single-port distributed Read Only RAM        : 1
+# Multipliers                                          : 1
+ 23x8-bit multiplier                                   : 1
+# Adders/Subtractors                                   : 61
+ 10-bit adder                                          : 1
+ 10-bit adder carry in                                 : 1
+ 10-bit subtractor                                     : 1
+ 11-bit adder                                          : 1
+ 12-bit adder                                          : 2
+ 15-bit adder                                          : 1
+ 16-bit adder                                          : 16
+ 16-bit adder carry in                                 : 1
+ 16-bit subtractor                                     : 4
+ 16-bit subtractor borrow in                           : 1
+ 17-bit adder                                          : 2
+ 17-bit subtractor                                     : 2
+ 18-bit adder                                          : 1
+ 19-bit adder                                          : 1
+ 2-bit subtractor                                      : 1
+ 22-bit subtractor                                     : 1
+ 23-bit adder                                          : 1
+ 23-bit subtractor                                     : 1
+ 3-bit adder                                           : 1
+ 32-bit adder                                          : 1
+ 32-bit subtractor                                     : 2
+ 4-bit subtractor                                      : 1
+ 7-bit subtractor                                      : 1
+ 8-bit adder                                           : 6
+ 8-bit subtractor                                      : 2
+ 9-bit adder                                           : 5
+ 9-bit subtractor                                      : 3
+# Counters                                             : 8
+ 10-bit up counter                                     : 1
+ 12-bit down counter                                   : 1
+ 15-bit up counter                                     : 1
+ 20-bit up counter                                     : 1
+ 3-bit up counter                                      : 1
+ 7-bit up counter                                      : 2
+ 8-bit up counter                                      : 1
+# Accumulators                                         : 4
+ 22-bit up accumulator                                 : 2
+ 23-bit up accumulator                                 : 1
+ 32-bit up accumulator                                 : 1
+# Registers                                            : 1468
+ Flip-Flops                                            : 1468
+# Comparators                                          : 47
+ 1-bit comparator equal                                : 1
+ 10-bit comparator greater                             : 4
+ 10-bit comparator lessequal                           : 7
+ 16-bit comparator equal                               : 2
+ 16-bit comparator greater                             : 2
+ 16-bit comparator lessequal                           : 1
+ 16-bit comparator not equal                           : 1
+ 17-bit comparator greater                             : 2
+ 19-bit comparator equal                               : 1
+ 20-bit comparator greater                             : 1
+ 32-bit comparator lessequal                           : 1
+ 4-bit comparator greater                              : 3
+ 4-bit comparator lessequal                            : 9
+ 6-bit comparator greater                              : 1
+ 6-bit comparator lessequal                            : 4
+ 8-bit comparator greater                              : 5
+ 8-bit comparator lessequal                            : 2
+# Multiplexers                                         : 1972
+ 1-bit 16-to-1 multiplexer                             : 17
+ 1-bit 2-to-1 multiplexer                              : 1032
+ 1-bit 4-to-1 multiplexer                              : 26
+ 10-bit 2-to-1 multiplexer                             : 4
+ 12-bit 2-to-1 multiplexer                             : 2
+ 15-bit 2-to-1 multiplexer                             : 1
+ 16-bit 12-to-1 multiplexer                            : 2
+ 16-bit 2-to-1 multiplexer                             : 457
+ 16-bit 4-to-1 multiplexer                             : 2
+ 16-bit 6-to-1 multiplexer                             : 1
+ 16-bit 7-to-1 multiplexer                             : 8
+ 16-bit 8-to-1 multiplexer                             : 2
+ 19-bit 2-to-1 multiplexer                             : 3
+ 2-bit 2-to-1 multiplexer                              : 3
+ 20-bit 2-to-1 multiplexer                             : 2
+ 3-bit 2-to-1 multiplexer                              : 21
+ 32-bit 2-to-1 multiplexer                             : 2
+ 4-bit 2-to-1 multiplexer                              : 9
+ 5-bit 2-to-1 multiplexer                              : 2
+ 6-bit 2-to-1 multiplexer                              : 29
+ 7-bit 2-to-1 multiplexer                              : 111
+ 8-bit 2-to-1 multiplexer                              : 232
+ 8-bit 26-to-1 multiplexer                             : 1
+ 8-bit 7-to-1 multiplexer                              : 2
+ 8-bit 9-to-1 multiplexer                              : 1
+# FSMs                                                 : 3
+# Xors                                                 : 18
+ 1-bit xor2                                            : 12
+ 10-bit xor2                                           : 2
+ 16-bit xor2                                           : 1
+ 32-bit xor2                                           : 1
+ 8-bit xor2                                            : 2
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <soc/cpu_board/video_erase_address_10> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_11> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_12> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_13> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_14> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_15> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_color_0> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_color_1> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_color_2> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_color_3> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_color_4> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_color_5> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_color_6> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_color_7> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_control_1> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/remap_select_0> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/remap_select_1> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/remap_select_2> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/remap_select_3> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/remap_select_4> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/remap_select_5> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/remap_select_6> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <dl_addr_20> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <dl_addr_21> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <dl_addr_22> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <dl_addr_23> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <dl_addr_24> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_default_0> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_default_1> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_default_2> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_default_3> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_default_4> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_default_5> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_default_6> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/background_default_7> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/erase_behind> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/scanline_color_0> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/scanline_color_1> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/scanline_color_2> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/scanline_color_3> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/scanline_color_4> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/scanline_color_5> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/scanline_color_6> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/scanline_color_7> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_enable> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_0> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_1> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_2> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_3> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_4> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_5> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_6> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_7> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_8> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/video_erase_address_9> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <vid_g_0> in Unit <williams_phoenix> is equivalent to the following 2 FFs/Latches, which will be removed : <vid_g_3> <vid_g_6> 
+INFO:Xst:2261 - The FF/Latch <vid_b_1> in Unit <williams_phoenix> is equivalent to the following 3 FFs/Latches, which will be removed : <vid_b_3> <vid_b_5> <vid_b_7> 
+INFO:Xst:2261 - The FF/Latch <vid_r_0> in Unit <williams_phoenix> is equivalent to the following 2 FFs/Latches, which will be removed : <vid_r_3> <vid_r_6> 
+INFO:Xst:2261 - The FF/Latch <vid_g_1> in Unit <williams_phoenix> is equivalent to the following 2 FFs/Latches, which will be removed : <vid_g_4> <vid_g_7> 
+INFO:Xst:2261 - The FF/Latch <vid_g_2> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <vid_g_5> 
+INFO:Xst:2261 - The FF/Latch <vid_b_0> in Unit <williams_phoenix> is equivalent to the following 3 FFs/Latches, which will be removed : <vid_b_2> <vid_b_4> <vid_b_6> 
+INFO:Xst:2261 - The FF/Latch <vid_r_1> in Unit <williams_phoenix> is equivalent to the following 2 FFs/Latches, which will be removed : <vid_r_4> <vid_r_7> 
+INFO:Xst:2261 - The FF/Latch <audio_l_0> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_0> 
+INFO:Xst:2261 - The FF/Latch <audio_l_1> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_1> 
+INFO:Xst:2261 - The FF/Latch <audio_l_2> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_2> 
+INFO:Xst:2261 - The FF/Latch <audio_l_3> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_3> 
+INFO:Xst:2261 - The FF/Latch <audio_l_10> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_10> 
+INFO:Xst:2261 - The FF/Latch <audio_l_4> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_4> 
+INFO:Xst:2261 - The FF/Latch <audio_l_11> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_11> 
+INFO:Xst:2261 - The FF/Latch <audio_l_5> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_5> 
+INFO:Xst:2261 - The FF/Latch <audio_l_12> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_12> 
+INFO:Xst:2261 - The FF/Latch <audio_l_6> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_6> 
+INFO:Xst:2261 - The FF/Latch <audio_l_13> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_13> 
+INFO:Xst:2261 - The FF/Latch <audio_l_7> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_7> 
+INFO:Xst:2261 - The FF/Latch <audio_l_14> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_14> 
+INFO:Xst:2261 - The FF/Latch <audio_l_8> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_8> 
+INFO:Xst:2261 - The FF/Latch <audio_l_15> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_15> 
+INFO:Xst:2261 - The FF/Latch <audio_l_9> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <audio_r_9> 
+INFO:Xst:2261 - The FF/Latch <vid_r_2> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <vid_r_5> 
+INFO:Xst:2261 - The FF/Latch <NMISample> in Unit <mc6809is> is equivalent to the following FF/Latch, which will be removed : <FIRQSample> 
+WARNING:Xst:1710 - FF/Latch <NMISample> (without init value) has a constant value of 1 in block <mc6809is>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <NMISample2> (without init value) has a constant value of 1 in block <mc6809is>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <FIRQSample2> (without init value) has a constant value of 1 in block <mc6809is>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <FIRQLatched> (without init value) has a constant value of 1 in block <mc6809is>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <NMILatched> (without init value) has a constant value of 1 in block <mc6809is>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <NMIClear> is unconnected in block <mc6809is>.
+WARNING:Xst:2677 - Node <NMIMask> of sequential type is unconnected in block <mc6809is>.
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <FSM_0> on signal <st[1:2]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 01    | 01
+ 00    | 00
+ 10    | 10
+ 11    | 11
+-------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <FSM_1> on signal <state[1:2]> with user encoding.
+---------------------------------
+ State               | Encoding
+---------------------------------
+ state_idle          | 00
+ state_wait_for_halt | 01
+ state_src           | 10
+ state_dst           | 11
+---------------------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <soc/sound_board/main_cpu/FSM_2> on signal <state[1:69]> with one-hot encoding.
+------------------------------------------------------------------------------------------------
+ State                 | Encoding
+------------------------------------------------------------------------------------------------
+ reset_state           | 000000000000000000000000000000000000000000000000000000000000000000001
+ fetch_state           | 000000000000000000000000000000000000000000000000000000000000000010000
+ decode_state          | 000000000000000000000000000000000000000000000000000000000000000000100
+ extended_state        | 000000000000000000000000000000000000000000000000000100000000000000000
+ indexed_state         | 000000000000000000000000000000000000000000000000000010000000000000000
+ read8_state           | 000000000000000000000000000000000000000000000000100000000000000000000
+ read16_state          | 000000000000000000000000000000000000010000000000000000000000000000000
+ immediate16_state     | 000000000000000000000000000000000000000000000000001000000000000000000
+ write8_state          | 000000000000000000000000000000000000100000000000000000000000000000000
+ write16_state         | 000100000000000000000000000000000000000000000000000000000000000000000
+ execute_state         | 000000000000000000000000000000000000001000000000000000000000000000000
+ halt_state            | unreached
+ error_state           | unreached
+ mul_state             | 000000000000000000000000000000000000000000000000000001000000000000000
+ mulea_state           | 000000000000000000000000000000000010000000000000000000000000000000000
+ muld_state            | 000000000000000000000000000000000100000000000000000000000000000000000
+ mul0_state            | 000000000000000000000000000000001000000000000000000000000000000000000
+ mul1_state            | 000000000000000000000000000000010000000000000000000000000000000000000
+ mul2_state            | 000000000000000000000000000000100000000000000000000000000000000000000
+ mul3_state            | 000000000000000000000000000001000000000000000000000000000000000000000
+ mul4_state            | 000000000000000000000000000010000000000000000000000000000000000000000
+ mul5_state            | 000000000000000000000000000100000000000000000000000000000000000000000
+ mul6_state            | 000000000000000000000000001000000000000000000000000000000000000000000
+ mul7_state            | 000000000000000000000000010000000000000000000000000000000000000000000
+ jmp_state             | 000000000000000000000000000000000000000000010000000000000000000000000
+ jsr_state             | 000000000000000000000000000000000000000000000010000000000000000000000
+ jsr1_state            | 000000000000000000000000100000000000000000000000000000000000000000000
+ branch_state          | 000000000000000000000000000000000000000000000000000000000000001000000
+ bsr_state             | 010000000000000000000000000000000000000000000000000000000000000000000
+ bsr1_state            | 000000000000000000000001000000000000000000000000000000000000000000000
+ rts_hi_state          | 000000000000000000000000000000000000000000000000000000001000000000000
+ rts_lo_state          | 000000000000000000000010000000000000000000000000000000000000000000000
+ int_pcl_state         | 000000000000000000000000000000000000000000000000000000000000000001000
+ int_pch_state         | 000000000000000000000100000000000000000000000000000000000000000000000
+ int_ixl_state         | 000000000000000000001000000000000000000000000000000000000000000000000
+ int_ixh_state         | 000000000000000000010000000000000000000000000000000000000000000000000
+ int_cc_state          | 000000000000010000000000000000000000000000000000000000000000000000000
+ int_acca_state        | 000000000000000000100000000000000000000000000000000000000000000000000
+ int_accb_state        | 000000000000001000000000000000000000000000000000000000000000000000000
+ int_wai_state         | 000000000000000001000000000000000000000000000000000000000000000000000
+ int_mask_state        | 000000000000000100000000000000000000000000000000000000000000000000000
+ rti_state             | 000000000000000010000000000000000000000000000000000000000000000000000
+ rti_cc_state          | 000000000000000000000000000000000000000000000000000000010000000000000
+ rti_acca_state        | 000000000010000000000000000000000000000000000000000000000000000000000
+ rti_accb_state        | 000000000000100000000000000000000000000000000000000000000000000000000
+ rti_ixl_state         | 000000001000000000000000000000000000000000000000000000000000000000000
+ rti_ixh_state         | 000000000001000000000000000000000000000000000000000000000000000000000
+ rti_pcl_state         | 000000010000000000000000000000000000000000000000000000000000000000000
+ rti_pch_state         | 000000000100000000000000000000000000000000000000000000000000000000000
+ pula_state            | 000000000000000000000000000000000000000000000000000000000000010000000
+ psha_state            | 000000000000000000000000000000000000000000000000000000000001000000000
+ pulb_state            | 000000000000000000000000000000000000000000000000000000000000100000000
+ pshb_state            | 000000000000000000000000000000000000000000000000000000000010000000000
+ pulx_lo_state         | 000000100000000000000000000000000000000000000000000000000000000000000
+ pulx_hi_state         | 000000000000000000000000000000000000000000000000000000000100000000000
+ pshx_lo_state         | 000000000000000000000000000000000000000000000000000000100000000000000
+ pshx_hi_state         | 000001000000000000000000000000000000000000000000000000000000000000000
+ vect_lo_state         | 000010000000000000000000000000000000000000000000000000000000000000000
+ vect_hi_state         | 000000000000000000000000000000000000000000000000000000000000000000010
+ stall1_state          | 000000000000000000000000000000000001000000000000000000000000000000000
+ stall2_state          | 000000000000000000000000000000000000000000000000000000000000000100000
+ stall1_write_state    | 000000000000000000000000000000000000000000000001000000000000000000000
+ stall2_write_state    | 000000000000000000000000000000000000000001000000000000000000000000000
+ stall1_write16_state  | 000000000000000000000000000000000000000000000100000000000000000000000
+ stall2_write16_state  | 000000000000000000000000000000000000000100000000000000000000000000000
+ stall1_idx_read_state | 000000000000000000000000000000000000000000100000000000000000000000000
+ stall1_jsr_state      | 001000000000000000000000000000000000000000000000000000000000000000000
+ stall2_jsr_state      | 000000000000000000000000000000000000000010000000000000000000000000000
+ stall3_jsr_state      | 000000000000000000000000000000000000000000001000000000000000000000000
+ stall1_bsr_state      | 100000000000000000000000000000000000000000000000000000000000000000000
+ stall2_bsr_state      | 000000000000000000000000000000000000000000000000010000000000000000000
+------------------------------------------------------------------------------------------------
+WARNING:Xst:1293 - FF/Latch <NextState_0> has a constant value of 0 in block <mc6809is>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <acc_0> has a constant value of 0 in block <williams_lowpass>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <acc_1> has a constant value of 0 in block <williams_lowpass>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <acc_2> has a constant value of 0 in block <williams_lowpass>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <acc_3> has a constant value of 0 in block <williams_lowpass>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <acc_4> has a constant value of 0 in block <williams_lowpass>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <acc_5> has a constant value of 0 in block <williams_lowpass>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <acc_6> has a constant value of 0 in block <williams_lowpass>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <avg_0> has a constant value of 0 in block <williams_lowpass>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <avg_1> has a constant value of 0 in block <williams_lowpass>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <avg_2> has a constant value of 0 in block <williams_lowpass>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <avg_3> has a constant value of 0 in block <williams_lowpass>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <avg_4> has a constant value of 0 in block <williams_lowpass>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <avg_5> has a constant value of 0 in block <williams_lowpass>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <avg_6> has a constant value of 0 in block <williams_lowpass>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <hc1_0> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <hc1_1> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <hc1_2> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <hc1_3> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <vc1_0> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/cpu_board/blt/blt_raw_data_4> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/cpu_board/blt/blt_raw_data_5> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/cpu_board/blt/blt_raw_data_6> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/cpu_board/blt/blt_raw_data_7> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/cpu_board/blt/remap_upper/Mram_mem> of sequential type is unconnected in block <williams_phoenix>.
+INFO:Xst:2261 - The FF/Latch <intfilter_4> in Unit <hc55564> is equivalent to the following 2 FFs/Latches, which will be removed : <next_sample_0> <next_sample_10> 
+INFO:Xst:2261 - The FF/Latch <intfilter_7> in Unit <hc55564> is equivalent to the following 2 FFs/Latches, which will be removed : <next_sample_3> <next_sample_13> 
+INFO:Xst:2261 - The FF/Latch <intfilter_8> in Unit <hc55564> is equivalent to the following 2 FFs/Latches, which will be removed : <next_sample_4> <next_sample_14> 
+INFO:Xst:2261 - The FF/Latch <intfilter_9> in Unit <hc55564> is equivalent to the following FF/Latch, which will be removed : <next_sample_15> 
+INFO:Xst:2261 - The FF/Latch <intfilter_1> in Unit <hc55564> is equivalent to the following FF/Latch, which will be removed : <next_sample_7> 
+INFO:Xst:2261 - The FF/Latch <intfilter_2> in Unit <hc55564> is equivalent to the following FF/Latch, which will be removed : <next_sample_8> 
+INFO:Xst:2261 - The FF/Latch <intfilter_3> in Unit <hc55564> is equivalent to the following FF/Latch, which will be removed : <next_sample_9> 
+INFO:Xst:2261 - The FF/Latch <intfilter_5> in Unit <hc55564> is equivalent to the following 2 FFs/Latches, which will be removed : <next_sample_1> <next_sample_11> 
+INFO:Xst:2261 - The FF/Latch <intfilter_6> in Unit <hc55564> is equivalent to the following 2 FFs/Latches, which will be removed : <next_sample_2> <next_sample_12> 
+INFO:Xst:2261 - The FF/Latch <intfilter_0> in Unit <hc55564> is equivalent to the following FF/Latch, which will be removed : <next_sample_6> 
+INFO:Xst:2261 - The FF/Latch <NextState_1> in Unit <mc6809is> is equivalent to the following 2 FFs/Latches, which will be removed : <NextState_3> <NextState_6> 
+
+Optimizing unit <williams_lowpass> ...
+
+Optimizing unit <williams_phoenix> ...
+WARNING:Xst:1293 - FF/Latch <sram_addr_17> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <sram_addr_17> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <pia6821> ...
+
+Optimizing unit <williams_sound_board> ...
+
+Optimizing unit <CEGen> ...
+
+Optimizing unit <cpu68> ...
+
+Optimizing unit <hc55564> ...
+
+Optimizing unit <mc6809is> ...
+WARNING:Xst:1710 - FF/Latch <soc/sound_board/pia/irqb2> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/pia/irqa2> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/pia/cb2_fall> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/pia/cb2_rise> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/pia/cb2_del> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/pia/ca2_fall> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/pia/ca2_rise> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/pia/ca1_fall> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/pia/ca2_del> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/widget_pia/ca1_del> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/widget_pia/ca2_del> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/widget_pia/ca1_rise> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/widget_pia/ca1_fall> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/widget_pia/cb1_del> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/widget_pia/ca2_rise> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/widget_pia/ca2_fall> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/widget_pia/cb1_rise> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/widget_pia/cb1_fall> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/widget_pia/cb2_fall> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/widget_pia/irqa2> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/widget_pia/irqa1> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/widget_pia/irqb1> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/rom_pia/ca2_fall> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/rom_pia/cb2_fall> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <soc/cpu_board/rom_pia/cb2_out> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/cpu_board/rom_pia/ca2_out> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/cpu_board/rom_pia/portb_write> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/cpu_board/widget_pia/cb2_out> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/cpu_board/widget_pia/ca2_out> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/cpu_board/widget_pia/portb_write> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/pia/portb_write> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/pia/ca2_out> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/pia/cb2_out> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/next_sample_5> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/intfilter_9> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/intfilter_8> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/intfilter_7> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/intfilter_6> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/intfilter_5> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/intfilter_4> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/intfilter_3> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/intfilter_2> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/intfilter_1> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/intfilter_0> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/sylfilter_11> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/sylfilter_10> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/sylfilter_9> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/sylfilter_8> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/sylfilter_7> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/sylfilter_6> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/sylfilter_5> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/sylfilter_4> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/sylfilter_3> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/sylfilter_2> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/sylfilter_1> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/sylfilter_0> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/shiftreg_1> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/shiftreg_0> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:2677 - Node <soc/sound_board/IC1/old_cen> of sequential type is unconnected in block <williams_phoenix>.
+WARNING:Xst:1293 - FF/Latch <soc/sound_board/clk089/CLK_SUM_11> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_12> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_13> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_14> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_15> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_16> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_17> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_18> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_19> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_20> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_21> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_22> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_23> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_24> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_25> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_26> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_27> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_28> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_29> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_30> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <soc/sound_board/clk089/CLK_SUM_31> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <soc/cpu_board/reset_counter_7> (without init value) has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sram_addr_18> has a constant value of 0 in block <williams_phoenix>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <soc/cpu_board/video_address_0> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <soc/cpu_board/video_count_0> 
+INFO:Xst:2261 - The FF/Latch <soc/cpu_board/video_address_1> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <soc/cpu_board/video_count_1> 
+INFO:Xst:2261 - The FF/Latch <soc/cpu_board/video_address_2> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <soc/cpu_board/video_count_2> 
+INFO:Xst:2261 - The FF/Latch <soc/cpu_board/video_address_3> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <soc/cpu_board/video_count_3> 
+INFO:Xst:2261 - The FF/Latch <soc/cpu_board/video_address_4> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <soc/cpu_board/video_count_4> 
+INFO:Xst:2261 - The FF/Latch <soc/cpu_board/video_address_5> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <soc/cpu_board/video_count_5> 
+INFO:Xst:2261 - The FF/Latch <soc/cpu_board/video_address_6> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <soc/cpu_board/video_count_6> 
+INFO:Xst:2261 - The FF/Latch <soc/cpu_board/video_address_7> in Unit <williams_phoenix> is equivalent to the following FF/Latch, which will be removed : <soc/cpu_board/video_count_7> 
+INFO:Xst:2261 - The FF/Latch <soc/cpu_board/rom_pia/cb2_del> in Unit <williams_phoenix> is equivalent to the following 2 FFs/Latches, which will be removed : <soc/cpu_board/rom_pia/ca2_del> <soc/cpu_board/widget_pia/cb2_del> 
+INFO:Xst:2261 - The FF/Latch <soc/cpu_board/rom_pia/cb2_rise> in Unit <williams_phoenix> is equivalent to the following 2 FFs/Latches, which will be removed : <soc/cpu_board/rom_pia/ca2_rise> <soc/cpu_board/widget_pia/cb2_rise> 
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 0) on block williams_phoenix, actual ratio is 79.
+FlipFlop soc/cpu_board/mpu_data_out_0 has been replicated 3 time(s)
+FlipFlop soc/cpu_board/mpu_data_out_1 has been replicated 3 time(s)
+FlipFlop soc/cpu_board/mpu_data_out_2 has been replicated 2 time(s)
+FlipFlop soc/cpu_board/mpu_data_out_3 has been replicated 3 time(s)
+FlipFlop soc/cpu_board/mpu_data_out_4 has been replicated 3 time(s)
+FlipFlop soc/cpu_board/mpu_data_out_5 has been replicated 3 time(s)
+FlipFlop soc/cpu_board/mpu_data_out_6 has been replicated 2 time(s)
+FlipFlop soc/cpu_board/mpu_data_out_7 has been replicated 2 time(s)
+FlipFlop soc/mc6809is_gen.mc6809/CpuState_2 has been replicated 2 time(s)
+FlipFlop soc/mc6809is_gen.mc6809/CpuState_3 has been replicated 1 time(s)
+FlipFlop soc/mc6809is_gen.mc6809/CpuState_4 has been replicated 2 time(s)
+FlipFlop soc/mc6809is_gen.mc6809/Inst1_0 has been replicated 2 time(s)
+FlipFlop soc/mc6809is_gen.mc6809/Inst1_1 has been replicated 1 time(s)
+FlipFlop soc/mc6809is_gen.mc6809/Inst1_2 has been replicated 2 time(s)
+FlipFlop soc/mc6809is_gen.mc6809/Inst1_3 has been replicated 2 time(s)
+FlipFlop soc/mc6809is_gen.mc6809/Inst1_4 has been replicated 1 time(s)
+FlipFlop soc/mc6809is_gen.mc6809/Inst1_5 has been replicated 1 time(s)
+FlipFlop soc/mc6809is_gen.mc6809/Inst1_6 has been replicated 1 time(s)
+FlipFlop soc/mc6809is_gen.mc6809/Inst1_7 has been replicated 2 time(s)
+
+Final Macro Processing ...
+
+Processing Unit <williams_phoenix> :
+	Found 3-bit shift register for signal <reset_s_2>.
+	Found 3-bit shift register for signal <game_reset_s_2>.
+	Found 2-bit shift register for signal <soc_reset_g_1>.
+	Found 2-bit shift register for signal <rel_sync_1>.
+	Found 2-bit shift register for signal <boot_g_1>.
+	Found 2-bit shift register for signal <soc/mc6809is_gen.mc6809/IRQLatched>.
+Unit <williams_phoenix> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 1515
+ Flip-Flops                                            : 1515
+# Shift Registers                                      : 6
+ 2-bit shift register                                  : 4
+ 3-bit shift register                                  : 2
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : williams_flat.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 8033
+#      GND                         : 1
+#      INV                         : 111
+#      LUT1                        : 168
+#      LUT2                        : 399
+#      LUT3                        : 564
+#      LUT4                        : 516
+#      LUT5                        : 1212
+#      LUT6                        : 3444
+#      MUXCY                       : 692
+#      MUXF7                       : 220
+#      MUXF8                       : 17
+#      VCC                         : 1
+#      XORCY                       : 688
+# FlipFlops/Latches                : 1521
+#      FD                          : 235
+#      FD_1                        : 1
+#      FDC_1                       : 25
+#      FDCE                        : 132
+#      FDCE_1                      : 7
+#      FDE                         : 790
+#      FDE_1                       : 114
+#      FDR                         : 65
+#      FDR_1                       : 68
+#      FDRE                        : 35
+#      FDS                         : 18
+#      FDS_1                       : 1
+#      FDSE                        : 30
+# RAMS                             : 16
+#      RAMB16BWER                  : 12
+#      RAMB8BWER                   : 4
+# Shift Registers                  : 6
+#      SRLC16E                     : 6
+# DSPs                             : 2
+#      DSP48A1                     : 2
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx16csg324-2 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:            1521  out of  18224     8%  
+ Number of Slice LUTs:                 6420  out of   9112    70%  
+    Number used as Logic:              6414  out of   9112    70%  
+    Number used as Memory:                6  out of   2176     0%  
+       Number used as SRL:                6
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   6990
+   Number with an unused Flip Flop:    5469  out of   6990    78%  
+   Number with an unused LUT:           570  out of   6990     8%  
+   Number of fully used LUT-FF pairs:   951  out of   6990    13%  
+   Number of unique control sets:       140
+
+IO Utilization: 
+ Number of IOs:                         164
+ Number of bonded IOBs:                   0  out of    232     0%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:               14  out of     32    43%  
+    Number using Block RAM only:         14
+ Number of DSP48A1s:                      2  out of     32     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk25                              | NONE(vid_hsync_n)      | 117   |
+clk48                              | NONE(ext_din_0)        | 331   |
+clk12g                             | NONE(sc_tog)           | 1097  |
+clk12                              | NONE(rel_sync_2)       | 5     |
+-----------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -2
+
+   Minimum period: 24.116ns (Maximum Frequency: 41.465MHz)
+   Minimum input arrival time before clock: 1.915ns
+   Maximum output required time after clock: 1.461ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk25'
+  Clock period: 5.429ns (frequency: 184.196MHz)
+  Total number of paths / destination ports: 1080 / 149
+-------------------------------------------------------------------------
+Delay:               5.429ns (Levels of Logic = 3)
+  Source:            vc_7 (FF)
+  Destination:       release_tog (FF)
+  Source Clock:      clk25 rising
+  Destination Clock: clk25 rising
+
+  Data Path: vc_7 to release_tog
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              7   0.525   1.365  vc_7 (vc_7)
+     LUT6:I0->O            1   0.254   1.112  vc[9]_GND_1_o_AND_481_o1 (vc[9]_GND_1_o_AND_481_o1)
+     LUT5:I0->O            1   0.254   0.682  vc[9]_GND_1_o_AND_481_o4_SW0 (N1686)
+     LUT6:I5->O            1   0.254   0.681  vc[9]_GND_1_o_AND_481_o4 (vc[9]_GND_1_o_AND_481_o)
+     FDE:CE                    0.302          release_tog
+    ----------------------------------------
+    Total                      5.429ns (1.589ns logic, 3.840ns route)
+                                       (29.3% logic, 70.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk48'
+  Clock period: 14.102ns (frequency: 70.909MHz)
+  Total number of paths / destination ports: 964698 / 734
+-------------------------------------------------------------------------
+Delay:               14.102ns (Levels of Logic = 22)
+  Source:            lp/avg_16 (FF)
+  Destination:       lp/s1_21 (FF)
+  Source Clock:      clk48 rising
+  Destination Clock: clk48 rising
+
+  Data Path: lp/avg_16 to lp/s1_21
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              1   0.525   0.681  lp/avg_16 (lp/avg_16)
+     DSP48A1:A16->P47     18   5.220   1.234  lp/Mmult_n0024 (lp/Mmult_n0024_P47_to_Mmult_n00241)
+     DSP48A1:C30->P0       1   3.141   0.790  lp/Mmult_n00241 (lp/n0024<17>)
+     LUT2:I0->O            1   0.250   0.000  lp/Msub_n0025_lut<8> (lp/Msub_n0025_lut<8>)
+     MUXCY:S->O            1   0.215   0.000  lp/Msub_n0025_cy<8> (lp/Msub_n0025_cy<8>)
+     MUXCY:CI->O           1   0.023   0.000  lp/Msub_n0025_cy<9> (lp/Msub_n0025_cy<9>)
+     MUXCY:CI->O           1   0.023   0.000  lp/Msub_n0025_cy<10> (lp/Msub_n0025_cy<10>)
+     MUXCY:CI->O           1   0.023   0.000  lp/Msub_n0025_cy<11> (lp/Msub_n0025_cy<11>)
+     MUXCY:CI->O           1   0.023   0.000  lp/Msub_n0025_cy<12> (lp/Msub_n0025_cy<12>)
+     MUXCY:CI->O           1   0.023   0.000  lp/Msub_n0025_cy<13> (lp/Msub_n0025_cy<13>)
+     MUXCY:CI->O           1   0.023   0.000  lp/Msub_n0025_cy<14> (lp/Msub_n0025_cy<14>)
+     MUXCY:CI->O           1   0.023   0.000  lp/Msub_n0025_cy<15> (lp/Msub_n0025_cy<15>)
+     MUXCY:CI->O           1   0.023   0.000  lp/Msub_n0025_cy<16> (lp/Msub_n0025_cy<16>)
+     MUXCY:CI->O           1   0.023   0.000  lp/Msub_n0025_cy<17> (lp/Msub_n0025_cy<17>)
+     MUXCY:CI->O           1   0.023   0.000  lp/Msub_n0025_cy<18> (lp/Msub_n0025_cy<18>)
+     MUXCY:CI->O           1   0.023   0.000  lp/Msub_n0025_cy<19> (lp/Msub_n0025_cy<19>)
+     MUXCY:CI->O           1   0.023   0.000  lp/Msub_n0025_cy<20> (lp/Msub_n0025_cy<20>)
+     MUXCY:CI->O           0   0.023   0.000  lp/Msub_n0025_cy<21> (lp/Msub_n0025_cy<21>)
+     XORCY:CI->O           3   0.206   0.766  lp/Msub_n0025_xor<22> (lp/n0025<22>)
+     LUT2:I1->O            1   0.254   0.000  lp/Maccum_s1_lut<19> (lp/Maccum_s1_lut<19>)
+     MUXCY:S->O            1   0.215   0.000  lp/Maccum_s1_cy<19> (lp/Maccum_s1_cy<19>)
+     MUXCY:CI->O           0   0.023   0.000  lp/Maccum_s1_cy<20> (lp/Maccum_s1_cy<20>)
+     XORCY:CI->O           1   0.206   0.000  lp/Maccum_s1_xor<21> (lp/Result<21>2)
+     FDE:D                     0.074          lp/s1_21
+    ----------------------------------------
+    Total                     14.102ns (10.631ns logic, 3.471ns route)
+                                       (75.4% logic, 24.6% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk12g'
+  Clock period: 24.116ns (frequency: 41.465MHz)
+  Total number of paths / destination ports: 130204737 / 2340
+-------------------------------------------------------------------------
+Delay:               12.058ns (Levels of Logic = 13)
+  Source:            soc/cpu_board/mpu_data_out_7_1 (FF)
+  Destination:       soc/mc6809is_gen.mc6809/cc_3 (FF)
+  Source Clock:      clk12g rising
+  Destination Clock: clk12g falling
+
+  Data Path: soc/cpu_board/mpu_data_out_7_1 to soc/mc6809is_gen.mc6809/cc_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              6   0.525   0.876  soc/cpu_board/mpu_data_out_7_1 (soc/cpu_board/mpu_data_out_7_1)
+     LUT6:I5->O            5   0.254   0.841  soc/mc6809is_gen.mc6809/IndexedMode[3]_GND_8_o_wide_mux_959_OUT<15>23 (soc/mc6809is_gen.mc6809/IndexedMode[3]_GND_8_o_wide_mux_959_OUT<15>2)
+     LUT6:I5->O            4   0.254   0.804  soc/mc6809is_gen.mc6809/_n5317133 (soc/mc6809is_gen.mc6809/_n5317_mmx_out31)
+     LUT6:I5->O            2   0.254   0.726  soc/mc6809is_gen.mc6809/Mmux_ALU16<15:0>10423 (soc/mc6809is_gen.mc6809/ALU16_B<13>)
+     LUT6:I5->O            1   0.254   0.000  soc/mc6809is_gen.mc6809/Msub_GND_8_o_GND_8_o_sub_154_OUT_lut<13> (soc/mc6809is_gen.mc6809/Msub_GND_8_o_GND_8_o_sub_154_OUT_lut<13>)
+     MUXCY:S->O            1   0.215   0.000  soc/mc6809is_gen.mc6809/Msub_GND_8_o_GND_8_o_sub_154_OUT_cy<13> (soc/mc6809is_gen.mc6809/Msub_GND_8_o_GND_8_o_sub_154_OUT_cy<13>)
+     MUXCY:CI->O           1   0.023   0.000  soc/mc6809is_gen.mc6809/Msub_GND_8_o_GND_8_o_sub_154_OUT_cy<14> (soc/mc6809is_gen.mc6809/Msub_GND_8_o_GND_8_o_sub_154_OUT_cy<14>)
+     XORCY:CI->O          14   0.206   1.127  soc/mc6809is_gen.mc6809/Msub_GND_8_o_GND_8_o_sub_154_OUT_xor<15> (soc/mc6809is_gen.mc6809/GND_8_o_GND_8_o_sub_154_OUT<15>)
+     LUT4:I3->O            1   0.254   0.910  soc/mc6809is_gen.mc6809/ALU16_OP<0>127111 (soc/mc6809is_gen.mc6809/ALU16_OP<0>12711)
+     LUT6:I3->O            9   0.235   0.976  soc/mc6809is_gen.mc6809/Mmux_a[7]_a[7]_mux_48_OUT10411411 (soc/mc6809is_gen.mc6809/Mmux_a[7]_a[7]_mux_48_OUT10411411)
+     LUT6:I5->O            3   0.254   0.766  soc/mc6809is_gen.mc6809/_n2633391 (soc/mc6809is_gen.mc6809/_n2633_mmx_out15)
+     LUT6:I5->O            1   0.254   0.790  soc/mc6809is_gen.mc6809/Mmux_cc_nxt4211 (soc/mc6809is_gen.mc6809/Mmux_cc_nxt421)
+     LUT6:I4->O            1   0.250   0.682  soc/mc6809is_gen.mc6809/Mmux_cc_nxt4717 (soc/mc6809is_gen.mc6809/Mmux_cc_nxt4716)
+     LUT6:I5->O            1   0.254   0.000  soc/mc6809is_gen.mc6809/Mmux_cc_nxt4718 (soc/mc6809is_gen.mc6809/cc_nxt<3>)
+     FDE:D                     0.074          soc/mc6809is_gen.mc6809/cc_3
+    ----------------------------------------
+    Total                     12.058ns (3.560ns logic, 8.498ns route)
+                                       (29.5% logic, 70.5% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk12'
+  Clock period: 2.938ns (frequency: 340.368MHz)
+  Total number of paths / destination ports: 12 / 5
+-------------------------------------------------------------------------
+Delay:               2.938ns (Levels of Logic = 1)
+  Source:            waiting (FF)
+  Destination:       waiting (FF)
+  Source Clock:      clk12 rising
+  Destination Clock: clk12 rising
+
+  Data Path: waiting to waiting
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              3   0.525   0.994  waiting (waiting)
+     LUT3:I0->O            2   0.235   0.725  _n10881 (_n1088)
+     FDR:R                     0.459          waiting
+    ----------------------------------------
+    Total                      2.938ns (1.219ns logic, 1.719ns route)
+                                       (41.5% logic, 58.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk25'
+  Total number of paths / destination ports: 58 / 19
+-------------------------------------------------------------------------
+Offset:              1.799ns (Levels of Logic = 2)
+  Source:            kb_keys<13> (PAD)
+  Destination:       sys_1 (FF)
+  Destination Clock: clk25 rising
+
+  Data Path: kb_keys<13> to sys_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LUT5:I0->O            1   0.254   0.790  cv1[9]_kb_keys[13]_OR_59_o_SW0 (N0)
+     LUT6:I4->O            1   0.250   0.000  cv1[9]_kb_keys[13]_OR_59_o (cv1[9]_kb_keys[13]_OR_59_o)
+     FD:D                      0.074          sys_1
+    ----------------------------------------
+    Total                      1.799ns (1.009ns logic, 0.790ns route)
+                                       (56.1% logic, 43.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk48'
+  Total number of paths / destination ports: 49 / 49
+-------------------------------------------------------------------------
+Offset:              1.915ns (Levels of Logic = 1)
+  Source:            clk_locked (PAD)
+  Destination:       spi_sel (FF)
+  Destination Clock: clk48 rising
+
+  Data Path: clk_locked to spi_sel
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LUT2:I0->O           13   0.250   1.097  g_reset1 (g_reset)
+     FDRE:R                    0.459          spi_sel
+    ----------------------------------------
+    Total                      1.915ns (0.818ns logic, 1.097ns route)
+                                       (42.7% logic, 57.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk48'
+  Total number of paths / destination ports: 32 / 32
+-------------------------------------------------------------------------
+Offset:              1.461ns (Levels of Logic = 1)
+  Source:            spi_sel (FF)
+  Destination:       sd_cs_n (PAD)
+  Source Clock:      clk48 rising
+
+  Data Path: spi_sel to sd_cs_n
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             1   0.525   0.681  spi_sel (spi_sel)
+     INV:I->O              0   0.255   0.000  sd_cs_n1_INV_0 (sd_cs_n)
+    ----------------------------------------
+    Total                      1.461ns (0.780ns logic, 0.681ns route)
+                                       (53.4% logic, 46.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk25'
+  Total number of paths / destination ports: 59 / 59
+-------------------------------------------------------------------------
+Offset:              0.525ns (Levels of Logic = 0)
+  Source:            vid_r_1 (FF)
+  Destination:       vid_r<7> (PAD)
+  Source Clock:      clk25 rising
+
+  Data Path: vid_r_1 to vid_r<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              0   0.525   0.000  vid_r_1 (vid_r_1)
+    ----------------------------------------
+    Total                      0.525ns (0.525ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk12'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              0.525ns (Levels of Logic = 0)
+  Source:            run (FF)
+  Destination:       run (PAD)
+  Source Clock:      clk12 rising
+
+  Data Path: run to run
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.525   0.000  run (run)
+    ----------------------------------------
+    Total                      0.525ns (0.525ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk12
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk12          |    2.938|         |         |         |
+clk12g         |    4.791|         |         |         |
+clk25          |    1.250|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock clk12g
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk12g         |   11.662|   11.879|   22.517|         |
+clk25          |    1.280|         |         |         |
+clk48          |    4.260|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock clk25
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk25          |    5.429|         |         |         |
+clk48          |    5.641|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock clk48
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk12g         |    9.438|         |         |         |
+clk48          |   14.102|         |    1.280|         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 52.00 secs
+Total CPU time to Xst completion: 50.38 secs
+ 
+--> 
+
+
+Total memory usage is 486660 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  215 (   0 filtered)
+Number of infos    :  101 (   0 filtered)
+

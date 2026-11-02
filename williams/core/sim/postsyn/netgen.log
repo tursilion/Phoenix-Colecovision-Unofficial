@@ -1,0 +1,64 @@
+Release 14.7 - netgen P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Command Line: netgen -sim -ofmt verilog -w williams_phoenix.ngc williams_ps.v  
+
+Reading design 'williams_phoenix.ngc' ...
+Processing design ... 
+  Preping design's networks ...
+  Preping design's macros ...
+
+WARNING:NetListWriters:306 - Signal bus s2[21 : 0] on block williams_lowpass is
+   not reconstructed, because there are some missing bus signals.
+
+WARNING:NetListWriters:306 - Signal bus NextState[5 : 1] on block mc6809is is
+   not reconstructed, because there are some missing bus signals.
+
+WARNING:NetListWriters:306 - Signal bus NextState_nxt[5 : 2] on block mc6809is
+   is not reconstructed, because there are some missing bus signals.
+
+WARNING:NetListWriters:306 - Signal bus Madd_n2583_cy[6 : 4] on block mc6809is
+   is not reconstructed, because there are some missing bus signals.
+
+WARNING:NetListWriters:306 - Signal bus Madd_BUS_0687_GND_8_o_add_177_OUT_cy[5 :
+   0] on block mc6809is is not reconstructed, because there are some missing bus
+   signals.
+
+WARNING:NetListWriters:306 - Signal bus right[15 : 0] on block cpu68 is not
+   reconstructed, because there are some missing bus signals.
+
+WARNING:NetListWriters:306 - Signal bus NlwRenamedSig_OI_test_cc[7 : 0] on block
+   cpu68 is not reconstructed, because there are some missing bus signals.
+
+WARNING:NetListWriters:306 - Signal bus pc_mux.tempof[10 : 0] on block cpu68 is
+   not reconstructed, because there are some missing bus signals.
+
+WARNING:NetListWriters:306 - Signal bus state_left[15 : 3] on block cpu68 is not
+   reconstructed, because there are some missing bus signals.
+
+WARNING:NetListWriters:306 - Signal bus NlwRenamedSig_OI_rom_addr[11 : 0] on
+   block williams_sound_board is not reconstructed, because there are some
+   missing bus signals.
+
+WARNING:NetListWriters:306 - Signal bus NlwRenamedSig_OI_LED[6 : 3] on block
+   williams_cpu is not reconstructed, because there are some missing bus
+   signals.
+
+WARNING:NetListWriters:306 - Signal bus widget_pia_pa_in[7 : 0] on block
+   williams_cpu is not reconstructed, because there are some missing bus
+   signals.
+
+WARNING:NetListWriters:306 - Signal bus vcount[14 : 0] on block williams_phoenix
+   is not reconstructed, because there are some missing bus signals.
+
+WARNING:NetListWriters:306 - Signal bus in_g[18 : 0] on block williams_phoenix
+   is not reconstructed, because there are some missing bus signals.
+Writing Verilog netlist file 'williams_ps.v' ...
+INFO:NetListWriters:633 - The generated Verilog netlist contains Xilinx UNISIM
+   simulation primitives and has to be used with UNISIM simulation library for
+   correct compilation and simulation. 
+Number of warnings: 14
+Number of info messages: 1
+Total memory usage is 337460 kilobytes
+
+Created netgen log file 'williams_ps.nlf'.

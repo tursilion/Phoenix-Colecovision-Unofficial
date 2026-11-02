@@ -1,0 +1,78 @@
+ASxxxx Linker V05.00,  page 1.
+Hexidecimal  [16-Bits]
+
+Area                       Addr        Size        Decimal Bytes (Attributes)
+--------------------       ----        ----        ------- ----- ------------
+.  .ABS.                   0000        0000 =           0. bytes (ABS,OVR,CSEG)
+
+         Value  Global                             Global Defined In Module
+         -----  --------------------------------   ------------------------
+          0000  l__DATA                         
+          0000  l__CODE                         
+          0000  s__DATA                         
+          0000  s__CODE                         
+          0000  .__.ABS.                           crt0
+          0000  l_VECTORS                       
+          0000  s_VECTORS                       
+          0184  l_.bss                          
+          268E  l_.text                         
+          B400  s_.bss                          
+          D000  s_.text                         
+
+ASxxxx Linker V05.00,  page 2.
+Hexidecimal  [16-Bits]
+
+Area                       Addr        Size        Decimal Bytes (Attributes)
+--------------------       ----        ----        ------- ----- ------------
+.text                      D000        268E =        9870. bytes (REL,CON,CSEG)
+
+         Value  Global                             Global Defined In Module
+         -----  --------------------------------   ------------------------
+          D01A  ___mulsi3                          libsi
+          D05C  ___udivsi3                         libsi
+          D0A1  _clear_screen                      screen
+          D0CB  _mem_copy                          main.c
+          D0E4  _load_write                        main.c
+          D4E7  _main                              main.c
+          DD22  _disk_initialize                   diskio.c
+          DF4C  _sd_read_sector                    diskio.c
+          DFBD  _disk_readp                        diskio.c
+          E51A  _pf_readdir                        pff.c
+          EA4C  _pf_opendir                        pff.c
+          EAE2  _pf_open                           pff.c
+          EBEB  _pf_read                           pff.c
+          EF1C  _pf_mount                          pff.c
+          F3B6  _font                              font.c
+
+ASxxxx Linker V05.00,  page 3.
+Hexidecimal  [16-Bits]
+
+Area                       Addr        Size        Decimal Bytes (Attributes)
+--------------------       ----        ----        ------- ----- ------------
+.bss                       B400        0184 =         388. bytes (REL,CON,CSEG)
+
+         Value  Global                             Global Defined In Module
+         -----  --------------------------------   ------------------------
+          B540  _sd_block_addr                     diskio.c
+          B543  _pf_lfn                            pff.c
+
+ASxxxx Linker V05.00,  page 4.
+
+Files Linked                              [ module(s) ]
+
+obj1/crt0.rel                             [ crt0 ]
+obj1/libsi.rel                            [ libsi ]
+obj1/screen.rel                           [ screen ]
+obj1/main.rel                             [ main.c ]
+obj1/diskio.rel                           [ diskio.c ]
+obj1/pff.rel                              [ pff.c ]
+obj1/font.rel                             [ font.c ]
+
+ASxxxx Linker V05.00,  page 5.
+
+User Base Address Definitions
+
+.text=0xD000
+.bss=0xB400
+
+

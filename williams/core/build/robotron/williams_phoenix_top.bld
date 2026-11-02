@@ -1,0 +1,150 @@
+Release 14.7 ngdbuild P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Command Line: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/ngdbuild -p
+xc6slx16-2-csg324 -uc williams_phoenix_top.ucf williams_phoenix_top.ngc
+williams_phoenix_top.ngd
+
+Reading NGO file
+"/workspace/williams/core/build/robotron/williams_phoenix_top.ngc" ...
+Gathering constraint information from source properties...
+Done.
+
+Annotating constraints to design from ucf file "williams_phoenix_top.ucf" ...
+Resolving constraint associations...
+Checking Constraint Associations...
+WARNING:ConstraintSystem - TNM : GRP_25 was distributed to a DCM but new TNM
+   constraints were not derived. This TNM is used in the following user groups
+   or specifications:
+   <TIMESPEC "TS_25_to_w_ignore" = FROM "GRP_25" TO "GRP_W" TIG;>
+   [williams_phoenix_top.ucf(224)]
+   <TIMESPEC "TS_w_to_25_ignore" = FROM "GRP_W" TO "GRP_25" TIG;>
+   [williams_phoenix_top.ucf(225)]
+
+INFO:ConstraintSystem:178 - TNM 'clock_50m0_i_net', used in period specification
+   'TS_clock_50m0_i_net', was traced into PLL_ADV instance PLL_ADV. The
+   following new TNM groups and period specifications were generated at the
+   PLL_ADV output(s): 
+   CLKOUT3: <TIMESPEC TS_clock_system_clkout3 = PERIOD "clock_system_clkout3"
+   TS_clock_50m0_i_net / 2.5 PHASE 4 ns HIGH 50%>
+
+INFO:ConstraintSystem:178 - TNM 'clock_50m0_i_net', used in period specification
+   'TS_clock_50m0_i_net', was traced into PLL_ADV instance PLL_ADV. The
+   following new TNM groups and period specifications were generated at the
+   PLL_ADV output(s): 
+   CLKOUT0: <TIMESPEC TS_clock_system_clkout0 = PERIOD "clock_system_clkout0"
+   TS_clock_50m0_i_net / 0.5 HIGH 50%>
+
+INFO:ConstraintSystem:178 - TNM 'clock_50m0_i_net', used in period specification
+   'TS_clock_50m0_i_net', was traced into PLL_ADV instance PLL_ADV. The
+   following new TNM groups and period specifications were generated at the
+   PLL_ADV output(s): 
+   CLKOUT2: <TIMESPEC TS_clock_system_clkout2 = PERIOD "clock_system_clkout2"
+   TS_clock_50m0_i_net / 2.5 HIGH 50%>
+
+INFO:ConstraintSystem:178 - TNM 'clock_system_clkout0', used in period
+   specification 'TS_clock_system_clkout0', was traced into DCM_CLKGEN instance
+   williams_clkgen. The following new TNM groups and period specifications were
+   generated at the DCM_CLKGEN output(s): 
+   CLKFX: <TIMESPEC TS_clk_fx_s = PERIOD "clk_fx_s" TS_clock_system_clkout0 /
+   1.92 HIGH 50%>
+
+INFO:ConstraintSystem:178 - TNM 'clock_system_clkout0', used in period
+   specification 'TS_clock_system_clkout0', was traced into DCM_CLKGEN instance
+   williams_clkgen. The following new TNM groups and period specifications were
+   generated at the DCM_CLKGEN output(s): 
+   CLKFXDV: <TIMESPEC TS_clk_fxdv_s = PERIOD "clk_fxdv_s"
+   TS_clock_system_clkout0 / 0.48 HIGH 50%>
+
+Done...
+
+Checking expanded design ...
+WARNING:NgdBuild:452 - logical net 'ps2_keys_s<15>' has no driver
+WARNING:NgdBuild:452 - logical net 'ps2_keys_s<14>' has no driver
+WARNING:NgdBuild:452 - logical net 'ps2_keys_s<12>' has no driver
+WARNING:NgdBuild:452 - logical net 'ps2_keys_s<11>' has no driver
+WARNING:NgdBuild:452 - logical net 'ps2_keys_s<10>' has no driver
+WARNING:NgdBuild:452 - logical net 'ps2_keys_s<9>' has no driver
+WARNING:NgdBuild:452 - logical net 'ps2_keys_s<6>' has no driver
+WARNING:NgdBuild:452 - logical net 'ps2_keys_s<5>' has no driver
+WARNING:NgdBuild:452 - logical net 'ps2_keys_s<4>' has no driver
+WARNING:NgdBuild:452 - logical net 'ps2_keys_s<3>' has no driver
+WARNING:NgdBuild:452 - logical net 'ps2_keys_s<2>' has no driver
+WARNING:NgdBuild:452 - logical net 'ps2_keys_s<1>' has no driver
+WARNING:NgdBuild:478 - clock net clock_system/clk_100m0_o with clock driver
+   clock_system/clkout2_buf drives no clock pins
+WARNING:NgdBuild:452 - logical net 'system/soc/ROM_BANK<3>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/ROM_BANK<2>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/ROM_BANK<1>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/ROM_BANK<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/EXT_A<7>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/EXT_A<6>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/EXT_A<5>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/EXT_A<4>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/Hsync' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/Vsync' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<15>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<14>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<13>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<12>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<11>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<10>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<9>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<8>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<7>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<6>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<5>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<4>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<3>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<2>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<1>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/speech_out<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/cpu_avma' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/cpu_busy' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/cpu_lic' has no driver
+WARNING:NgdBuild:452 - logical net 'system/soc/sound_board/select_board' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_tl_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_tr_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_0_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_1_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_2_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_3_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_4_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_5_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_6_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_7_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_8_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_9_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_star_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_num_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_dot_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_clear_o<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'snespads_b/but_equal_o<0>' has no driver
+WARNING:NgdBuild:470 - bidirect pad net 'cart_data_io<7>' has no legal driver
+WARNING:NgdBuild:470 - bidirect pad net 'cart_data_io<6>' has no legal driver
+WARNING:NgdBuild:470 - bidirect pad net 'cart_data_io<5>' has no legal driver
+WARNING:NgdBuild:470 - bidirect pad net 'cart_data_io<4>' has no legal driver
+WARNING:NgdBuild:470 - bidirect pad net 'cart_data_io<3>' has no legal driver
+WARNING:NgdBuild:470 - bidirect pad net 'cart_data_io<2>' has no legal driver
+WARNING:NgdBuild:470 - bidirect pad net 'cart_data_io<1>' has no legal driver
+WARNING:NgdBuild:470 - bidirect pad net 'cart_data_io<0>' has no legal driver
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:  69
+
+Total memory usage is 431300 kilobytes
+
+Writing NGD file "williams_phoenix_top.ngd" ...
+Total REAL time to NGDBUILD completion:  2 sec
+Total CPU time to NGDBUILD completion:   2 sec
+
+Writing NGDBUILD log file "williams_phoenix_top.bld"...

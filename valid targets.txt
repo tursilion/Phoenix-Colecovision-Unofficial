@@ -12,21 +12,22 @@ Otherwise the cut off is mostly RAM size.
 
 --
 
-01 - 0102 - ColecoVision - working up to 480k native, 1MB Megacart cached and 2MB SGM cached
-04 - 0103 - NES - working up to 512k native, 1MB cached (max 256k CHR)
-09 - 0101 - Intellivision - working up to 250k words with Intellivoice and ECS - needs ROMs
-10 - 0101 - Gameboy - working for GB up to 512k and GBC up to 256k native, up to 8MB caching
-11 - 0101 - TurboGraphics - working - up to 448k native, up to 4MB caching
+01 - 0102 - ColecoVision - working up to 480k native, 1MB Megacart cached and 2MB SGM cached.
+04 - 0103 - NES - working up to 512k native, 1MB cached (max 256k CHR).
+09 - 0101 - Intellivision - working up to 250k words with Intellivoice and ECS - needs ROMs.
+10 - 0101 - Gameboy - working for GB up to 512k and GBC up to 256k native, up to 8MB cached.
+11 - 0101 - TurboGraphics - working - up to 448k native, up to 4MB cached.
 12 - 0101 - Lynx - working up to 448k native, 512k cached.
+13 - 0101 - Master System / Game Gear - working up to 480k native, up to 4MB cached.
 
-13 - 0101 - Master System / Game Gear - 480k native
+14 - 0101 - Robotron - pending - needs ROMs
+15 - 0101 - Joust - pending - needs ROMs
+16 - 0101 - Sinistar - pending - needs ROMs
 
 Future work depends on free time and community response.
 
-RTVectrex - probably - remember to add modern banking
-Robotron and Joust Arcade - maybe
-Bubble Bobble - maybe
-
 Gauntlet 2 - no - way too much memory, logic doesn't fit (by about 50%)
 Genesis - no - logic doesn't fit (by about 30-50% again)
-
+Vectrex - no - the hardware would likely fit, but without analog inputs some games are unplayable.
+Star Wars - no - not trying for the same reason - need analog inputs.
+Bubble Bobble - no - ROM and logic are both too big

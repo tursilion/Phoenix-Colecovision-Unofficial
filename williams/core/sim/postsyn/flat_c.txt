@@ -1,0 +1,5 @@
+CS 1 t=0 us
+W 02164 00  t=103
+W 021a4 00  t=104
+t=1 ms  writes 2  sclk 0
+tb_ps.v:51: $finish called at 1500000000 (1ps)
