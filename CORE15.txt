@@ -1,0 +1,7 @@
+Unofficial Joust Core for CollectorVision Phoenix
+Should be compatible with both releases of hardware.
+
+You will need to provide Joust ROMs, in a folder on the SD card named JOUST. Make sure to unzip them into the folder.
+
+'5' key or SELECT will add a credit. '1' or START for a 1 player game. '2' for a two player game. For Coleco pads you will use left  and right to move and either fire button to flap. 
+

@@ -1,0 +1,6 @@
+Unofficial Robotron Core for CollectorVision Phoenix
+Should be compatible with both releases of hardware.
+
+You will need to provide Robotron ROMs, in a folder on the SD card named ROBOTRON. Make sure to unzip them into the folder.
+
+'5' key or SELECT will add a credit. '1' or START for a 1 player game. '2' for a two player game. For Coleco pads you will use left stick to move and right stick to shoot. For a SNES pad you will use the dpad to move and the four face buttons to shoot.

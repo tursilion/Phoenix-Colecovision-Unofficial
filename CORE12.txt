@@ -1,0 +1,12 @@
+Unofficial Lynx core for CollectorVision Phoenix - Version 0101
+Should be compatible with both releases of hardware.
+
+# is Pause. Left and Right are A and B. 1 and 2 are Option 1 and Option 2.
+Hold RESET for 4 seconds to return to file menu.
+
+Supports LNX or LYX files up to 448k resident, up to 512K cached.
+
+A note on caching: all code above the resident side is loaded from the SD card on demand - for best results use a fast, FAT32 formatted SD card. Files must be unfragmented - the best way to achieve this is to never delete files from the SD card. Then every new copy is guaranteed contiguous. If the core complains about fragmented files, you can try to copy it again (rename the old one - if you delete it then the copy will just reuse the same sectors), or format the card and copy all the files fresh.
+
+Because data is loaded from the SD card on demand, you may see artifacts that range from pauses all the way to temporary graphics corruption. Some titles may crash if they can't cope with the hesitation, but in my testing that's very rare. The more the difference is between the size of the ROM and the resident size, the more frequent you can expect these issues to occur. It's a best effort mode and is not guaranteed, but in my testing it works quite well!
+

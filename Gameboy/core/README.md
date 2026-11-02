@@ -22,9 +22,8 @@ Status:
 ## Using it
 
 1. Put `.GB` and `.GBC` (or `.CGB`) images on a FAT16 or FAT32 SD card, in
-   any folders. The menu shows 8.3 names. Images can be up to 8M, for
-   either Game Boy, with up to 128K of cartridge RAM. The SRAM holds the
-   first 360K-512K of the ROM (it depends on the hardware and the
+   any folders. The menu shows 8.3 names. Images can be up to 8M. The SRAM 
+   holds the first 360K-512K of the ROM (it depends on the hardware and the
    cartridge RAM); a bigger image plays from the core's ROM cache, which
    reads the rest from the card as the game needs it (see Limits). Such an
    image must not be fragmented on the card ("FILE FRAGMENTED": copy it

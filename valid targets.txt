@@ -1,33 +1,26 @@
 Computers have different issues to solve than game systems... not wanting to go that way today.
-Otherwise the cut off is mostly RAM size.
 
-
-02 - A2600 - preexisting
-03 - Pencil - preexisting alpha (keyboard update?)
-
-05 - LaserDisc - Dragon's Lair and Space Ace only - working (user must create LD images)
-06 - Gyruss Arcade - working - needs ROMs
-07 - Time Pilot 84 - working - needs ROMs
-08 - Galaga Arcade - working - needs ROMs
+01 - 0102 - ColecoVision - working up to 480k resident, 1MB Megacart cached and 2MB SGM cached.
+02 - 0001 - A2600 - preexisting-- not in pack because not updated
+03 - 0001 - Pencil - preexisting-- not in pack because not updated
+04 - 0103 - NES - working up to 512k resident, 1MB cached (max 256k CHR).
+05 - 0101 - LaserDisc - Dragon's Lair and Space Ace only - working (user must create LD images)
+06 - 0101 - Gyruss Arcade - working - needs ROMs
+07 - 0101 - Time Pilot 84 - working - needs ROMs
+08 - 0101 - Galaga Arcade - working - needs ROMs
+09 - 0101 - Intellivision - working up to 250k words with Intellivoice and ECS - needs ROMs.
+10 - 0101 - Gameboy - working for GB up to 512k and GBC up to 256k resident, up to 8MB cached.
+11 - 0101 - TurboGraphics - working - up to 448k resident, up to 4MB cached.
+12 - 0101 - Lynx - working up to 448k resident, 512k cached.
 
 --
 
-01 - 0102 - ColecoVision - working up to 480k native, 1MB Megacart cached and 2MB SGM cached.
-04 - 0103 - NES - working up to 512k native, 1MB cached (max 256k CHR).
-09 - 0101 - Intellivision - working up to 250k words with Intellivoice and ECS - needs ROMs.
-10 - 0101 - Gameboy - working for GB up to 512k and GBC up to 256k native, up to 8MB cached.
-11 - 0101 - TurboGraphics - working - up to 448k native, up to 4MB cached.
-12 - 0101 - Lynx - working up to 448k native, 512k cached.
-13 - 0101 - Master System / Game Gear - working up to 480k native, up to 4MB cached.
+13 - 0101 - Master System / Game Gear - working up to 480k resident, up to 4MB cached.
+14 - 0101 - Robotron - working - needs ROMs
+15 - 0101 - Joust - working - needs ROMs
+16 - 0101 - Sinistar - working - needs ROMs
 
-14 - 0101 - Robotron - pending - needs ROMs
-15 - 0101 - Joust - pending - needs ROMs
-16 - 0101 - Sinistar - pending - needs ROMs
 
-Future work depends on free time and community response.
+A note on caching: all code above the resident side is loaded from the SD card on demand - for best results use a fast, FAT32 formatted SD card. Files must be unfragmented - the best way to achieve this is to never delete files from the SD card. Then every new copy is guaranteed contiguous. If the core complains about fragmented files, you can try to copy it again (rename the old one - if you delete it then the copy will just reuse the same sectors), or format the card and copy all the files fresh.
 
-Gauntlet 2 - no - way too much memory, logic doesn't fit (by about 50%)
-Genesis - no - logic doesn't fit (by about 30-50% again)
-Vectrex - no - the hardware would likely fit, but without analog inputs some games are unplayable.
-Star Wars - no - not trying for the same reason - need analog inputs.
-Bubble Bobble - no - ROM and logic are both too big
+Because data is loaded from the SD card on demand, you may see artifacts that range from pauses all the way to temporary graphics corruption. Some titles may crash if they can't cope with the hesitation, but in my testing that's very rare. The more the difference is between the size of the ROM and the resident size, the more frequent you can expect these issues to occur. It's a best effort mode and is not guaranteed, but in my testing it works quite well!

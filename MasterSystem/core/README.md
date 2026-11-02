@@ -3,8 +3,7 @@
 Slot 13 (`CORE13.PHX`, "MASTER SYSTEM", issue 0x0101).  The system is the
 MiSTer SMS core (release 20210210, from Ben's Papilio core; see
 `rtl/mister/SOURCE.txt`) with the FM sound chip replaced by Jotego's
-jt2413 (`rtl/jtopl`, GPL-3.0).  The MiSTer core's own YM2413 (VM2413) is
-not used: its licence forbids use in a commercial product.
+jt2413 (`rtl/jtopl`, GPL-3.0). 
 
 ## Using it
 

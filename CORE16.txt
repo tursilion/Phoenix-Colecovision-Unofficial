@@ -1,0 +1,9 @@
+Unofficial Sinistar Core for CollectorVision Phoenix
+Should be compatible with both releases of hardware.
+
+You will need to provide Sinistar ROMs, in a folder on the SD card named SINISTAR. Make sure to unzip them into the folder.
+
+'5' key or SELECT will add a credit. '1' or START for a 1 player game. '2' for a two player game. For Coleco pads you will use left button to fire and right for Sinibombs. 
+
+The game will start rotated to vertical aspect ratio. Press 0 or the SNES shoulder buttons to toggle rotation.
+

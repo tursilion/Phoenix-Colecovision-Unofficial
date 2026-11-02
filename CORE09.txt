@@ -1,0 +1,32 @@
+Unofficial Intellivision core for CollectorVision Phoenix - 0101
+Should be compatible with both releases of hardware.
+
+YOU MUST PROVIDE INTELLIVISION ROMS. Either in the root of the SD card, or in a folder named "INTV":
+
++----------------------------------------------------------+
+¦            ROM            ¦ Size ¦  CRC-32  ¦ Needed for ¦
++---------------------------+------+----------+------------¦
+¦ EXEC                      ¦ 8K   ¦ CBCE86F7 ¦ everything ¦    exec.bin
++---------------------------+------+----------+------------¦
+¦ GROM                      ¦ 2K   ¦ 683A4158 ¦ everything ¦    grom.bin
++---------------------------+------+----------+------------¦
+¦ ECS                       ¦ 24K  ¦ EA790A06 ¦ ECS games  ¦    ecs.bin
++---------------------------+------+----------+------------¦
+¦ Intellivoice (SP0256-012) ¦ 2K   ¦ 0DE7579D ¦ speech     ¦    sp0256-012.bin
++----------------------------------------------------------+
+
+- They will be matched by CRC so should work even if the filenames differ.
+- Other versions: a different EXEC or GROM version is still used if it's named EXEC.BIN or GROM.BIN.
+- Missing files:
+- No EXEC or GROM: starting a game shows "NO EXEC/GROM IN /INTV".
+- No ECS ROM: the ECS stays off.
+- No voice ROM: the Intellivoice is switched off. 
+
+Supports BIN, INT, ITV raw images, and optional CFG files. Max size is 250k words.
+
+At the base of the menu you can toggle controller ports, as well as ECS and JLP autodetection.
+
+Note that JLP is not well tested. Saving is not supported.
+
+The top action buttons are left and right on the Coleco pad, and both will trigger the lower right action button.
+Hold RESET for 4 seconds to return to file menu.

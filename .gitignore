@@ -31,6 +31,7 @@ CORE30.PHX
 Thumbs.db
 *_bd.bmm
 /DOCs/Coleco_s700a/src/tb_vdp18
+/dist/pack/*
 /ROMs/bootrom.zip
 /ROMs/Firmware/*.BIN
 /ROMs/Firmware/*.ROM

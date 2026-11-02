@@ -1,0 +1,1 @@
+Core28 is the original ColecoVision core with the AY init bugfix, but no SD caching.

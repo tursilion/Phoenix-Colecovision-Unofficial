@@ -1,0 +1,20 @@
+Unofficial ColecoVision core for CollectorVision Phoenix VERSION 0102
+Should be compatible with both releases of hardware.
+
+Supports colecovision and SNES pads as well as PS/2 keyboard for games.
+As noted below, PS/2 keyboard can be enabled as a full keyboard by supporting titles.
+Supports F18A graphics and SGM hardware and software.
+
+A note on caching: all code above the resident side is loaded from the SD card on demand - for best results use a fast, FAT32 formatted SD card. Files must be unfragmented - the best way to achieve this is to never delete files from the SD card. Then every new copy is guaranteed contiguous. If the core complains about fragmented files, you can try to copy it again (rename the old one - if you delete it then the copy will just reuse the same sectors), or format the card and copy all the files fresh.
+
+Because data is loaded from the SD card on demand, you may see artifacts that range from pauses all the way to temporary graphics corruption. Some titles may crash if they can't cope with the hesitation, but in my testing that's very rare. The more the difference is between the size of the ROM and the resident size, the more frequent you can expect these issues to occur. It's a best effort mode and is not guaranteed, but in my testing it works quite well!
+
+
+2026-10-14 - 0101
+- fix AY audio init
+- add PS/2 keyboard reads (set port 0x54 to 0x04 for normal Coleco or 0x05 for SGM - bit 0x04 enables the keyboard. Read scancodes from port 0x80).
+- add SGM cart support - filename must end in ".sgm" and it must be padded to 16k like megacarts.
+
+2026-11-01 - 0102
+- added caching from SD - now supports up to 1MB Megacart and up to 2MB SGM. 480k resident.
+

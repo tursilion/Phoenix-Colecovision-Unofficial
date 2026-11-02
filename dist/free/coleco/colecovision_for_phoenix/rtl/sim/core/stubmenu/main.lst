@@ -1,0 +1,201 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.2.0 #13081 (Linux)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module main
+                                      6 	.optsdcc -mz80
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _main
+                                     12 ;--------------------------------------------------------
+                                     13 ; special function registers
+                                     14 ;--------------------------------------------------------
+                           000054    15 _phRAMBankSelect	=	0x0054
+                           000055    16 _phBankingScheme	=	0x0055
+                           000056    17 _phSDControl	=	0x0056
+                           000057    18 _phSDData	=	0x0057
+                           000059    19 _phCartMask	=	0x0059
+                           00005C    20 _phCachePage	=	0x005c
+                           00005D    21 _phCacheCheck	=	0x005d
+                           00005E    22 _phCacheStatus	=	0x005e
+                                     23 ;--------------------------------------------------------
+                                     24 ; ram data
+                                     25 ;--------------------------------------------------------
+                                     26 	.area _DATA
+                                     27 ;--------------------------------------------------------
+                                     28 ; ram data
+                                     29 ;--------------------------------------------------------
+                                     30 	.area _INITIALIZED
+                                     31 ;--------------------------------------------------------
+                                     32 ; absolute external ram data
+                                     33 ;--------------------------------------------------------
+                                     34 	.area _DABS (ABS)
+                                     35 ;--------------------------------------------------------
+                                     36 ; global & static initialisations
+                                     37 ;--------------------------------------------------------
+                                     38 	.area _HOME
+                                     39 	.area _GSINIT
+                                     40 	.area _GSFINAL
+                                     41 	.area _GSINIT
+                                     42 ;--------------------------------------------------------
+                                     43 ; Home
+                                     44 ;--------------------------------------------------------
+                                     45 	.area _HOME
+                                     46 	.area _HOME
+                                     47 ;--------------------------------------------------------
+                                     48 ; code
+                                     49 ;--------------------------------------------------------
+                                     50 	.area _CODE
+                                     51 ;main.c:37: static BYTE spi(BYTE b) { phSDData = b; return phSDData; }
+                                     52 ;	---------------------------------
+                                     53 ; Function spi
+                                     54 ; ---------------------------------
+      000000                         55 _spi:
+      000000 D3 57            [11]   56 	out	(_phSDData), a
+      000002 DB 57            [11]   57 	in	a, (_phSDData)
+      000004 C9               [10]   58 	ret
+                                     59 ;main.c:41: static void read_sector(DWORD s, BYTE *dst)
+                                     60 ;	---------------------------------
+                                     61 ; Function read_sector
+                                     62 ; ---------------------------------
+      000005                         63 _read_sector:
+                                     64 ;main.c:45: phSDControl = 0;                    /* select, fast */
+      000005 3E 00            [ 7]   65 	ld	a, #0x00
+      000007 D3 56            [11]   66 	out	(_phSDControl), a
+                                     67 ;main.c:46: spi(0xFF);
+      000009 E5               [11]   68 	push	hl
+      00000A D5               [11]   69 	push	de
+      00000B 3E FF            [ 7]   70 	ld	a, #0xff
+      00000D CDr00r00         [17]   71 	call	_spi
+      000010 D1               [10]   72 	pop	de
+      000011 E1               [10]   73 	pop	hl
+                                     74 ;main.c:47: phSDData = 0x51;
+      000012 3E 51            [ 7]   75 	ld	a, #0x51
+      000014 D3 57            [11]   76 	out	(_phSDData), a
+                                     77 ;main.c:48: phSDData = (BYTE)(s >> 24);
+      000016 7C               [ 4]   78 	ld	a, h
+      000017 D3 57            [11]   79 	out	(_phSDData), a
+                                     80 ;main.c:49: phSDData = (BYTE)(s >> 16);
+      000019 7D               [ 4]   81 	ld	a, l
+      00001A D3 57            [11]   82 	out	(_phSDData), a
+                                     83 ;main.c:50: phSDData = (BYTE)(s >> 8);
+      00001C 7A               [ 4]   84 	ld	a, d
+      00001D D3 57            [11]   85 	out	(_phSDData), a
+                                     86 ;main.c:51: phSDData = (BYTE)s;
+      00001F 7B               [ 4]   87 	ld	a, e
+      000020 D3 57            [11]   88 	out	(_phSDData), a
+                                     89 ;main.c:52: phSDData = 0x01;
+      000022 3E 01            [ 7]   90 	ld	a, #0x01
+      000024 D3 57            [11]   91 	out	(_phSDData), a
+                                     92 ;main.c:53: if (!dst) {
+      000026 21 02 00         [10]   93 	ld	hl, #2
+      000029 39               [11]   94 	add	hl, sp
+      00002A 7E               [ 7]   95 	ld	a, (hl)
+      00002B 23               [ 6]   96 	inc	hl
+      00002C B6               [ 7]   97 	or	a, (hl)
+      00002D 20 0B            [12]   98 	jr	NZ, 00103$
+                                     99 ;main.c:54: phSDControl = 1;
+      00002F 3E 01            [ 7]  100 	ld	a, #0x01
+      000031 D3 56            [11]  101 	out	(_phSDControl), a
+                                    102 ;main.c:55: spi(0xFF);
+      000033 3E FF            [ 7]  103 	ld	a, #0xff
+      000035 CDr00r00         [17]  104 	call	_spi
+                                    105 ;main.c:56: return;
+      000038 18 2D            [12]  106 	jr	00115$
+                                    107 ;main.c:58: do { r = phSDData; } while (r == 0xFF);
+      00003A                        108 00103$:
+      00003A DB 57            [11]  109 	in	a, (_phSDData)
+      00003C 3C               [ 4]  110 	inc	a
+      00003D 28 FB            [12]  111 	jr	Z, 00103$
+                                    112 ;main.c:59: do { r = phSDData; } while (r != 0xFE);
+      00003F                        113 00106$:
+      00003F DB 57            [11]  114 	in	a, (_phSDData)
+      000041 D6 FE            [ 7]  115 	sub	a, #0xfe
+      000043 20 FA            [12]  116 	jr	NZ, 00106$
+                                    117 ;main.c:60: for (i = 0; i < 512; ++i) {
+      000045 D1               [10]  118 	pop	de
+      000046 E1               [10]  119 	pop	hl
+      000047 E5               [11]  120 	push	hl
+      000048 D5               [11]  121 	push	de
+      000049 11 00 02         [10]  122 	ld	de, #0x0200
+      00004C                        123 00114$:
+                                    124 ;main.c:61: r = phSDData;
+      00004C DB 57            [11]  125 	in	a, (_phSDData)
+      00004E 4F               [ 4]  126 	ld	c, a
+                                    127 ;main.c:62: if (dst) *dst++ = r;
+      00004F 7C               [ 4]  128 	ld	a, h
+      000050 B5               [ 4]  129 	or	a, l
+      000051 28 02            [12]  130 	jr	Z, 00110$
+      000053 71               [ 7]  131 	ld	(hl), c
+      000054 23               [ 6]  132 	inc	hl
+      000055                        133 00110$:
+      000055 1B               [ 6]  134 	dec	de
+                                    135 ;main.c:60: for (i = 0; i < 512; ++i) {
+      000056 7A               [ 4]  136 	ld	a, d
+      000057 B3               [ 4]  137 	or	a, e
+      000058 20 F2            [12]  138 	jr	NZ, 00114$
+                                    139 ;main.c:64: r = phSDData; r = phSDData;         /* CRC */
+      00005A DB 57            [11]  140 	in	a, (_phSDData)
+      00005C DB 57            [11]  141 	in	a, (_phSDData)
+                                    142 ;main.c:65: phSDControl = 1;                    /* deselect */
+      00005E 3E 01            [ 7]  143 	ld	a, #0x01
+      000060 D3 56            [11]  144 	out	(_phSDControl), a
+                                    145 ;main.c:66: spi(0xFF);
+      000062 3E FF            [ 7]  146 	ld	a, #0xff
+      000064 CDr00r00         [17]  147 	call	_spi
+      000067                        148 00115$:
+                                    149 ;main.c:67: }
+      000067 E1               [10]  150 	pop	hl
+      000068 F1               [10]  151 	pop	af
+      000069 E9               [ 4]  152 	jp	(hl)
+                                    153 ;main.c:72: void main(void)
+                                    154 ;	---------------------------------
+                                    155 ; Function main
+                                    156 ; ---------------------------------
+      00006A                        157 _main::
+                                    158 ;main.c:80: phBankingScheme = 0x01 | 0x00;      /* MegaCart, upper internal RAM */
+      00006A 3E 01            [ 7]  159 	ld	a, #0x01
+      00006C D3 55            [11]  160 	out	(_phBankingScheme), a
+                                    161 ;main.c:114: phCartMask = IMG_SGM ? IMG_BLOCKS * 2 - 1 : IMG_BLOCKS - 1;
+      00006E 3E 01            [ 7]  162 	ld	a, #0x01
+      000070 D3 59            [11]  163 	out	(_phCartMask), a
+                                    164 ;main.c:115: phBankingScheme = IMG_SGM ? (0x02 | 0x10) : (0x01 | 0x10);
+      000072 3E 11            [ 7]  165 	ld	a, #0x11
+      000074 D3 55            [11]  166 	out	(_phBankingScheme), a
+                                    167 ;main.c:116: phRAMBankSelect = 1;
+      000076 3E 01            [ 7]  168 	ld	a, #0x01
+      000078 D3 54            [11]  169 	out	(_phRAMBankSelect), a
+                                    170 ;main.c:118: for (i = 0; i < sizeof(start_code); ++i)
+      00007A 0E 00            [ 7]  171 	ld	c, #0x00
+      00007C                        172 00112$:
+                                    173 ;main.c:119: MEM(0x6000 + i) = start_code[i];
+      00007C 59               [ 4]  174 	ld	e, c
+      00007D 16 00            [ 7]  175 	ld	d, #0x00
+      00007F 21 00 60         [10]  176 	ld	hl, #0x6000
+      000082 19               [11]  177 	add	hl, de
+      000083 EB               [ 4]  178 	ex	de, hl
+      000084 21r95r00         [10]  179 	ld	hl, #_start_code
+      000087 06 00            [ 7]  180 	ld	b, #0x00
+      000089 09               [11]  181 	add	hl, bc
+      00008A 7E               [ 7]  182 	ld	a, (hl)
+      00008B 12               [ 7]  183 	ld	(de), a
+                                    184 ;main.c:118: for (i = 0; i < sizeof(start_code); ++i)
+      00008C 0C               [ 4]  185 	inc	c
+      00008D 79               [ 4]  186 	ld	a, c
+      00008E D6 06            [ 7]  187 	sub	a, #0x06
+      000090 38 EA            [12]  188 	jr	C, 00112$
+                                    189 ;main.c:120: ((void (*)(void))0x6000)();
+                                    190 ;main.c:121: }
+      000092 C3 00 60         [10]  191 	jp	0x6000
+      000095                        192 _start_code:
+      000095 DB                     193 	.db #0xdb	; 219
+      000096 55                     194 	.db #0x55	; 85	'U'
+      000097 2A                     195 	.db #0x2a	; 42
+      000098 0A                     196 	.db #0x0a	; 10
+      000099 80                     197 	.db #0x80	; 128
+      00009A E9                     198 	.db #0xe9	; 233
+                                    199 	.area _CODE
+                                    200 	.area _INITIALIZER
+                                    201 	.area _CABS (ABS)
