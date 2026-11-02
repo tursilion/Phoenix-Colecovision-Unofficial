@@ -12,9 +12,6 @@ Computers have different issues to solve than game systems... not wanting to go 
 10 - 0101 - Gameboy - working for GB up to 512k and GBC up to 256k resident, up to 8MB cached.
 11 - 0101 - TurboGraphics - working - up to 448k resident, up to 4MB cached.
 12 - 0101 - Lynx - working up to 448k resident, 512k cached.
-
---
-
 13 - 0101 - Master System / Game Gear - working up to 480k resident, up to 4MB cached.
 14 - 0101 - Robotron - working - needs ROMs
 15 - 0101 - Joust - working - needs ROMs
