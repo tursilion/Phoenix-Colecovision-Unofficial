@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">joy1_p7_i_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">joy1_p9_i_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">joy2_p7_i_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">joy2_p9_i_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">cart_data_io&lt;0&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">cart_data_io&lt;1&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">cart_data_io&lt;2&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">cart_data_io&lt;3&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">cart_data_io&lt;4&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">cart_data_io&lt;5&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">cart_data_io&lt;6&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">cart_data_io&lt;7&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/main/video/Mram_sr02_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/main/video/Mram_sr01_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/main/video/Mram_sr21_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/main/video/Mram_sr22_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/main/cpu/i_tv80_core/i_reg/Mram_RegsL11_RAMD_D1_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/main/video/Mram_sr31_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/main/video/Mram_sr32_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/main/video/Mram_sr12_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/main/video/Mram_sr11_RAMD_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/main/cpu/i_tv80_core/i_reg/Mram_RegsH11_RAMD_D1_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/Mram_pal_t1_RAMD_D1_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/Mram_pal_u1_RAMD_D1_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/main/video/Mram_ctab1_RAMD_D1_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/Mram_fq_d1_RAMD_D1_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/Mram_fq_a1_RAMD_D1_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="new" >The signal <arg fmt="%s" index="1">game/Mram_fq_a2_RAMD_D1_O</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="ParHelpers" num="361" delta="new" >There are <arg fmt="%d" index="1">28</arg> loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+
+</msg>
+
+<msg type="warning" file="Par" num="283" delta="new" >There are <arg fmt="%d" index="1">28</arg> loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+
+</msg>
+
+</messages>
+

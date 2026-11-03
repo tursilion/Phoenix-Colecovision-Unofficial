@@ -1,0 +1,671 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.2.0 #13081 (Linux)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module diskio
+                                      6 	.optsdcc -mz80
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _spi_read_block
+                                     12 	.globl _load_write
+                                     13 	.globl _sd_block_addr
+                                     14 	.globl _disk_initialize
+                                     15 	.globl _sd_read_sector
+                                     16 	.globl _disk_readp
+                                     17 ;--------------------------------------------------------
+                                     18 ; special function registers
+                                     19 ;--------------------------------------------------------
+                                     20 ;--------------------------------------------------------
+                                     21 ; ram data
+                                     22 ;--------------------------------------------------------
+                                     23 	.area _DATA
+      000000                         24 _ctrl:
+      000000                         25 	.ds 1
+      000001                         26 _sd_block_addr::
+      000001                         27 	.ds 1
+      000002                         28 _cache_sector:
+      000002                         29 	.ds 4
+      000006                         30 _cache_valid:
+      000006                         31 	.ds 1
+                                     32 ;--------------------------------------------------------
+                                     33 ; ram data
+                                     34 ;--------------------------------------------------------
+                                     35 	.area _INITIALIZED
+                                     36 ;--------------------------------------------------------
+                                     37 ; absolute external ram data
+                                     38 ;--------------------------------------------------------
+                                     39 	.area _DABS (ABS)
+                                     40 ;--------------------------------------------------------
+                                     41 ; global & static initialisations
+                                     42 ;--------------------------------------------------------
+                                     43 	.area _HOME
+                                     44 	.area _GSINIT
+                                     45 	.area _GSFINAL
+                                     46 	.area _GSINIT
+                                     47 ;--------------------------------------------------------
+                                     48 ; Home
+                                     49 ;--------------------------------------------------------
+                                     50 	.area _HOME
+                                     51 	.area _HOME
+                                     52 ;--------------------------------------------------------
+                                     53 ; code
+                                     54 ;--------------------------------------------------------
+                                     55 	.area _CODE
+                                     56 ;diskio.c:29: static BYTE xfer(BYTE b)
+                                     57 ;	---------------------------------
+                                     58 ; Function xfer
+                                     59 ; ---------------------------------
+      000000                         60 _xfer:
+      000000 4F               [ 4]   61 	ld	c, a
+                                     62 ;diskio.c:31: PH_SPI_DATA = b;
+      000001 21 00 C0         [10]   63 	ld	hl, #0xc000
+      000004 71               [ 7]   64 	ld	(hl), c
+                                     65 ;diskio.c:32: while (PH_CTRL & PH_STAT_BUSY)
+      000005                         66 00101$:
+      000005 3A 01 C0         [13]   67 	ld	a, (#0xc001)
+      000008 07               [ 4]   68 	rlca
+      000009 38 FA            [12]   69 	jr	C, 00101$
+                                     70 ;diskio.c:34: return PH_SPI_DATA;
+      00000B 3A 00 C0         [13]   71 	ld	a, (#0xc000)
+                                     72 ;diskio.c:35: }
+      00000E C9               [10]   73 	ret
+                                     74 ;diskio.c:37: static void select(void)
+                                     75 ;	---------------------------------
+                                     76 ; Function select
+                                     77 ; ---------------------------------
+      00000F                         78 _select:
+                                     79 ;diskio.c:39: ctrl |= PH_CTRL_SELECT;
+      00000F 3Ar00r00         [13]   80 	ld	a, (_ctrl+0)
+      000012 F6 01            [ 7]   81 	or	a, #0x01
+      000014 32r00r00         [13]   82 	ld	(_ctrl+0), a
+                                     83 ;diskio.c:40: PH_CTRL = ctrl;
+      000017 21 01 C0         [10]   84 	ld	hl, #0xc001
+      00001A 3Ar00r00         [13]   85 	ld	a, (_ctrl+0)
+      00001D 77               [ 7]   86 	ld	(hl), a
+                                     87 ;diskio.c:41: xfer(0xFF);
+      00001E 3E FF            [ 7]   88 	ld	a, #0xff
+                                     89 ;diskio.c:42: }
+      000020 C3r00r00         [10]   90 	jp	_xfer
+                                     91 ;diskio.c:44: static void deselect(void)
+                                     92 ;	---------------------------------
+                                     93 ; Function deselect
+                                     94 ; ---------------------------------
+      000023                         95 _deselect:
+                                     96 ;diskio.c:46: ctrl &= ~PH_CTRL_SELECT;
+      000023 3Ar00r00         [13]   97 	ld	a, (_ctrl+0)
+      000026 E6 FE            [ 7]   98 	and	a, #0xfe
+      000028 32r00r00         [13]   99 	ld	(_ctrl+0), a
+                                    100 ;diskio.c:47: PH_CTRL = ctrl;
+      00002B 21 01 C0         [10]  101 	ld	hl, #0xc001
+      00002E 3Ar00r00         [13]  102 	ld	a, (_ctrl+0)
+      000031 77               [ 7]  103 	ld	(hl), a
+                                    104 ;diskio.c:48: xfer(0xFF);                 /* release MISO */
+      000032 3E FF            [ 7]  105 	ld	a, #0xff
+                                    106 ;diskio.c:49: }
+      000034 C3r00r00         [10]  107 	jp	_xfer
+                                    108 ;diskio.c:51: static BYTE send_cmd(BYTE cmd, DWORD arg)
+                                    109 ;	---------------------------------
+                                    110 ; Function send_cmd
+                                    111 ; ---------------------------------
+      000037                        112 _send_cmd:
+      000037 CDr00r00         [17]  113 	call	___sdcc_enter_ix
+      00003A 4F               [ 4]  114 	ld	c, a
+                                    115 ;diskio.c:55: if (cmd & 0x80) {           /* application command: CMD55 first */
+      00003B CB 79            [ 8]  116 	bit	7, c
+      00003D 28 17            [12]  117 	jr	Z, 00104$
+                                    118 ;diskio.c:56: cmd &= 0x7F;
+      00003F CB B9            [ 8]  119 	res	7, c
+                                    120 ;diskio.c:57: r = send_cmd(CMD55, 0);
+      000041 C5               [11]  121 	push	bc
+      000042 21 00 00         [10]  122 	ld	hl, #0x0000
+      000045 E5               [11]  123 	push	hl
+      000046 E5               [11]  124 	push	hl
+      000047 3E 77            [ 7]  125 	ld	a, #0x77
+      000049 CDr37r00         [17]  126 	call	_send_cmd
+      00004C C1               [10]  127 	pop	bc
+      00004D 47               [ 4]  128 	ld	b, a
+                                    129 ;diskio.c:58: if (r > 1)
+      00004E 3E 01            [ 7]  130 	ld	a, #0x01
+      000050 90               [ 4]  131 	sub	a, b
+      000051 30 03            [12]  132 	jr	NC, 00104$
+                                    133 ;diskio.c:59: return r;
+      000053 78               [ 4]  134 	ld	a, b
+      000054 18 7A            [12]  135 	jr	00111$
+      000056                        136 00104$:
+                                    137 ;diskio.c:62: deselect();
+      000056 C5               [11]  138 	push	bc
+      000057 CDr23r00         [17]  139 	call	_deselect
+      00005A CDr0Fr00         [17]  140 	call	_select
+      00005D C1               [10]  141 	pop	bc
+                                    142 ;diskio.c:65: xfer(cmd);
+      00005E C5               [11]  143 	push	bc
+      00005F 79               [ 4]  144 	ld	a, c
+      000060 CDr00r00         [17]  145 	call	_xfer
+      000063 C1               [10]  146 	pop	bc
+                                    147 ;diskio.c:66: xfer(((BYTE *)&arg)[3]);    /* little-endian */
+      000064 DD 46 07         [19]  148 	ld	b, 7 (ix)
+      000067 C5               [11]  149 	push	bc
+      000068 78               [ 4]  150 	ld	a, b
+      000069 CDr00r00         [17]  151 	call	_xfer
+      00006C C1               [10]  152 	pop	bc
+                                    153 ;diskio.c:67: xfer(((BYTE *)&arg)[2]);
+      00006D DD 46 06         [19]  154 	ld	b, 6 (ix)
+      000070 C5               [11]  155 	push	bc
+      000071 78               [ 4]  156 	ld	a, b
+      000072 CDr00r00         [17]  157 	call	_xfer
+      000075 C1               [10]  158 	pop	bc
+                                    159 ;diskio.c:68: xfer(((BYTE *)&arg)[1]);
+      000076 DD 46 05         [19]  160 	ld	b, 5 (ix)
+      000079 C5               [11]  161 	push	bc
+      00007A 78               [ 4]  162 	ld	a, b
+      00007B CDr00r00         [17]  163 	call	_xfer
+      00007E C1               [10]  164 	pop	bc
+                                    165 ;diskio.c:69: xfer(((BYTE *)&arg)[0]);
+      00007F DD 46 04         [19]  166 	ld	b, 4 (ix)
+      000082 C5               [11]  167 	push	bc
+      000083 78               [ 4]  168 	ld	a, b
+      000084 CDr00r00         [17]  169 	call	_xfer
+      000087 C1               [10]  170 	pop	bc
+                                    171 ;diskio.c:70: xfer(cmd == CMD0 ? 0x95 : cmd == CMD8 ? 0x87 : cmd == CMD12 ? 0x61 : 0x01);
+      000088 79               [ 4]  172 	ld	a, c
+      000089 D6 4C            [ 7]  173 	sub	a, #0x4c
+      00008B 3E 01            [ 7]  174 	ld	a, #0x01
+      00008D 28 01            [12]  175 	jr	Z, 00162$
+      00008F AF               [ 4]  176 	xor	a, a
+      000090                        177 00162$:
+      000090 5F               [ 4]  178 	ld	e, a
+      000091 79               [ 4]  179 	ld	a, c
+      000092 D6 40            [ 7]  180 	sub	a, #0x40
+      000094 20 05            [12]  181 	jr	NZ, 00113$
+      000096 01 95 00         [10]  182 	ld	bc, #0x0095
+      000099 18 16            [12]  183 	jr	00114$
+      00009B                        184 00113$:
+      00009B 79               [ 4]  185 	ld	a, c
+      00009C D6 48            [ 7]  186 	sub	a, #0x48
+      00009E 20 05            [12]  187 	jr	NZ, 00115$
+      0000A0 01 87 00         [10]  188 	ld	bc, #0x0087
+      0000A3 18 0C            [12]  189 	jr	00116$
+      0000A5                        190 00115$:
+      0000A5 7B               [ 4]  191 	ld	a, e
+      0000A6 B7               [ 4]  192 	or	a, a
+      0000A7 28 05            [12]  193 	jr	Z, 00117$
+      0000A9 01 61 00         [10]  194 	ld	bc, #0x0061
+      0000AC 18 03            [12]  195 	jr	00118$
+      0000AE                        196 00117$:
+      0000AE 01 01 00         [10]  197 	ld	bc, #0x0001
+      0000B1                        198 00118$:
+      0000B1                        199 00116$:
+      0000B1                        200 00114$:
+      0000B1 D5               [11]  201 	push	de
+      0000B2 79               [ 4]  202 	ld	a, c
+      0000B3 CDr00r00         [17]  203 	call	_xfer
+      0000B6 D1               [10]  204 	pop	de
+                                    205 ;diskio.c:72: if (cmd == CMD12)
+      0000B7 7B               [ 4]  206 	ld	a, e
+      0000B8 B7               [ 4]  207 	or	a, a
+      0000B9 28 05            [12]  208 	jr	Z, 00126$
+                                    209 ;diskio.c:73: xfer(0xFF);             /* stuff byte */
+      0000BB 3E FF            [ 7]  210 	ld	a, #0xff
+      0000BD CDr00r00         [17]  211 	call	_xfer
+                                    212 ;diskio.c:75: do {
+      0000C0                        213 00126$:
+      0000C0 0E 0A            [ 7]  214 	ld	c, #0x0a
+      0000C2                        215 00108$:
+                                    216 ;diskio.c:76: r = xfer(0xFF);
+      0000C2 C5               [11]  217 	push	bc
+      0000C3 3E FF            [ 7]  218 	ld	a, #0xff
+      0000C5 CDr00r00         [17]  219 	call	_xfer
+      0000C8 C1               [10]  220 	pop	bc
+                                    221 ;diskio.c:77: } while ((r & 0x80) && --n);
+      0000C9 CB 7F            [ 8]  222 	bit	7, a
+      0000CB 28 03            [12]  223 	jr	Z, 00110$
+      0000CD 0D               [ 4]  224 	dec	c
+      0000CE 20 F2            [12]  225 	jr	NZ, 00108$
+      0000D0                        226 00110$:
+                                    227 ;diskio.c:78: return r;
+      0000D0                        228 00111$:
+                                    229 ;diskio.c:79: }
+      0000D0 DD E1            [14]  230 	pop	ix
+      0000D2 E1               [10]  231 	pop	hl
+      0000D3 C1               [10]  232 	pop	bc
+      0000D4 C1               [10]  233 	pop	bc
+      0000D5 E9               [ 4]  234 	jp	(hl)
+                                    235 ;diskio.c:81: DSTATUS disk_initialize(void)
+                                    236 ;	---------------------------------
+                                    237 ; Function disk_initialize
+                                    238 ; ---------------------------------
+      0000D6                        239 _disk_initialize::
+      0000D6 CDr00r00         [17]  240 	call	___sdcc_enter_ix
+      0000D9 F5               [11]  241 	push	af
+      0000DA F5               [11]  242 	push	af
+                                    243 ;diskio.c:86: ctrl = PH_CTRL_SLOW;
+      0000DB 21r00r00         [10]  244 	ld	hl, #_ctrl
+      0000DE 36 00            [10]  245 	ld	(hl), #0x00
+                                    246 ;diskio.c:87: PH_CTRL = ctrl;
+      0000E0 21 01 C0         [10]  247 	ld	hl, #0xc001
+      0000E3 36 00            [10]  248 	ld	(hl), #0x00
+                                    249 ;diskio.c:88: sd_block_addr = 0;
+      0000E5 21r01r00         [10]  250 	ld	hl, #_sd_block_addr
+      0000E8 36 00            [10]  251 	ld	(hl), #0x00
+                                    252 ;diskio.c:89: cache_valid = 0;
+      0000EA 21r06r00         [10]  253 	ld	hl, #_cache_valid
+      0000ED 36 00            [10]  254 	ld	(hl), #0x00
+                                    255 ;diskio.c:91: if (!(PH_CTRL & PH_STAT_CARD))
+      0000EF 3A 01 C0         [13]  256 	ld	a, (#0xc001)
+      0000F2 CB 77            [ 8]  257 	bit	6, a
+      0000F4 20 05            [12]  258 	jr	NZ, 00141$
+                                    259 ;diskio.c:92: return STA_NODISK;
+      0000F6 3E 02            [ 7]  260 	ld	a, #0x02
+      0000F8 C3rFCr01         [10]  261 	jp	00136$
+                                    262 ;diskio.c:94: for (n = 10; n; --n)        /* 80 clocks with CS deasserted */
+      0000FB                        263 00141$:
+      0000FB 0E 0A            [ 7]  264 	ld	c, #0x0a
+      0000FD                        265 00122$:
+                                    266 ;diskio.c:95: xfer(0xFF);
+      0000FD C5               [11]  267 	push	bc
+      0000FE 3E FF            [ 7]  268 	ld	a, #0xff
+      000100 CDr00r00         [17]  269 	call	_xfer
+      000103 C1               [10]  270 	pop	bc
+                                    271 ;diskio.c:94: for (n = 10; n; --n)        /* 80 clocks with CS deasserted */
+      000104 0D               [ 4]  272 	dec	c
+      000105 20 F6            [12]  273 	jr	NZ, 00122$
+                                    274 ;diskio.c:97: if (send_cmd(CMD0, 0) != 1) {
+      000107 21 00 00         [10]  275 	ld	hl, #0x0000
+      00010A E5               [11]  276 	push	hl
+      00010B E5               [11]  277 	push	hl
+      00010C 3E 40            [ 7]  278 	ld	a, #0x40
+      00010E CDr37r00         [17]  279 	call	_send_cmd
+      000111 3D               [ 4]  280 	dec	a
+      000112 28 08            [12]  281 	jr	Z, 00105$
+                                    282 ;diskio.c:98: deselect();
+      000114 CDr23r00         [17]  283 	call	_deselect
+                                    284 ;diskio.c:99: return STA_NOINIT;
+      000117 3E 01            [ 7]  285 	ld	a, #0x01
+      000119 C3rFCr01         [10]  286 	jp	00136$
+      00011C                        287 00105$:
+                                    288 ;diskio.c:102: if (send_cmd(CMD8, 0x1AA) == 1) {
+      00011C 21 00 00         [10]  289 	ld	hl, #0x0000
+      00011F E5               [11]  290 	push	hl
+      000120 21 AA 01         [10]  291 	ld	hl, #0x01aa
+      000123 E5               [11]  292 	push	hl
+      000124 3E 48            [ 7]  293 	ld	a, #0x48
+      000126 CDr37r00         [17]  294 	call	_send_cmd
+                                    295 ;diskio.c:104: for (n = 0; n < 4; ++n)
+      000129 3D               [ 4]  296 	dec	a
+      00012A C2rBBr01         [10]  297 	jp	NZ,00157$
+      00012D 4F               [ 4]  298 	ld	c,a
+      00012E                        299 00124$:
+                                    300 ;diskio.c:105: ocr[n] = xfer(0xFF);
+      00012E 59               [ 4]  301 	ld	e, c
+      00012F 16 00            [ 7]  302 	ld	d, #0x00
+      000131 21 00 00         [10]  303 	ld	hl, #0
+      000134 39               [11]  304 	add	hl, sp
+      000135 19               [11]  305 	add	hl, de
+      000136 E5               [11]  306 	push	hl
+      000137 C5               [11]  307 	push	bc
+      000138 3E FF            [ 7]  308 	ld	a, #0xff
+      00013A CDr00r00         [17]  309 	call	_xfer
+      00013D C1               [10]  310 	pop	bc
+      00013E E1               [10]  311 	pop	hl
+      00013F 77               [ 7]  312 	ld	(hl), a
+                                    313 ;diskio.c:104: for (n = 0; n < 4; ++n)
+      000140 0C               [ 4]  314 	inc	c
+      000141 79               [ 4]  315 	ld	a, c
+      000142 D6 04            [ 7]  316 	sub	a, #0x04
+      000144 38 E8            [12]  317 	jr	C, 00124$
+                                    318 ;diskio.c:106: if (ocr[2] != 0x01 || ocr[3] != 0xAA) {
+      000146 DD 7E FE         [19]  319 	ld	a, -2 (ix)
+      000149 3D               [ 4]  320 	dec	a
+      00014A 20 07            [12]  321 	jr	NZ, 00107$
+      00014C DD 7E FF         [19]  322 	ld	a, -1 (ix)
+      00014F D6 AA            [ 7]  323 	sub	a, #0xaa
+      000151 28 08            [12]  324 	jr	Z, 00150$
+      000153                        325 00107$:
+                                    326 ;diskio.c:107: deselect();
+      000153 CDr23r00         [17]  327 	call	_deselect
+                                    328 ;diskio.c:108: return STA_NOINIT;
+      000156 3E 01            [ 7]  329 	ld	a, #0x01
+      000158 C3rFCr01         [10]  330 	jp	00136$
+                                    331 ;diskio.c:110: for (tmr = 10000; tmr && send_cmd(ACMD41, 1UL << 30); --tmr)
+      00015B                        332 00150$:
+      00015B 21 10 27         [10]  333 	ld	hl, #0x2710
+      00015E                        334 00128$:
+      00015E 7C               [ 4]  335 	ld	a, h
+      00015F B5               [ 4]  336 	or	a, l
+      000160 28 14            [12]  337 	jr	Z, 00110$
+      000162 E5               [11]  338 	push	hl
+      000163 11 00 40         [10]  339 	ld	de, #0x4000
+      000166 D5               [11]  340 	push	de
+      000167 16 00            [ 7]  341 	ld	d, #0x00
+      000169 D5               [11]  342 	push	de
+      00016A 3E E9            [ 7]  343 	ld	a, #0xe9
+      00016C CDr37r00         [17]  344 	call	_send_cmd
+      00016F E1               [10]  345 	pop	hl
+      000170 B7               [ 4]  346 	or	a, a
+      000171 28 03            [12]  347 	jr	Z, 00110$
+      000173 2B               [ 6]  348 	dec	hl
+      000174 18 E8            [12]  349 	jr	00128$
+      000176                        350 00110$:
+                                    351 ;diskio.c:112: if (!tmr || send_cmd(CMD58, 0) != 0) {
+      000176 7C               [ 4]  352 	ld	a, h
+      000177 B5               [ 4]  353 	or	a, l
+      000178 28 0D            [12]  354 	jr	Z, 00111$
+      00017A 21 00 00         [10]  355 	ld	hl, #0x0000
+      00017D E5               [11]  356 	push	hl
+      00017E E5               [11]  357 	push	hl
+      00017F 3E 7A            [ 7]  358 	ld	a, #0x7a
+      000181 CDr37r00         [17]  359 	call	_send_cmd
+      000184 B7               [ 4]  360 	or	a, a
+      000185 28 07            [12]  361 	jr	Z, 00152$
+      000187                        362 00111$:
+                                    363 ;diskio.c:113: deselect();
+      000187 CDr23r00         [17]  364 	call	_deselect
+                                    365 ;diskio.c:114: return STA_NOINIT;
+      00018A 3E 01            [ 7]  366 	ld	a, #0x01
+      00018C 18 6E            [12]  367 	jr	00136$
+                                    368 ;diskio.c:116: for (n = 0; n < 4; ++n)
+      00018E                        369 00152$:
+      00018E 0E 00            [ 7]  370 	ld	c, #0x00
+      000190                        371 00130$:
+                                    372 ;diskio.c:117: ocr[n] = xfer(0xFF);
+      000190 59               [ 4]  373 	ld	e, c
+      000191 16 00            [ 7]  374 	ld	d, #0x00
+      000193 21 00 00         [10]  375 	ld	hl, #0
+      000196 39               [11]  376 	add	hl, sp
+      000197 19               [11]  377 	add	hl, de
+      000198 E5               [11]  378 	push	hl
+      000199 C5               [11]  379 	push	bc
+      00019A 3E FF            [ 7]  380 	ld	a, #0xff
+      00019C CDr00r00         [17]  381 	call	_xfer
+      00019F C1               [10]  382 	pop	bc
+      0001A0 E1               [10]  383 	pop	hl
+      0001A1 77               [ 7]  384 	ld	(hl), a
+                                    385 ;diskio.c:116: for (n = 0; n < 4; ++n)
+      0001A2 0C               [ 4]  386 	inc	c
+      0001A3 79               [ 4]  387 	ld	a, c
+      0001A4 D6 04            [ 7]  388 	sub	a, #0x04
+      0001A6 38 E8            [12]  389 	jr	C, 00130$
+                                    390 ;diskio.c:118: sd_block_addr = (ocr[0] & 0x40) ? 1 : 0;
+      0001A8 DD CB FC 76      [20]  391 	bit	6, -4 (ix)
+      0001AC 28 06            [12]  392 	jr	Z, 00138$
+      0001AE 3E 01            [ 7]  393 	ld	a, #0x01
+      0001B0 0E 00            [ 7]  394 	ld	c, #0x00
+      0001B2 18 02            [12]  395 	jr	00139$
+      0001B4                        396 00138$:
+      0001B4 AF               [ 4]  397 	xor	a, a
+      0001B5 4F               [ 4]  398 	ld	c, a
+      0001B6                        399 00139$:
+      0001B6 32r01r00         [13]  400 	ld	(_sd_block_addr+0), a
+      0001B9 18 33            [12]  401 	jr	00121$
+                                    402 ;diskio.c:121: for (tmr = 10000; tmr && send_cmd(ACMD41, 0); --tmr)
+      0001BB                        403 00157$:
+      0001BB 01 10 27         [10]  404 	ld	bc, #0x2710
+      0001BE                        405 00134$:
+      0001BE 78               [ 4]  406 	ld	a, b
+      0001BF B1               [ 4]  407 	or	a, c
+      0001C0 28 12            [12]  408 	jr	Z, 00115$
+      0001C2 C5               [11]  409 	push	bc
+      0001C3 21 00 00         [10]  410 	ld	hl, #0x0000
+      0001C6 E5               [11]  411 	push	hl
+      0001C7 E5               [11]  412 	push	hl
+      0001C8 3E E9            [ 7]  413 	ld	a, #0xe9
+      0001CA CDr37r00         [17]  414 	call	_send_cmd
+      0001CD C1               [10]  415 	pop	bc
+      0001CE B7               [ 4]  416 	or	a, a
+      0001CF 28 03            [12]  417 	jr	Z, 00115$
+      0001D1 0B               [ 6]  418 	dec	bc
+      0001D2 18 EA            [12]  419 	jr	00134$
+      0001D4                        420 00115$:
+                                    421 ;diskio.c:123: if (!tmr || send_cmd(CMD16, 512) != 0) {
+      0001D4 78               [ 4]  422 	ld	a, b
+      0001D5 B1               [ 4]  423 	or	a, c
+      0001D6 28 0F            [12]  424 	jr	Z, 00116$
+      0001D8 21 00 00         [10]  425 	ld	hl, #0x0000
+      0001DB E5               [11]  426 	push	hl
+      0001DC 26 02            [ 7]  427 	ld	h, #0x02
+      0001DE E5               [11]  428 	push	hl
+      0001DF 3E 50            [ 7]  429 	ld	a, #0x50
+      0001E1 CDr37r00         [17]  430 	call	_send_cmd
+      0001E4 B7               [ 4]  431 	or	a, a
+      0001E5 28 07            [12]  432 	jr	Z, 00121$
+      0001E7                        433 00116$:
+                                    434 ;diskio.c:124: deselect();
+      0001E7 CDr23r00         [17]  435 	call	_deselect
+                                    436 ;diskio.c:125: return STA_NOINIT;
+      0001EA 3E 01            [ 7]  437 	ld	a, #0x01
+      0001EC 18 0E            [12]  438 	jr	00136$
+      0001EE                        439 00121$:
+                                    440 ;diskio.c:129: deselect();
+      0001EE CDr23r00         [17]  441 	call	_deselect
+                                    442 ;diskio.c:130: ctrl = PH_CTRL_FAST;
+      0001F1 21r00r00         [10]  443 	ld	hl, #_ctrl
+      0001F4 36 02            [10]  444 	ld	(hl), #0x02
+                                    445 ;diskio.c:131: PH_CTRL = ctrl;
+      0001F6 21 01 C0         [10]  446 	ld	hl, #0xc001
+      0001F9 36 02            [10]  447 	ld	(hl), #0x02
+                                    448 ;diskio.c:132: return 0;
+      0001FB AF               [ 4]  449 	xor	a, a
+      0001FC                        450 00136$:
+                                    451 ;diskio.c:133: }
+      0001FC DD F9            [10]  452 	ld	sp, ix
+      0001FE DD E1            [14]  453 	pop	ix
+      000200 C9               [10]  454 	ret
+                                    455 ;diskio.c:136: static BYTE start_read(DWORD sector)
+                                    456 ;	---------------------------------
+                                    457 ; Function start_read
+                                    458 ; ---------------------------------
+      000201                        459 _start_read:
+      000201 4D               [ 4]  460 	ld	c, l
+      000202 44               [ 4]  461 	ld	b, h
+                                    462 ;diskio.c:141: if (!sd_block_addr)
+      000203 3Ar01r00         [13]  463 	ld	a, (_sd_block_addr+0)
+      000206 B7               [ 4]  464 	or	a, a
+      000207 20 0B            [12]  465 	jr	NZ, 00102$
+                                    466 ;diskio.c:142: sector <<= 9;
+      000209 41               [ 4]  467 	ld	b, c
+      00020A 4A               [ 4]  468 	ld	c, d
+      00020B 53               [ 4]  469 	ld	d, e
+      00020C 1E 00            [ 7]  470 	ld	e, #0x00
+      00020E CB 22            [ 8]  471 	sla	d
+      000210 CB 11            [ 8]  472 	rl	c
+      000212 CB 10            [ 8]  473 	rl	b
+      000214                        474 00102$:
+                                    475 ;diskio.c:143: if (send_cmd(CMD17, sector) != 0)
+      000214 C5               [11]  476 	push	bc
+      000215 D5               [11]  477 	push	de
+      000216 3E 51            [ 7]  478 	ld	a, #0x51
+      000218 CDr37r00         [17]  479 	call	_send_cmd
+      00021B B7               [ 4]  480 	or	a, a
+      00021C 28 02            [12]  481 	jr	Z, 00114$
+                                    482 ;diskio.c:144: return 0;
+      00021E AF               [ 4]  483 	xor	a, a
+      00021F C9               [10]  484 	ret
+                                    485 ;diskio.c:146: do {
+      000220                        486 00114$:
+      000220 11 40 9C         [10]  487 	ld	de, #0x9c40
+      000223                        488 00106$:
+                                    489 ;diskio.c:147: r = xfer(0xFF);
+      000223 D5               [11]  490 	push	de
+      000224 3E FF            [ 7]  491 	ld	a, #0xff
+      000226 CDr00r00         [17]  492 	call	_xfer
+      000229 D1               [10]  493 	pop	de
+                                    494 ;diskio.c:148: } while (r == 0xFF && --tmr);
+      00022A 4F               [ 4]  495 	ld	c, a
+      00022B 3C               [ 4]  496 	inc	a
+      00022C 20 05            [12]  497 	jr	NZ, 00108$
+      00022E 1B               [ 6]  498 	dec	de
+      00022F 7A               [ 4]  499 	ld	a, d
+      000230 B3               [ 4]  500 	or	a, e
+      000231 20 F0            [12]  501 	jr	NZ, 00106$
+      000233                        502 00108$:
+                                    503 ;diskio.c:149: return r == 0xFE;
+      000233 79               [ 4]  504 	ld	a, c
+      000234 D6 FE            [ 7]  505 	sub	a, #0xfe
+      000236 3E 01            [ 7]  506 	ld	a, #0x01
+      000238 C8               [11]  507 	ret	Z
+      000239 AF               [ 4]  508 	xor	a, a
+                                    509 ;diskio.c:150: }
+      00023A C9               [10]  510 	ret
+                                    511 ;diskio.c:153: BYTE sd_read_sector(BYTE *dst, DWORD sector)
+                                    512 ;	---------------------------------
+                                    513 ; Function sd_read_sector
+                                    514 ; ---------------------------------
+      00023B                        515 _sd_read_sector::
+                                    516 ;diskio.c:155: if (!start_read(sector)) {
+      00023B E5               [11]  517 	push	hl
+      00023C FD 21 04 00      [14]  518 	ld	iy, #4
+      000240 FD 39            [15]  519 	add	iy, sp
+      000242 FD 5E 00         [19]  520 	ld	e, 0 (iy)
+      000245 FD 56 01         [19]  521 	ld	d, 1 (iy)
+      000248 FD 7E 02         [19]  522 	ld	a, 2 (iy)
+      00024B FD 66 03         [19]  523 	ld	h, 3 (iy)
+                                    524 ;	spillPairReg hl
+                                    525 ;	spillPairReg hl
+      00024E 6F               [ 4]  526 	ld	l, a
+                                    527 ;	spillPairReg hl
+                                    528 ;	spillPairReg hl
+      00024F CDr01r02         [17]  529 	call	_start_read
+      000252 E1               [10]  530 	pop	hl
+      000253 B7               [ 4]  531 	or	a, a
+      000254 20 06            [12]  532 	jr	NZ, 00102$
+                                    533 ;diskio.c:156: deselect();
+      000256 CDr23r00         [17]  534 	call	_deselect
+                                    535 ;diskio.c:157: return 0;
+      000259 AF               [ 4]  536 	xor	a, a
+      00025A 18 13            [12]  537 	jr	00106$
+      00025C                        538 00102$:
+                                    539 ;diskio.c:159: spi_read_block(dst);        /* also clocks in CRC byte 0 */
+      00025C CDr00r00         [17]  540 	call	_spi_read_block
+                                    541 ;diskio.c:160: while (PH_CTRL & PH_STAT_BUSY)
+      00025F                        542 00103$:
+      00025F 3A 01 C0         [13]  543 	ld	a, (#0xc001)
+      000262 07               [ 4]  544 	rlca
+      000263 38 FA            [12]  545 	jr	C, 00103$
+                                    546 ;diskio.c:162: xfer(0xFF);                 /* CRC byte 1 */
+      000265 3E FF            [ 7]  547 	ld	a, #0xff
+      000267 CDr00r00         [17]  548 	call	_xfer
+                                    549 ;diskio.c:163: deselect();
+      00026A CDr23r00         [17]  550 	call	_deselect
+                                    551 ;diskio.c:164: return 1;
+      00026D 3E 01            [ 7]  552 	ld	a, #0x01
+      00026F                        553 00106$:
+                                    554 ;diskio.c:165: }
+      00026F E1               [10]  555 	pop	hl
+      000270 C1               [10]  556 	pop	bc
+      000271 C1               [10]  557 	pop	bc
+      000272 E9               [ 4]  558 	jp	(hl)
+                                    559 ;diskio.c:167: DRESULT disk_readp(BYTE *buff, DWORD sector, UINT offset, UINT count)
+                                    560 ;	---------------------------------
+                                    561 ; Function disk_readp
+                                    562 ; ---------------------------------
+      000273                        563 _disk_readp::
+      000273 DD E5            [15]  564 	push	ix
+      000275 DD 21 00 00      [14]  565 	ld	ix,#0
+      000279 DD 39            [15]  566 	add	ix,sp
+      00027B EB               [ 4]  567 	ex	de, hl
+                                    568 ;diskio.c:171: if (!cache_valid || cache_sector != sector) {
+      00027C 3Ar06r00         [13]  569 	ld	a, (_cache_valid+0)
+      00027F B7               [ 4]  570 	or	a, a
+      000280 28 20            [12]  571 	jr	Z, 00104$
+      000282 3Ar02r00         [13]  572 	ld	a, (_cache_sector+0)
+      000285 DD 96 04         [19]  573 	sub	a, 4 (ix)
+      000288 20 18            [12]  574 	jr	NZ, 00140$
+      00028A 3Ar03r00         [13]  575 	ld	a, (_cache_sector+1)
+      00028D DD 96 05         [19]  576 	sub	a, 5 (ix)
+      000290 20 10            [12]  577 	jr	NZ, 00140$
+      000292 3Ar04r00         [13]  578 	ld	a, (_cache_sector+2)
+      000295 DD 96 06         [19]  579 	sub	a, 6 (ix)
+      000298 20 08            [12]  580 	jr	NZ, 00140$
+      00029A 3Ar05r00         [13]  581 	ld	a, (_cache_sector+3)
+      00029D DD 96 07         [19]  582 	sub	a, 7 (ix)
+      0002A0 28 41            [12]  583 	jr	Z, 00105$
+      0002A2                        584 00140$:
+      0002A2                        585 00104$:
+                                    586 ;diskio.c:172: cache_valid = 0;
+      0002A2 21r06r00         [10]  587 	ld	hl, #_cache_valid
+                                    588 ;diskio.c:173: for (tries = 0; !sd_read_sector(SECTOR_CACHE, sector); )
+      0002A5 36 00            [10]  589 	ld	(hl), #0x00
+      0002A7 4E               [ 7]  590 	ld	c, (hl)
+      0002A8                        591 00111$:
+      0002A8 C5               [11]  592 	push	bc
+      0002A9 D5               [11]  593 	push	de
+      0002AA DD 6E 06         [19]  594 	ld	l, 6 (ix)
+                                    595 ;	spillPairReg hl
+                                    596 ;	spillPairReg hl
+      0002AD DD 66 07         [19]  597 	ld	h, 7 (ix)
+                                    598 ;	spillPairReg hl
+                                    599 ;	spillPairReg hl
+      0002B0 E5               [11]  600 	push	hl
+      0002B1 DD 6E 04         [19]  601 	ld	l, 4 (ix)
+                                    602 ;	spillPairReg hl
+                                    603 ;	spillPairReg hl
+      0002B4 DD 66 05         [19]  604 	ld	h, 5 (ix)
+                                    605 ;	spillPairReg hl
+                                    606 ;	spillPairReg hl
+      0002B7 E5               [11]  607 	push	hl
+      0002B8 21 00 E8         [10]  608 	ld	hl, #0xe800
+      0002BB CDr3Br02         [17]  609 	call	_sd_read_sector
+      0002BE D1               [10]  610 	pop	de
+      0002BF C1               [10]  611 	pop	bc
+      0002C0 B7               [ 4]  612 	or	a, a
+      0002C1 20 0A            [12]  613 	jr	NZ, 00103$
+                                    614 ;diskio.c:174: if (++tries == 5)
+      0002C3 0C               [ 4]  615 	inc	c
+      0002C4 79               [ 4]  616 	ld	a, c
+      0002C5 D6 05            [ 7]  617 	sub	a, #0x05
+      0002C7 20 DF            [12]  618 	jr	NZ, 00111$
+                                    619 ;diskio.c:175: return RES_ERROR;
+      0002C9 3E 01            [ 7]  620 	ld	a, #0x01
+      0002CB 18 3C            [12]  621 	jr	00113$
+      0002CD                        622 00103$:
+                                    623 ;diskio.c:176: cache_sector = sector;
+      0002CD D5               [11]  624 	push	de
+      0002CE 11r02r00         [10]  625 	ld	de, #_cache_sector
+      0002D1 21 06 00         [10]  626 	ld	hl, #6
+      0002D4 39               [11]  627 	add	hl, sp
+      0002D5 01 04 00         [10]  628 	ld	bc, #4
+      0002D8 ED B0            [21]  629 	ldir
+      0002DA D1               [10]  630 	pop	de
+                                    631 ;diskio.c:177: cache_valid = 1;
+      0002DB FD 21r06r00      [14]  632 	ld	iy, #_cache_valid
+      0002DF FD 36 00 01      [19]  633 	ld	0 (iy), #0x01
+      0002E3                        634 00105$:
+                                    635 ;diskio.c:180: memcpy(buff, SECTOR_CACHE + offset, count);
+      0002E3 DD 6E 08         [19]  636 	ld	l, 8 (ix)
+      0002E6 DD 66 09         [19]  637 	ld	h, 9 (ix)
+      0002E9 01 00 E8         [10]  638 	ld	bc, #0xe800
+      0002EC 09               [11]  639 	add	hl, bc
+                                    640 ;diskio.c:179: if (buff)
+      0002ED 7A               [ 4]  641 	ld	a, d
+      0002EE B3               [ 4]  642 	or	a, e
+      0002EF 28 0E            [12]  643 	jr	Z, 00108$
+                                    644 ;diskio.c:180: memcpy(buff, SECTOR_CACHE + offset, count);
+      0002F1 DD 4E 0A         [19]  645 	ld	c, 10 (ix)
+      0002F4 DD 46 0B         [19]  646 	ld	b, 11 (ix)
+      0002F7 78               [ 4]  647 	ld	a, b
+      0002F8 B1               [ 4]  648 	or	a, c
+      0002F9 28 0D            [12]  649 	jr	Z, 00109$
+      0002FB ED B0            [21]  650 	ldir
+      0002FD 18 09            [12]  651 	jr	00109$
+      0002FF                        652 00108$:
+                                    653 ;diskio.c:182: load_write(SECTOR_CACHE + offset, count);
+      0002FF DD 5E 0A         [19]  654 	ld	e, 10 (ix)
+      000302 DD 56 0B         [19]  655 	ld	d, 11 (ix)
+      000305 CDr00r00         [17]  656 	call	_load_write
+      000308                        657 00109$:
+                                    658 ;diskio.c:183: return RES_OK;
+      000308 AF               [ 4]  659 	xor	a, a
+      000309                        660 00113$:
+                                    661 ;diskio.c:184: }
+      000309 DD E1            [14]  662 	pop	ix
+      00030B E1               [10]  663 	pop	hl
+      00030C C1               [10]  664 	pop	bc
+      00030D C1               [10]  665 	pop	bc
+      00030E C1               [10]  666 	pop	bc
+      00030F C1               [10]  667 	pop	bc
+      000310 E9               [ 4]  668 	jp	(hl)
+                                    669 	.area _CODE
+                                    670 	.area _INITIALIZER
+                                    671 	.area _CABS (ABS)

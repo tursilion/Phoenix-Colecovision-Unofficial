@@ -17,7 +17,7 @@ PART         := xc6slx16-2-csg324
 TOP          := tp84_phoenix_top
 CORE_FILE    ?= CORE07.PHX
 CORE_NAME    := TIME PILOT 84
-CORE_ISSUE   ?= 257          # 0x0101 (bin2phx takes decimal)
+CORE_ISSUE   ?= 258          # 0x0102 (bin2phx takes decimal)
 
 REPO := ../../..
 RTL  := $(REPO)/rtl

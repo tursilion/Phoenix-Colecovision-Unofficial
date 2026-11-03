@@ -1,0 +1,45 @@
+                                      1 ;; Fast SPI block read and load-port writes.
+                                      2 ;;
+                                      3 ;; void spi_read_block(unsigned char *dst);   (sdcc calling convention 1: dst in HL)
+                                      4 ;;
+                                      5 ;; Reads the 512 data bytes of a block.  In boot mode an I/O read returns
+                                      6 ;; the last received SPI byte and starts the next transfer, so INIR reads a
+                                      7 ;; byte every 21 T-states (a transfer at 12.5MHz takes about 2).  The first
+                                      8 ;; IN only starts byte 0; the last data IN also starts CRC byte 0, which the
+                                      9 ;; caller skips.
+                                     10 
+                                     11 	.module spi
+                                     12 	.globl	_spi_read_block
+                                     13 	.globl	_load_write
+                                     14 
+                                     15 	.area	_CODE
+                                     16 
+      000000                         17 _spi_read_block:
+      000000 0E 00            [ 7]   18 	ld	c, #0
+      000002 ED 78            [12]   19 	in	a, (c)			; start byte 0
+      000004 06 00            [ 7]   20 	ld	b, #0
+      000006 ED B2            [21]   21 	inir				; bytes 0-255
+      000008 ED B2            [21]   22 	inir				; bytes 256-511, and starts CRC 0
+      00000A C9               [10]   23 	ret
+                                     24 
+                                     25 ;; void load_write(const unsigned char *src, unsigned int count);
+                                     26 ;; (src in HL, count in DE)
+                                     27 ;;
+                                     28 ;; Writes count bytes (1-512) to the load port; in boot mode an I/O write
+                                     29 ;; is a load data write (the address then goes up by one).
+                                     30 
+      00000B                         31 _load_write:
+      00000B 0E 00            [ 7]   32 	ld	c, #0
+      00000D 7A               [ 4]   33 1$:	ld	a, d
+      00000E B7               [ 4]   34 	or	a, a
+      00000F 28 07            [12]   35 	jr	Z, 2$
+      000011 06 00            [ 7]   36 	ld	b, #0			; 256 bytes
+      000013 ED B3            [21]   37 	otir
+      000015 15               [ 4]   38 	dec	d
+      000016 18 F5            [12]   39 	jr	1$
+      000018 7B               [ 4]   40 2$:	ld	a, e
+      000019 B7               [ 4]   41 	or	a, a
+      00001A C8               [11]   42 	ret	Z
+      00001B 43               [ 4]   43 	ld	b, e
+      00001C ED B3            [21]   44 	otir
+      00001E C9               [10]   45 	ret

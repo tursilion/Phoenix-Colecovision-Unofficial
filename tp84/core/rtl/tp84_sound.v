@@ -102,10 +102,10 @@ always @(posedge clk)
   if (wr_stb && cs_sn && A[2:0] == 3'd0)
     sn_d <= dout;
 
-reg  sn_ph = 0;                    // PSG clock = Z80 clock / 2
-always @(posedge clk)
-  if (cen_z80) sn_ph <= !sn_ph;
-wire sn_cen = cen_z80 && sn_ph;
+reg  [1:0] sn_ph = 0;              // PSG clock = Z80 clock / 2; sn76489.v
+always @(posedge clk)              // takes the PSG clock / 2
+  if (cen_z80) sn_ph <= sn_ph + 1'd1;
+wire sn_cen = cen_z80 && sn_ph == 2'd3;
 
 wire [9:0] sn0_out, sn2_out, sn3_out;
 sn76489 E5 ( .clk(clk), .reset(reset), .clk_en(sn_cen), .wr(wr_stb && cs_sn && A[2:0] == 3'd1), .din(sn_d), .out(sn0_out) );

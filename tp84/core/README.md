@@ -56,7 +56,8 @@ default), demo sounds on. They are set in `loader/main.c`.
 - **The sound board** (`rtl/tp84_sound.v`):
   - Z80 at 3.58 MHz.
   - Three SN76489A-type PSGs at 1.79 MHz (`rtl/sn76489.v`, written after
-    MAME's Y2404 model).
+    MAME's Y2404 model). Issue 0x0101 played them an octave high; 0x0102
+    fixes the pitch.
   - The switchable RC filters are not modelled.
 - **Clocks, frame lock, SRAM, rotation and video output** (`rtl/tp84_phoenix.v`):
   the same as Gyruss.
@@ -89,7 +90,7 @@ default), demo sounds on. They are set in `loader/main.c`.
 - `rtl/tp84_boot.hex`: the loader, built from `loader/`.
 - `sim/`: the Verilator testbench, with SRAM and SD card models.
 - `build/`: the ISE command-line build. The output is `CORE07.PHX`, issue
-  0x0101.
+  0x0102.
 
 ## Building
 

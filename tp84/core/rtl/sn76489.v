@@ -1,15 +1,17 @@
-// SN76489A-style PSG (the Y2404 of Time Pilot '84), after MAME's
-// sn76496.cpp model of the Y2404: tone and noise counters step every 8
-// chip clocks (output frequency = clock / (16 N), period 0 = 1024), a 17-bit
-// noise LFSR with taps at bits 2 and 3, and 2dB volume steps.
+// SN76489-style PSG, after MAME's sn76496.cpp: tone and noise counters
+// step every 8 clk_en (period 0 = 1024) and 2dB volume steps.  Noise: a
+// 17-bit LFSR with taps at bits 2 and 3 (Y2404 / SN76489A), or with
+// LFSR15 = 1 a 15-bit LFSR with taps at bits 0 and 1 (SN76489).
 //
-// clk_en is the chip clock enable (1.79MHz on TP84).  wr writes din, as a
-// write to the chip's data bus.  out is the sum of the four channels,
+// MAME steps the counters every 16 chip clocks (output frequency =
+// clock / (32 N)), so clk_en should be the chip clock / 2.  wr writes din,
+// as a write to the chip's data bus.  out is the sum of the four channels,
 // 0-255 each.
 
 `timescale 1ns / 1ps
 
 module sn76489
+   #( parameter LFSR15 = 0 )
    ( input            clk
    , input            reset
    , input            clk_en
@@ -24,7 +26,8 @@ reg  [2:0] nreg = 0;
 reg  [2:0] last = 0;
 reg [11:0] cnt [0:3];
 reg  [3:0] tog = 0;
-reg [16:0] rng = 17'h10000;
+reg [16:0] rng = LFSR15 ? 17'h04000 : 17'h10000;
+wire [16:0] rng_init = LFSR15 ? 17'h04000 : 17'h10000;
 reg  [2:0] div = 0;
 reg  [1:0] ch = 0;              // channel stepped this clock (one per clk_en)
 reg        step = 0;
@@ -44,7 +47,7 @@ endfunction
 wire [11:0] c   = cnt[ch];
 wire [11:0] per = (ch == 2'd3) ? nper :
                   (period[ch] == 10'd0) ? 12'd1024 : {2'b00, period[ch]};
-wire        fb  = rng[2] ^ (rng[3] & nreg[2]);
+wire        fb  = LFSR15 ? (rng[0] ^ (rng[1] & nreg[2])) : (rng[2] ^ (rng[3] & nreg[2]));
 
 integer i;
 always @(posedge clk) begin
@@ -56,7 +59,7 @@ always @(posedge clk) begin
       3'd0: period[0][3:0] <= din[3:0];
       3'd2: period[1][3:0] <= din[3:0];
       3'd4: period[2][3:0] <= din[3:0];
-      3'd6: begin nreg <= din[2:0]; rng <= 17'h10000; end
+      3'd6: begin nreg <= din[2:0]; rng <= rng_init; end
       3'd1: vol[0] <= din[3:0];
       3'd3: vol[1] <= din[3:0];
       3'd5: vol[2] <= din[3:0];
@@ -67,7 +70,7 @@ always @(posedge clk) begin
       3'd0: period[0][9:4] <= din[5:0];
       3'd2: period[1][9:4] <= din[5:0];
       3'd4: period[2][9:4] <= din[5:0];
-      3'd6: begin nreg <= din[2:0]; rng <= 17'h10000; end
+      3'd6: begin nreg <= din[2:0]; rng <= rng_init; end
       3'd1: vol[0] <= din[3:0];
       3'd3: vol[1] <= din[3:0];
       3'd5: vol[2] <= din[3:0];
@@ -86,7 +89,7 @@ always @(posedge clk) begin
       if (c <= 12'd1) begin
         cnt[ch] <= per;
         if (ch == 2'd3)
-          rng <= {fb, rng[16:1]};
+          rng <= LFSR15 ? {2'b00, fb, rng[14:1]} : {fb, rng[16:1]};
         else
           tog[ch] <= !tog[ch];
       end else
@@ -109,7 +112,7 @@ always @(posedge clk) begin
       period[i] <= 0;
     nreg <= 0;
     last <= 0;
-    rng  <= 17'h10000;
+    rng  <= rng_init;
     step <= 0;
     ch   <= 0;
   end

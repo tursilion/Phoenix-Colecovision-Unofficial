@@ -1,4 +1,4 @@
-Unofficial Time Pilot '84 core for CollectorVision Phoenix
+Unofficial Time Pilot '84 core for CollectorVision Phoenix - 0102
 Should be compatible with both releases of hardware.
 
 You will need to provide Time Pilot 84 ROMS - tp84 or tp84a sets should work. tp84b will NOT work as it has a different memory map.
@@ -8,3 +8,4 @@ Two fire buttons are fire and missile.
 
 The arcade is vertical. 0 or SNES shoulder button to rotate screen.
 
+11-02-26 - 0102 - Fix audio frequency

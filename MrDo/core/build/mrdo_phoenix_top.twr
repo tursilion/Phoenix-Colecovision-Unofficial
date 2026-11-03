@@ -1,0 +1,2417 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/trce -v 3 -u 10
+mrdo_phoenix_top.ncd mrdo_phoenix_top.pcf -o mrdo_phoenix_top.twr
+
+Design file:              mrdo_phoenix_top.ncd
+Physical constraint file: mrdo_phoenix_top.pcf
+Device,package,speed:     xc6slx16,csg324,C,-2 (PRODUCTION 1.23 2013-10-13)
+Report level:             verbose report
+                          unconstrained path report, limited to 10 items
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:3386 - Intersecting Constraints found and resolved.  For more 
+   information, see the TSI report.  Please consult the Xilinx Command Line 
+   Tools User Guide for information on generating a TSI report.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+================================================================================
+Timing constraint: TS_clock_50m0_i_net = PERIOD TIMEGRP "clock_50m0_i_net" 20 
+ns HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 component switching limit errors)
+ Minimum period is   5.000ns.
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_clock_50m0_i_net = PERIOD TIMEGRP "clock_50m0_i_net" 20 ns HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 5.334ns (period - min period limit)
+  Period: 8.000ns
+  Min period limit: 2.666ns (375.094MHz) (Tpllper_CLKOUT(Foutmax))
+  Physical resource: clock_system/pll_base_inst/PLL_ADV/CLKOUT3
+  Logical resource: clock_system/pll_base_inst/PLL_ADV/CLKOUT3
+  Location pin: PLL_ADV_X0Y0.CLKOUT3
+  Clock network: clock_system/clkout3
+--------------------------------------------------------------------------------
+Slack: 15.000ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 20.000ns
+  Low pulse: 10.000ns
+  Low pulse limit: 2.500ns (Tdcmpw_CLKIN_50_100)
+  Physical resource: clock_system/pll_base_inst/PLL_ADV/CLKIN1
+  Logical resource: clock_system/pll_base_inst/PLL_ADV/CLKIN1
+  Location pin: PLL_ADV_X0Y0.CLKIN2
+  Clock network: clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+--------------------------------------------------------------------------------
+Slack: 15.000ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 2.500ns (Tdcmpw_CLKIN_50_100)
+  Physical resource: clock_system/pll_base_inst/PLL_ADV/CLKIN1
+  Logical resource: clock_system/pll_base_inst/PLL_ADV/CLKIN1
+  Location pin: PLL_ADV_X0Y0.CLKIN2
+  Clock network: clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_clock_system_clkout3 = PERIOD TIMEGRP 
+"clock_system_clkout3"         TS_clock_50m0_i_net / 2.5 PHASE 4 ns HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 component switching limit errors)
+ Minimum period is   2.666ns.
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_clock_system_clkout3 = PERIOD TIMEGRP "clock_system_clkout3"
+        TS_clock_50m0_i_net / 2.5 PHASE 4 ns HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 5.334ns (period - min period limit)
+  Period: 8.000ns
+  Min period limit: 2.666ns (375.094MHz) (Tbcper_I)
+  Physical resource: clock_system/clkout4_buf/I0
+  Logical resource: clock_system/clkout4_buf/I0
+  Location pin: BUFGMUX_X2Y3.I0
+  Clock network: clock_system/clkout3
+--------------------------------------------------------------------------------
+Slack: 5.960ns (period - min period limit)
+  Period: 8.000ns
+  Min period limit: 2.040ns (490.196MHz) (Tockper)
+  Physical resource: tmds_out/serial_outputs<0>/CLK1
+  Logical resource: tmds_out/g1[0].to_serial/CK1
+  Location pin: OLOGIC_X5Y3.CLK1
+  Clock network: clock_tmds_n_s
+--------------------------------------------------------------------------------
+Slack: 5.960ns (period - min period limit)
+  Period: 8.000ns
+  Min period limit: 2.040ns (490.196MHz) (Tockper)
+  Physical resource: tmds_out/serial_outputs<1>/CLK1
+  Logical resource: tmds_out/g1[1].to_serial/CK1
+  Location pin: OLOGIC_X6Y3.CLK1
+  Clock network: clock_tmds_n_s
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_clock_system_clkout0 = PERIOD TIMEGRP 
+"clock_system_clkout0"         TS_clock_50m0_i_net / 0.5 HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 2170944 paths analyzed, 12805 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is  15.998ns.
+--------------------------------------------------------------------------------
+Slack:                  17.105ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               game/sram_wpulse (FF)
+  Destination:          sram_we_ddr (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      3.215ns (Levels of Logic = 1)
+  Clock Path Skew:      0.473ns (0.837 - 0.364)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Destination Clock:    clk_25m0_s falling at 20.000ns
+  Clock Uncertainty:    0.153ns
+
+  Clock Uncertainty:          0.153ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: game/sram_wpulse to sram_we_ddr
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X37Y27.AQ      Tcko                  0.430   game/sram_wpulse
+                                                       game/sram_wpulse
+    SLICE_X37Y27.B1      net (fanout=1)        0.525   game/sram_wpulse
+    SLICE_X37Y27.B       Tilo                  0.259   game/sram_wpulse
+                                                       sram_we_d1_s1_INV_0
+    OLOGIC_X18Y20.D2     net (fanout=1)        1.032   sram_we_d1_s
+    OLOGIC_X18Y20.CLK1   Todck                 0.969   sram_we_n_o_OBUF
+                                                       sram_we_ddr
+    -------------------------------------------------  ---------------------------
+    Total                                      3.215ns (1.658ns logic, 1.557ns route)
+                                                       (51.6% logic, 48.4% route)
+
+--------------------------------------------------------------------------------
+Slack:                  24.002ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               game/main/cpu/i_tv80_core/mcycle_0_1 (FF)
+  Destination:          game/main/cpu/i_tv80_core/i_reg/Mram_RegsL121/DP (RAM)
+  Requirement:          40.000ns
+  Data Path Delay:      15.795ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.050ns (0.433 - 0.483)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Destination Clock:    clk_25m0_s rising at 40.000ns
+  Clock Uncertainty:    0.153ns
+
+  Clock Uncertainty:          0.153ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: game/main/cpu/i_tv80_core/mcycle_0_1 to game/main/cpu/i_tv80_core/i_reg/Mram_RegsL121/DP
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X1Y26.AQ       Tcko                  0.430   game/main/cpu/i_tv80_core/mcycle_0_2
+                                                       game/main/cpu/i_tv80_core/mcycle_0_1
+    SLICE_X3Y27.B3       net (fanout=3)        1.620   game/main/cpu/i_tv80_core/mcycle_0_1
+    SLICE_X3Y27.B        Tilo                  0.259   game/main/cpu/i_tv80_core/mcycle_2_2
+                                                       game/main/cpu/i_tv80_core/i_mcode/PWR_16_o_PWR_16_o_OR_152_o1
+    SLICE_X4Y27.D1       net (fanout=6)        0.997   game/main/cpu/i_tv80_core/i_mcode/PWR_16_o_PWR_16_o_OR_152_o
+    SLICE_X4Y27.D        Tilo                  0.235   game/main/cpu/i_tv80_core/IR_1_4
+                                                       game/main/cpu/i_tv80_core/i_mcode/IncDec_16<2>3
+    SLICE_X3Y24.A1       net (fanout=2)        1.301   game/main/cpu/i_tv80_core/i_mcode/IncDec_16<2>2
+    SLICE_X3Y24.A        Tilo                  0.259   N533
+                                                       game/main/cpu/i_tv80_core/i_mcode/IncDec_16<2>4
+    SLICE_X3Y24.C2       net (fanout=6)        0.545   game/main/cpu/i_tv80_core/IncDec_16<2>
+    SLICE_X3Y24.C        Tilo                  0.259   N533
+                                                       game/main/cpu/i_tv80_core/tstate[2]_IncDec_16[1]_AND_396_o1_SW1
+    SLICE_X2Y18.C2       net (fanout=3)        1.691   N479
+    SLICE_X2Y18.C        Tilo                  0.255   game/main/cpu/i_tv80_core/Mmux_RegAddrA11
+                                                       game/main/cpu/i_tv80_core/Mmux_RegAddrA11_2
+    SLICE_X14Y11.B2      net (fanout=3)        1.985   game/main/cpu/i_tv80_core/Mmux_RegAddrA111
+    SLICE_X14Y11.BMUX    Tilo                  0.326   game/main/cpu/i_tv80_core/RegBusA_r<1>
+                                                       game/main/cpu/i_tv80_core/i_reg/Mram_RegsL4/SP
+    SLICE_X14Y15.C1      net (fanout=4)        1.375   game/main/cpu/i_tv80_core/RegBusA<2>
+    SLICE_X14Y15.COUT    Topcyc                0.328   game/main/cpu/i_tv80_core/Madd_ID16_cy<3>
+                                                       game/main/cpu/i_tv80_core/Madd_ID16_lut<2>
+                                                       game/main/cpu/i_tv80_core/Madd_ID16_cy<3>
+    SLICE_X14Y16.CIN     net (fanout=1)        0.003   game/main/cpu/i_tv80_core/Madd_ID16_cy<3>
+    SLICE_X14Y16.CMUX    Tcinc                 0.279   game/main/cpu/i_tv80_core/Madd_ID16_cy<7>
+                                                       game/main/cpu/i_tv80_core/Madd_ID16_cy<7>
+    SLICE_X4Y18.C4       net (fanout=2)        1.193   game/main/cpu/i_tv80_core/ID16<6>
+    SLICE_X4Y18.CMUX     Tilo                  0.403   game/main/cpu/i_tv80_core/RegDIL<6>
+                                                       game/main/cpu/i_tv80_core/Mmux_RegDIH172_G
+                                                       game/main/cpu/i_tv80_core/Mmux_RegDIH172
+    SLICE_X10Y13.DX      net (fanout=2)        1.656   game/main/cpu/i_tv80_core/RegDIL<6>
+    SLICE_X10Y13.CLK     Tds                   0.396   game/main/cpu/i_tv80_core/RegBusC<6>
+                                                       game/main/cpu/i_tv80_core/i_reg/Mram_RegsL121/DP
+    -------------------------------------------------  ---------------------------
+    Total                                     15.795ns (3.429ns logic, 12.366ns route)
+                                                       (21.7% logic, 78.3% route)
+
+--------------------------------------------------------------------------------
+Slack:                  24.281ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               game/main/cpu/i_tv80_core/mcycle_0_1 (FF)
+  Destination:          game/main/cpu/i_tv80_core/i_reg/Mram_RegsL122/SP (RAM)
+  Requirement:          40.000ns
+  Data Path Delay:      15.516ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.050ns (0.433 - 0.483)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Destination Clock:    clk_25m0_s rising at 40.000ns
+  Clock Uncertainty:    0.153ns
+
+  Clock Uncertainty:          0.153ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: game/main/cpu/i_tv80_core/mcycle_0_1 to game/main/cpu/i_tv80_core/i_reg/Mram_RegsL122/SP
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X1Y26.AQ       Tcko                  0.430   game/main/cpu/i_tv80_core/mcycle_0_2
+                                                       game/main/cpu/i_tv80_core/mcycle_0_1
+    SLICE_X3Y27.B3       net (fanout=3)        1.620   game/main/cpu/i_tv80_core/mcycle_0_1
+    SLICE_X3Y27.B        Tilo                  0.259   game/main/cpu/i_tv80_core/mcycle_2_2
+                                                       game/main/cpu/i_tv80_core/i_mcode/PWR_16_o_PWR_16_o_OR_152_o1
+    SLICE_X4Y27.D1       net (fanout=6)        0.997   game/main/cpu/i_tv80_core/i_mcode/PWR_16_o_PWR_16_o_OR_152_o
+    SLICE_X4Y27.D        Tilo                  0.235   game/main/cpu/i_tv80_core/IR_1_4
+                                                       game/main/cpu/i_tv80_core/i_mcode/IncDec_16<2>3
+    SLICE_X3Y24.A1       net (fanout=2)        1.301   game/main/cpu/i_tv80_core/i_mcode/IncDec_16<2>2
+    SLICE_X3Y24.A        Tilo                  0.259   N533
+                                                       game/main/cpu/i_tv80_core/i_mcode/IncDec_16<2>4
+    SLICE_X3Y24.C2       net (fanout=6)        0.545   game/main/cpu/i_tv80_core/IncDec_16<2>
+    SLICE_X3Y24.C        Tilo                  0.259   N533
+                                                       game/main/cpu/i_tv80_core/tstate[2]_IncDec_16[1]_AND_396_o1_SW1
+    SLICE_X2Y18.C2       net (fanout=3)        1.691   N479
+    SLICE_X2Y18.C        Tilo                  0.255   game/main/cpu/i_tv80_core/Mmux_RegAddrA11
+                                                       game/main/cpu/i_tv80_core/Mmux_RegAddrA11_2
+    SLICE_X14Y11.B2      net (fanout=3)        1.985   game/main/cpu/i_tv80_core/Mmux_RegAddrA111
+    SLICE_X14Y11.BMUX    Tilo                  0.326   game/main/cpu/i_tv80_core/RegBusA_r<1>
+                                                       game/main/cpu/i_tv80_core/i_reg/Mram_RegsL4/SP
+    SLICE_X14Y15.C1      net (fanout=4)        1.375   game/main/cpu/i_tv80_core/RegBusA<2>
+    SLICE_X14Y15.COUT    Topcyc                0.328   game/main/cpu/i_tv80_core/Madd_ID16_cy<3>
+                                                       game/main/cpu/i_tv80_core/Madd_ID16_lut<2>
+                                                       game/main/cpu/i_tv80_core/Madd_ID16_cy<3>
+    SLICE_X14Y16.CIN     net (fanout=1)        0.003   game/main/cpu/i_tv80_core/Madd_ID16_cy<3>
+    SLICE_X14Y16.DMUX    Tcind                 0.320   game/main/cpu/i_tv80_core/Madd_ID16_cy<7>
+                                                       game/main/cpu/i_tv80_core/Madd_ID16_cy<7>
+    SLICE_X6Y18.C1       net (fanout=2)        1.332   game/main/cpu/i_tv80_core/ID16<7>
+    SLICE_X6Y18.CMUX     Tilo                  0.430   N451
+                                                       game/main/cpu/i_tv80_core/Mmux_RegDIH182_G
+                                                       game/main/cpu/i_tv80_core/Mmux_RegDIH182
+    SLICE_X10Y13.CX      net (fanout=3)        1.275   game/main/cpu/i_tv80_core/RegDIL<7>
+    SLICE_X10Y13.CLK     Tds                   0.291   game/main/cpu/i_tv80_core/RegBusC<6>
+                                                       game/main/cpu/i_tv80_core/i_reg/Mram_RegsL122/SP
+    -------------------------------------------------  ---------------------------
+    Total                                     15.516ns (3.392ns logic, 12.124ns route)
+                                                       (21.9% logic, 78.1% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_clock_system_clkout0 = PERIOD TIMEGRP "clock_system_clkout0"
+        TS_clock_50m0_i_net / 0.5 HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 36.430ns (period - min period limit)
+  Period: 40.000ns
+  Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
+  Physical resource: game/main/Mram_ram1/CLKA
+  Logical resource: game/main/Mram_ram1/CLKA
+  Location pin: RAMB16_X0Y12.CLKA
+  Clock network: clk_25m0_s
+--------------------------------------------------------------------------------
+Slack: 36.430ns (period - min period limit)
+  Period: 40.000ns
+  Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
+  Physical resource: game/main/Mram_ram2/CLKA
+  Logical resource: game/main/Mram_ram2/CLKA
+  Location pin: RAMB16_X0Y10.CLKA
+  Clock network: clk_25m0_s
+--------------------------------------------------------------------------------
+Slack: 36.430ns (period - min period limit)
+  Period: 40.000ns
+  Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
+  Physical resource: game/main/video/Mram_bga/CLKAWRCLK
+  Logical resource: game/main/video/Mram_bga/CLKAWRCLK
+  Location pin: RAMB8_X1Y14.CLKAWRCLK
+  Clock network: clk_25m0_s
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_clock_system_clkout2 = PERIOD TIMEGRP 
+"clock_system_clkout2"         TS_clock_50m0_i_net / 2.5 HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 236 paths analyzed, 198 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is   4.138ns.
+--------------------------------------------------------------------------------
+Slack:                  3.862ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               tmds/state_FSM_FFd3 (FF)
+  Destination:          tmds_out/shift_b_7 (FF)
+  Requirement:          8.000ns
+  Data Path Delay:      3.518ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.347ns (1.453 - 1.800)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Destination Clock:    clock_tmds_s rising at 8.000ns
+  Clock Uncertainty:    0.273ns
+
+  Clock Uncertainty:          0.273ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.120ns
+
+  Maximum Data Path at Slow Process Corner: tmds/state_FSM_FFd3 to tmds_out/shift_b_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X28Y11.CQ      Tcko                  0.476   tmds/state_FSM_FFd3
+                                                       tmds/state_FSM_FFd3
+    SLICE_X20Y6.D1       net (fanout=48)       1.615   tmds/state_FSM_FFd3
+    SLICE_X20Y6.DMUX     Tilo                  0.298   tmds_out/shift_b<0>
+                                                       tmds/Mmux_blue821
+    SLICE_X20Y8.A2       net (fanout=4)        0.780   tmds/Mmux_blue82
+    SLICE_X20Y8.CLK      Tas                   0.349   tmds_out/shift_b<9>
+                                                       tmds_out/Mmux_GND_54_o_blue_i[9]_mux_4_OUT8
+                                                       tmds_out/shift_b_7
+    -------------------------------------------------  ---------------------------
+    Total                                      3.518ns (1.123ns logic, 2.395ns route)
+                                                       (31.9% logic, 68.1% route)
+
+--------------------------------------------------------------------------------
+Slack:                  3.885ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               tmds/state_FSM_FFd3 (FF)
+  Destination:          tmds_out/shift_b_2 (FF)
+  Requirement:          8.000ns
+  Data Path Delay:      3.497ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.345ns (1.455 - 1.800)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Destination Clock:    clock_tmds_s rising at 8.000ns
+  Clock Uncertainty:    0.273ns
+
+  Clock Uncertainty:          0.273ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.120ns
+
+  Maximum Data Path at Slow Process Corner: tmds/state_FSM_FFd3 to tmds_out/shift_b_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X28Y11.CQ      Tcko                  0.476   tmds/state_FSM_FFd3
+                                                       tmds/state_FSM_FFd3
+    SLICE_X20Y6.D1       net (fanout=48)       1.615   tmds/state_FSM_FFd3
+    SLICE_X20Y6.DMUX     Tilo                  0.298   tmds_out/shift_b<0>
+                                                       tmds/Mmux_blue821
+    SLICE_X20Y6.B1       net (fanout=4)        0.759   tmds/Mmux_blue82
+    SLICE_X20Y6.CLK      Tas                   0.349   tmds_out/shift_b<0>
+                                                       tmds_out/Mmux_GND_54_o_blue_i[9]_mux_4_OUT3
+                                                       tmds_out/shift_b_2
+    -------------------------------------------------  ---------------------------
+    Total                                      3.497ns (1.123ns logic, 2.374ns route)
+                                                       (32.1% logic, 67.9% route)
+
+--------------------------------------------------------------------------------
+Slack:                  4.044ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               tmds/state_FSM_FFd3 (FF)
+  Destination:          tmds_out/shift_b_6 (FF)
+  Requirement:          8.000ns
+  Data Path Delay:      3.336ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.347ns (1.453 - 1.800)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Destination Clock:    clock_tmds_s rising at 8.000ns
+  Clock Uncertainty:    0.273ns
+
+  Clock Uncertainty:          0.273ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.120ns
+
+  Maximum Data Path at Slow Process Corner: tmds/state_FSM_FFd3 to tmds_out/shift_b_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X28Y11.CQ      Tcko                  0.476   tmds/state_FSM_FFd3
+                                                       tmds/state_FSM_FFd3
+    SLICE_X20Y6.D1       net (fanout=48)       1.615   tmds/state_FSM_FFd3
+    SLICE_X20Y6.DMUX     Tilo                  0.298   tmds_out/shift_b<0>
+                                                       tmds/Mmux_blue821
+    SLICE_X21Y8.D4       net (fanout=4)        0.574   tmds/Mmux_blue82
+    SLICE_X21Y8.CLK      Tas                   0.373   tmds_out/shift_b<6>
+                                                       tmds_out/Mmux_GND_54_o_blue_i[9]_mux_4_OUT7
+                                                       tmds_out/shift_b_6
+    -------------------------------------------------  ---------------------------
+    Total                                      3.336ns (1.147ns logic, 2.189ns route)
+                                                       (34.4% logic, 65.6% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_clock_system_clkout2 = PERIOD TIMEGRP "clock_system_clkout2"
+        TS_clock_50m0_i_net / 2.5 HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 5.334ns (period - min period limit)
+  Period: 8.000ns
+  Min period limit: 2.666ns (375.094MHz) (Tbcper_I)
+  Physical resource: clock_system/clkout3_buf/I0
+  Logical resource: clock_system/clkout3_buf/I0
+  Location pin: BUFGMUX_X3Y13.I0
+  Clock network: clock_system/clkout2
+--------------------------------------------------------------------------------
+Slack: 5.751ns (period - min period limit)
+  Period: 8.000ns
+  Min period limit: 2.249ns (444.642MHz) (Tockper)
+  Physical resource: tmds_out/serial_outputs<0>/CLK0
+  Logical resource: tmds_out/g1[0].to_serial/CK0
+  Location pin: OLOGIC_X5Y3.CLK0
+  Clock network: clock_tmds_s
+--------------------------------------------------------------------------------
+Slack: 5.751ns (period - min period limit)
+  Period: 8.000ns
+  Min period limit: 2.249ns (444.642MHz) (Tockper)
+  Physical resource: tmds_out/serial_outputs<1>/CLK0
+  Logical resource: tmds_out/g1[1].to_serial/CK0
+  Location pin: OLOGIC_X6Y3.CLK0
+  Clock network: clock_tmds_s
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: Unconstrained OFFSET IN BEFORE analysis for clock 
+"clk_25m0_s" 
+
+ 38 paths analyzed, 38 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected.
+ Minimum allowable offset is   6.863ns.
+--------------------------------------------------------------------------------
+Offset:                 6.863ns (data path - clock path + uncertainty)
+  Source:               sd_cd_n_i (PAD)
+  Destination:          game/main/cpu/i_tv80_core/IR_6 (FF)
+  Destination Clock:    clk_25m0_s rising at 0.000ns
+  Data Path Delay:      11.738ns (Levels of Logic = 5)
+  Clock Path Delay:     5.256ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Data Path at Slow Process Corner: sd_cd_n_i to game/main/cpu/i_tv80_core/IR_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    C6.I                 Tiopi                 1.557   sd_cd_n_i
+                                                       sd_cd_n_i
+                                                       sd_cd_n_i_IBUF
+                                                       ProtoComp642.IMUX.4
+    SLICE_X11Y34.A1      net (fanout=1)        5.159   sd_cd_n_i_IBUF
+    SLICE_X11Y34.A       Tilo                  0.259   game/boot_mode_A[15]_AND_526_o
+                                                       game/main/Mmux_din357
+    SLICE_X11Y34.C2      net (fanout=1)        0.530   game/main/Mmux_din357
+    SLICE_X11Y34.C       Tilo                  0.259   game/boot_mode_A[15]_AND_526_o
+                                                       game/main/Mmux_din358
+    SLICE_X14Y32.A2      net (fanout=1)        1.211   game/main/Mmux_din358
+    SLICE_X14Y32.A       Tilo                  0.254   game/main/cpu/di_reg<7>
+                                                       game/main/Mmux_din3513
+    SLICE_X4Y26.B6       net (fanout=2)        1.167   game/main/din<6>
+    SLICE_X4Y26.B        Tilo                  0.235   game/main/cpu/i_tv80_core/IR_6_4
+                                                       game/main/cpu/i_tv80_core/Mmux__n102571
+    SLICE_X9Y25.CX       net (fanout=4)        0.993   game/main/cpu/i_tv80_core/_n1025<6>
+    SLICE_X9Y25.CLK      Tdick                 0.114   game/main/cpu/i_tv80_core/IR<7>
+                                                       game/main/cpu/i_tv80_core/IR_6
+    -------------------------------------------------  ---------------------------
+    Total                                     11.738ns (2.678ns logic, 9.060ns route)
+                                                       (22.8% logic, 77.2% route)
+
+  Minimum Clock Path at Slow Process Corner: clock_50m0_i_net to game/main/cpu/i_tv80_core/IR_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.344   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.401   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.179   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.716   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.143   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.427   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.197   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X9Y25.CLK      net (fanout=713)      0.849   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      5.256ns (2.863ns logic, 2.393ns route)
+                                                       (54.5% logic, 45.5% route)
+
+--------------------------------------------------------------------------------
+Offset:                 6.731ns (data path - clock path + uncertainty)
+  Source:               sd_cd_n_i (PAD)
+  Destination:          game/main/cpu/i_tv80_core/IR_6_4 (FF)
+  Destination Clock:    clk_25m0_s rising at 0.000ns
+  Data Path Delay:      11.625ns (Levels of Logic = 5)
+  Clock Path Delay:     5.275ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Data Path at Slow Process Corner: sd_cd_n_i to game/main/cpu/i_tv80_core/IR_6_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    C6.I                 Tiopi                 1.557   sd_cd_n_i
+                                                       sd_cd_n_i
+                                                       sd_cd_n_i_IBUF
+                                                       ProtoComp642.IMUX.4
+    SLICE_X11Y34.A1      net (fanout=1)        5.159   sd_cd_n_i_IBUF
+    SLICE_X11Y34.A       Tilo                  0.259   game/boot_mode_A[15]_AND_526_o
+                                                       game/main/Mmux_din357
+    SLICE_X11Y34.C2      net (fanout=1)        0.530   game/main/Mmux_din357
+    SLICE_X11Y34.C       Tilo                  0.259   game/boot_mode_A[15]_AND_526_o
+                                                       game/main/Mmux_din358
+    SLICE_X14Y32.A2      net (fanout=1)        1.211   game/main/Mmux_din358
+    SLICE_X14Y32.A       Tilo                  0.254   game/main/cpu/di_reg<7>
+                                                       game/main/Mmux_din3513
+    SLICE_X4Y26.B6       net (fanout=2)        1.167   game/main/din<6>
+    SLICE_X4Y26.B        Tilo                  0.235   game/main/cpu/i_tv80_core/IR_6_4
+                                                       game/main/cpu/i_tv80_core/Mmux__n102571
+    SLICE_X4Y26.DX       net (fanout=4)        0.880   game/main/cpu/i_tv80_core/_n1025<6>
+    SLICE_X4Y26.CLK      Tdick                 0.114   game/main/cpu/i_tv80_core/IR_6_4
+                                                       game/main/cpu/i_tv80_core/IR_6_4
+    -------------------------------------------------  ---------------------------
+    Total                                     11.625ns (2.678ns logic, 8.947ns route)
+                                                       (23.0% logic, 77.0% route)
+
+  Minimum Clock Path at Slow Process Corner: clock_50m0_i_net to game/main/cpu/i_tv80_core/IR_6_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.344   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.401   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.179   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.716   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.143   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.427   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.197   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X4Y26.CLK      net (fanout=713)      0.868   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      5.275ns (2.863ns logic, 2.412ns route)
+                                                       (54.3% logic, 45.7% route)
+
+--------------------------------------------------------------------------------
+Offset:                 6.683ns (data path - clock path + uncertainty)
+  Source:               sd_cd_n_i (PAD)
+  Destination:          game/main/cpu/i_tv80_core/IR_6_1 (FF)
+  Destination Clock:    clk_25m0_s rising at 0.000ns
+  Data Path Delay:      11.577ns (Levels of Logic = 5)
+  Clock Path Delay:     5.275ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Data Path at Slow Process Corner: sd_cd_n_i to game/main/cpu/i_tv80_core/IR_6_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    C6.I                 Tiopi                 1.557   sd_cd_n_i
+                                                       sd_cd_n_i
+                                                       sd_cd_n_i_IBUF
+                                                       ProtoComp642.IMUX.4
+    SLICE_X11Y34.A1      net (fanout=1)        5.159   sd_cd_n_i_IBUF
+    SLICE_X11Y34.A       Tilo                  0.259   game/boot_mode_A[15]_AND_526_o
+                                                       game/main/Mmux_din357
+    SLICE_X11Y34.C2      net (fanout=1)        0.530   game/main/Mmux_din357
+    SLICE_X11Y34.C       Tilo                  0.259   game/boot_mode_A[15]_AND_526_o
+                                                       game/main/Mmux_din358
+    SLICE_X14Y32.A2      net (fanout=1)        1.211   game/main/Mmux_din358
+    SLICE_X14Y32.A       Tilo                  0.254   game/main/cpu/di_reg<7>
+                                                       game/main/Mmux_din3513
+    SLICE_X4Y26.B6       net (fanout=2)        1.167   game/main/din<6>
+    SLICE_X4Y26.B        Tilo                  0.235   game/main/cpu/i_tv80_core/IR_6_4
+                                                       game/main/cpu/i_tv80_core/Mmux__n102571
+    SLICE_X4Y26.AX       net (fanout=4)        0.832   game/main/cpu/i_tv80_core/_n1025<6>
+    SLICE_X4Y26.CLK      Tdick                 0.114   game/main/cpu/i_tv80_core/IR_6_4
+                                                       game/main/cpu/i_tv80_core/IR_6_1
+    -------------------------------------------------  ---------------------------
+    Total                                     11.577ns (2.678ns logic, 8.899ns route)
+                                                       (23.1% logic, 76.9% route)
+
+  Minimum Clock Path at Slow Process Corner: clock_50m0_i_net to game/main/cpu/i_tv80_core/IR_6_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.344   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.401   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.179   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.716   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.143   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.427   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.197   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X4Y26.CLK      net (fanout=713)      0.868   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      5.275ns (2.863ns logic, 2.412ns route)
+                                                       (54.3% logic, 45.7% route)
+
+--------------------------------------------------------------------------------
+Offset:                 6.433ns (data path - clock path + uncertainty)
+  Source:               sd_cd_n_i (PAD)
+  Destination:          game/main/cpu/i_tv80_core/IR_6_3 (FF)
+  Destination Clock:    clk_25m0_s rising at 0.000ns
+  Data Path Delay:      11.327ns (Levels of Logic = 5)
+  Clock Path Delay:     5.275ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Data Path at Slow Process Corner: sd_cd_n_i to game/main/cpu/i_tv80_core/IR_6_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    C6.I                 Tiopi                 1.557   sd_cd_n_i
+                                                       sd_cd_n_i
+                                                       sd_cd_n_i_IBUF
+                                                       ProtoComp642.IMUX.4
+    SLICE_X11Y34.A1      net (fanout=1)        5.159   sd_cd_n_i_IBUF
+    SLICE_X11Y34.A       Tilo                  0.259   game/boot_mode_A[15]_AND_526_o
+                                                       game/main/Mmux_din357
+    SLICE_X11Y34.C2      net (fanout=1)        0.530   game/main/Mmux_din357
+    SLICE_X11Y34.C       Tilo                  0.259   game/boot_mode_A[15]_AND_526_o
+                                                       game/main/Mmux_din358
+    SLICE_X14Y32.A2      net (fanout=1)        1.211   game/main/Mmux_din358
+    SLICE_X14Y32.A       Tilo                  0.254   game/main/cpu/di_reg<7>
+                                                       game/main/Mmux_din3513
+    SLICE_X4Y26.B6       net (fanout=2)        1.167   game/main/din<6>
+    SLICE_X4Y26.B        Tilo                  0.235   game/main/cpu/i_tv80_core/IR_6_4
+                                                       game/main/cpu/i_tv80_core/Mmux__n102571
+    SLICE_X4Y26.CX       net (fanout=4)        0.582   game/main/cpu/i_tv80_core/_n1025<6>
+    SLICE_X4Y26.CLK      Tdick                 0.114   game/main/cpu/i_tv80_core/IR_6_4
+                                                       game/main/cpu/i_tv80_core/IR_6_3
+    -------------------------------------------------  ---------------------------
+    Total                                     11.327ns (2.678ns logic, 8.649ns route)
+                                                       (23.6% logic, 76.4% route)
+
+  Minimum Clock Path at Slow Process Corner: clock_50m0_i_net to game/main/cpu/i_tv80_core/IR_6_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.344   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.401   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.179   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.716   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.143   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.427   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.197   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X4Y26.CLK      net (fanout=713)      0.868   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      5.275ns (2.863ns logic, 2.412ns route)
+                                                       (54.3% logic, 45.7% route)
+
+--------------------------------------------------------------------------------
+Offset:                 5.858ns (data path - clock path + uncertainty)
+  Source:               sd_cd_n_i (PAD)
+  Destination:          game/main/cpu/i_tv80_core/TmpAddr_6 (FF)
+  Destination Clock:    clk_25m0_s rising at 0.000ns
+  Data Path Delay:      10.726ns (Levels of Logic = 6)
+  Clock Path Delay:     5.249ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Data Path at Slow Process Corner: sd_cd_n_i to game/main/cpu/i_tv80_core/TmpAddr_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    C6.I                 Tiopi                 1.557   sd_cd_n_i
+                                                       sd_cd_n_i
+                                                       sd_cd_n_i_IBUF
+                                                       ProtoComp642.IMUX.4
+    SLICE_X11Y34.A1      net (fanout=1)        5.159   sd_cd_n_i_IBUF
+    SLICE_X11Y34.A       Tilo                  0.259   game/boot_mode_A[15]_AND_526_o
+                                                       game/main/Mmux_din357
+    SLICE_X11Y34.C2      net (fanout=1)        0.530   game/main/Mmux_din357
+    SLICE_X11Y34.C       Tilo                  0.259   game/boot_mode_A[15]_AND_526_o
+                                                       game/main/Mmux_din358
+    SLICE_X14Y32.A2      net (fanout=1)        1.211   game/main/Mmux_din358
+    SLICE_X14Y32.A       Tilo                  0.254   game/main/cpu/di_reg<7>
+                                                       game/main/Mmux_din3513
+    SLICE_X15Y29.D4      net (fanout=2)        0.722   game/main/din<6>
+    SLICE_X15Y29.D       Tilo                  0.259   game/main/cpu/i_tv80_core/TmpAddr<6>
+                                                       game/main/cpu/i_tv80_core/Mmux_TmpAddr[15]_TmpAddr[15]_mux_135_OUT13_SW0
+    SLICE_X15Y29.C6      net (fanout=1)        0.143   N188
+    SLICE_X15Y29.CLK     Tas                   0.373   game/main/cpu/i_tv80_core/TmpAddr<6>
+                                                       game/main/cpu/i_tv80_core/Mmux_TmpAddr[15]_TmpAddr[15]_mux_135_OUT13
+                                                       game/main/cpu/i_tv80_core/TmpAddr_6
+    -------------------------------------------------  ---------------------------
+    Total                                     10.726ns (2.961ns logic, 7.765ns route)
+                                                       (27.6% logic, 72.4% route)
+
+  Minimum Clock Path at Slow Process Corner: clock_50m0_i_net to game/main/cpu/i_tv80_core/TmpAddr_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.344   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.401   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.179   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.716   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.143   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.427   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.197   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X15Y29.CLK     net (fanout=713)      0.842   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      5.249ns (2.863ns logic, 2.386ns route)
+                                                       (54.5% logic, 45.5% route)
+
+--------------------------------------------------------------------------------
+Offset:                 5.851ns (data path - clock path + uncertainty)
+  Source:               sd_cd_n_i (PAD)
+  Destination:          game/main/cpu/i_tv80_core/IR_6_2 (FF)
+  Destination Clock:    clk_25m0_s rising at 0.000ns
+  Data Path Delay:      10.745ns (Levels of Logic = 5)
+  Clock Path Delay:     5.275ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Data Path at Slow Process Corner: sd_cd_n_i to game/main/cpu/i_tv80_core/IR_6_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    C6.I                 Tiopi                 1.557   sd_cd_n_i
+                                                       sd_cd_n_i
+                                                       sd_cd_n_i_IBUF
+                                                       ProtoComp642.IMUX.4
+    SLICE_X11Y34.A1      net (fanout=1)        5.159   sd_cd_n_i_IBUF
+    SLICE_X11Y34.A       Tilo                  0.259   game/boot_mode_A[15]_AND_526_o
+                                                       game/main/Mmux_din357
+    SLICE_X11Y34.C2      net (fanout=1)        0.530   game/main/Mmux_din357
+    SLICE_X11Y34.C       Tilo                  0.259   game/boot_mode_A[15]_AND_526_o
+                                                       game/main/Mmux_din358
+    SLICE_X14Y32.A2      net (fanout=1)        1.211   game/main/Mmux_din358
+    SLICE_X14Y32.A       Tilo                  0.254   game/main/cpu/di_reg<7>
+                                                       game/main/Mmux_din3513
+    SLICE_X4Y26.B6       net (fanout=2)        1.167   game/main/din<6>
+    SLICE_X4Y26.CLK      Tas                   0.349   game/main/cpu/i_tv80_core/IR_6_4
+                                                       game/main/cpu/i_tv80_core/Mmux__n102571
+                                                       game/main/cpu/i_tv80_core/IR_6_2
+    -------------------------------------------------  ---------------------------
+    Total                                     10.745ns (2.678ns logic, 8.067ns route)
+                                                       (24.9% logic, 75.1% route)
+
+  Minimum Clock Path at Slow Process Corner: clock_50m0_i_net to game/main/cpu/i_tv80_core/IR_6_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.344   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.401   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.179   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.716   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.143   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.427   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.197   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X4Y26.CLK      net (fanout=713)      0.868   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      5.275ns (2.863ns logic, 2.412ns route)
+                                                       (54.3% logic, 45.7% route)
+
+--------------------------------------------------------------------------------
+Offset:                 4.443ns (data path - clock path + uncertainty)
+  Source:               sd_cd_n_i (PAD)
+  Destination:          game/main/cpu/di_reg_6 (FF)
+  Destination Clock:    clk_25m0_s rising at 0.000ns
+  Data Path Delay:      9.314ns (Levels of Logic = 4)
+  Clock Path Delay:     5.252ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Data Path at Slow Process Corner: sd_cd_n_i to game/main/cpu/di_reg_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    C6.I                 Tiopi                 1.557   sd_cd_n_i
+                                                       sd_cd_n_i
+                                                       sd_cd_n_i_IBUF
+                                                       ProtoComp642.IMUX.4
+    SLICE_X11Y34.A1      net (fanout=1)        5.159   sd_cd_n_i_IBUF
+    SLICE_X11Y34.A       Tilo                  0.259   game/boot_mode_A[15]_AND_526_o
+                                                       game/main/Mmux_din357
+    SLICE_X11Y34.C2      net (fanout=1)        0.530   game/main/Mmux_din357
+    SLICE_X11Y34.C       Tilo                  0.259   game/boot_mode_A[15]_AND_526_o
+                                                       game/main/Mmux_din358
+    SLICE_X14Y32.A2      net (fanout=1)        1.211   game/main/Mmux_din358
+    SLICE_X14Y32.CLK     Tas                   0.339   game/main/cpu/di_reg<7>
+                                                       game/main/Mmux_din3513
+                                                       game/main/cpu/di_reg_6
+    -------------------------------------------------  ---------------------------
+    Total                                      9.314ns (2.414ns logic, 6.900ns route)
+                                                       (25.9% logic, 74.1% route)
+
+  Minimum Clock Path at Slow Process Corner: clock_50m0_i_net to game/main/cpu/di_reg_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.344   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.401   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.179   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.716   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.143   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.427   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.197   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X14Y32.CLK     net (fanout=713)      0.845   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      5.252ns (2.863ns logic, 2.389ns route)
+                                                       (54.5% logic, 45.5% route)
+
+--------------------------------------------------------------------------------
+Offset:                 2.713ns (data path - clock path + uncertainty)
+  Source:               btn_reset_n_i (PAD)
+  Destination:          Mshreg_btn_meta_r_1 (FF)
+  Destination Clock:    clk_25m0_s rising at 0.000ns
+  Data Path Delay:      7.619ns (Levels of Logic = 1)
+  Clock Path Delay:     5.287ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Data Path at Slow Process Corner: btn_reset_n_i to Mshreg_btn_meta_r_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    B2.I                 Tiopi                 1.557   btn_reset_n_i
+                                                       btn_reset_n_i
+                                                       btn_reset_n_i_IBUF
+                                                       ProtoComp642.IMUX.7
+    SLICE_X30Y31.BI      net (fanout=1)        6.004   btn_reset_n_i_IBUF
+    SLICE_X30Y31.CLK     Tds                   0.058   game/fx2<0>
+                                                       Mshreg_btn_meta_r_1
+    -------------------------------------------------  ---------------------------
+    Total                                      7.619ns (1.615ns logic, 6.004ns route)
+                                                       (21.2% logic, 78.8% route)
+
+  Minimum Clock Path at Slow Process Corner: clock_50m0_i_net to Mshreg_btn_meta_r_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.344   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.401   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.179   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.716   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.143   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.427   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.197   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X30Y31.CLK     net (fanout=713)      0.880   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      5.287ns (2.863ns logic, 2.424ns route)
+                                                       (54.2% logic, 45.8% route)
+
+--------------------------------------------------------------------------------
+Offset:                 1.689ns (data path - clock path + uncertainty)
+  Source:               sram_data_io<7> (PAD)
+  Destination:          game/rom_q_7 (FF)
+  Destination Clock:    clk_25m0_s rising at 0.000ns
+  Data Path Delay:      6.559ns (Levels of Logic = 2)
+  Clock Path Delay:     5.251ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Data Path at Slow Process Corner: sram_data_io<7> to game/rom_q_7
+    Location                Delay type         Delay(ns)  Physical Resource
+                                                          Logical Resource(s)
+    ----------------------------------------------------  -------------------
+    E16.I                   Tiopi                 1.557   sram_data_io<7>
+                                                          sram_data_io<7>
+                                                          sram_data_io_7_IOBUF/IBUF
+                                                          ProtoComp648.IMUX.7
+    ILOGIC_X18Y49.D         net (fanout=1)        0.341   N386_direct
+    ILOGIC_X18Y49.FABRICOUT Tidi                  1.524   N386
+                                                          ProtoComp655.D2OBYP_SRC.7
+    SLICE_X15Y33.DX         net (fanout=1)        3.023   N386
+    SLICE_X15Y33.CLK        Tdick                 0.114   game/rom_q<7>
+                                                          game/rom_q_7
+    ----------------------------------------------------  ---------------------------
+    Total                                         6.559ns (3.195ns logic, 3.364ns route)
+                                                          (48.7% logic, 51.3% route)
+
+  Minimum Clock Path at Slow Process Corner: clock_50m0_i_net to game/rom_q_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.344   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.401   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.179   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.716   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.143   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.427   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.197   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X15Y33.CLK     net (fanout=713)      0.844   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      5.251ns (2.863ns logic, 2.388ns route)
+                                                       (54.5% logic, 45.5% route)
+
+--------------------------------------------------------------------------------
+Offset:                 1.640ns (data path - clock path + uncertainty)
+  Source:               sram_data_io<5> (PAD)
+  Destination:          game/rom_q_5 (FF)
+  Destination Clock:    clk_25m0_s rising at 0.000ns
+  Data Path Delay:      6.510ns (Levels of Logic = 2)
+  Clock Path Delay:     5.251ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Data Path at Slow Process Corner: sram_data_io<5> to game/rom_q_5
+    Location                Delay type         Delay(ns)  Physical Resource
+                                                          Logical Resource(s)
+    ----------------------------------------------------  -------------------
+    F17.I                   Tiopi                 1.557   sram_data_io<5>
+                                                          sram_data_io<5>
+                                                          sram_data_io_5_IOBUF/IBUF
+                                                          ProtoComp648.IMUX.5
+    ILOGIC_X18Y45.D         net (fanout=1)        0.341   N388_direct
+    ILOGIC_X18Y45.FABRICOUT Tidi                  1.524   N388
+                                                          ProtoComp655.D2OBYP_SRC.5
+    SLICE_X15Y33.BX         net (fanout=1)        2.974   N388
+    SLICE_X15Y33.CLK        Tdick                 0.114   game/rom_q<7>
+                                                          game/rom_q_5
+    ----------------------------------------------------  ---------------------------
+    Total                                         6.510ns (3.195ns logic, 3.315ns route)
+                                                          (49.1% logic, 50.9% route)
+
+  Minimum Clock Path at Slow Process Corner: clock_50m0_i_net to game/rom_q_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.344   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.401   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.179   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.716   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.143   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.427   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.197   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X15Y33.CLK     net (fanout=713)      0.844   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      5.251ns (2.863ns logic, 2.388ns route)
+                                                       (54.5% logic, 45.5% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: Unconstrained OFFSET OUT AFTER analysis for clock 
+"clk_25m0_s" 
+
+ 47 paths analyzed, 37 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected.
+ Maximum allowable offset is  31.426ns.
+--------------------------------------------------------------------------------
+Offset:                 31.426ns (clock path + data path + uncertainty)
+  Source:               sram_we_ddr (FF)
+  Destination:          sram_we_n_o (PAD)
+  Source Clock:         clk_25m0_s falling at 20.000ns
+  Data Path Delay:      4.189ns (Levels of Logic = 1)
+  Clock Path Delay:     6.856ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to sram_we_ddr
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    OLOGIC_X18Y20.CLK1   net (fanout=713)      1.703   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.856ns (3.170ns logic, 3.686ns route)
+                                                       (46.2% logic, 53.8% route)
+
+  Maximum Data Path at Slow Process Corner: sram_we_ddr to sram_we_n_o
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    OLOGIC_X18Y20.OQ     Tockq                 1.158   sram_we_n_o_OBUF
+                                                       sram_we_ddr
+    M18.O                net (fanout=1)        0.309   sram_we_n_o_OBUF
+    M18.PAD              Tioop                 2.722   sram_we_n_o
+                                                       sram_we_n_o_OBUF
+                                                       sram_we_n_o
+    -------------------------------------------------  ---------------------------
+    Total                                      4.189ns (3.880ns logic, 0.309ns route)
+                                                       (92.6% logic, 7.4% route)
+
+--------------------------------------------------------------------------------
+Offset:                 15.586ns (clock path + data path + uncertainty)
+  Source:               game/led_err (FF)
+  Destination:          led_o (PAD)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Data Path Delay:      8.980ns (Levels of Logic = 2)
+  Clock Path Delay:     6.225ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to game/led_err
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X19Y40.CLK     net (fanout=713)      1.072   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.225ns (3.170ns logic, 3.055ns route)
+                                                       (50.9% logic, 49.1% route)
+
+  Maximum Data Path at Slow Process Corner: game/led_err to led_o
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X19Y40.CQ      Tcko                  0.430   game/led_err
+                                                       game/led_err
+    SLICE_X18Y52.D2      net (fanout=2)        1.639   game/led_err
+    SLICE_X18Y52.D       Tilo                  0.254   por_r_led_err_s_OR_2004_o
+                                                       por_r_led_err_s_OR_2004_o1
+    D14.T                net (fanout=1)        3.675   por_r_led_err_s_OR_2004_o
+    D14.PAD              Tiotp                 2.982   led_o
+                                                       led_o_OBUFT
+                                                       led_o
+    -------------------------------------------------  ---------------------------
+    Total                                      8.980ns (3.666ns logic, 5.314ns route)
+                                                       (40.8% logic, 59.2% route)
+
+--------------------------------------------------------------------------------
+Offset:                 14.756ns (clock path + data path + uncertainty)
+  Source:               por_r (FF)
+  Destination:          led_o (PAD)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Data Path Delay:      8.141ns (Levels of Logic = 2)
+  Clock Path Delay:     6.234ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to por_r
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X18Y52.CLK     net (fanout=713)      1.081   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.234ns (3.170ns logic, 3.064ns route)
+                                                       (50.9% logic, 49.1% route)
+
+  Maximum Data Path at Slow Process Corner: por_r to led_o
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X18Y52.DMUX    Tshcko                0.576   por_r_led_err_s_OR_2004_o
+                                                       por_r
+    SLICE_X18Y52.D1      net (fanout=39)       0.654   por_r
+    SLICE_X18Y52.D       Tilo                  0.254   por_r_led_err_s_OR_2004_o
+                                                       por_r_led_err_s_OR_2004_o1
+    D14.T                net (fanout=1)        3.675   por_r_led_err_s_OR_2004_o
+    D14.PAD              Tiotp                 2.982   led_o
+                                                       led_o_OBUFT
+                                                       led_o
+    -------------------------------------------------  ---------------------------
+    Total                                      8.141ns (3.812ns logic, 4.329ns route)
+                                                       (46.8% logic, 53.2% route)
+
+--------------------------------------------------------------------------------
+Offset:                 14.569ns (clock path + data path + uncertainty)
+  Source:               cv_pads_inst/keypad_r (FF)
+  Destination:          joy_p5_o (PAD)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Data Path Delay:      7.944ns (Levels of Logic = 2)
+  Clock Path Delay:     6.244ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to cv_pads_inst/keypad_r
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X20Y48.CLK     net (fanout=713)      1.091   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.244ns (3.170ns logic, 3.074ns route)
+                                                       (50.8% logic, 49.2% route)
+
+  Maximum Data Path at Slow Process Corner: cv_pads_inst/keypad_r to joy_p5_o
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X20Y48.CQ      Tcko                  0.476   cv_pads_inst/keypad_r
+                                                       cv_pads_inst/keypad_r
+    SLICE_X11Y61.A3      net (fanout=6)        2.110   cv_pads_inst/keypad_r
+    SLICE_X11Y61.A       Tilo                  0.259   joy_p5_o_OBUF
+                                                       cv_pads_inst/p5_o1_INV_0
+    A7.O                 net (fanout=1)        2.377   joy_p5_o_OBUF
+    A7.PAD               Tioop                 2.722   joy_p5_o
+                                                       joy_p5_o_OBUF
+                                                       joy_p5_o
+    -------------------------------------------------  ---------------------------
+    Total                                      7.944ns (3.457ns logic, 4.487ns route)
+                                                       (43.5% logic, 56.5% route)
+
+--------------------------------------------------------------------------------
+Offset:                 14.491ns (clock path + data path + uncertainty)
+  Source:               game/sram_doe (FF)
+  Destination:          sram_data_io<7> (PAD)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Data Path Delay:      7.827ns (Levels of Logic = 2)
+  Clock Path Delay:     6.283ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to game/sram_doe
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X33Y34.CLK     net (fanout=713)      1.130   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.283ns (3.170ns logic, 3.113ns route)
+                                                       (50.5% logic, 49.5% route)
+
+  Maximum Data Path at Slow Process Corner: game/sram_doe to sram_data_io<7>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X33Y34.CQ      Tcko                  0.430   game/sram_doe
+                                                       game/sram_doe
+    SLICE_X33Y34.B1      net (fanout=2)        0.737   game/sram_doe
+    SLICE_X33Y34.B       Tilo                  0.259   game/sram_doe
+                                                       sram_doe_s_inv1_INV_0
+    E16.T                net (fanout=8)        3.679   sram_doe_s_inv
+    E16.PAD              Tiotp                 2.722   sram_data_io<7>
+                                                       sram_data_io_7_IOBUF/OBUFT
+                                                       sram_data_io<7>
+    -------------------------------------------------  ---------------------------
+    Total                                      7.827ns (3.411ns logic, 4.416ns route)
+                                                       (43.6% logic, 56.4% route)
+
+--------------------------------------------------------------------------------
+Offset:                 14.423ns (clock path + data path + uncertainty)
+  Source:               game/sram_doe (FF)
+  Destination:          sram_data_io<1> (PAD)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Data Path Delay:      7.759ns (Levels of Logic = 2)
+  Clock Path Delay:     6.283ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to game/sram_doe
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X33Y34.CLK     net (fanout=713)      1.130   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.283ns (3.170ns logic, 3.113ns route)
+                                                       (50.5% logic, 49.5% route)
+
+  Maximum Data Path at Slow Process Corner: game/sram_doe to sram_data_io<1>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X33Y34.CQ      Tcko                  0.430   game/sram_doe
+                                                       game/sram_doe
+    SLICE_X33Y34.B1      net (fanout=2)        0.737   game/sram_doe
+    SLICE_X33Y34.B       Tilo                  0.259   game/sram_doe
+                                                       sram_doe_s_inv1_INV_0
+    P17.T                net (fanout=8)        3.611   sram_doe_s_inv
+    P17.PAD              Tiotp                 2.722   sram_data_io<1>
+                                                       sram_data_io_1_IOBUF/OBUFT
+                                                       sram_data_io<1>
+    -------------------------------------------------  ---------------------------
+    Total                                      7.759ns (3.411ns logic, 4.348ns route)
+                                                       (44.0% logic, 56.0% route)
+
+--------------------------------------------------------------------------------
+Offset:                 14.357ns (clock path + data path + uncertainty)
+  Source:               game/sram_doe (FF)
+  Destination:          sram_data_io<0> (PAD)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Data Path Delay:      7.693ns (Levels of Logic = 2)
+  Clock Path Delay:     6.283ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to game/sram_doe
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X33Y34.CLK     net (fanout=713)      1.130   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.283ns (3.170ns logic, 3.113ns route)
+                                                       (50.5% logic, 49.5% route)
+
+  Maximum Data Path at Slow Process Corner: game/sram_doe to sram_data_io<0>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X33Y34.CQ      Tcko                  0.430   game/sram_doe
+                                                       game/sram_doe
+    SLICE_X33Y34.B1      net (fanout=2)        0.737   game/sram_doe
+    SLICE_X33Y34.B       Tilo                  0.259   game/sram_doe
+                                                       sram_doe_s_inv1_INV_0
+    P18.T                net (fanout=8)        3.545   sram_doe_s_inv
+    P18.PAD              Tiotp                 2.722   sram_data_io<0>
+                                                       sram_data_io_0_IOBUF/OBUFT
+                                                       sram_data_io<0>
+    -------------------------------------------------  ---------------------------
+    Total                                      7.693ns (3.411ns logic, 4.282ns route)
+                                                       (44.3% logic, 55.7% route)
+
+--------------------------------------------------------------------------------
+Offset:                 14.302ns (clock path + data path + uncertainty)
+  Source:               game/sram_doe (FF)
+  Destination:          sram_data_io<2> (PAD)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Data Path Delay:      7.638ns (Levels of Logic = 2)
+  Clock Path Delay:     6.283ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to game/sram_doe
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X33Y34.CLK     net (fanout=713)      1.130   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.283ns (3.170ns logic, 3.113ns route)
+                                                       (50.5% logic, 49.5% route)
+
+  Maximum Data Path at Slow Process Corner: game/sram_doe to sram_data_io<2>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X33Y34.CQ      Tcko                  0.430   game/sram_doe
+                                                       game/sram_doe
+    SLICE_X33Y34.B1      net (fanout=2)        0.737   game/sram_doe
+    SLICE_X33Y34.B       Tilo                  0.259   game/sram_doe
+                                                       sram_doe_s_inv1_INV_0
+    N18.T                net (fanout=8)        3.490   sram_doe_s_inv
+    N18.PAD              Tiotp                 2.722   sram_data_io<2>
+                                                       sram_data_io_2_IOBUF/OBUFT
+                                                       sram_data_io<2>
+    -------------------------------------------------  ---------------------------
+    Total                                      7.638ns (3.411ns logic, 4.227ns route)
+                                                       (44.7% logic, 55.3% route)
+
+--------------------------------------------------------------------------------
+Offset:                 14.285ns (clock path + data path + uncertainty)
+  Source:               game/sram_doe (FF)
+  Destination:          sram_data_io<5> (PAD)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Data Path Delay:      7.621ns (Levels of Logic = 2)
+  Clock Path Delay:     6.283ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to game/sram_doe
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X33Y34.CLK     net (fanout=713)      1.130   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.283ns (3.170ns logic, 3.113ns route)
+                                                       (50.5% logic, 49.5% route)
+
+  Maximum Data Path at Slow Process Corner: game/sram_doe to sram_data_io<5>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X33Y34.CQ      Tcko                  0.430   game/sram_doe
+                                                       game/sram_doe
+    SLICE_X33Y34.B1      net (fanout=2)        0.737   game/sram_doe
+    SLICE_X33Y34.B       Tilo                  0.259   game/sram_doe
+                                                       sram_doe_s_inv1_INV_0
+    F17.T                net (fanout=8)        3.473   sram_doe_s_inv
+    F17.PAD              Tiotp                 2.722   sram_data_io<5>
+                                                       sram_data_io_5_IOBUF/OBUFT
+                                                       sram_data_io<5>
+    -------------------------------------------------  ---------------------------
+    Total                                      7.621ns (3.411ns logic, 4.210ns route)
+                                                       (44.8% logic, 55.2% route)
+
+--------------------------------------------------------------------------------
+Offset:                 14.285ns (clock path + data path + uncertainty)
+  Source:               game/sram_doe (FF)
+  Destination:          sram_data_io<6> (PAD)
+  Source Clock:         clk_25m0_s rising at 0.000ns
+  Data Path Delay:      7.621ns (Levels of Logic = 2)
+  Clock Path Delay:     6.283ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.381ns
+
+  Clock Uncertainty:          0.381ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.296ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to game/sram_doe
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    SLICE_X33Y34.CLK     net (fanout=713)      1.130   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.283ns (3.170ns logic, 3.113ns route)
+                                                       (50.5% logic, 49.5% route)
+
+  Maximum Data Path at Slow Process Corner: game/sram_doe to sram_data_io<6>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X33Y34.CQ      Tcko                  0.430   game/sram_doe
+                                                       game/sram_doe
+    SLICE_X33Y34.B1      net (fanout=2)        0.737   game/sram_doe
+    SLICE_X33Y34.B       Tilo                  0.259   game/sram_doe
+                                                       sram_doe_s_inv1_INV_0
+    F18.T                net (fanout=8)        3.473   sram_doe_s_inv
+    F18.PAD              Tiotp                 2.722   sram_data_io<6>
+                                                       sram_data_io_6_IOBUF/OBUFT
+                                                       sram_data_io<6>
+    -------------------------------------------------  ---------------------------
+    Total                                      7.621ns (3.411ns logic, 4.210ns route)
+                                                       (44.8% logic, 55.2% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: Unconstrained OFFSET OUT AFTER analysis for clock 
+"clock_tmds_s" 
+
+ 8 paths analyzed, 8 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected.
+ Maximum allowable offset is  10.717ns.
+--------------------------------------------------------------------------------
+Offset:                 10.717ns (clock path + data path + uncertainty)
+  Source:               tmds_out/g1[3].to_serial (FF)
+  Destination:          lvds_n_o<3> (PAD)
+  Source Clock:         clock_tmds_s rising at 0.000ns
+  Data Path Delay:      3.532ns (Levels of Logic = 2)
+  Clock Path Delay:     6.843ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.342ns
+
+  Clock Uncertainty:          0.342ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.218ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to tmds_out/g1[3].to_serial
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT2 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.482   clock_system/clkout2
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   clock_system/clkout3_buf
+                                                       clock_system/clkout3_buf
+    OLOGIC_X3Y3.CLK0     net (fanout=15)       1.690   clock_tmds_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.843ns (3.170ns logic, 3.673ns route)
+                                                       (46.3% logic, 53.7% route)
+
+  Maximum Data Path at Slow Process Corner: tmds_out/g1[3].to_serial to lvds_n_o<3>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    OLOGIC_X3Y3.OQ       Tockq                 1.158   tmds_out/serial_outputs<3>
+                                                       tmds_out/g1[3].to_serial
+    U5.O                 net (fanout=1)        0.438   tmds_out/serial_outputs<3>
+    U5.DIFFO_OUT         Tiood                 1.909   lvds_p_o<3>
+                                                       tmds_out/hdmis[3].tmds_video/OBUFDS
+    V5.DIFFO_IN          net (fanout=1)        0.000   tmds_out/hdmis[3].tmds_video/SLAVEBUF.DIFFOUT
+    V5.PAD               Tiodop                0.027   lvds_n_o<3>
+                                                       ProtoComp646.DIFFO_INUSED.3
+                                                       lvds_n_o<3>
+    -------------------------------------------------  ---------------------------
+    Total                                      3.532ns (3.094ns logic, 0.438ns route)
+                                                       (87.6% logic, 12.4% route)
+
+--------------------------------------------------------------------------------
+Offset:                 10.701ns (clock path + data path + uncertainty)
+  Source:               tmds_out/g1[0].to_serial (FF)
+  Destination:          lvds_n_o<0> (PAD)
+  Source Clock:         clock_tmds_s rising at 0.000ns
+  Data Path Delay:      3.532ns (Levels of Logic = 2)
+  Clock Path Delay:     6.827ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.342ns
+
+  Clock Uncertainty:          0.342ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.218ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to tmds_out/g1[0].to_serial
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT2 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.482   clock_system/clkout2
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   clock_system/clkout3_buf
+                                                       clock_system/clkout3_buf
+    OLOGIC_X5Y3.CLK0     net (fanout=15)       1.674   clock_tmds_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.827ns (3.170ns logic, 3.657ns route)
+                                                       (46.4% logic, 53.6% route)
+
+  Maximum Data Path at Slow Process Corner: tmds_out/g1[0].to_serial to lvds_n_o<0>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    OLOGIC_X5Y3.OQ       Tockq                 1.158   tmds_out/serial_outputs<0>
+                                                       tmds_out/g1[0].to_serial
+    T6.O                 net (fanout=1)        0.438   tmds_out/serial_outputs<0>
+    T6.DIFFO_OUT         Tiood                 1.909   lvds_p_o<0>
+                                                       tmds_out/hdmis[0].tmds_video/OBUFDS
+    V6.DIFFO_IN          net (fanout=1)        0.000   tmds_out/hdmis[0].tmds_video/SLAVEBUF.DIFFOUT
+    V6.PAD               Tiodop                0.027   lvds_n_o<0>
+                                                       ProtoComp646.DIFFO_INUSED
+                                                       lvds_n_o<0>
+    -------------------------------------------------  ---------------------------
+    Total                                      3.532ns (3.094ns logic, 0.438ns route)
+                                                       (87.6% logic, 12.4% route)
+
+--------------------------------------------------------------------------------
+Offset:                 10.694ns (clock path + data path + uncertainty)
+  Source:               tmds_out/g1[1].to_serial (FF)
+  Destination:          lvds_n_o<1> (PAD)
+  Source Clock:         clock_tmds_s rising at 0.000ns
+  Data Path Delay:      3.532ns (Levels of Logic = 2)
+  Clock Path Delay:     6.820ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.342ns
+
+  Clock Uncertainty:          0.342ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.218ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to tmds_out/g1[1].to_serial
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT2 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.482   clock_system/clkout2
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   clock_system/clkout3_buf
+                                                       clock_system/clkout3_buf
+    OLOGIC_X6Y3.CLK0     net (fanout=15)       1.667   clock_tmds_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.820ns (3.170ns logic, 3.650ns route)
+                                                       (46.5% logic, 53.5% route)
+
+  Maximum Data Path at Slow Process Corner: tmds_out/g1[1].to_serial to lvds_n_o<1>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    OLOGIC_X6Y3.OQ       Tockq                 1.158   tmds_out/serial_outputs<1>
+                                                       tmds_out/g1[1].to_serial
+    U7.O                 net (fanout=1)        0.438   tmds_out/serial_outputs<1>
+    U7.DIFFO_OUT         Tiood                 1.909   lvds_p_o<1>
+                                                       tmds_out/hdmis[1].tmds_video/OBUFDS
+    V7.DIFFO_IN          net (fanout=1)        0.000   tmds_out/hdmis[1].tmds_video/SLAVEBUF.DIFFOUT
+    V7.PAD               Tiodop                0.027   lvds_n_o<1>
+                                                       ProtoComp646.DIFFO_INUSED.1
+                                                       lvds_n_o<1>
+    -------------------------------------------------  ---------------------------
+    Total                                      3.532ns (3.094ns logic, 0.438ns route)
+                                                       (87.6% logic, 12.4% route)
+
+--------------------------------------------------------------------------------
+Offset:                 10.685ns (clock path + data path + uncertainty)
+  Source:               tmds_out/g1[2].to_serial (FF)
+  Destination:          lvds_n_o<2> (PAD)
+  Source Clock:         clock_tmds_s rising at 0.000ns
+  Data Path Delay:      3.532ns (Levels of Logic = 2)
+  Clock Path Delay:     6.811ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.342ns
+
+  Clock Uncertainty:          0.342ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.218ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to tmds_out/g1[2].to_serial
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT2 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.482   clock_system/clkout2
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   clock_system/clkout3_buf
+                                                       clock_system/clkout3_buf
+    OLOGIC_X7Y3.CLK0     net (fanout=15)       1.658   clock_tmds_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.811ns (3.170ns logic, 3.641ns route)
+                                                       (46.5% logic, 53.5% route)
+
+  Maximum Data Path at Slow Process Corner: tmds_out/g1[2].to_serial to lvds_n_o<2>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    OLOGIC_X7Y3.OQ       Tockq                 1.158   tmds_out/serial_outputs<2>
+                                                       tmds_out/g1[2].to_serial
+    U8.O                 net (fanout=1)        0.438   tmds_out/serial_outputs<2>
+    U8.DIFFO_OUT         Tiood                 1.909   lvds_p_o<2>
+                                                       tmds_out/hdmis[2].tmds_video/OBUFDS
+    V8.DIFFO_IN          net (fanout=1)        0.000   tmds_out/hdmis[2].tmds_video/SLAVEBUF.DIFFOUT
+    V8.PAD               Tiodop                0.027   lvds_n_o<2>
+                                                       ProtoComp646.DIFFO_INUSED.2
+                                                       lvds_n_o<2>
+    -------------------------------------------------  ---------------------------
+    Total                                      3.532ns (3.094ns logic, 0.438ns route)
+                                                       (87.6% logic, 12.4% route)
+
+--------------------------------------------------------------------------------
+Offset:                 10.663ns (clock path + data path + uncertainty)
+  Source:               tmds_out/g1[3].to_serial (FF)
+  Destination:          lvds_p_o<3> (PAD)
+  Source Clock:         clock_tmds_s rising at 0.000ns
+  Data Path Delay:      3.478ns (Levels of Logic = 1)
+  Clock Path Delay:     6.843ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.342ns
+
+  Clock Uncertainty:          0.342ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.218ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to tmds_out/g1[3].to_serial
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT2 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.482   clock_system/clkout2
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   clock_system/clkout3_buf
+                                                       clock_system/clkout3_buf
+    OLOGIC_X3Y3.CLK0     net (fanout=15)       1.690   clock_tmds_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.843ns (3.170ns logic, 3.673ns route)
+                                                       (46.3% logic, 53.7% route)
+
+  Maximum Data Path at Slow Process Corner: tmds_out/g1[3].to_serial to lvds_p_o<3>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    OLOGIC_X3Y3.OQ       Tockq                 1.158   tmds_out/serial_outputs<3>
+                                                       tmds_out/g1[3].to_serial
+    U5.O                 net (fanout=1)        0.438   tmds_out/serial_outputs<3>
+    U5.PAD               Tioop                 1.882   lvds_p_o<3>
+                                                       tmds_out/hdmis[3].tmds_video/OBUFDS
+                                                       lvds_p_o<3>
+    -------------------------------------------------  ---------------------------
+    Total                                      3.478ns (3.040ns logic, 0.438ns route)
+                                                       (87.4% logic, 12.6% route)
+
+--------------------------------------------------------------------------------
+Offset:                 10.647ns (clock path + data path + uncertainty)
+  Source:               tmds_out/g1[0].to_serial (FF)
+  Destination:          lvds_p_o<0> (PAD)
+  Source Clock:         clock_tmds_s rising at 0.000ns
+  Data Path Delay:      3.478ns (Levels of Logic = 1)
+  Clock Path Delay:     6.827ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.342ns
+
+  Clock Uncertainty:          0.342ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.218ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to tmds_out/g1[0].to_serial
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT2 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.482   clock_system/clkout2
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   clock_system/clkout3_buf
+                                                       clock_system/clkout3_buf
+    OLOGIC_X5Y3.CLK0     net (fanout=15)       1.674   clock_tmds_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.827ns (3.170ns logic, 3.657ns route)
+                                                       (46.4% logic, 53.6% route)
+
+  Maximum Data Path at Slow Process Corner: tmds_out/g1[0].to_serial to lvds_p_o<0>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    OLOGIC_X5Y3.OQ       Tockq                 1.158   tmds_out/serial_outputs<0>
+                                                       tmds_out/g1[0].to_serial
+    T6.O                 net (fanout=1)        0.438   tmds_out/serial_outputs<0>
+    T6.PAD               Tioop                 1.882   lvds_p_o<0>
+                                                       tmds_out/hdmis[0].tmds_video/OBUFDS
+                                                       lvds_p_o<0>
+    -------------------------------------------------  ---------------------------
+    Total                                      3.478ns (3.040ns logic, 0.438ns route)
+                                                       (87.4% logic, 12.6% route)
+
+--------------------------------------------------------------------------------
+Offset:                 10.640ns (clock path + data path + uncertainty)
+  Source:               tmds_out/g1[1].to_serial (FF)
+  Destination:          lvds_p_o<1> (PAD)
+  Source Clock:         clock_tmds_s rising at 0.000ns
+  Data Path Delay:      3.478ns (Levels of Logic = 1)
+  Clock Path Delay:     6.820ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.342ns
+
+  Clock Uncertainty:          0.342ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.218ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to tmds_out/g1[1].to_serial
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT2 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.482   clock_system/clkout2
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   clock_system/clkout3_buf
+                                                       clock_system/clkout3_buf
+    OLOGIC_X6Y3.CLK0     net (fanout=15)       1.667   clock_tmds_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.820ns (3.170ns logic, 3.650ns route)
+                                                       (46.5% logic, 53.5% route)
+
+  Maximum Data Path at Slow Process Corner: tmds_out/g1[1].to_serial to lvds_p_o<1>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    OLOGIC_X6Y3.OQ       Tockq                 1.158   tmds_out/serial_outputs<1>
+                                                       tmds_out/g1[1].to_serial
+    U7.O                 net (fanout=1)        0.438   tmds_out/serial_outputs<1>
+    U7.PAD               Tioop                 1.882   lvds_p_o<1>
+                                                       tmds_out/hdmis[1].tmds_video/OBUFDS
+                                                       lvds_p_o<1>
+    -------------------------------------------------  ---------------------------
+    Total                                      3.478ns (3.040ns logic, 0.438ns route)
+                                                       (87.4% logic, 12.6% route)
+
+--------------------------------------------------------------------------------
+Offset:                 10.631ns (clock path + data path + uncertainty)
+  Source:               tmds_out/g1[2].to_serial (FF)
+  Destination:          lvds_p_o<2> (PAD)
+  Source Clock:         clock_tmds_s rising at 0.000ns
+  Data Path Delay:      3.478ns (Levels of Logic = 1)
+  Clock Path Delay:     6.811ns (Levels of Logic = 4)
+  Clock Uncertainty:    0.342ns
+
+  Clock Uncertainty:          0.342ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.050ns
+    Discrete Jitter (DJ):       0.218ns
+    Phase Error (PE):           0.230ns
+
+  Maximum Clock Path at Slow Process Corner: clock_50m0_i_net to tmds_out/g1[2].to_serial
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT2 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X3Y13.I0     net (fanout=1)        0.482   clock_system/clkout2
+    BUFGMUX_X3Y13.O      Tgi0o                 0.209   clock_system/clkout3_buf
+                                                       clock_system/clkout3_buf
+    OLOGIC_X7Y3.CLK0     net (fanout=15)       1.658   clock_tmds_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.811ns (3.170ns logic, 3.641ns route)
+                                                       (46.5% logic, 53.5% route)
+
+  Maximum Data Path at Slow Process Corner: tmds_out/g1[2].to_serial to lvds_p_o<2>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    OLOGIC_X7Y3.OQ       Tockq                 1.158   tmds_out/serial_outputs<2>
+                                                       tmds_out/g1[2].to_serial
+    U8.O                 net (fanout=1)        0.438   tmds_out/serial_outputs<2>
+    U8.PAD               Tioop                 1.882   lvds_p_o<2>
+                                                       tmds_out/hdmis[2].tmds_video/OBUFDS
+                                                       lvds_p_o<2>
+    -------------------------------------------------  ---------------------------
+    Total                                      3.478ns (3.040ns logic, 0.438ns route)
+                                                       (87.4% logic, 12.6% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: Unconstrained path analysis 
+
+ 2321 paths analyzed, 2321 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Maximum delay is   6.932ns.
+--------------------------------------------------------------------------------
+Delay:                  6.932ns (data path)
+  Source:               clock_50m0_i_net (PAD)
+  Destination:          game/lb_wd_3 (FF)
+  Data Path Delay:      6.932ns (Levels of Logic = 4)
+
+  Maximum Data Path at Slow Process Corner: clock_50m0_i_net to game/lb_wd_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    ILOGIC_X18Y19.CLK0   net (fanout=713)      1.779   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.932ns (3.170ns logic, 3.762ns route)
+                                                       (45.7% logic, 54.3% route)
+
+--------------------------------------------------------------------------------
+Delay:                  6.932ns (data path)
+  Source:               clock_50m0_i_net (PAD)
+  Destination:          game/lb_wd_2 (FF)
+  Data Path Delay:      6.932ns (Levels of Logic = 4)
+
+  Maximum Data Path at Slow Process Corner: clock_50m0_i_net to game/lb_wd_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    ILOGIC_X18Y18.CLK0   net (fanout=713)      1.779   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.932ns (3.170ns logic, 3.762ns route)
+                                                       (45.7% logic, 54.3% route)
+
+--------------------------------------------------------------------------------
+Delay:                  6.931ns (data path)
+  Source:               clock_50m0_i_net (PAD)
+  Destination:          game/lb_wd_1 (FF)
+  Data Path Delay:      6.931ns (Levels of Logic = 4)
+
+  Maximum Data Path at Slow Process Corner: clock_50m0_i_net to game/lb_wd_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    ILOGIC_X18Y17.CLK0   net (fanout=713)      1.778   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.931ns (3.170ns logic, 3.761ns route)
+                                                       (45.7% logic, 54.3% route)
+
+--------------------------------------------------------------------------------
+Delay:                  6.931ns (data path)
+  Source:               clock_50m0_i_net (PAD)
+  Destination:          game/lb_wd_0 (FF)
+  Data Path Delay:      6.931ns (Levels of Logic = 4)
+
+  Maximum Data Path at Slow Process Corner: clock_50m0_i_net to game/lb_wd_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    ILOGIC_X18Y16.CLK0   net (fanout=713)      1.778   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.931ns (3.170ns logic, 3.761ns route)
+                                                       (45.7% logic, 54.3% route)
+
+--------------------------------------------------------------------------------
+Delay:                  6.924ns (data path)
+  Source:               clock_50m0_i_net (PAD)
+  Destination:          game/lb_wd_6 (FF)
+  Data Path Delay:      6.924ns (Levels of Logic = 4)
+
+  Maximum Data Path at Slow Process Corner: clock_50m0_i_net to game/lb_wd_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    ILOGIC_X18Y44.CLK0   net (fanout=713)      1.771   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.924ns (3.170ns logic, 3.754ns route)
+                                                       (45.8% logic, 54.2% route)
+
+--------------------------------------------------------------------------------
+Delay:                  6.924ns (data path)
+  Source:               clock_50m0_i_net (PAD)
+  Destination:          game/lb_wd_5 (FF)
+  Data Path Delay:      6.924ns (Levels of Logic = 4)
+
+  Maximum Data Path at Slow Process Corner: clock_50m0_i_net to game/lb_wd_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    ILOGIC_X18Y45.CLK0   net (fanout=713)      1.771   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.924ns (3.170ns logic, 3.754ns route)
+                                                       (45.8% logic, 54.2% route)
+
+--------------------------------------------------------------------------------
+Delay:                  6.923ns (data path)
+  Source:               clock_50m0_i_net (PAD)
+  Destination:          snespads_b/pads[0].pad_b/shift_buttons_q_0 (FF)
+  Data Path Delay:      6.923ns (Levels of Logic = 4)
+
+  Maximum Data Path at Slow Process Corner: clock_50m0_i_net to snespads_b/pads[0].pad_b/shift_buttons_q_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    ILOGIC_X2Y60.CLK0    net (fanout=713)      1.770   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.923ns (3.170ns logic, 3.753ns route)
+                                                       (45.8% logic, 54.2% route)
+
+--------------------------------------------------------------------------------
+Delay:                  6.923ns (data path)
+  Source:               clock_50m0_i_net (PAD)
+  Destination:          game/lb_wd_4 (FF)
+  Data Path Delay:      6.923ns (Levels of Logic = 4)
+
+  Maximum Data Path at Slow Process Corner: clock_50m0_i_net to game/lb_wd_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    ILOGIC_X18Y38.CLK0   net (fanout=713)      1.770   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.923ns (3.170ns logic, 3.753ns route)
+                                                       (45.8% logic, 54.2% route)
+
+--------------------------------------------------------------------------------
+Delay:                  6.922ns (data path)
+  Source:               clock_50m0_i_net (PAD)
+  Destination:          game/sram_dout_2 (FF)
+  Data Path Delay:      6.922ns (Levels of Logic = 4)
+
+  Maximum Data Path at Slow Process Corner: clock_50m0_i_net to game/sram_dout_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    OLOGIC_X18Y18.CLK0   net (fanout=713)      1.769   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.922ns (3.170ns logic, 3.752ns route)
+                                                       (45.8% logic, 54.2% route)
+
+--------------------------------------------------------------------------------
+Delay:                  6.922ns (data path)
+  Source:               clock_50m0_i_net (PAD)
+  Destination:          game/sram_dout_3 (FF)
+  Data Path Delay:      6.922ns (Levels of Logic = 4)
+
+  Maximum Data Path at Slow Process Corner: clock_50m0_i_net to game/sram_dout_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    V10.I                Tiopi                 1.557   clock_50m0_i_net
+                                                       clock_50m0_i_net
+                                                       clock_system/clkin1_buf
+                                                       ProtoComp642.IMUX.1
+    BUFIO2_X1Y7.I        net (fanout=1)        0.676   clock_system/clkin1
+    BUFIO2_X1Y7.DIVCLK   Tbufcko_DIVCLK        0.190   SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+                                                       SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0
+    PLL_ADV_X0Y0.CLKIN2  net (fanout=1)        0.825   clock_system/pll_base_inst/PLL_ADV_ML_NEW_DIVCLK
+    PLL_ADV_X0Y0.CLKOUT0 Tpllcko_CLK           1.214   clock_system/pll_base_inst/PLL_ADV
+                                                       clock_system/pll_base_inst/PLL_ADV
+    BUFGMUX_X2Y2.I0      net (fanout=1)        0.482   clock_system/clkout0
+    BUFGMUX_X2Y2.O       Tgi0o                 0.209   clock_system/clkout1_buf
+                                                       clock_system/clkout1_buf
+    OLOGIC_X18Y19.CLK0   net (fanout=713)      1.769   clk_25m0_s
+    -------------------------------------------------  ---------------------------
+    Total                                      6.922ns (3.170ns logic, 3.752ns route)
+                                                       (45.8% logic, 54.2% route)
+
+--------------------------------------------------------------------------------
+
+
+Derived Constraint Report
+Derived Constraints for TS_clock_50m0_i_net
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                               |   Period    |       Actual Period       |      Timing Errors        |      Paths Analyzed       |
+|           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
+|                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|TS_clock_50m0_i_net            |     20.000ns|      5.000ns|     10.345ns|            0|            0|            0|      2171180|
+| TS_clock_system_clkout3       |      8.000ns|      2.666ns|          N/A|            0|            0|            0|            0|
+| TS_clock_system_clkout0       |     40.000ns|     15.998ns|          N/A|            0|            0|      2170944|            0|
+| TS_clock_system_clkout2       |      8.000ns|      4.138ns|          N/A|            0|            0|          236|            0|
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock clock_50m0_i_net
+---------------+------------+------------+------------+------------+------------------+--------+
+               |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source         | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+---------------+------------+------------+------------+------------+------------------+--------+
+btn_reset_n_i  |    2.713(R)|      SLOW  |   -0.403(R)|      SLOW  |clk_25m0_s        |   0.000|
+joy1_p1_i      |    0.624(R)|      FAST  |    2.081(R)|      SLOW  |clk_25m0_s        |   0.000|
+joy1_p2_i      |    0.605(R)|      FAST  |    2.101(R)|      SLOW  |clk_25m0_s        |   0.000|
+joy1_p3_i      |    0.534(R)|      FAST  |    2.160(R)|      SLOW  |clk_25m0_s        |   0.000|
+joy1_p4_i      |    0.420(R)|      FAST  |    2.396(R)|      SLOW  |clk_25m0_s        |   0.000|
+joy1_p6_i      |    0.602(R)|      FAST  |    2.057(R)|      SLOW  |clk_25m0_s        |   0.000|
+joy2_p1_i      |    0.646(R)|      FAST  |    2.006(R)|      SLOW  |clk_25m0_s        |   0.000|
+joy2_p2_i      |    0.361(R)|      FAST  |    2.488(R)|      SLOW  |clk_25m0_s        |   0.000|
+joy2_p3_i      |    0.527(R)|      FAST  |    2.278(R)|      SLOW  |clk_25m0_s        |   0.000|
+joy2_p4_i      |    0.449(R)|      FAST  |    2.403(R)|      SLOW  |clk_25m0_s        |   0.000|
+joy2_p6_i      |    0.331(R)|      FAST  |    2.567(R)|      SLOW  |clk_25m0_s        |   0.000|
+ps2_clk_io     |   -0.444(R)|      FAST  |    4.349(R)|      SLOW  |clk_25m0_s        |   0.000|
+ps2_data_io    |   -0.413(R)|      FAST  |    4.283(R)|      SLOW  |clk_25m0_s        |   0.000|
+sd_cd_n_i      |    6.863(R)|      SLOW  |   -1.589(R)|      FAST  |clk_25m0_s        |   0.000|
+sd_miso_i      |    1.385(R)|      SLOW  |    0.981(R)|      SLOW  |clk_25m0_s        |   0.000|
+snesjoy_data_i |   -0.512(R)|      FAST  |    4.417(R)|      SLOW  |clk_25m0_s        |   0.000|
+sram_data_io<0>|    1.086(R)|      FAST  |    4.426(R)|      SLOW  |clk_25m0_s        |   0.000|
+sram_data_io<1>|    1.072(R)|      FAST  |    4.265(R)|      SLOW  |clk_25m0_s        |   0.000|
+sram_data_io<2>|    1.053(R)|      FAST  |    4.427(R)|      SLOW  |clk_25m0_s        |   0.000|
+sram_data_io<3>|    0.980(R)|      FAST  |    4.266(R)|      SLOW  |clk_25m0_s        |   0.000|
+sram_data_io<4>|    1.060(R)|      FAST  |    4.418(R)|      SLOW  |clk_25m0_s        |   0.000|
+sram_data_io<5>|    1.640(R)|      SLOW  |    4.258(R)|      SLOW  |clk_25m0_s        |   0.000|
+sram_data_io<6>|    1.628(R)|      FAST  |    4.419(R)|      SLOW  |clk_25m0_s        |   0.000|
+sram_data_io<7>|    1.689(R)|      SLOW  |    4.253(R)|      SLOW  |clk_25m0_s        |   0.000|
+---------------+------------+------------+------------+------------+------------------+--------+
+
+Clock clock_50m0_i_net to Pad
+---------------+-----------------+------------+-----------------+------------+------------------+--------+
+               |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination    |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+---------------+-----------------+------------+-----------------+------------+------------------+--------+
+joy_p5_o       |        14.569(R)|      SLOW  |         6.030(R)|      FAST  |clk_25m0_s        |   0.000|
+joy_p8_o       |        13.881(R)|      SLOW  |         5.665(R)|      FAST  |clk_25m0_s        |   0.000|
+led_o          |        15.586(R)|      SLOW  |         6.251(R)|      FAST  |clk_25m0_s        |   0.000|
+lvds_n_o<0>    |        10.701(R)|      SLOW  |         3.546(R)|      FAST  |clock_tmds_s      |   0.000|
+lvds_n_o<1>    |        10.694(R)|      SLOW  |         3.539(R)|      FAST  |clock_tmds_s      |   0.000|
+lvds_n_o<2>    |        10.685(R)|      SLOW  |         3.530(R)|      FAST  |clock_tmds_s      |   0.000|
+lvds_n_o<3>    |        10.717(R)|      SLOW  |         3.562(R)|      FAST  |clock_tmds_s      |   0.000|
+lvds_p_o<0>    |        10.647(R)|      SLOW  |         3.530(R)|      FAST  |clock_tmds_s      |   0.000|
+lvds_p_o<1>    |        10.640(R)|      SLOW  |         3.523(R)|      FAST  |clock_tmds_s      |   0.000|
+lvds_p_o<2>    |        10.631(R)|      SLOW  |         3.514(R)|      FAST  |clock_tmds_s      |   0.000|
+lvds_p_o<3>    |        10.663(R)|      SLOW  |         3.546(R)|      FAST  |clock_tmds_s      |   0.000|
+sd_cs_n_o      |        11.527(R)|      SLOW  |         4.288(R)|      FAST  |clk_25m0_s        |   0.000|
+sd_mosi_o      |        14.166(R)|      SLOW  |         5.785(R)|      FAST  |clk_25m0_s        |   0.000|
+sd_sclk_o      |        14.039(R)|      SLOW  |         5.756(R)|      FAST  |clk_25m0_s        |   0.000|
+snesjoy_clock_o|        11.535(R)|      SLOW  |         4.296(R)|      FAST  |clk_25m0_s        |   0.000|
+snesjoy_latch_o|        11.534(R)|      SLOW  |         4.295(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<0> |        11.406(R)|      SLOW  |         4.167(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<1> |        11.406(R)|      SLOW  |         4.167(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<2> |        11.402(R)|      SLOW  |         4.163(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<3> |        11.402(R)|      SLOW  |         4.163(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<4> |        11.412(R)|      SLOW  |         4.173(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<5> |        11.409(R)|      SLOW  |         4.170(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<6> |        11.411(R)|      SLOW  |         4.172(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<7> |        11.406(R)|      SLOW  |         4.167(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<8> |        11.402(R)|      SLOW  |         4.163(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<9> |        11.402(R)|      SLOW  |         4.163(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<10>|        11.413(R)|      SLOW  |         4.174(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<11>|        11.413(R)|      SLOW  |         4.174(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<12>|        11.414(R)|      SLOW  |         4.175(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<13>|        11.414(R)|      SLOW  |         4.175(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<14>|        11.405(R)|      SLOW  |         4.166(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<15>|        11.401(R)|      SLOW  |         4.162(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<16>|        11.399(R)|      SLOW  |         4.160(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<17>|        11.399(R)|      SLOW  |         4.160(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_addr_o<18>|        11.408(R)|      SLOW  |         4.169(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_data_io<0>|        14.357(R)|      SLOW  |         4.174(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_data_io<1>|        14.423(R)|      SLOW  |         4.174(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_data_io<2>|        14.302(R)|      SLOW  |         4.175(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_data_io<3>|        14.273(R)|      SLOW  |         4.175(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_data_io<4>|        13.160(R)|      SLOW  |         4.166(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_data_io<5>|        14.285(R)|      SLOW  |         4.168(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_data_io<6>|        14.285(R)|      SLOW  |         4.168(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_data_io<7>|        14.491(R)|      SLOW  |         4.162(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_oe_n_o    |        13.358(R)|      SLOW  |         5.297(R)|      FAST  |clk_25m0_s        |   0.000|
+sram_we_n_o    |        11.487(R)|      SLOW  |         4.253(R)|      FAST  |clk_25m0_s        |   0.000|
+               |        31.426(F)|      SLOW  |        24.188(F)|      FAST  |clk_25m0_s        |  20.000|
+---------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clock_50m0_i_net
+----------------+---------+---------+---------+---------+
+                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock    |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+----------------+---------+---------+---------+---------+
+clock_50m0_i_net|   15.998|         |    2.895|         |
+----------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 2173594 paths, 0 nets, and 19497 connections
+
+Design statistics:
+   Minimum period:  15.998ns{1}   (Maximum frequency:  62.508MHz)
+   Maximum combinational path delay:   6.932ns
+   Minimum input required time before clock:   6.863ns
+   Maximum output delay after clock:  31.426ns
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Tue Nov  3 02:54:01 2026 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 470 MB
+
+
+

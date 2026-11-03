@@ -1,0 +1,1628 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Tue Nov 03 02:53:42 2026
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "ps2_data_io" LOCATE = SITE "B4" LEVEL 1;
+COMP "clock_50m0_i_net" LOCATE = SITE "V10" LEVEL 1;
+COMP "led_o" LOCATE = SITE "D14" LEVEL 1;
+COMP "joy1_p1_i" LOCATE = SITE "A15" LEVEL 1;
+COMP "joy1_p2_i" LOCATE = SITE "A14" LEVEL 1;
+COMP "joy1_p3_i" LOCATE = SITE "B12" LEVEL 1;
+COMP "joy1_p4_i" LOCATE = SITE "A12" LEVEL 1;
+COMP "snesjoy_clock_o" LOCATE = SITE "A2" LEVEL 1;
+COMP "joy1_p6_i" LOCATE = SITE "B14" LEVEL 1;
+COMP "joy1_p7_i" LOCATE = SITE "C14" LEVEL 1;
+COMP "joy1_p9_i" LOCATE = SITE "B11" LEVEL 1;
+COMP "joy2_p1_i" LOCATE = SITE "A11" LEVEL 1;
+COMP "joy2_p2_i" LOCATE = SITE "A10" LEVEL 1;
+COMP "joy2_p3_i" LOCATE = SITE "A9" LEVEL 1;
+COMP "joy2_p4_i" LOCATE = SITE "B8" LEVEL 1;
+COMP "joy2_p6_i" LOCATE = SITE "C11" LEVEL 1;
+COMP "lvds_n_o<0>" LOCATE = SITE "V6" LEVEL 1;
+COMP "lvds_n_o<1>" LOCATE = SITE "V7" LEVEL 1;
+COMP "joy2_p7_i" LOCATE = SITE "B9" LEVEL 1;
+COMP "lvds_n_o<2>" LOCATE = SITE "V8" LEVEL 1;
+COMP "lvds_n_o<3>" LOCATE = SITE "V5" LEVEL 1;
+COMP "joy2_p9_i" LOCATE = SITE "A8" LEVEL 1;
+COMP "lvds_p_o<0>" LOCATE = SITE "T6" LEVEL 1;
+COMP "lvds_p_o<1>" LOCATE = SITE "U7" LEVEL 1;
+COMP "lvds_p_o<2>" LOCATE = SITE "U8" LEVEL 1;
+COMP "lvds_p_o<3>" LOCATE = SITE "U5" LEVEL 1;
+COMP "cart_dir_o" LOCATE = SITE "N1" LEVEL 1;
+COMP "snesjoy_latch_o" LOCATE = SITE "B3" LEVEL 1;
+COMP "sram_addr_o<10>" LOCATE = SITE "J16" LEVEL 1;
+COMP "sram_addr_o<11>" LOCATE = SITE "J18" LEVEL 1;
+COMP "sram_addr_o<12>" LOCATE = SITE "H17" LEVEL 1;
+COMP "sram_addr_o<13>" LOCATE = SITE "H18" LEVEL 1;
+COMP "sram_addr_o<14>" LOCATE = SITE "G16" LEVEL 1;
+COMP "sram_addr_o<15>" LOCATE = SITE "E18" LEVEL 1;
+COMP "sram_addr_o<16>" LOCATE = SITE "D17" LEVEL 1;
+COMP "sram_addr_o<17>" LOCATE = SITE "D18" LEVEL 1;
+COMP "sram_addr_o<18>" LOCATE = SITE "C17" LEVEL 1;
+COMP "sd_cd_n_i" LOCATE = SITE "C6" LEVEL 1;
+COMP "sd_cs_n_o" LOCATE = SITE "C5" LEVEL 1;
+COMP "sd_miso_i" LOCATE = SITE "A6" LEVEL 1;
+COMP "sd_sclk_o" LOCATE = SITE "B6" LEVEL 1;
+COMP "sd_mosi_o" LOCATE = SITE "A5" LEVEL 1;
+COMP "ps2_clk_io" LOCATE = SITE "A4" LEVEL 1;
+COMP "btn_reset_n_i" LOCATE = SITE "B2" LEVEL 1;
+COMP "sram_data_io<0>" LOCATE = SITE "P18" LEVEL 1;
+COMP "sram_data_io<1>" LOCATE = SITE "P17" LEVEL 1;
+COMP "sram_data_io<2>" LOCATE = SITE "N18" LEVEL 1;
+COMP "sram_data_io<3>" LOCATE = SITE "N17" LEVEL 1;
+COMP "sram_data_io<4>" LOCATE = SITE "G18" LEVEL 1;
+COMP "sram_data_io<5>" LOCATE = SITE "F17" LEVEL 1;
+COMP "sram_data_io<6>" LOCATE = SITE "F18" LEVEL 1;
+COMP "sram_data_io<7>" LOCATE = SITE "E16" LEVEL 1;
+COMP "snesjoy_data_i" LOCATE = SITE "A3" LEVEL 1;
+COMP "sram_ce_n_o" LOCATE = SITE "P15" LEVEL 1;
+COMP "cart_addr_o<10>" LOCATE = SITE "H2" LEVEL 1;
+COMP "cart_addr_o<11>" LOCATE = SITE "G1" LEVEL 1;
+COMP "cart_addr_o<12>" LOCATE = SITE "L2" LEVEL 1;
+COMP "cart_addr_o<13>" LOCATE = SITE "J1" LEVEL 1;
+COMP "cart_addr_o<14>" LOCATE = SITE "K3" LEVEL 1;
+COMP "sram_addr_o<0>" LOCATE = SITE "U18" LEVEL 1;
+COMP "sram_addr_o<1>" LOCATE = SITE "U17" LEVEL 1;
+COMP "sram_addr_o<2>" LOCATE = SITE "T18" LEVEL 1;
+COMP "sram_addr_o<3>" LOCATE = SITE "T17" LEVEL 1;
+COMP "sram_addr_o<4>" LOCATE = SITE "P16" LEVEL 1;
+COMP "sram_addr_o<5>" LOCATE = SITE "M16" LEVEL 1;
+COMP "sram_addr_o<6>" LOCATE = SITE "K16" LEVEL 1;
+COMP "sram_addr_o<7>" LOCATE = SITE "K17" LEVEL 1;
+COMP "sram_addr_o<8>" LOCATE = SITE "L17" LEVEL 1;
+COMP "sram_addr_o<9>" LOCATE = SITE "L18" LEVEL 1;
+COMP "joy_p5_o" LOCATE = SITE "A7" LEVEL 1;
+COMP "joy_p8_o" LOCATE = SITE "C8" LEVEL 1;
+COMP "sram_oe_n_o" LOCATE = SITE "F16" LEVEL 1;
+COMP "cart_oe_n_o" LOCATE = SITE "N2" LEVEL 1;
+COMP "sram_we_n_o" LOCATE = SITE "M18" LEVEL 1;
+COMP "cart_en_80_n_o" LOCATE = SITE "J3" LEVEL 1;
+COMP "cart_en_A0_n_o" LOCATE = SITE "K1" LEVEL 1;
+COMP "cart_en_C0_n_o" LOCATE = SITE "D3" LEVEL 1;
+COMP "cart_addr_o<0>" LOCATE = SITE "E3" LEVEL 1;
+COMP "cart_addr_o<1>" LOCATE = SITE "F3" LEVEL 1;
+COMP "cart_addr_o<2>" LOCATE = SITE "F1" LEVEL 1;
+COMP "cart_addr_o<3>" LOCATE = SITE "H3" LEVEL 1;
+COMP "cart_en_E0_n_o" LOCATE = SITE "M1" LEVEL 1;
+COMP "cart_addr_o<4>" LOCATE = SITE "H1" LEVEL 1;
+COMP "cart_addr_o<5>" LOCATE = SITE "K2" LEVEL 1;
+COMP "cart_addr_o<6>" LOCATE = SITE "L3" LEVEL 1;
+COMP "cart_addr_o<7>" LOCATE = SITE "L1" LEVEL 1;
+COMP "cart_addr_o<8>" LOCATE = SITE "N3" LEVEL 1;
+COMP "cart_addr_o<9>" LOCATE = SITE "M3" LEVEL 1;
+COMP "cart_data_io<0>" LOCATE = SITE "D2" LEVEL 1;
+COMP "cart_data_io<1>" LOCATE = SITE "C2" LEVEL 1;
+COMP "cart_data_io<2>" LOCATE = SITE "E4" LEVEL 1;
+COMP "cart_data_io<3>" LOCATE = SITE "C1" LEVEL 1;
+COMP "cart_data_io<4>" LOCATE = SITE "D1" LEVEL 1;
+COMP "cart_data_io<5>" LOCATE = SITE "E1" LEVEL 1;
+COMP "cart_data_io<6>" LOCATE = SITE "F2" LEVEL 1;
+COMP "cart_data_io<7>" LOCATE = SITE "G3" LEVEL 1;
+COMP "rgb_led_o<0>" LOCATE = SITE "C15" LEVEL 1;
+COMP "rgb_led_o<1>" LOCATE = SITE "A16" LEVEL 1;
+COMP "rgb_led_o<2>" LOCATE = SITE "B16" LEVEL 1;
+PIN game/main/video/Mram_fg01_pins<24> = BEL "game/main/video/Mram_fg01"
+        PINNAME CLKA;
+PIN game/main/video/Mram_fg01_pins<25> = BEL "game/main/video/Mram_fg01"
+        PINNAME CLKB;
+PIN game/main/video/Mram_bg02_pins<24> = BEL "game/main/video/Mram_bg02"
+        PINNAME CLKA;
+PIN game/main/video/Mram_bg02_pins<25> = BEL "game/main/video/Mram_bg02"
+        PINNAME CLKB;
+PIN game/main/video/Mram_fg02_pins<24> = BEL "game/main/video/Mram_fg02"
+        PINNAME CLKA;
+PIN game/main/video/Mram_fg02_pins<25> = BEL "game/main/video/Mram_fg02"
+        PINNAME CLKB;
+PIN game/main/video/Mram_bg12_pins<24> = BEL "game/main/video/Mram_bg12"
+        PINNAME CLKA;
+PIN game/main/video/Mram_bg12_pins<25> = BEL "game/main/video/Mram_bg12"
+        PINNAME CLKB;
+PIN game/main/video/Mram_bg11_pins<24> = BEL "game/main/video/Mram_bg11"
+        PINNAME CLKA;
+PIN game/main/video/Mram_bg11_pins<25> = BEL "game/main/video/Mram_bg11"
+        PINNAME CLKB;
+PIN game/main/video/Mram_bg01_pins<24> = BEL "game/main/video/Mram_bg01"
+        PINNAME CLKA;
+PIN game/main/video/Mram_bg01_pins<25> = BEL "game/main/video/Mram_bg01"
+        PINNAME CLKB;
+PIN game/main/video/Mram_fg12_pins<24> = BEL "game/main/video/Mram_fg12"
+        PINNAME CLKA;
+PIN game/main/video/Mram_fg12_pins<25> = BEL "game/main/video/Mram_fg12"
+        PINNAME CLKB;
+PIN game/main/video/Mram_fg11_pins<24> = BEL "game/main/video/Mram_fg11"
+        PINNAME CLKA;
+PIN game/main/video/Mram_fg11_pins<25> = BEL "game/main/video/Mram_fg11"
+        PINNAME CLKB;
+PIN game/main/Mram_ram1_pins<12> = BEL "game/main/Mram_ram1" PINNAME CLKA;
+PIN game/main/Mram_ram2_pins<12> = BEL "game/main/Mram_ram2" PINNAME CLKA;
+PIN game/Mram_lbuf_pins<22> = BEL "game/Mram_lbuf" PINNAME CLKA;
+PIN game/Mram_lbuf_pins<23> = BEL "game/Mram_lbuf" PINNAME CLKB;
+PIN game/main/video/Mram_sg1_pins<22> = BEL "game/main/video/Mram_sg1" PINNAME
+        CLKA;
+PIN game/main/video/Mram_sg1_pins<23> = BEL "game/main/video/Mram_sg1" PINNAME
+        CLKB;
+PIN game/main/video/Mram_sg2_pins<22> = BEL "game/main/video/Mram_sg2" PINNAME
+        CLKA;
+PIN game/main/video/Mram_sg2_pins<23> = BEL "game/main/video/Mram_sg2" PINNAME
+        CLKB;
+PIN game/main/video/Mram_sg0_pins<22> = BEL "game/main/video/Mram_sg0" PINNAME
+        CLKA;
+PIN game/main/video/Mram_sg0_pins<23> = BEL "game/main/video/Mram_sg0" PINNAME
+        CLKB;
+PIN game/main/video/Mram_bga_pins<20> = BEL "game/main/video/Mram_bga" PINNAME
+        CLKAWRCLK;
+PIN game/main/video/Mram_bga_pins<21> = BEL "game/main/video/Mram_bga" PINNAME
+        CLKBRDCLK;
+PIN game/main/video/Mram_sg3_pins<22> = BEL "game/main/video/Mram_sg3" PINNAME
+        CLKA;
+PIN game/main/video/Mram_sg3_pins<23> = BEL "game/main/video/Mram_sg3" PINNAME
+        CLKB;
+PIN game/main/video/Mram_sbuf_pins<20> = BEL "game/main/video/Mram_sbuf"
+        PINNAME CLKAWRCLK;
+PIN game/main/video/Mram_sbuf_pins<21> = BEL "game/main/video/Mram_sbuf"
+        PINNAME CLKBRDCLK;
+PIN game/main/video/Mram_bgc_pins<20> = BEL "game/main/video/Mram_bgc" PINNAME
+        CLKAWRCLK;
+PIN game/main/video/Mram_bgc_pins<21> = BEL "game/main/video/Mram_bgc" PINNAME
+        CLKBRDCLK;
+PIN game/main/video/Mram_fgc_pins<20> = BEL "game/main/video/Mram_fgc" PINNAME
+        CLKAWRCLK;
+PIN game/main/video/Mram_fgc_pins<21> = BEL "game/main/video/Mram_fgc" PINNAME
+        CLKBRDCLK;
+PIN game/main/video/Mram_fga_pins<20> = BEL "game/main/video/Mram_fga" PINNAME
+        CLKAWRCLK;
+PIN game/main/video/Mram_fga_pins<21> = BEL "game/main/video/Mram_fga" PINNAME
+        CLKBRDCLK;
+PIN sram_we_ddr_pins<1> = BEL "sram_we_ddr" PINNAME CK0;
+PIN sram_we_ddr_pins<2> = BEL "sram_we_ddr" PINNAME CK1;
+TIMEGRP clock_system_clkout0 = BEL "rot_key_r" BEL "hold_cnt_r_0" BEL
+        "hold_cnt_r_1" BEL "hold_cnt_r_2" BEL "hold_cnt_r_3" BEL
+        "hold_cnt_r_4" BEL "hold_cnt_r_5" BEL "hold_cnt_r_6" BEL
+        "hold_cnt_r_7" BEL "hold_cnt_r_8" BEL "hold_cnt_r_9" BEL
+        "hold_cnt_r_10" BEL "hold_cnt_r_11" BEL "hold_cnt_r_12" BEL
+        "hold_cnt_r_13" BEL "hold_cnt_r_14" BEL "hold_cnt_r_15" BEL
+        "hold_cnt_r_16" BEL "hold_cnt_r_17" BEL "hold_cnt_r_18" BEL
+        "hold_cnt_r_19" BEL "hold_cnt_r_20" BEL "hold_cnt_r_21" BEL
+        "hold_cnt_r_22" BEL "hold_cnt_r_23" BEL "hold_cnt_r_24" BEL
+        "rst_cnt_r_0" BEL "rst_cnt_r_1" BEL "rst_cnt_r_2" BEL "rst_cnt_r_3"
+        BEL "rst_cnt_r_4" BEL "rst_cnt_r_5" BEL "rst_cnt_r_6" BEL
+        "rst_cnt_r_7" BEL "clock_system/clkout1_buf" BEL "ps2if_inst/count_4"
+        BEL "ps2if_inst/count_3" BEL "ps2if_inst/count_2" BEL
+        "ps2if_inst/count_1" BEL "ps2if_inst/count_0" BEL "ps2if_inst/joy_4"
+        BEL "ps2if_inst/joy_3" BEL "ps2if_inst/joy_2" BEL "ps2if_inst/joy_1"
+        BEL "ps2if_inst/joy_0" BEL "ps2if_inst/keys_13" BEL
+        "ps2if_inst/keys_10" BEL "ps2if_inst/keys_8" BEL "ps2if_inst/keys_7"
+        BEL "ps2if_inst/keys_3" BEL "ps2if_inst/keys_0" BEL
+        "ps2if_inst/tick1us" BEL "ps2if_inst/ps2kbd_inst/Release" BEL
+        "ps2if_inst/ps2kbd_inst/Press" BEL "ps2if_inst/ps2kbd_inst/Reset" BEL
+        "ps2if_inst/ps2kbd_inst/RX_Received" BEL
+        "ps2if_inst/ps2kbd_inst/RX_Bit_Cnt_3" BEL
+        "ps2if_inst/ps2kbd_inst/RX_Bit_Cnt_2" BEL
+        "ps2if_inst/ps2kbd_inst/RX_Bit_Cnt_1" BEL
+        "ps2if_inst/ps2kbd_inst/RX_Bit_Cnt_0" BEL
+        "ps2if_inst/ps2kbd_inst/Cnt_6" BEL "ps2if_inst/ps2kbd_inst/Cnt_5" BEL
+        "ps2if_inst/ps2kbd_inst/Cnt_4" BEL "ps2if_inst/ps2kbd_inst/Cnt_3" BEL
+        "ps2if_inst/ps2kbd_inst/Cnt_2" BEL "ps2if_inst/ps2kbd_inst/Cnt_1" BEL
+        "ps2if_inst/ps2kbd_inst/Cnt_0" BEL "ps2if_inst/ps2kbd_inst/PS2_Sample"
+        BEL "ps2if_inst/ps2kbd_inst/RX_ShiftReg_7" BEL
+        "ps2if_inst/ps2kbd_inst/RX_ShiftReg_6" BEL
+        "ps2if_inst/ps2kbd_inst/RX_ShiftReg_5" BEL
+        "ps2if_inst/ps2kbd_inst/RX_ShiftReg_4" BEL
+        "ps2if_inst/ps2kbd_inst/RX_ShiftReg_3" BEL
+        "ps2if_inst/ps2kbd_inst/RX_ShiftReg_2" BEL
+        "ps2if_inst/ps2kbd_inst/RX_ShiftReg_1" BEL
+        "ps2if_inst/ps2kbd_inst/RX_ShiftReg_0" BEL
+        "ps2if_inst/ps2kbd_inst/PS2_Data_r_1" BEL
+        "ps2if_inst/ps2kbd_inst/PS2_Data_r_0" BEL
+        "ps2if_inst/ps2kbd_inst/PS2_Clk_r_1" BEL
+        "ps2if_inst/ps2kbd_inst/PS2_Clk_r_0" BEL "game/main/box_19" BEL
+        "game/main/box_18" BEL "game/main/box_17" BEL "game/main/box_16" BEL
+        "game/main/box_15" BEL "game/main/box_14" BEL "game/main/box_13" BEL
+        "game/main/box_12" BEL "game/main/box_11" BEL "game/main/box_10" BEL
+        "game/main/box_9" BEL "game/main/box_8" BEL "game/main/box_7" BEL
+        "game/main/box_6" BEL "game/main/box_5" BEL "game/main/box_4" BEL
+        "game/main/box_3" BEL "game/main/box_2" BEL "game/main/box_1" BEL
+        "game/main/box_0" BEL "game/acc_cpu_7" BEL "game/acc_cpu_6" BEL
+        "game/acc_cpu_5" BEL "game/acc_cpu_4" BEL "game/acc_cpu_3" BEL
+        "game/acc_cpu_2" BEL "game/acc_cpu_1" BEL "game/acc_cpu_0" BEL
+        "game/acc_pix_7" BEL "game/acc_pix_6" BEL "game/acc_pix_5" BEL
+        "game/acc_pix_4" BEL "game/acc_pix_3" BEL "game/acc_pix_2" BEL
+        "game/acc_pix_1" BEL "game/main/dc_23" BEL "game/main/dc_22" BEL
+        "game/main/dc_21" BEL "game/main/dc_20" BEL "game/main/dc_19" BEL
+        "game/main/dc_18" BEL "game/main/dc_17" BEL "game/main/dc_16" BEL
+        "game/main/dc_15" BEL "game/main/dc_14" BEL "game/main/dc_13" BEL
+        "game/main/dc_12" BEL "game/main/dc_11" BEL "game/main/dc_10" BEL
+        "game/main/dc_9" BEL "game/main/dc_8" BEL "game/main/dc_7" BEL
+        "game/main/dc_6" BEL "game/main/dc_5" BEL "game/main/dc_4" BEL
+        "game/main/dc_3" BEL "game/main/dc_2" BEL "game/main/dc_1" BEL
+        "game/main/dc_0" BEL "game/main/sn1/ch_1" BEL "game/main/sn1/ch_0" BEL
+        "game/main/video/sp_cnt_7" BEL "game/main/video/sp_cnt_6" BEL
+        "game/main/video/sp_cnt_5" BEL "game/main/video/sp_cnt_4" BEL
+        "game/main/video/sp_cnt_3" BEL "game/main/video/sp_cnt_2" BEL
+        "game/main/video/sp_cnt_1" BEL "game/main/video/sp_cnt_0" BEL
+        "game/rd_u_7" BEL "game/rd_u_6" BEL "game/rd_u_5" BEL "game/rd_u_4"
+        BEL "game/rd_u_3" BEL "game/rd_u_2" BEL "game/rd_u_1" BEL
+        "game/rd_u_0" BEL "game/fq_wp_3" BEL "game/fq_wp_2" BEL "game/fq_wp_1"
+        BEL "game/fq_wp_0" BEL "game/fq_rp_3" BEL "game/fq_rp_2" BEL
+        "game/fq_rp_1" BEL "game/fq_rp_0" BEL "game/vc_9" BEL "game/vc_8" BEL
+        "game/vc_7" BEL "game/vc_6" BEL "game/vc_5" BEL "game/vc_4" BEL
+        "game/vc_3" BEL "game/vc_2" BEL "game/vc_1" BEL "game/vc_0" BEL
+        "game/hc_9" BEL "game/hc_8" BEL "game/hc_7" BEL "game/hc_6" BEL
+        "game/hc_5" BEL "game/hc_4" BEL "game/hc_3" BEL "game/hc_2" BEL
+        "game/hc_1" BEL "game/hc_0" BEL "game/main/video/sp_col_3" BEL
+        "game/main/video/sp_col_2" BEL "game/main/video/sp_col_1" BEL
+        "game/main/video/sp_col_0" BEL "game/main/video/sp_st_FSM_FFd1" BEL
+        "game/main/video/sp_x_8" BEL "game/main/video/sp_x_7" BEL
+        "game/main/video/sp_x_6" BEL "game/main/video/sp_x_5" BEL
+        "game/main/video/sp_x_4" BEL "game/main/video/sp_x_3" BEL
+        "game/main/video/sp_x_2" BEL "game/main/video/sp_x_1" BEL
+        "game/main/video/sp_x_0" BEL "game/main/video/sp_st_FSM_FFd3" BEL
+        "game/main/video/sp_st_FSM_FFd2" BEL "game/main/sn2/div_2" BEL
+        "game/main/sn2/div_1" BEL "game/main/sn2/div_0" BEL
+        "game/main/video/v_8" BEL "game/main/video/v_7" BEL
+        "game/main/video/v_6" BEL "game/main/video/v_5" BEL
+        "game/main/video/v_4" BEL "game/main/video/v_3" BEL
+        "game/main/video/v_2" BEL "game/main/video/v_1" BEL
+        "game/main/video/v_0" BEL "game/main/video/cp_x_7" BEL
+        "game/main/video/cp_x_6" BEL "game/main/video/cp_x_5" BEL
+        "game/main/video/cp_x_4" BEL "game/main/video/cp_x_3" BEL
+        "game/main/video/cp_x_2" BEL "game/main/video/cp_x_1" BEL
+        "game/main/video/cp_x_0" BEL "game/main/video/h_8" BEL
+        "game/main/video/h_7" BEL "game/main/video/h_6" BEL
+        "game/main/video/h_5" BEL "game/main/video/h_4" BEL
+        "game/main/video/h_3" BEL "game/main/video/h_2" BEL
+        "game/main/video/h_1" BEL "game/main/video/h_0" BEL
+        "game/main/video/cp_ph_2" BEL "game/main/video/cp_ph_1" BEL
+        "game/main/video/cp_ph_0" BEL "game/spi_div_4" BEL "game/main/box_n_8"
+        BEL "game/main/box_n_7" BEL "game/main/box_n_6" BEL
+        "game/main/box_n_5" BEL "game/main/box_n_4" BEL "game/main/box_n_3"
+        BEL "game/main/box_n_2" BEL "game/main/box_n_1" BEL
+        "game/main/box_n_0" BEL "game/spi_div_2" BEL "game/spi_div_1" BEL
+        "game/spi_div_3" BEL "game/spi_div_0" BEL "game/rst_cnt_7" BEL
+        "game/rst_cnt_6" BEL "game/rst_cnt_5" BEL "game/rst_cnt_4" BEL
+        "game/rst_cnt_3" BEL "game/rst_cnt_2" BEL "game/rst_cnt_1" BEL
+        "game/rst_cnt_0" BEL "game/main/sn1/nreg_0" BEL "game/main/sn1/nreg_1"
+        BEL "game/main/sn1/nreg_2" BEL "game/main/sn1/last_0" BEL
+        "game/main/sn1/last_1" BEL "game/main/sn1/last_2" BEL
+        "game/main/sn1/tog_0" BEL "game/main/sn1/tog_1" BEL
+        "game/main/sn1/tog_2" BEL "game/main/sn1/period_2_0" BEL
+        "game/main/sn1/period_2_1" BEL "game/main/sn1/period_2_2" BEL
+        "game/main/sn1/period_2_3" BEL "game/main/sn1/period_2_4" BEL
+        "game/main/sn1/period_2_5" BEL "game/main/sn1/period_2_6" BEL
+        "game/main/sn1/period_2_7" BEL "game/main/sn1/period_2_8" BEL
+        "game/main/sn1/period_2_9" BEL "game/main/sn1/period_2_10" BEL
+        "game/main/sn1/period_2_11" BEL "game/main/sn1/period_2_12" BEL
+        "game/main/sn1/period_2_13" BEL "game/main/sn1/period_2_14" BEL
+        "game/main/sn1/period_2_15" BEL "game/main/sn1/period_2_16" BEL
+        "game/main/sn1/period_2_17" BEL "game/main/sn1/period_2_18" BEL
+        "game/main/sn1/period_2_19" BEL "game/main/sn1/period_2_20" BEL
+        "game/main/sn1/period_2_21" BEL "game/main/sn1/period_2_22" BEL
+        "game/main/sn1/period_2_23" BEL "game/main/sn1/period_2_24" BEL
+        "game/main/sn1/period_2_25" BEL "game/main/sn1/period_2_26" BEL
+        "game/main/sn1/period_2_27" BEL "game/main/sn1/period_2_28" BEL
+        "game/main/sn1/period_2_29" BEL "game/main/sn1/vol_3_0" BEL
+        "game/main/sn1/vol_3_1" BEL "game/main/sn1/vol_3_2" BEL
+        "game/main/sn1/vol_3_3" BEL "game/main/sn1/vol_3_4" BEL
+        "game/main/sn1/vol_3_5" BEL "game/main/sn1/vol_3_6" BEL
+        "game/main/sn1/vol_3_7" BEL "game/main/sn1/vol_3_8" BEL
+        "game/main/sn1/vol_3_9" BEL "game/main/sn1/vol_3_10" BEL
+        "game/main/sn1/vol_3_11" BEL "game/main/sn1/vol_3_12" BEL
+        "game/main/sn1/vol_3_13" BEL "game/main/sn1/vol_3_14" BEL
+        "game/main/sn1/vol_3_15" BEL "game/main/sn1/rng_0" BEL
+        "game/main/sn1/rng_1" BEL "game/main/sn1/rng_2" BEL
+        "game/main/sn1/rng_3" BEL "game/main/sn1/rng_4" BEL
+        "game/main/sn1/rng_5" BEL "game/main/sn1/rng_6" BEL
+        "game/main/sn1/rng_7" BEL "game/main/sn1/rng_8" BEL
+        "game/main/sn1/rng_9" BEL "game/main/sn1/rng_10" BEL
+        "game/main/sn1/rng_11" BEL "game/main/sn1/rng_12" BEL
+        "game/main/sn1/rng_13" BEL "game/main/sn1/rng_14" BEL
+        "game/main/sn1/cnt_3_0" BEL "game/main/sn1/cnt_3_1" BEL
+        "game/main/sn1/cnt_3_2" BEL "game/main/sn1/cnt_3_3" BEL
+        "game/main/sn1/cnt_3_4" BEL "game/main/sn1/cnt_3_5" BEL
+        "game/main/sn1/cnt_3_6" BEL "game/main/sn1/cnt_3_7" BEL
+        "game/main/sn1/cnt_3_8" BEL "game/main/sn1/cnt_3_9" BEL
+        "game/main/sn1/cnt_3_10" BEL "game/main/sn1/cnt_3_11" BEL
+        "game/main/sn1/cnt_3_12" BEL "game/main/sn1/cnt_3_13" BEL
+        "game/main/sn1/cnt_3_14" BEL "game/main/sn1/cnt_3_15" BEL
+        "game/main/sn1/cnt_3_16" BEL "game/main/sn1/cnt_3_17" BEL
+        "game/main/sn1/cnt_3_18" BEL "game/main/sn1/cnt_3_19" BEL
+        "game/main/sn1/cnt_3_20" BEL "game/main/sn1/cnt_3_21" BEL
+        "game/main/sn1/cnt_3_22" BEL "game/main/sn1/cnt_3_24" BEL
+        "game/main/sn1/cnt_3_25" BEL "game/main/sn1/cnt_3_26" BEL
+        "game/main/sn1/cnt_3_27" BEL "game/main/sn1/cnt_3_28" BEL
+        "game/main/sn1/cnt_3_29" BEL "game/main/sn1/cnt_3_30" BEL
+        "game/main/sn1/cnt_3_31" BEL "game/main/sn1/cnt_3_32" BEL
+        "game/main/sn1/cnt_3_33" BEL "game/main/sn1/cnt_3_34" BEL
+        "game/main/sn1/cnt_3_36" BEL "game/main/sn1/cnt_3_37" BEL
+        "game/main/sn1/cnt_3_38" BEL "game/main/sn1/cnt_3_39" BEL
+        "game/main/sn1/cnt_3_40" BEL "game/main/sn1/cnt_3_41" BEL
+        "game/main/sn1/cnt_3_42" BEL "game/main/sn1/cnt_3_43" BEL
+        "game/main/sn1/cnt_3_44" BEL "game/main/sn1/cnt_3_45" BEL
+        "game/main/sn1/cnt_3_46" BEL "game/main/sn1/out_0" BEL
+        "game/main/sn1/out_1" BEL "game/main/sn1/out_2" BEL
+        "game/main/sn1/out_3" BEL "game/main/sn1/out_4" BEL
+        "game/main/sn1/out_5" BEL "game/main/sn1/out_6" BEL
+        "game/main/sn1/out_7" BEL "game/main/sn1/out_8" BEL
+        "game/main/sn1/out_9" BEL "game/main/sn2/nreg_0" BEL
+        "game/main/sn2/nreg_1" BEL "game/main/sn2/nreg_2" BEL
+        "game/main/sn2/last_0" BEL "game/main/sn2/last_1" BEL
+        "game/main/sn2/last_2" BEL "game/main/sn2/tog_0" BEL
+        "game/main/sn2/tog_1" BEL "game/main/sn2/tog_2" BEL
+        "game/main/sn2/period_2_0" BEL "game/main/sn2/period_2_1" BEL
+        "game/main/sn2/period_2_2" BEL "game/main/sn2/period_2_3" BEL
+        "game/main/sn2/period_2_4" BEL "game/main/sn2/period_2_5" BEL
+        "game/main/sn2/period_2_6" BEL "game/main/sn2/period_2_7" BEL
+        "game/main/sn2/period_2_8" BEL "game/main/sn2/period_2_9" BEL
+        "game/main/sn2/period_2_10" BEL "game/main/sn2/period_2_11" BEL
+        "game/main/sn2/period_2_12" BEL "game/main/sn2/period_2_13" BEL
+        "game/main/sn2/period_2_14" BEL "game/main/sn2/period_2_15" BEL
+        "game/main/sn2/period_2_16" BEL "game/main/sn2/period_2_17" BEL
+        "game/main/sn2/period_2_18" BEL "game/main/sn2/period_2_19" BEL
+        "game/main/sn2/period_2_20" BEL "game/main/sn2/period_2_21" BEL
+        "game/main/sn2/period_2_22" BEL "game/main/sn2/period_2_23" BEL
+        "game/main/sn2/period_2_24" BEL "game/main/sn2/period_2_25" BEL
+        "game/main/sn2/period_2_26" BEL "game/main/sn2/period_2_27" BEL
+        "game/main/sn2/period_2_28" BEL "game/main/sn2/period_2_29" BEL
+        "game/main/sn2/vol_3_0" BEL "game/main/sn2/vol_3_1" BEL
+        "game/main/sn2/vol_3_2" BEL "game/main/sn2/vol_3_3" BEL
+        "game/main/sn2/vol_3_4" BEL "game/main/sn2/vol_3_5" BEL
+        "game/main/sn2/vol_3_6" BEL "game/main/sn2/vol_3_7" BEL
+        "game/main/sn2/vol_3_8" BEL "game/main/sn2/vol_3_9" BEL
+        "game/main/sn2/vol_3_10" BEL "game/main/sn2/vol_3_11" BEL
+        "game/main/sn2/vol_3_12" BEL "game/main/sn2/vol_3_13" BEL
+        "game/main/sn2/vol_3_14" BEL "game/main/sn2/vol_3_15" BEL
+        "game/main/sn2/rng_0" BEL "game/main/sn2/rng_1" BEL
+        "game/main/sn2/rng_2" BEL "game/main/sn2/rng_3" BEL
+        "game/main/sn2/rng_4" BEL "game/main/sn2/rng_5" BEL
+        "game/main/sn2/rng_6" BEL "game/main/sn2/rng_7" BEL
+        "game/main/sn2/rng_8" BEL "game/main/sn2/rng_9" BEL
+        "game/main/sn2/rng_10" BEL "game/main/sn2/rng_11" BEL
+        "game/main/sn2/rng_12" BEL "game/main/sn2/rng_13" BEL
+        "game/main/sn2/rng_14" BEL "game/main/sn2/cnt_3_0" BEL
+        "game/main/sn2/cnt_3_1" BEL "game/main/sn2/cnt_3_2" BEL
+        "game/main/sn2/cnt_3_3" BEL "game/main/sn2/cnt_3_4" BEL
+        "game/main/sn2/cnt_3_5" BEL "game/main/sn2/cnt_3_6" BEL
+        "game/main/sn2/cnt_3_7" BEL "game/main/sn2/cnt_3_8" BEL
+        "game/main/sn2/cnt_3_9" BEL "game/main/sn2/cnt_3_10" BEL
+        "game/main/sn2/cnt_3_11" BEL "game/main/sn2/cnt_3_12" BEL
+        "game/main/sn2/cnt_3_13" BEL "game/main/sn2/cnt_3_14" BEL
+        "game/main/sn2/cnt_3_15" BEL "game/main/sn2/cnt_3_16" BEL
+        "game/main/sn2/cnt_3_17" BEL "game/main/sn2/cnt_3_18" BEL
+        "game/main/sn2/cnt_3_19" BEL "game/main/sn2/cnt_3_20" BEL
+        "game/main/sn2/cnt_3_21" BEL "game/main/sn2/cnt_3_22" BEL
+        "game/main/sn2/cnt_3_24" BEL "game/main/sn2/cnt_3_25" BEL
+        "game/main/sn2/cnt_3_26" BEL "game/main/sn2/cnt_3_27" BEL
+        "game/main/sn2/cnt_3_28" BEL "game/main/sn2/cnt_3_29" BEL
+        "game/main/sn2/cnt_3_30" BEL "game/main/sn2/cnt_3_31" BEL
+        "game/main/sn2/cnt_3_32" BEL "game/main/sn2/cnt_3_33" BEL
+        "game/main/sn2/cnt_3_34" BEL "game/main/sn2/cnt_3_36" BEL
+        "game/main/sn2/cnt_3_37" BEL "game/main/sn2/cnt_3_38" BEL
+        "game/main/sn2/cnt_3_39" BEL "game/main/sn2/cnt_3_40" BEL
+        "game/main/sn2/cnt_3_41" BEL "game/main/sn2/cnt_3_42" BEL
+        "game/main/sn2/cnt_3_43" BEL "game/main/sn2/cnt_3_44" BEL
+        "game/main/sn2/cnt_3_45" BEL "game/main/sn2/cnt_3_46" BEL
+        "game/main/sn2/out_0" BEL "game/main/sn2/out_1" BEL
+        "game/main/sn2/out_2" BEL "game/main/sn2/out_3" BEL
+        "game/main/sn2/out_4" BEL "game/main/sn2/out_5" BEL
+        "game/main/sn2/out_6" BEL "game/main/sn2/out_7" BEL
+        "game/main/sn2/out_8" BEL "game/main/sn2/out_9" BEL
+        "game/main/audio_15" BEL "game/main/audio_14" BEL "game/main/audio_13"
+        BEL "game/main/audio_12" BEL "game/main/audio_11" BEL
+        "game/main/audio_10" BEL "game/main/audio_9" BEL "game/main/audio_8"
+        BEL "game/main/audio_7" BEL "game/main/audio_6" BEL
+        "game/main/audio_5" BEL "game/main/audio_4" BEL "game/main/audio_3"
+        BEL "game/main/audio_2" BEL "game/main/audio_1" BEL
+        "game/main/audio_0" BEL "game/sram_dout_7" BEL "game/sram_dout_6" BEL
+        "game/sram_dout_5" BEL "game/sram_dout_4" BEL "game/sram_dout_3" BEL
+        "game/sram_dout_2" BEL "game/sram_dout_1" BEL "game/sram_dout_0" BEL
+        "game/main/video/pixel_7" BEL "game/main/video/pixel_6" BEL
+        "game/main/video/pixel_5" BEL "game/main/video/pixel_4" BEL
+        "game/main/video/pixel_3" BEL "game/main/video/pixel_2" BEL
+        "game/main/video/pixel_1" BEL "game/main/video/pixel_0" BEL
+        "game/main/lp2_23" BEL "game/main/lp2_22" BEL "game/main/lp2_21" BEL
+        "game/main/lp2_20" BEL "game/main/lp2_19" BEL "game/main/lp2_18" BEL
+        "game/main/lp2_17" BEL "game/main/lp2_16" BEL "game/main/lp2_15" BEL
+        "game/main/lp2_14" BEL "game/main/lp2_13" BEL "game/main/lp2_12" BEL
+        "game/main/lp2_11" BEL "game/main/lp2_10" BEL "game/main/lp2_9" BEL
+        "game/main/lp2_8" BEL "game/main/lp2_7" BEL "game/main/lp2_6" BEL
+        "game/main/lp2_5" BEL "game/main/lp2_4" BEL "game/main/lp2_3" BEL
+        "game/main/lp2_2" BEL "game/main/lp2_1" BEL "game/main/lp2_0" BEL
+        "game/sram_addr_18" BEL "game/sram_addr_17" BEL "game/sram_addr_16"
+        BEL "game/sram_addr_15" BEL "game/sram_addr_14" BEL
+        "game/sram_addr_13" BEL "game/sram_addr_12" BEL "game/sram_addr_11"
+        BEL "game/sram_addr_10" BEL "game/sram_addr_9" BEL "game/sram_addr_8"
+        BEL "game/sram_addr_7" BEL "game/sram_addr_6" BEL "game/sram_addr_5"
+        BEL "game/sram_addr_4" BEL "game/sram_addr_3" BEL "game/sram_addr_2"
+        BEL "game/sram_addr_1" BEL "game/sram_addr_0" BEL "game/main/lp1_23"
+        BEL "game/main/lp1_22" BEL "game/main/lp1_21" BEL "game/main/lp1_20"
+        BEL "game/main/lp1_19" BEL "game/main/lp1_18" BEL "game/main/lp1_17"
+        BEL "game/main/lp1_16" BEL "game/main/lp1_15" BEL "game/main/lp1_14"
+        BEL "game/main/lp1_13" BEL "game/main/lp1_12" BEL "game/main/lp1_11"
+        BEL "game/main/lp1_10" BEL "game/main/lp1_9" BEL "game/main/lp1_8" BEL
+        "game/main/lp1_7" BEL "game/main/lp1_6" BEL "game/main/lp1_5" BEL
+        "game/main/lp1_4" BEL "game/main/lp1_3" BEL "game/main/lp1_2" BEL
+        "game/main/lp1_1" BEL "game/main/lp1_0" BEL "game/b_addr_17" BEL
+        "game/b_addr_16" BEL "game/b_addr_15" BEL "game/b_addr_14" BEL
+        "game/b_addr_13" BEL "game/b_addr_12" BEL "game/b_addr_11" BEL
+        "game/b_addr_10" BEL "game/b_addr_9" BEL "game/b_addr_8" BEL
+        "game/b_addr_7" BEL "game/b_addr_6" BEL "game/b_addr_5" BEL
+        "game/b_addr_4" BEL "game/b_addr_3" BEL "game/b_addr_2" BEL
+        "game/b_addr_1" BEL "game/b_addr_0" BEL "game/ld_a_17" BEL
+        "game/ld_a_16" BEL "game/ld_a_15" BEL "game/ld_a_14" BEL
+        "game/ld_a_13" BEL "game/ld_a_12" BEL "game/ld_a_11" BEL
+        "game/ld_a_10" BEL "game/ld_a_9" BEL "game/ld_a_8" BEL "game/ld_a_7"
+        BEL "game/ld_a_6" BEL "game/ld_a_5" BEL "game/ld_a_4" BEL
+        "game/ld_a_3" BEL "game/ld_a_2" BEL "game/ld_a_1" BEL "game/ld_a_0"
+        BEL "game/main/video/sb_wa_8" BEL "game/main/video/sb_wa_7" BEL
+        "game/main/video/sb_wa_6" BEL "game/main/video/sb_wa_5" BEL
+        "game/main/video/sb_wa_4" BEL "game/main/video/sb_wa_3" BEL
+        "game/main/video/sb_wa_2" BEL "game/main/video/sb_wa_1" BEL
+        "game/main/video/sb_wa_0" BEL "game/main/smp_10" BEL "game/main/smp_9"
+        BEL "game/main/smp_8" BEL "game/main/smp_7" BEL "game/main/smp_6" BEL
+        "game/main/smp_5" BEL "game/main/smp_4" BEL "game/main/smp_3" BEL
+        "game/main/smp_2" BEL "game/main/smp_1" BEL "game/main/smp_0" BEL
+        "game/main/video/s_x_7" BEL "game/main/video/s_x_6" BEL
+        "game/main/video/s_x_5" BEL "game/main/video/s_x_4" BEL
+        "game/main/video/s_x_3" BEL "game/main/video/s_x_2" BEL
+        "game/main/video/s_x_1" BEL "game/main/video/s_x_0" BEL
+        "game/s0_addr_17" BEL "game/s0_addr_14" BEL "game/s0_addr_13" BEL
+        "game/s0_addr_12" BEL "game/s0_addr_11" BEL "game/s0_addr_10" BEL
+        "game/s0_addr_9" BEL "game/s0_addr_8" BEL "game/s0_addr_7" BEL
+        "game/s0_addr_6" BEL "game/s0_addr_5" BEL "game/s0_addr_4" BEL
+        "game/s0_addr_3" BEL "game/s0_addr_2" BEL "game/s0_addr_1" BEL
+        "game/s0_addr_0" BEL "game/spi_fast" BEL "game/wr_n_d" BEL
+        "game/main/video/sb_wd_5" BEL "game/main/video/sb_wd_4" BEL
+        "game/main/video/sb_wd_3" BEL "game/main/video/sb_wd_2" BEL
+        "game/main/video/sb_wd_1" BEL "game/main/video/sb_wd_0" BEL
+        "game/main/video/sgb_a_sliced_0" BEL "game/main/video/sgb_a_sliced_1"
+        BEL "game/main/video/sgb_a_sliced_2" BEL
+        "game/main/video/sgb_a_sliced_3" BEL "game/vid_r_7" BEL "game/vid_r_6"
+        BEL "game/vid_r_5" BEL "game/vid_r_4" BEL "game/vid_r_3" BEL
+        "game/vid_r_2" BEL "game/vid_r_1" BEL "game/vid_r_0" BEL
+        "game/vid_g_7" BEL "game/vid_g_6" BEL "game/vid_g_5" BEL
+        "game/vid_g_4" BEL "game/vid_g_3" BEL "game/vid_g_2" BEL
+        "game/vid_g_1" BEL "game/vid_g_0" BEL "game/main/video/sp_color_3" BEL
+        "game/main/video/sp_color_2" BEL "game/main/video/sp_color_1" BEL
+        "game/main/video/sp_color_0" BEL "game/main/video/sp_flipx" BEL
+        "game/main/video/sgb_a_10" BEL "game/main/video/sgb_a_9" BEL
+        "game/main/video/sgb_a_8" BEL "game/main/video/sgb_a_7" BEL
+        "game/main/video/sgb_a_6" BEL "game/main/video/sgb_a_5" BEL
+        "game/main/video/sgb_a_4" BEL "game/main/video/s_code_6" BEL
+        "game/main/video/s_code_5" BEL "game/main/video/s_code_4" BEL
+        "game/main/video/s_code_3" BEL "game/main/video/s_code_2" BEL
+        "game/main/video/s_code_1" BEL "game/main/video/s_code_0" BEL
+        "game/main/video/s_y_7" BEL "game/main/video/s_y_6" BEL
+        "game/main/video/s_y_5" BEL "game/main/video/s_y_4" BEL
+        "game/main/video/s_y_3" BEL "game/main/video/s_y_2" BEL
+        "game/main/video/s_y_1" BEL "game/main/video/s_y_0" BEL
+        "game/main/video/s_attr_5" BEL "game/main/video/s_attr_4" BEL
+        "game/main/video/s_attr_3" BEL "game/main/video/s_attr_2" BEL
+        "game/main/video/s_attr_1" BEL "game/main/video/s_attr_0" BEL
+        "game/main/video/sb_we" BEL "game/main/video/s_idx_5" BEL
+        "game/main/video/s_idx_4" BEL "game/main/video/s_idx_3" BEL
+        "game/main/video/s_idx_2" BEL "game/main/video/s_idx_1" BEL
+        "game/main/video/s_idx_0" BEL "game/main/video/bg_ga_11" BEL
+        "game/main/video/bg_ga_10" BEL "game/main/video/bg_ga_9" BEL
+        "game/main/video/bg_ga_8" BEL "game/main/video/bg_ga_7" BEL
+        "game/main/video/bg_ga_6" BEL "game/main/video/bg_ga_5" BEL
+        "game/main/video/bg_ga_4" BEL "game/main/video/bg_ga_3" BEL
+        "game/main/video/bg_ga_2" BEL "game/main/video/bg_ga_1" BEL
+        "game/main/video/bg_ga_0" BEL "game/main/video/fg_ga_10" BEL
+        "game/main/video/fg_ga_9" BEL "game/main/video/fg_ga_8" BEL
+        "game/main/video/fg_ga_7" BEL "game/main/video/fg_ga_6" BEL
+        "game/main/video/fg_ga_5" BEL "game/main/video/fg_ga_4" BEL
+        "game/main/video/fg_ga_3" BEL "game/main/video/fg_ga_sliced_0" BEL
+        "game/main/video/fg_ga_sliced_1" BEL "game/main/video/fg_ga_sliced_2"
+        BEL "game/main/video/fg_ga_sliced_3" BEL "game/main/video/bg_va_9" BEL
+        "game/main/video/bg_va_8" BEL "game/main/video/bg_va_7" BEL
+        "game/main/video/bg_va_6" BEL "game/main/video/bg_va_5" BEL
+        "game/main/video/bg_va_4" BEL "game/main/video/bg_va_3" BEL
+        "game/main/video/bg_va_2" BEL "game/main/video/bg_va_1" BEL
+        "game/main/video/bg_va_0" BEL "game/main/video/bg_fy_2" BEL
+        "game/main/video/bg_fy_1" BEL "game/main/video/bg_fy_0" BEL
+        "game/main/video/fg_va_9" BEL "game/main/video/fg_va_8" BEL
+        "game/main/video/fg_va_7" BEL "game/main/video/fg_va_6" BEL
+        "game/main/video/fg_va_5" BEL "game/main/video/fg_va_4" BEL
+        "game/main/video/fg_va_3" BEL "game/main/video/fg_va_2" BEL
+        "game/main/video/fg_va_1" BEL "game/main/video/fg_va_0" BEL
+        "game/main/video/sp_line_7" BEL "game/main/video/sp_line_6" BEL
+        "game/main/video/sp_line_5" BEL "game/main/video/sp_line_4" BEL
+        "game/main/video/sp_line_3" BEL "game/main/video/sp_line_2" BEL
+        "game/main/video/sp_line_1" BEL "game/main/video/sp_line_0" BEL
+        "game/main/video/fg_fy_2" BEL "game/main/video/fg_fy_1" BEL
+        "game/main/video/fg_fy_0" BEL "game/main/video/pix_y_7" BEL
+        "game/main/video/pix_y_6" BEL "game/main/video/pix_y_5" BEL
+        "game/main/video/pix_y_4" BEL "game/main/video/pix_y_3" BEL
+        "game/main/video/pix_y_2" BEL "game/main/video/pix_y_1" BEL
+        "game/main/video/pix_y_0" BEL "game/main/video/sb_ra_8" BEL
+        "game/main/video/sb_ra_7" BEL "game/main/video/sb_ra_6" BEL
+        "game/main/video/sb_ra_5" BEL "game/main/video/sb_ra_4" BEL
+        "game/main/video/sb_ra_3" BEL "game/main/video/sb_ra_2" BEL
+        "game/main/video/sb_ra_1" BEL "game/main/video/sb_ra_0" BEL
+        "game/rbank_next" BEL "game/io_q_7" BEL "game/io_q_6" BEL
+        "game/io_q_5" BEL "game/io_q_4" BEL "game/io_q_3" BEL "game/io_q_2"
+        BEL "game/io_q_1" BEL "game/io_q_0" BEL "game/main/video/cp_line_7"
+        BEL "game/main/video/cp_line_6" BEL "game/main/video/cp_line_5" BEL
+        "game/main/video/cp_line_4" BEL "game/main/video/cp_line_3" BEL
+        "game/main/video/cp_line_2" BEL "game/main/video/cp_line_1" BEL
+        "game/main/video/cp_line_0" BEL "game/wbank" BEL "game/spi_rx_7" BEL
+        "game/spi_rx_6" BEL "game/spi_rx_5" BEL "game/spi_rx_4" BEL
+        "game/spi_rx_3" BEL "game/spi_rx_2" BEL "game/spi_rx_1" BEL
+        "game/spi_rx_0" BEL "game/spi_sr_7" BEL "game/spi_sr_6" BEL
+        "game/spi_sr_5" BEL "game/spi_sr_4" BEL "game/spi_sr_3" BEL
+        "game/spi_sr_2" BEL "game/spi_sr_1" BEL "game/spi_sr_0" BEL
+        "game/area2" BEL "game/main/video/bg_fx_2" BEL
+        "game/main/video/bg_fx_1" BEL "game/main/video/bg_fx_0" BEL
+        "game/lb_wa_8" BEL "game/lb_wa_7" BEL "game/lb_wa_6" BEL
+        "game/lb_wa_5" BEL "game/lb_wa_4" BEL "game/lb_wa_3" BEL
+        "game/lb_wa_2" BEL "game/lb_wa_1" BEL "game/lb_wa_0" BEL "game/rtag_0"
+        BEL "game/cen_pix" BEL "game/cen_cpu" BEL "game/area1" BEL
+        "game/main/video/fg_fx_2" BEL "game/main/video/fg_fx_1" BEL
+        "game/main/video/fg_fx_0" BEL "game/main/video/pix_x_7" BEL
+        "game/main/video/pix_x_6" BEL "game/main/video/pix_x_5" BEL
+        "game/main/video/pix_x_4" BEL "game/main/video/pix_x_3" BEL
+        "game/main/video/pix_x_2" BEL "game/main/video/pix_x_1" BEL
+        "game/main/video/pix_x_0" BEL "game/main/scrolly_7" BEL
+        "game/main/scrolly_6" BEL "game/main/scrolly_5" BEL
+        "game/main/scrolly_4" BEL "game/main/scrolly_3" BEL
+        "game/main/scrolly_2" BEL "game/main/scrolly_1" BEL
+        "game/main/scrolly_0" BEL "game/spi_tx_7" BEL "game/spi_tx_6" BEL
+        "game/spi_tx_5" BEL "game/spi_tx_4" BEL "game/spi_tx_3" BEL
+        "game/spi_tx_2" BEL "game/spi_tx_1" BEL "game/spi_tx_0" BEL
+        "game/rt_u_7" BEL "game/rt_u_6" BEL "game/rt_u_5" BEL "game/rt_u_4"
+        BEL "game/rt_u_3" BEL "game/rt_u_2" BEL "game/rt_u_1" BEL
+        "game/rt_u_0" BEL "game/sram_wpulse" BEL "game/text_a_9" BEL
+        "game/text_a_8" BEL "game/text_a_7" BEL "game/text_a_6" BEL
+        "game/text_a_5" BEL "game/text_a_4" BEL "game/text_a_3" BEL
+        "game/text_a_2" BEL "game/text_a_1" BEL "game/text_a_0" BEL
+        "game/main/video/sga_sel_1" BEL "game/main/video/sga_sel_0" BEL
+        "game/acc_psg_23" BEL "game/acc_psg_22" BEL "game/acc_psg_21" BEL
+        "game/acc_psg_20" BEL "game/acc_psg_19" BEL "game/acc_psg_18" BEL
+        "game/acc_psg_17" BEL "game/acc_psg_16" BEL "game/acc_psg_15" BEL
+        "game/acc_psg_14" BEL "game/acc_psg_13" BEL "game/acc_psg_12" BEL
+        "game/acc_psg_11" BEL "game/acc_psg_10" BEL "game/acc_psg_9" BEL
+        "game/acc_psg_8" BEL "game/acc_psg_7" BEL "game/acc_psg_6" BEL
+        "game/acc_psg_5" BEL "game/acc_psg_4" BEL "game/acc_psg_3" BEL
+        "game/b_data_7" BEL "game/b_data_6" BEL "game/b_data_5" BEL
+        "game/b_data_4" BEL "game/b_data_3" BEL "game/b_data_2" BEL
+        "game/b_data_1" BEL "game/b_data_0" BEL "game/rt_half" BEL
+        "game/main/smp_stb" BEL "game/main/scrollx_7" BEL
+        "game/main/scrollx_6" BEL "game/main/scrollx_5" BEL
+        "game/main/scrollx_4" BEL "game/main/scrollx_3" BEL
+        "game/main/scrollx_2" BEL "game/main/scrollx_1" BEL
+        "game/main/scrollx_0" BEL "game/main/pal_u001_6" BEL
+        "game/main/pal_u001_3" BEL "game/main/pal_u001_2" BEL
+        "game/main/pal_u001_1" BEL "game/sd_cs_n" BEL "game/dsw2_7" BEL
+        "game/dsw2_6" BEL "game/dsw2_5" BEL "game/dsw2_4" BEL "game/dsw2_3"
+        BEL "game/dsw2_2" BEL "game/dsw2_1" BEL "game/dsw2_0" BEL
+        "game/dsw1_7" BEL "game/dsw1_6" BEL "game/dsw1_5" BEL "game/dsw1_4"
+        BEL "game/dsw1_3" BEL "game/dsw1_2" BEL "game/dsw1_1" BEL
+        "game/dsw1_0" BEL "game/ld_d_7" BEL "game/ld_d_6" BEL "game/ld_d_5"
+        BEL "game/ld_d_4" BEL "game/ld_d_3" BEL "game/ld_d_2" BEL
+        "game/ld_d_1" BEL "game/ld_d_0" BEL "game/bl_0" BEL "game/vs_0" BEL
+        "game/hs_0" BEL "game/io_wr_d" BEL "game/io_rd_d" BEL "game/lb_we" BEL
+        "game/lb_wd_7" BEL "game/lb_wd_6" BEL "game/lb_wd_5" BEL
+        "game/lb_wd_4" BEL "game/lb_wd_3" BEL "game/lb_wd_2" BEL
+        "game/lb_wd_1" BEL "game/lb_wd_0" BEL "game/rom_q_7" BEL
+        "game/rom_q_6" BEL "game/rom_q_5" BEL "game/rom_q_4" BEL
+        "game/rom_q_3" BEL "game/rom_q_2" BEL "game/rom_q_1" BEL
+        "game/rom_q_0" BEL "game/main/cpu/mreq_n" BEL "game/main/cpu/rd_n" BEL
+        "game/main/cpu/iorq_n" BEL "game/main/cpu/wr_n" BEL
+        "game/main/cpu/di_reg_7" BEL "game/main/cpu/di_reg_6" BEL
+        "game/main/cpu/di_reg_5" BEL "game/main/cpu/di_reg_4" BEL
+        "game/main/cpu/di_reg_3" BEL "game/main/cpu/di_reg_2" BEL
+        "game/main/cpu/di_reg_1" BEL "game/main/cpu/di_reg_0" BEL
+        "game/main/cpu/i_tv80_core/dout_7" BEL
+        "game/main/cpu/i_tv80_core/dout_6" BEL
+        "game/main/cpu/i_tv80_core/dout_5" BEL
+        "game/main/cpu/i_tv80_core/dout_4" BEL
+        "game/main/cpu/i_tv80_core/dout_3" BEL
+        "game/main/cpu/i_tv80_core/dout_2" BEL
+        "game/main/cpu/i_tv80_core/dout_1" BEL
+        "game/main/cpu/i_tv80_core/dout_0" BEL
+        "game/main/cpu/i_tv80_core/A_15" BEL "game/main/cpu/i_tv80_core/A_14"
+        BEL "game/main/cpu/i_tv80_core/A_13" BEL
+        "game/main/cpu/i_tv80_core/A_12" BEL "game/main/cpu/i_tv80_core/A_11"
+        BEL "game/main/cpu/i_tv80_core/A_10" BEL
+        "game/main/cpu/i_tv80_core/A_9" BEL "game/main/cpu/i_tv80_core/A_8"
+        BEL "game/main/cpu/i_tv80_core/A_7" BEL
+        "game/main/cpu/i_tv80_core/A_6" BEL "game/main/cpu/i_tv80_core/A_5"
+        BEL "game/main/cpu/i_tv80_core/A_4" BEL
+        "game/main/cpu/i_tv80_core/A_3" BEL "game/main/cpu/i_tv80_core/A_2"
+        BEL "game/main/cpu/i_tv80_core/A_1" BEL
+        "game/main/cpu/i_tv80_core/A_0" BEL "game/main/cpu/i_tv80_core/BusA_7"
+        BEL "game/main/cpu/i_tv80_core/BusA_6" BEL
+        "game/main/cpu/i_tv80_core/BusA_5" BEL
+        "game/main/cpu/i_tv80_core/BusA_4" BEL
+        "game/main/cpu/i_tv80_core/BusA_3" BEL
+        "game/main/cpu/i_tv80_core/BusA_2" BEL
+        "game/main/cpu/i_tv80_core/BusA_1" BEL
+        "game/main/cpu/i_tv80_core/BusA_0" BEL
+        "game/main/cpu/i_tv80_core/Save_ALU_r" BEL
+        "game/main/cpu/i_tv80_core/ALU_Op_r_3" BEL
+        "game/main/cpu/i_tv80_core/ALU_Op_r_2" BEL
+        "game/main/cpu/i_tv80_core/ALU_Op_r_1" BEL
+        "game/main/cpu/i_tv80_core/ALU_Op_r_0" BEL
+        "game/main/cpu/i_tv80_core/PreserveC_r" BEL
+        "game/main/cpu/i_tv80_core/Arith16_r" BEL
+        "game/main/cpu/i_tv80_core/mcycles_2" BEL
+        "game/main/cpu/i_tv80_core/mcycles_1" BEL
+        "game/main/cpu/i_tv80_core/mcycles_0" BEL
+        "game/main/cpu/i_tv80_core/IStatus_1" BEL
+        "game/main/cpu/i_tv80_core/IStatus_0" BEL
+        "game/main/cpu/i_tv80_core/F_7" BEL "game/main/cpu/i_tv80_core/F_6"
+        BEL "game/main/cpu/i_tv80_core/F_5" BEL
+        "game/main/cpu/i_tv80_core/F_4" BEL "game/main/cpu/i_tv80_core/F_3"
+        BEL "game/main/cpu/i_tv80_core/F_2" BEL
+        "game/main/cpu/i_tv80_core/F_1" BEL "game/main/cpu/i_tv80_core/F_0"
+        BEL "game/main/cpu/i_tv80_core/ACC_7" BEL
+        "game/main/cpu/i_tv80_core/ACC_6" BEL
+        "game/main/cpu/i_tv80_core/ACC_5" BEL
+        "game/main/cpu/i_tv80_core/ACC_4" BEL
+        "game/main/cpu/i_tv80_core/ACC_3" BEL
+        "game/main/cpu/i_tv80_core/ACC_2" BEL
+        "game/main/cpu/i_tv80_core/ACC_1" BEL
+        "game/main/cpu/i_tv80_core/ACC_0" BEL
+        "game/main/cpu/i_tv80_core/BusB_7" BEL
+        "game/main/cpu/i_tv80_core/BusB_6" BEL
+        "game/main/cpu/i_tv80_core/BusB_5" BEL
+        "game/main/cpu/i_tv80_core/BusB_4" BEL
+        "game/main/cpu/i_tv80_core/BusB_3" BEL
+        "game/main/cpu/i_tv80_core/BusB_2" BEL
+        "game/main/cpu/i_tv80_core/BusB_1" BEL
+        "game/main/cpu/i_tv80_core/BusB_0" BEL
+        "game/main/cpu/i_tv80_core/PC_15" BEL
+        "game/main/cpu/i_tv80_core/PC_14" BEL
+        "game/main/cpu/i_tv80_core/PC_13" BEL
+        "game/main/cpu/i_tv80_core/PC_12" BEL
+        "game/main/cpu/i_tv80_core/PC_11" BEL
+        "game/main/cpu/i_tv80_core/PC_10" BEL "game/main/cpu/i_tv80_core/PC_9"
+        BEL "game/main/cpu/i_tv80_core/PC_8" BEL
+        "game/main/cpu/i_tv80_core/PC_7" BEL "game/main/cpu/i_tv80_core/PC_6"
+        BEL "game/main/cpu/i_tv80_core/PC_5" BEL
+        "game/main/cpu/i_tv80_core/PC_4" BEL "game/main/cpu/i_tv80_core/PC_3"
+        BEL "game/main/cpu/i_tv80_core/PC_2" BEL
+        "game/main/cpu/i_tv80_core/PC_1" BEL "game/main/cpu/i_tv80_core/PC_0"
+        BEL "game/main/cpu/i_tv80_core/SP_15" BEL
+        "game/main/cpu/i_tv80_core/SP_14" BEL
+        "game/main/cpu/i_tv80_core/SP_13" BEL
+        "game/main/cpu/i_tv80_core/SP_12" BEL
+        "game/main/cpu/i_tv80_core/SP_11" BEL
+        "game/main/cpu/i_tv80_core/SP_10" BEL "game/main/cpu/i_tv80_core/SP_9"
+        BEL "game/main/cpu/i_tv80_core/SP_8" BEL
+        "game/main/cpu/i_tv80_core/SP_7" BEL "game/main/cpu/i_tv80_core/SP_6"
+        BEL "game/main/cpu/i_tv80_core/SP_5" BEL
+        "game/main/cpu/i_tv80_core/SP_4" BEL "game/main/cpu/i_tv80_core/SP_3"
+        BEL "game/main/cpu/i_tv80_core/SP_2" BEL
+        "game/main/cpu/i_tv80_core/SP_1" BEL "game/main/cpu/i_tv80_core/SP_0"
+        BEL "game/main/cpu/i_tv80_core/TmpAddr_15" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_14" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_13" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_12" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_11" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_10" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_9" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_8" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_7" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_6" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_5" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_4" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_3" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_2" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_1" BEL
+        "game/main/cpu/i_tv80_core/TmpAddr_0" BEL
+        "game/main/cpu/i_tv80_core/RegAddrB_r_2" BEL
+        "game/main/cpu/i_tv80_core/RegAddrB_r_1" BEL
+        "game/main/cpu/i_tv80_core/RegAddrB_r_0" BEL
+        "game/main/cpu/i_tv80_core/RegAddrA_r_2" BEL
+        "game/main/cpu/i_tv80_core/RegAddrA_r_1" BEL
+        "game/main/cpu/i_tv80_core/RegAddrA_r_0" BEL
+        "game/main/cpu/i_tv80_core/RegAddrC_2" BEL
+        "game/main/cpu/i_tv80_core/RegAddrC_1" BEL
+        "game/main/cpu/i_tv80_core/RegAddrC_0" BEL
+        "game/main/cpu/i_tv80_core/XY_State_1" BEL
+        "game/main/cpu/i_tv80_core/XY_State_0" BEL
+        "game/main/cpu/i_tv80_core/Auto_Wait_t1" BEL
+        "game/main/cpu/i_tv80_core/Read_To_Reg_r_4" BEL
+        "game/main/cpu/i_tv80_core/Read_To_Reg_r_3" BEL
+        "game/main/cpu/i_tv80_core/Read_To_Reg_r_2" BEL
+        "game/main/cpu/i_tv80_core/Read_To_Reg_r_1" BEL
+        "game/main/cpu/i_tv80_core/Read_To_Reg_r_0" BEL
+        "game/main/cpu/i_tv80_core/mcycle_6" BEL
+        "game/main/cpu/i_tv80_core/mcycle_5" BEL
+        "game/main/cpu/i_tv80_core/mcycle_4" BEL
+        "game/main/cpu/i_tv80_core/mcycle_3" BEL
+        "game/main/cpu/i_tv80_core/mcycle_2" BEL
+        "game/main/cpu/i_tv80_core/mcycle_1" BEL
+        "game/main/cpu/i_tv80_core/mcycle_0" BEL
+        "game/main/cpu/i_tv80_core/ISet_1" BEL
+        "game/main/cpu/i_tv80_core/ISet_0" BEL
+        "game/main/cpu/i_tv80_core/IR_7" BEL "game/main/cpu/i_tv80_core/IR_6"
+        BEL "game/main/cpu/i_tv80_core/IR_5" BEL
+        "game/main/cpu/i_tv80_core/IR_4" BEL "game/main/cpu/i_tv80_core/IR_3"
+        BEL "game/main/cpu/i_tv80_core/IR_2" BEL
+        "game/main/cpu/i_tv80_core/IR_1" BEL "game/main/cpu/i_tv80_core/IR_0"
+        BEL "game/main/cpu/i_tv80_core/tstate_6" BEL
+        "game/main/cpu/i_tv80_core/tstate_5" BEL
+        "game/main/cpu/i_tv80_core/tstate_4" BEL
+        "game/main/cpu/i_tv80_core/tstate_3" BEL
+        "game/main/cpu/i_tv80_core/tstate_2" BEL
+        "game/main/cpu/i_tv80_core/tstate_1" BEL
+        "game/main/cpu/i_tv80_core/tstate_0" BEL
+        "game/main/cpu/i_tv80_core/Pre_XY_F_M_2" BEL
+        "game/main/cpu/i_tv80_core/Pre_XY_F_M_1" BEL
+        "game/main/cpu/i_tv80_core/Pre_XY_F_M_0" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_15" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_14" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_13" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_12" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_11" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_10" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_9" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_8" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_7" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_6" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_5" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_4" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_3" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_2" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_1" BEL
+        "game/main/cpu/i_tv80_core/RegBusA_r_0" BEL
+        "game/main/cpu/i_tv80_core/No_BTR" BEL
+        "game/main/cpu/i_tv80_core/Auto_Wait_t2" BEL
+        "game/main/cpu/i_tv80_core/INT_s" BEL
+        "game/main/cpu/i_tv80_core/Z16_r" BEL
+        "game/main/cpu/i_tv80_core/BTR_r" BEL "game/main/cpu/i_tv80_core/I_7"
+        BEL "game/main/cpu/i_tv80_core/I_6" BEL
+        "game/main/cpu/i_tv80_core/I_5" BEL "game/main/cpu/i_tv80_core/I_4"
+        BEL "game/main/cpu/i_tv80_core/I_3" BEL
+        "game/main/cpu/i_tv80_core/I_2" BEL "game/main/cpu/i_tv80_core/I_1"
+        BEL "game/main/cpu/i_tv80_core/I_0" BEL
+        "game/main/cpu/i_tv80_core/Fp_7" BEL "game/main/cpu/i_tv80_core/Fp_6"
+        BEL "game/main/cpu/i_tv80_core/Fp_5" BEL
+        "game/main/cpu/i_tv80_core/Fp_4" BEL "game/main/cpu/i_tv80_core/Fp_3"
+        BEL "game/main/cpu/i_tv80_core/Fp_2" BEL
+        "game/main/cpu/i_tv80_core/Fp_1" BEL "game/main/cpu/i_tv80_core/Fp_0"
+        BEL "game/main/cpu/i_tv80_core/Ap_7" BEL
+        "game/main/cpu/i_tv80_core/Ap_6" BEL "game/main/cpu/i_tv80_core/Ap_5"
+        BEL "game/main/cpu/i_tv80_core/Ap_4" BEL
+        "game/main/cpu/i_tv80_core/Ap_3" BEL "game/main/cpu/i_tv80_core/Ap_2"
+        BEL "game/main/cpu/i_tv80_core/Ap_1" BEL
+        "game/main/cpu/i_tv80_core/Ap_0" BEL
+        "snespads_b/pads[0].pad_b/buttons_q_31" BEL
+        "snespads_b/pads[0].pad_b/buttons_q_30" BEL
+        "snespads_b/pads[0].pad_b/buttons_q_29" BEL
+        "snespads_b/pads[0].pad_b/buttons_q_28" BEL
+        "snespads_b/pads[0].pad_b/buttons_q_27" BEL
+        "snespads_b/pads[0].pad_b/buttons_q_26" BEL
+        "snespads_b/pads[0].pad_b/buttons_q_25" BEL
+        "snespads_b/pads[0].pad_b/buttons_q_24" BEL
+        "snespads_b/pads[0].pad_b/buttons_q_23" BEL
+        "snespads_b/pads[0].pad_b/buttons_q_22" BEL
+        "snespads_b/pads[0].pad_b/buttons_q_21" BEL
+        "snespads_b/pads[0].pad_b/buttons_q_20" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_31" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_30" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_29" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_28" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_27" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_26" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_25" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_24" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_23" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_22" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_21" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_20" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_19" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_18" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_17" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_16" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_15" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_14" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_13" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_12" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_11" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_10" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_9" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_8" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_7" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_6" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_5" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_4" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_3" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_2" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_1" BEL
+        "snespads_b/pads[0].pad_b/shift_buttons_q_0" BEL
+        "snespads_b/ctrl_b/state_q_FSM_FFd1" BEL
+        "snespads_b/ctrl_b/state_q_FSM_FFd2" BEL
+        "snespads_b/ctrl_b/num_buttons_read_q_4" BEL
+        "snespads_b/ctrl_b/num_buttons_read_q_3" BEL
+        "snespads_b/ctrl_b/num_buttons_read_q_2" BEL
+        "snespads_b/ctrl_b/num_buttons_read_q_1" BEL
+        "snespads_b/ctrl_b/num_buttons_read_q_0" BEL
+        "snespads_b/ctrl_b/clocks_per_6us_q_6" BEL
+        "snespads_b/ctrl_b/clocks_per_6us_q_5" BEL
+        "snespads_b/ctrl_b/clocks_per_6us_q_7" BEL
+        "snespads_b/ctrl_b/clocks_per_6us_q_3" BEL
+        "snespads_b/ctrl_b/clocks_per_6us_q_2" BEL
+        "snespads_b/ctrl_b/clocks_per_6us_q_4" BEL
+        "snespads_b/ctrl_b/clocks_per_6us_q_0" BEL
+        "snespads_b/ctrl_b/clocks_per_6us_q_1" BEL
+        "snespads_b/ctrl_b/pad_clk_q" BEL "snespads_b/ctrl_b/pad_latch_q" BEL
+        "cv_pads_inst/cnt_r_10" BEL "cv_pads_inst/cnt_r_9" BEL
+        "cv_pads_inst/cnt_r_8" BEL "cv_pads_inst/cnt_r_7" BEL
+        "cv_pads_inst/cnt_r_6" BEL "cv_pads_inst/cnt_r_5" BEL
+        "cv_pads_inst/cnt_r_4" BEL "cv_pads_inst/cnt_r_3" BEL
+        "cv_pads_inst/cnt_r_2" BEL "cv_pads_inst/cnt_r_1" BEL
+        "cv_pads_inst/cnt_r_0" BEL "cv_pads_inst/pads_r[2]_key_last_3" BEL
+        "cv_pads_inst/pads_r[2]_key_last_2" BEL
+        "cv_pads_inst/pads_r[2]_key_last_1" BEL
+        "cv_pads_inst/pads_r[2]_key_last_0" BEL "cv_pads_inst/pads_r[2]_key_3"
+        BEL "cv_pads_inst/pads_r[2]_key_2" BEL "cv_pads_inst/pads_r[2]_key_1"
+        BEL "cv_pads_inst/pads_r[2]_key_0" BEL "cv_pads_inst/pads_r[2]_fire_l"
+        BEL "cv_pads_inst/pads_r[2]_dirs_3" BEL
+        "cv_pads_inst/pads_r[2]_dirs_2" BEL "cv_pads_inst/pads_r[2]_dirs_1"
+        BEL "cv_pads_inst/pads_r[2]_dirs_0" BEL
+        "cv_pads_inst/pads_r[2]_fire_r" BEL
+        "cv_pads_inst/pads_r[1]_key_last_3" BEL
+        "cv_pads_inst/pads_r[1]_key_last_2" BEL
+        "cv_pads_inst/pads_r[1]_key_last_1" BEL
+        "cv_pads_inst/pads_r[1]_key_last_0" BEL "cv_pads_inst/pads_r[1]_key_3"
+        BEL "cv_pads_inst/pads_r[1]_key_2" BEL "cv_pads_inst/pads_r[1]_key_1"
+        BEL "cv_pads_inst/pads_r[1]_key_0" BEL "cv_pads_inst/pads_r[1]_fire_r"
+        BEL "cv_pads_inst/pads_r[1]_fire_l" BEL
+        "cv_pads_inst/pads_r[1]_dirs_3" BEL "cv_pads_inst/pads_r[1]_dirs_2"
+        BEL "cv_pads_inst/pads_r[1]_dirs_1" BEL
+        "cv_pads_inst/pads_r[1]_dirs_0" BEL "tmds/ctl2" BEL
+        "tmds/clockCounter_10" BEL "tmds/clockCounter_9" BEL
+        "tmds/clockCounter_8" BEL "tmds/clockCounter_7" BEL
+        "tmds/clockCounter_6" BEL "tmds/clockCounter_5" BEL
+        "tmds/clockCounter_4" BEL "tmds/clockCounter_3" BEL
+        "tmds/clockCounter_2" BEL "tmds/clockCounter_1" BEL
+        "tmds/clockCounter_0" BEL "tmds/ctl0" BEL "tmds/prevData" BEL
+        "tmds/prevBlank" BEL "tmds/dataenc/channelStatusIdx_7" BEL
+        "tmds/dataenc/channelStatusIdx_6" BEL
+        "tmds/dataenc/channelStatusIdx_5" BEL
+        "tmds/dataenc/channelStatusIdx_4" BEL
+        "tmds/dataenc/channelStatusIdx_3" BEL
+        "tmds/dataenc/channelStatusIdx_2" BEL
+        "tmds/dataenc/channelStatusIdx_1" BEL
+        "tmds/dataenc/channelStatusIdx_0" BEL "tmds/dataenc/dataOffset_4" BEL
+        "tmds/dataenc/dataOffset_3" BEL "tmds/dataenc/dataOffset_2" BEL
+        "tmds/dataenc/dataOffset_1" BEL "tmds/dataenc/dataOffset_0" BEL
+        "tmds/dataenc/counterX_15" BEL "tmds/dataenc/counterX_14" BEL
+        "tmds/dataenc/counterX_13" BEL "tmds/dataenc/counterX_12" BEL
+        "tmds/dataenc/counterX_11" BEL "tmds/dataenc/counterX_10" BEL
+        "tmds/dataenc/counterX_9" BEL "tmds/dataenc/counterX_8" BEL
+        "tmds/dataenc/counterX_7" BEL "tmds/dataenc/counterX_6" BEL
+        "tmds/dataenc/counterX_5" BEL "tmds/dataenc/counterX_4" BEL
+        "tmds/dataenc/counterX_3" BEL "tmds/dataenc/counterX_2" BEL
+        "tmds/dataenc/counterX_1" BEL "tmds/dataenc/counterX_0" BEL
+        "tmds/dataenc/samplesHead_1" BEL "tmds/dataenc/samplesHead_0" BEL
+        "tmds/dataenc/dataChannel0_3" BEL "tmds/dataenc/dataChannel0_2" BEL
+        "tmds/dataenc/dataChannel0_1" BEL "tmds/dataenc/dataChannel0_0" BEL
+        "tmds/dataenc/dataChannel2_3" BEL "tmds/dataenc/dataChannel2_2" BEL
+        "tmds/dataenc/dataChannel2_1" BEL "tmds/dataenc/dataChannel2_0" BEL
+        "tmds/dataenc/dataChannel1_3" BEL "tmds/dataenc/dataChannel1_2" BEL
+        "tmds/dataenc/dataChannel1_1" BEL "tmds/dataenc/dataChannel1_0" BEL
+        "tmds/dataenc/ctsTimer_16" BEL "tmds/dataenc/ctsTimer_15" BEL
+        "tmds/dataenc/ctsTimer_14" BEL "tmds/dataenc/ctsTimer_13" BEL
+        "tmds/dataenc/ctsTimer_12" BEL "tmds/dataenc/ctsTimer_11" BEL
+        "tmds/dataenc/ctsTimer_10" BEL "tmds/dataenc/ctsTimer_9" BEL
+        "tmds/dataenc/ctsTimer_8" BEL "tmds/dataenc/ctsTimer_7" BEL
+        "tmds/dataenc/ctsTimer_6" BEL "tmds/dataenc/ctsTimer_5" BEL
+        "tmds/dataenc/ctsTimer_4" BEL "tmds/dataenc/ctsTimer_3" BEL
+        "tmds/dataenc/ctsTimer_2" BEL "tmds/dataenc/ctsTimer_1" BEL
+        "tmds/dataenc/ctsTimer_0" BEL "tmds/dataenc/packetHeader_19" BEL
+        "tmds/dataenc/packetHeader_18" BEL "tmds/dataenc/packetHeader_17" BEL
+        "tmds/dataenc/packetHeader_16" BEL "tmds/dataenc/packetHeader_15" BEL
+        "tmds/dataenc/packetHeader_14" BEL "tmds/dataenc/packetHeader_13" BEL
+        "tmds/dataenc/packetHeader_12" BEL "tmds/dataenc/packetHeader_11" BEL
+        "tmds/dataenc/packetHeader_10" BEL "tmds/dataenc/packetHeader_9" BEL
+        "tmds/dataenc/packetHeader_8" BEL "tmds/dataenc/packetHeader_7" BEL
+        "tmds/dataenc/packetHeader_6" BEL "tmds/dataenc/packetHeader_5" BEL
+        "tmds/dataenc/packetHeader_4" BEL "tmds/dataenc/packetHeader_3" BEL
+        "tmds/dataenc/packetHeader_2" BEL "tmds/dataenc/packetHeader_1" BEL
+        "tmds/dataenc/packetHeader_0" BEL "tmds/dataenc/audioPacketHeader_23"
+        BEL "tmds/dataenc/audioPacketHeader_22" BEL
+        "tmds/dataenc/audioPacketHeader_21" BEL
+        "tmds/dataenc/audioPacketHeader_20" BEL
+        "tmds/dataenc/audioPacketHeader_19" BEL
+        "tmds/dataenc/audioPacketHeader_18" BEL
+        "tmds/dataenc/audioPacketHeader_17" BEL
+        "tmds/dataenc/audioPacketHeader_16" BEL
+        "tmds/dataenc/audioPacketHeader_15" BEL
+        "tmds/dataenc/audioPacketHeader_14" BEL
+        "tmds/dataenc/audioPacketHeader_13" BEL
+        "tmds/dataenc/audioPacketHeader_12" BEL
+        "tmds/dataenc/audioPacketHeader_11" BEL
+        "tmds/dataenc/audioPacketHeader_10" BEL
+        "tmds/dataenc/audioPacketHeader_9" BEL
+        "tmds/dataenc/audioPacketHeader_8" BEL
+        "tmds/dataenc/audioPacketHeader_7" BEL
+        "tmds/dataenc/audioPacketHeader_6" BEL
+        "tmds/dataenc/audioPacketHeader_5" BEL
+        "tmds/dataenc/audioPacketHeader_4" BEL
+        "tmds/dataenc/audioPacketHeader_3" BEL
+        "tmds/dataenc/audioPacketHeader_2" BEL
+        "tmds/dataenc/audioPacketHeader_1" BEL
+        "tmds/dataenc/audioPacketHeader_0" BEL "tmds/dataenc/bchCode_0_31" BEL
+        "tmds/dataenc/bchCode_0_30" BEL "tmds/dataenc/bchCode_0_25" BEL
+        "tmds/dataenc/bchCode_0_24" BEL "tmds/dataenc/bchCode_0_23" BEL
+        "tmds/dataenc/bchCode_0_22" BEL "tmds/dataenc/bchCode_0_17" BEL
+        "tmds/dataenc/bchCode_0_16" BEL "tmds/dataenc/bchCode_0_15" BEL
+        "tmds/dataenc/bchCode_0_14" BEL "tmds/dataenc/bchCode_0_9" BEL
+        "tmds/dataenc/bchCode_0_8" BEL "tmds/dataenc/bchCode_0_7" BEL
+        "tmds/dataenc/bchCode_0_6" BEL "tmds/dataenc/bchCode_0_1" BEL
+        "tmds/dataenc/bchCode_0_0" BEL "tmds/dataenc/bchHdr_7" BEL
+        "tmds/dataenc/bchHdr_6" BEL "tmds/dataenc/bchHdr_0" BEL
+        "tmds/dataenc/audioTimer_16" BEL "tmds/dataenc/audioTimer_15" BEL
+        "tmds/dataenc/audioTimer_14" BEL "tmds/dataenc/audioTimer_13" BEL
+        "tmds/dataenc/audioTimer_12" BEL "tmds/dataenc/audioTimer_11" BEL
+        "tmds/dataenc/audioTimer_10" BEL "tmds/dataenc/audioTimer_9" BEL
+        "tmds/dataenc/audioTimer_8" BEL "tmds/dataenc/audioTimer_7" BEL
+        "tmds/dataenc/audioTimer_6" BEL "tmds/dataenc/audioTimer_5" BEL
+        "tmds/dataenc/audioTimer_4" BEL "tmds/dataenc/audioTimer_3" BEL
+        "tmds/dataenc/subpacket_0_186" BEL "tmds/dataenc/subpacket_0_185" BEL
+        "tmds/dataenc/subpacket_0_184" BEL "tmds/dataenc/subpacket_0_183" BEL
+        "tmds/dataenc/subpacket_0_182" BEL "tmds/dataenc/subpacket_0_181" BEL
+        "tmds/dataenc/subpacket_0_180" BEL "tmds/dataenc/subpacket_0_179" BEL
+        "tmds/dataenc/subpacket_0_178" BEL "tmds/dataenc/subpacket_0_177" BEL
+        "tmds/dataenc/subpacket_0_176" BEL "tmds/dataenc/subpacket_0_175" BEL
+        "tmds/dataenc/subpacket_0_174" BEL "tmds/dataenc/subpacket_0_173" BEL
+        "tmds/dataenc/subpacket_0_172" BEL "tmds/dataenc/subpacket_0_171" BEL
+        "tmds/dataenc/subpacket_0_170" BEL "tmds/dataenc/subpacket_0_169" BEL
+        "tmds/dataenc/subpacket_0_168" BEL "tmds/dataenc/subpacket_0_76" BEL
+        "tmds/dataenc/subpacket_0_75" BEL "tmds/dataenc/subpacket_0_43" BEL
+        "tmds/dataenc/subpacket_0_41" BEL "tmds/dataenc/subpacket_0_39" BEL
+        "tmds/dataenc/subpacket_0_37" BEL "tmds/dataenc/subpacket_0_35" BEL
+        "tmds/dataenc/subpacket_0_33" BEL "tmds/dataenc/subpacket_0_32" BEL
+        "tmds/dataenc/subpacket_0_31" BEL "tmds/dataenc/subpacket_0_30" BEL
+        "tmds/dataenc/subpacket_0_29" BEL "tmds/dataenc/subpacket_0_28" BEL
+        "tmds/dataenc/subpacket_0_27" BEL "tmds/dataenc/subpacket_0_26" BEL
+        "tmds/dataenc/subpacket_0_25" BEL "tmds/dataenc/subpacket_0_24" BEL
+        "tmds/dataenc/subpacket_0_23" BEL "tmds/dataenc/subpacket_0_22" BEL
+        "tmds/dataenc/subpacket_0_21" BEL "tmds/dataenc/subpacket_0_20" BEL
+        "tmds/dataenc/subpacket_0_19" BEL "tmds/dataenc/subpacket_0_18" BEL
+        "tmds/dataenc/subpacket_0_17" BEL "tmds/dataenc/subpacket_0_16" BEL
+        "tmds/dataenc/subpacket_0_15" BEL "tmds/dataenc/subpacket_0_14" BEL
+        "tmds/dataenc/subpacket_0_13" BEL "tmds/dataenc/subpacket_0_12" BEL
+        "tmds/dataenc/subpacket_0_11" BEL "tmds/dataenc/subpacket_0_10" BEL
+        "tmds/dataenc/subpacket_0_9" BEL "tmds/dataenc/subpacket_0_8" BEL
+        "tmds/dataenc/subpacket_0_7" BEL "tmds/dataenc/subpacket_0_6" BEL
+        "tmds/dataenc/subpacket_0_5" BEL "tmds/dataenc/subpacket_0_4" BEL
+        "tmds/dataenc/subpacket_0_3" BEL "tmds/dataenc/subpacket_0_2" BEL
+        "tmds/dataenc/subpacket_0_1" BEL "tmds/dataenc/subpacket_0_0" BEL
+        "tmds/dataenc/audioSubPacket_0_223" BEL
+        "tmds/dataenc/audioSubPacket_0_222" BEL
+        "tmds/dataenc/audioSubPacket_0_221" BEL
+        "tmds/dataenc/audioSubPacket_0_220" BEL
+        "tmds/dataenc/audioSubPacket_0_219" BEL
+        "tmds/dataenc/audioSubPacket_0_218" BEL
+        "tmds/dataenc/audioSubPacket_0_217" BEL
+        "tmds/dataenc/audioSubPacket_0_216" BEL
+        "tmds/dataenc/audioSubPacket_0_215" BEL
+        "tmds/dataenc/audioSubPacket_0_214" BEL
+        "tmds/dataenc/audioSubPacket_0_213" BEL
+        "tmds/dataenc/audioSubPacket_0_212" BEL
+        "tmds/dataenc/audioSubPacket_0_211" BEL
+        "tmds/dataenc/audioSubPacket_0_210" BEL
+        "tmds/dataenc/audioSubPacket_0_209" BEL
+        "tmds/dataenc/audioSubPacket_0_208" BEL
+        "tmds/dataenc/audioSubPacket_0_207" BEL
+        "tmds/dataenc/audioSubPacket_0_206" BEL
+        "tmds/dataenc/audioSubPacket_0_205" BEL
+        "tmds/dataenc/audioSubPacket_0_204" BEL
+        "tmds/dataenc/audioSubPacket_0_203" BEL
+        "tmds/dataenc/audioSubPacket_0_202" BEL
+        "tmds/dataenc/audioSubPacket_0_201" BEL
+        "tmds/dataenc/audioSubPacket_0_200" BEL
+        "tmds/dataenc/audioSubPacket_0_199" BEL
+        "tmds/dataenc/audioSubPacket_0_198" BEL
+        "tmds/dataenc/audioSubPacket_0_197" BEL
+        "tmds/dataenc/audioSubPacket_0_196" BEL
+        "tmds/dataenc/audioSubPacket_0_195" BEL
+        "tmds/dataenc/audioSubPacket_0_194" BEL
+        "tmds/dataenc/audioSubPacket_0_193" BEL
+        "tmds/dataenc/audioSubPacket_0_192" BEL
+        "tmds/dataenc/audioSubPacket_0_191" BEL
+        "tmds/dataenc/audioSubPacket_0_190" BEL
+        "tmds/dataenc/audioSubPacket_0_189" BEL
+        "tmds/dataenc/audioSubPacket_0_188" BEL
+        "tmds/dataenc/audioSubPacket_0_187" BEL
+        "tmds/dataenc/audioSubPacket_0_186" BEL
+        "tmds/dataenc/audioSubPacket_0_185" BEL
+        "tmds/dataenc/audioSubPacket_0_184" BEL
+        "tmds/dataenc/audioSubPacket_0_183" BEL
+        "tmds/dataenc/audioSubPacket_0_182" BEL
+        "tmds/dataenc/audioSubPacket_0_181" BEL
+        "tmds/dataenc/audioSubPacket_0_180" BEL
+        "tmds/dataenc/audioSubPacket_0_179" BEL
+        "tmds/dataenc/audioSubPacket_0_178" BEL
+        "tmds/dataenc/audioSubPacket_0_177" BEL
+        "tmds/dataenc/audioSubPacket_0_176" BEL
+        "tmds/dataenc/audioSubPacket_0_175" BEL
+        "tmds/dataenc/audioSubPacket_0_174" BEL
+        "tmds/dataenc/audioSubPacket_0_173" BEL
+        "tmds/dataenc/audioSubPacket_0_172" BEL
+        "tmds/dataenc/audioSubPacket_0_171" BEL
+        "tmds/dataenc/audioSubPacket_0_170" BEL
+        "tmds/dataenc/audioSubPacket_0_169" BEL
+        "tmds/dataenc/audioSubPacket_0_168" BEL
+        "tmds/dataenc/audioSubPacket_0_167" BEL
+        "tmds/dataenc/audioSubPacket_0_166" BEL
+        "tmds/dataenc/audioSubPacket_0_165" BEL
+        "tmds/dataenc/audioSubPacket_0_164" BEL
+        "tmds/dataenc/audioSubPacket_0_163" BEL
+        "tmds/dataenc/audioSubPacket_0_162" BEL
+        "tmds/dataenc/audioSubPacket_0_161" BEL
+        "tmds/dataenc/audioSubPacket_0_160" BEL
+        "tmds/dataenc/audioSubPacket_0_159" BEL
+        "tmds/dataenc/audioSubPacket_0_158" BEL
+        "tmds/dataenc/audioSubPacket_0_157" BEL
+        "tmds/dataenc/audioSubPacket_0_156" BEL
+        "tmds/dataenc/audioSubPacket_0_155" BEL
+        "tmds/dataenc/audioSubPacket_0_154" BEL
+        "tmds/dataenc/audioSubPacket_0_153" BEL
+        "tmds/dataenc/audioSubPacket_0_152" BEL
+        "tmds/dataenc/audioSubPacket_0_151" BEL
+        "tmds/dataenc/audioSubPacket_0_150" BEL
+        "tmds/dataenc/audioSubPacket_0_149" BEL
+        "tmds/dataenc/audioSubPacket_0_148" BEL
+        "tmds/dataenc/audioSubPacket_0_147" BEL
+        "tmds/dataenc/audioSubPacket_0_146" BEL
+        "tmds/dataenc/audioSubPacket_0_145" BEL
+        "tmds/dataenc/audioSubPacket_0_144" BEL
+        "tmds/dataenc/audioSubPacket_0_143" BEL
+        "tmds/dataenc/audioSubPacket_0_142" BEL
+        "tmds/dataenc/audioSubPacket_0_141" BEL
+        "tmds/dataenc/audioSubPacket_0_140" BEL
+        "tmds/dataenc/audioSubPacket_0_139" BEL
+        "tmds/dataenc/audioSubPacket_0_138" BEL
+        "tmds/dataenc/audioSubPacket_0_137" BEL
+        "tmds/dataenc/audioSubPacket_0_136" BEL
+        "tmds/dataenc/audioSubPacket_0_135" BEL
+        "tmds/dataenc/audioSubPacket_0_134" BEL
+        "tmds/dataenc/audioSubPacket_0_133" BEL
+        "tmds/dataenc/audioSubPacket_0_132" BEL
+        "tmds/dataenc/audioSubPacket_0_131" BEL
+        "tmds/dataenc/audioSubPacket_0_130" BEL
+        "tmds/dataenc/audioSubPacket_0_129" BEL
+        "tmds/dataenc/audioSubPacket_0_128" BEL
+        "tmds/dataenc/audioSubPacket_0_127" BEL
+        "tmds/dataenc/audioSubPacket_0_126" BEL
+        "tmds/dataenc/audioSubPacket_0_125" BEL
+        "tmds/dataenc/audioSubPacket_0_124" BEL
+        "tmds/dataenc/audioSubPacket_0_123" BEL
+        "tmds/dataenc/audioSubPacket_0_122" BEL
+        "tmds/dataenc/audioSubPacket_0_121" BEL
+        "tmds/dataenc/audioSubPacket_0_120" BEL
+        "tmds/dataenc/audioSubPacket_0_119" BEL
+        "tmds/dataenc/audioSubPacket_0_118" BEL
+        "tmds/dataenc/audioSubPacket_0_117" BEL
+        "tmds/dataenc/audioSubPacket_0_116" BEL
+        "tmds/dataenc/audioSubPacket_0_115" BEL
+        "tmds/dataenc/audioSubPacket_0_114" BEL
+        "tmds/dataenc/audioSubPacket_0_113" BEL
+        "tmds/dataenc/audioSubPacket_0_112" BEL
+        "tmds/dataenc/audioSubPacket_0_111" BEL
+        "tmds/dataenc/audioSubPacket_0_110" BEL
+        "tmds/dataenc/audioSubPacket_0_109" BEL
+        "tmds/dataenc/audioSubPacket_0_108" BEL
+        "tmds/dataenc/audioSubPacket_0_107" BEL
+        "tmds/dataenc/audioSubPacket_0_106" BEL
+        "tmds/dataenc/audioSubPacket_0_105" BEL
+        "tmds/dataenc/audioSubPacket_0_104" BEL
+        "tmds/dataenc/audioSubPacket_0_103" BEL
+        "tmds/dataenc/audioSubPacket_0_102" BEL
+        "tmds/dataenc/audioSubPacket_0_101" BEL
+        "tmds/dataenc/audioSubPacket_0_100" BEL
+        "tmds/dataenc/audioSubPacket_0_99" BEL
+        "tmds/dataenc/audioSubPacket_0_98" BEL
+        "tmds/dataenc/audioSubPacket_0_97" BEL
+        "tmds/dataenc/audioSubPacket_0_96" BEL
+        "tmds/dataenc/audioSubPacket_0_95" BEL
+        "tmds/dataenc/audioSubPacket_0_94" BEL
+        "tmds/dataenc/audioSubPacket_0_93" BEL
+        "tmds/dataenc/audioSubPacket_0_92" BEL
+        "tmds/dataenc/audioSubPacket_0_91" BEL
+        "tmds/dataenc/audioSubPacket_0_90" BEL
+        "tmds/dataenc/audioSubPacket_0_89" BEL
+        "tmds/dataenc/audioSubPacket_0_88" BEL
+        "tmds/dataenc/audioSubPacket_0_87" BEL
+        "tmds/dataenc/audioSubPacket_0_86" BEL
+        "tmds/dataenc/audioSubPacket_0_85" BEL
+        "tmds/dataenc/audioSubPacket_0_84" BEL
+        "tmds/dataenc/audioSubPacket_0_83" BEL
+        "tmds/dataenc/audioSubPacket_0_82" BEL
+        "tmds/dataenc/audioSubPacket_0_81" BEL
+        "tmds/dataenc/audioSubPacket_0_80" BEL
+        "tmds/dataenc/audioSubPacket_0_79" BEL
+        "tmds/dataenc/audioSubPacket_0_78" BEL
+        "tmds/dataenc/audioSubPacket_0_77" BEL
+        "tmds/dataenc/audioSubPacket_0_76" BEL
+        "tmds/dataenc/audioSubPacket_0_75" BEL
+        "tmds/dataenc/audioSubPacket_0_74" BEL
+        "tmds/dataenc/audioSubPacket_0_73" BEL
+        "tmds/dataenc/audioSubPacket_0_72" BEL
+        "tmds/dataenc/audioSubPacket_0_71" BEL
+        "tmds/dataenc/audioSubPacket_0_70" BEL
+        "tmds/dataenc/audioSubPacket_0_69" BEL
+        "tmds/dataenc/audioSubPacket_0_68" BEL
+        "tmds/dataenc/audioSubPacket_0_67" BEL
+        "tmds/dataenc/audioSubPacket_0_66" BEL
+        "tmds/dataenc/audioSubPacket_0_65" BEL
+        "tmds/dataenc/audioSubPacket_0_64" BEL
+        "tmds/dataenc/audioSubPacket_0_63" BEL
+        "tmds/dataenc/audioSubPacket_0_62" BEL
+        "tmds/dataenc/audioSubPacket_0_61" BEL
+        "tmds/dataenc/audioSubPacket_0_60" BEL
+        "tmds/dataenc/audioSubPacket_0_59" BEL
+        "tmds/dataenc/audioSubPacket_0_58" BEL
+        "tmds/dataenc/audioSubPacket_0_57" BEL
+        "tmds/dataenc/audioSubPacket_0_56" BEL
+        "tmds/dataenc/audioSubPacket_0_55" BEL
+        "tmds/dataenc/audioSubPacket_0_54" BEL
+        "tmds/dataenc/audioSubPacket_0_53" BEL
+        "tmds/dataenc/audioSubPacket_0_52" BEL
+        "tmds/dataenc/audioSubPacket_0_51" BEL
+        "tmds/dataenc/audioSubPacket_0_50" BEL
+        "tmds/dataenc/audioSubPacket_0_49" BEL
+        "tmds/dataenc/audioSubPacket_0_48" BEL
+        "tmds/dataenc/audioSubPacket_0_47" BEL
+        "tmds/dataenc/audioSubPacket_0_46" BEL
+        "tmds/dataenc/audioSubPacket_0_45" BEL
+        "tmds/dataenc/audioSubPacket_0_44" BEL
+        "tmds/dataenc/audioSubPacket_0_43" BEL
+        "tmds/dataenc/audioSubPacket_0_42" BEL
+        "tmds/dataenc/audioSubPacket_0_41" BEL
+        "tmds/dataenc/audioSubPacket_0_40" BEL
+        "tmds/dataenc/audioSubPacket_0_39" BEL
+        "tmds/dataenc/audioSubPacket_0_38" BEL
+        "tmds/dataenc/audioSubPacket_0_37" BEL
+        "tmds/dataenc/audioSubPacket_0_36" BEL
+        "tmds/dataenc/audioSubPacket_0_35" BEL
+        "tmds/dataenc/audioSubPacket_0_34" BEL
+        "tmds/dataenc/audioSubPacket_0_33" BEL
+        "tmds/dataenc/audioSubPacket_0_32" BEL
+        "tmds/dataenc/audioSubPacket_0_31" BEL
+        "tmds/dataenc/audioSubPacket_0_30" BEL
+        "tmds/dataenc/audioSubPacket_0_29" BEL
+        "tmds/dataenc/audioSubPacket_0_28" BEL
+        "tmds/dataenc/audioSubPacket_0_27" BEL
+        "tmds/dataenc/audioSubPacket_0_26" BEL
+        "tmds/dataenc/audioSubPacket_0_25" BEL
+        "tmds/dataenc/audioSubPacket_0_24" BEL
+        "tmds/dataenc/audioSubPacket_0_23" BEL
+        "tmds/dataenc/audioSubPacket_0_22" BEL
+        "tmds/dataenc/audioSubPacket_0_21" BEL
+        "tmds/dataenc/audioSubPacket_0_20" BEL
+        "tmds/dataenc/audioSubPacket_0_19" BEL
+        "tmds/dataenc/audioSubPacket_0_18" BEL
+        "tmds/dataenc/audioSubPacket_0_17" BEL
+        "tmds/dataenc/audioSubPacket_0_16" BEL
+        "tmds/dataenc/audioSubPacket_0_15" BEL
+        "tmds/dataenc/audioSubPacket_0_14" BEL
+        "tmds/dataenc/audioSubPacket_0_13" BEL
+        "tmds/dataenc/audioSubPacket_0_12" BEL
+        "tmds/dataenc/audioSubPacket_0_11" BEL
+        "tmds/dataenc/audioSubPacket_0_10" BEL
+        "tmds/dataenc/audioSubPacket_0_9" BEL
+        "tmds/dataenc/audioSubPacket_0_8" BEL
+        "tmds/dataenc/audioSubPacket_0_7" BEL
+        "tmds/dataenc/audioSubPacket_0_6" BEL
+        "tmds/dataenc/audioSubPacket_0_5" BEL
+        "tmds/dataenc/audioSubPacket_0_4" BEL
+        "tmds/dataenc/audioSubPacket_0_3" BEL
+        "tmds/dataenc/audioSubPacket_0_2" BEL
+        "tmds/dataenc/audioSubPacket_0_1" BEL
+        "tmds/dataenc/audioSubPacket_0_0" BEL "tmds/dataenc/prevHSync" BEL
+        "tmds/dataenc/audioLAvg_15" BEL "tmds/dataenc/audioLAvg_14" BEL
+        "tmds/dataenc/audioLAvg_13" BEL "tmds/dataenc/audioLAvg_12" BEL
+        "tmds/dataenc/audioLAvg_11" BEL "tmds/dataenc/audioLAvg_10" BEL
+        "tmds/dataenc/audioLAvg_9" BEL "tmds/dataenc/audioLAvg_8" BEL
+        "tmds/dataenc/audioLAvg_7" BEL "tmds/dataenc/audioLAvg_6" BEL
+        "tmds/dataenc/audioLAvg_5" BEL "tmds/dataenc/audioLAvg_4" BEL
+        "tmds/dataenc/audioLAvg_3" BEL "tmds/dataenc/audioLAvg_2" BEL
+        "tmds/dataenc/audioLAvg_1" BEL "tmds/dataenc/audioLAvg_0" BEL
+        "tmds/enc2/dc_bias_3" BEL "tmds/enc2/dc_bias_2" BEL
+        "tmds/enc2/dc_bias_1" BEL "tmds/enc2/dc_bias_0" BEL
+        "tmds/enc2/ENCODED_9" BEL "tmds/enc2/ENCODED_8" BEL
+        "tmds/enc2/ENCODED_7" BEL "tmds/enc2/ENCODED_6" BEL
+        "tmds/enc2/ENCODED_5" BEL "tmds/enc2/ENCODED_4" BEL
+        "tmds/enc2/ENCODED_3" BEL "tmds/enc2/ENCODED_2" BEL
+        "tmds/enc2/ENCODED_1" BEL "tmds/enc2/ENCODED_0" BEL
+        "tmds/enc1/dc_bias_3" BEL "tmds/enc1/dc_bias_2" BEL
+        "tmds/enc1/dc_bias_1" BEL "tmds/enc1/dc_bias_0" BEL
+        "tmds/enc1/ENCODED_9" BEL "tmds/enc1/ENCODED_8" BEL
+        "tmds/enc1/ENCODED_7" BEL "tmds/enc1/ENCODED_6" BEL
+        "tmds/enc1/ENCODED_5" BEL "tmds/enc1/ENCODED_4" BEL
+        "tmds/enc1/ENCODED_3" BEL "tmds/enc1/ENCODED_2" BEL
+        "tmds/enc1/ENCODED_1" BEL "tmds/enc1/ENCODED_0" BEL
+        "tmds/enc0/dc_bias_3" BEL "tmds/enc0/dc_bias_2" BEL
+        "tmds/enc0/dc_bias_1" BEL "tmds/enc0/dc_bias_0" BEL
+        "tmds/enc0/ENCODED_9" BEL "tmds/enc0/ENCODED_8" BEL
+        "tmds/enc0/ENCODED_7" BEL "tmds/enc0/ENCODED_6" BEL
+        "tmds/enc0/ENCODED_5" BEL "tmds/enc0/ENCODED_4" BEL
+        "tmds/enc0/ENCODED_3" BEL "tmds/enc0/ENCODED_2" BEL
+        "tmds/enc0/ENCODED_1" BEL "tmds/enc0/ENCODED_0" BEL "por_r" BEL
+        "game/rd_x_0" BEL "game/rd_x_7" BEL "game/rd_x_5" BEL "game/rd_x_6"
+        BEL "game/rd_x_2" BEL "game/rd_x_1" BEL "game/rd_x_3" BEL
+        "game/spi_cnt_3" BEL "game/spi_cnt_2" BEL "game/spi_cnt_1" BEL
+        "game/spi_cnt_0" BEL "game/vid_b_7" BEL "game/vid_b_6" BEL
+        "game/vid_b_5" BEL "game/vid_b_4" BEL "game/vid_b_3" BEL
+        "game/vid_b_2" BEL "game/vid_b_1" BEL "game/vid_b_0" BEL "game/wph"
+        BEL "game/main/n_int" BEL "game/b_pend" BEL "game/boot_mode" BEL
+        "game/ld_we" BEL "game/spi_start" BEL "tmds/state_FSM_FFd2" BEL
+        "tmds/state_FSM_FFd3" BEL "tmds/state_FSM_FFd1" BEL
+        "tmds/dataenc/firstHSyncChange" BEL "tmds/dataenc/allowGeneration" BEL
+        "ps2if_inst/ps2kbd_inst/PS2_Data_s" BEL
+        "ps2if_inst/ps2kbd_inst/PS2_Clk_State" BEL
+        "ps2if_inst/ps2kbd_inst/RX_Release" BEL "game/rd_x_4" BEL
+        "game/main/sn1/step" BEL "game/led_err" BEL "game/sram_doe" BEL
+        "game/main/flip" BEL "game/rd_half" BEL "game/exec_sram" BEL
+        "game/main/cpu/i_tv80_core/IntE_FF1" BEL
+        "game/main/cpu/i_tv80_core/Halt_FF" BEL
+        "game/main/cpu/i_tv80_core/m1_n" BEL
+        "game/main/cpu/i_tv80_core/IntCycle" BEL
+        "game/main/cpu/i_tv80_core/XY_Ind" BEL
+        "game/main/cpu/i_tv80_core/Alternate" BEL "game/rbank" BEL
+        "game/sd_mosi" BEL "game/main/video/ev_vbl" BEL "game/rtag_1" BEL
+        "game/sram_oe_n" BEL "game/main/video/pix_we" BEL
+        "game/main/video/sp_last" BEL "game/rot" BEL "game/pf_go" BEL
+        "game/start_game" BEL "game/main/cpu/i_tv80_core/IncDecZ" BEL
+        "cv_pads_inst/keypad_r" BEL "tmds/dataenc/oddLine" BEL "menu_r" BEL
+        "game/s0_ok" BEL "game/spi_busy" BEL "game/rd_pend" BEL
+        "game/main/video/cp_on" BEL "game/go" BEL "tmds/dataenc/tercData" BEL
+        "game/sd_sclk" BEL "game/main/cpu/i_tv80_core/mcycle_1_1" BEL
+        "game/main/cpu/i_tv80_core/IR_3_1" BEL
+        "game/main/cpu/i_tv80_core/IR_4_1" BEL
+        "game/main/cpu/i_tv80_core/IR_1_1" BEL
+        "game/main/cpu/i_tv80_core/IR_5_1" BEL
+        "game/main/cpu/i_tv80_core/IR_6_1" BEL
+        "game/main/cpu/i_tv80_core/IR_7_1" BEL
+        "game/main/cpu/i_tv80_core/IR_2_1" BEL
+        "game/main/cpu/i_tv80_core/mcycle_0_1" BEL
+        "game/main/cpu/i_tv80_core/IR_3_2" BEL
+        "game/main/cpu/i_tv80_core/IR_4_2" BEL
+        "game/main/cpu/i_tv80_core/IR_5_2" BEL
+        "game/main/cpu/i_tv80_core/IR_1_2" BEL
+        "game/main/cpu/i_tv80_core/IR_2_2" BEL
+        "game/main/cpu/i_tv80_core/IR_0_1" BEL
+        "game/main/cpu/i_tv80_core/IR_7_2" BEL
+        "game/main/cpu/i_tv80_core/mcycle_2_1" BEL
+        "game/main/cpu/i_tv80_core/IR_6_2" BEL
+        "game/main/cpu/i_tv80_core/F_0_1" BEL
+        "game/main/cpu/i_tv80_core/mcycle_0_2" BEL
+        "game/main/cpu/i_tv80_core/ISet_1_1" BEL
+        "game/main/cpu/i_tv80_core/mcycle_1_2" BEL
+        "game/main/cpu/i_tv80_core/ISet_0_1" BEL
+        "game/main/cpu/i_tv80_core/IR_3_3" BEL
+        "game/main/cpu/i_tv80_core/IR_4_3" BEL
+        "game/main/cpu/i_tv80_core/IR_7_3" BEL
+        "game/main/cpu/i_tv80_core/IR_5_3" BEL
+        "game/main/cpu/i_tv80_core/IR_1_3" BEL
+        "game/main/cpu/i_tv80_core/IR_0_2" BEL
+        "game/main/cpu/i_tv80_core/IR_2_3" BEL
+        "game/main/cpu/i_tv80_core/IR_6_3" BEL
+        "game/main/cpu/i_tv80_core/IntCycle_1" BEL
+        "game/main/cpu/i_tv80_core/mcycle_3_1" BEL
+        "game/main/cpu/i_tv80_core/mcycle_1_3" BEL
+        "game/main/cpu/i_tv80_core/mcycle_2_2" BEL
+        "game/main/cpu/i_tv80_core/IR_5_4" BEL
+        "game/main/cpu/i_tv80_core/IR_1_4" BEL
+        "game/main/cpu/i_tv80_core/IR_7_4" BEL
+        "game/main/cpu/i_tv80_core/IR_6_4" BEL
+        "game/main/cpu/i_tv80_core/IR_2_4" PIN
+        "game/main/video/Mram_fg01_pins<24>" PIN
+        "game/main/video/Mram_fg01_pins<25>" PIN
+        "game/main/video/Mram_bg02_pins<24>" PIN
+        "game/main/video/Mram_bg02_pins<25>" PIN
+        "game/main/video/Mram_fg02_pins<24>" PIN
+        "game/main/video/Mram_fg02_pins<25>" PIN
+        "game/main/video/Mram_bg12_pins<24>" PIN
+        "game/main/video/Mram_bg12_pins<25>" PIN
+        "game/main/video/Mram_bg11_pins<24>" PIN
+        "game/main/video/Mram_bg11_pins<25>" PIN
+        "game/main/video/Mram_bg01_pins<24>" PIN
+        "game/main/video/Mram_bg01_pins<25>" PIN
+        "game/main/video/Mram_fg12_pins<24>" PIN
+        "game/main/video/Mram_fg12_pins<25>" PIN
+        "game/main/video/Mram_fg11_pins<24>" PIN
+        "game/main/video/Mram_fg11_pins<25>" PIN
+        "game/main/Mram_ram1_pins<12>" PIN "game/main/Mram_ram2_pins<12>" PIN
+        "game/Mram_lbuf_pins<22>" PIN "game/Mram_lbuf_pins<23>" PIN
+        "game/main/video/Mram_sg1_pins<22>" PIN
+        "game/main/video/Mram_sg1_pins<23>" PIN
+        "game/main/video/Mram_sg2_pins<22>" PIN
+        "game/main/video/Mram_sg2_pins<23>" PIN
+        "game/main/video/Mram_sg0_pins<22>" PIN
+        "game/main/video/Mram_sg0_pins<23>" PIN
+        "game/main/video/Mram_bga_pins<20>" PIN
+        "game/main/video/Mram_bga_pins<21>" PIN
+        "game/main/video/Mram_sg3_pins<22>" PIN
+        "game/main/video/Mram_sg3_pins<23>" PIN
+        "game/main/video/Mram_sbuf_pins<20>" PIN
+        "game/main/video/Mram_sbuf_pins<21>" PIN
+        "game/main/video/Mram_bgc_pins<20>" PIN
+        "game/main/video/Mram_bgc_pins<21>" PIN
+        "game/main/video/Mram_fgc_pins<20>" PIN
+        "game/main/video/Mram_fgc_pins<21>" PIN
+        "game/main/video/Mram_fga_pins<20>" PIN
+        "game/main/video/Mram_fga_pins<21>" BEL "game/Mshreg_fx2_1" BEL
+        "game/fx2_1" BEL "Mshreg_btn_meta_r_1" BEL "btn_meta_r_1" BEL
+        "game/Mshreg_fx2_2" BEL "game/fx2_2" BEL "game/Mshreg_fx2_0" BEL
+        "game/fx2_0" BEL "game/Mshreg_fy2_2" BEL "game/fy2_2" BEL
+        "game/Mshreg_fy2_1" BEL "game/fy2_1" BEL "game/Mshreg_fy2_0" BEL
+        "game/fy2_0" BEL "game/Mshreg_vid_blank" BEL "game/vid_blank" BEL
+        "game/Mshreg_vid_vsync_n" BEL "game/vid_vsync_n" BEL
+        "cv_pads_inst/Mshreg_sync2_r_2_3" BEL "cv_pads_inst/sync2_r_2_3" BEL
+        "game/Mshreg_vid_hsync_n" BEL "game/vid_hsync_n" BEL
+        "cv_pads_inst/Mshreg_sync2_r_2_4" BEL "cv_pads_inst/sync2_r_2_4" BEL
+        "cv_pads_inst/Mshreg_sync2_r_2_2" BEL "cv_pads_inst/sync2_r_2_2" BEL
+        "cv_pads_inst/Mshreg_sync2_r_2_1" BEL "cv_pads_inst/sync2_r_2_1" BEL
+        "cv_pads_inst/Mshreg_sync2_r_2_0" BEL "cv_pads_inst/sync2_r_2_0" BEL
+        "cv_pads_inst/Mshreg_sync2_r_1_4" BEL "cv_pads_inst/sync2_r_1_4" BEL
+        "cv_pads_inst/Mshreg_sync2_r_1_3" BEL "cv_pads_inst/sync2_r_1_3" BEL
+        "cv_pads_inst/Mshreg_sync2_r_1_2" BEL "cv_pads_inst/sync2_r_1_2" BEL
+        "tmds/dataenc/Mshreg_bchCode_0_29" BEL "tmds/dataenc/bchCode_0_29" BEL
+        "cv_pads_inst/Mshreg_sync2_r_1_1" BEL "cv_pads_inst/sync2_r_1_1" BEL
+        "cv_pads_inst/Mshreg_sync2_r_1_0" BEL "cv_pads_inst/sync2_r_1_0" BEL
+        "tmds/dataenc/Mshreg_bchCode_0_28" BEL "tmds/dataenc/bchCode_0_28" BEL
+        "tmds/dataenc/Mshreg_bchCode_0_21" BEL "tmds/dataenc/bchCode_0_21" BEL
+        "tmds/dataenc/Mshreg_bchCode_0_20" BEL "tmds/dataenc/bchCode_0_20" BEL
+        "tmds/dataenc/Mshreg_bchCode_0_13" BEL "tmds/dataenc/bchCode_0_13" BEL
+        "tmds/dataenc/Mshreg_bchCode_0_12" BEL "tmds/dataenc/bchCode_0_12" BEL
+        "tmds/dataenc/Mshreg_bchCode_0_5" BEL "tmds/dataenc/bchCode_0_5" BEL
+        "tmds/dataenc/Mshreg_bchCode_0_4" BEL "tmds/dataenc/bchCode_0_4" BEL
+        "tmds/dataenc/Mshreg_bchHdr_5" BEL "tmds/dataenc/bchHdr_5" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_39" BEL
+        "tmds/delay_line/q_pipe_10_39" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_38" BEL
+        "tmds/delay_line/q_pipe_10_38" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_37" BEL
+        "tmds/delay_line/q_pipe_10_37" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_36" BEL
+        "tmds/delay_line/q_pipe_10_36" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_35" BEL
+        "tmds/delay_line/q_pipe_10_35" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_34" BEL
+        "tmds/delay_line/q_pipe_10_34" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_31" BEL
+        "tmds/delay_line/q_pipe_10_31" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_33" BEL
+        "tmds/delay_line/q_pipe_10_33" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_32" BEL
+        "tmds/delay_line/q_pipe_10_32" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_30" BEL
+        "tmds/delay_line/q_pipe_10_30" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_29" BEL
+        "tmds/delay_line/q_pipe_10_29" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_28" BEL
+        "tmds/delay_line/q_pipe_10_28" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_27" BEL
+        "tmds/delay_line/q_pipe_10_27" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_26" BEL
+        "tmds/delay_line/q_pipe_10_26" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_25" BEL
+        "tmds/delay_line/q_pipe_10_25" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_24" BEL
+        "tmds/delay_line/q_pipe_10_24" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_23" BEL
+        "tmds/delay_line/q_pipe_10_23" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_22" BEL
+        "tmds/delay_line/q_pipe_10_22" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_21" BEL
+        "tmds/delay_line/q_pipe_10_21" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_20" BEL
+        "tmds/delay_line/q_pipe_10_20" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_19" BEL
+        "tmds/delay_line/q_pipe_10_19" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_18" BEL
+        "tmds/delay_line/q_pipe_10_18" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_17" BEL
+        "tmds/delay_line/q_pipe_10_17" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_16" BEL
+        "tmds/delay_line/q_pipe_10_16" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_15" BEL
+        "tmds/delay_line/q_pipe_10_15" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_13" BEL
+        "tmds/delay_line/q_pipe_10_13" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_12" BEL
+        "tmds/delay_line/q_pipe_10_12" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_11" BEL
+        "tmds/delay_line/q_pipe_10_11" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_10" BEL
+        "tmds/delay_line/q_pipe_10_10" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_9" BEL "tmds/delay_line/q_pipe_10_9"
+        BEL "tmds/delay_line/Mshreg_q_pipe_10_8" BEL
+        "tmds/delay_line/q_pipe_10_8" BEL "tmds/delay_line/Mshreg_q_pipe_10_7"
+        BEL "tmds/delay_line/q_pipe_10_7" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_6" BEL "tmds/delay_line/q_pipe_10_6"
+        BEL "tmds/delay_line/Mshreg_q_pipe_10_5" BEL
+        "tmds/delay_line/q_pipe_10_5" BEL "tmds/delay_line/Mshreg_q_pipe_10_4"
+        BEL "tmds/delay_line/q_pipe_10_4" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_3" BEL "tmds/delay_line/q_pipe_10_3"
+        BEL "tmds/delay_line/Mshreg_q_pipe_10_2" BEL
+        "tmds/delay_line/q_pipe_10_2" BEL "tmds/delay_line/Mshreg_q_pipe_10_1"
+        BEL "tmds/delay_line/q_pipe_10_1" BEL
+        "tmds/delay_line/Mshreg_q_pipe_10_0" BEL "tmds/delay_line/q_pipe_10_0"
+        BEL "tmds/delay_line/Mshreg_q_pipe_10_14" BEL
+        "tmds/delay_line/q_pipe_10_14" BEL "game/main/video/Mram_sr031/SP" BEL
+        "game/main/video/Mram_sr031/DP" BEL "game/main/video/Mram_sr332/SP"
+        BEL "game/main/video/Mram_sr332/DP" BEL
+        "game/main/video/Mram_sr331/SP" BEL "game/main/video/Mram_sr331/DP"
+        BEL "game/main/video/Mram_sr131/SP" BEL
+        "game/main/video/Mram_sr131/DP" BEL "game/main/video/Mram_sr132/SP"
+        BEL "game/main/video/Mram_sr132/DP" BEL "game/Mram_fq_a34/SP" BEL
+        "game/Mram_fq_a34/DP" BEL "game/Mram_fq_a32/SP" BEL
+        "game/Mram_fq_a32/DP" BEL "game/Mram_fq_a31/SP" BEL
+        "game/Mram_fq_a31/DP" BEL "game/Mram_fq_a33/SP" BEL
+        "game/Mram_fq_a33/DP" BEL "game/Mram_fq_d21/SP" BEL
+        "game/Mram_fq_d21/DP" BEL "game/Mram_fq_d22/SP" BEL
+        "game/Mram_fq_d22/DP" BEL "game/main/video/Mram_ctab22/SP" BEL
+        "game/main/video/Mram_ctab22/DP" BEL "game/main/video/Mram_ctab21/SP"
+        BEL "game/main/video/Mram_ctab21/DP" BEL "game/Mram_fq_b/SP" BEL
+        "game/Mram_fq_b/DP" BEL "game/Mram_pal_t1_RAMA_D1" BEL
+        "game/Mram_pal_t1_RAMA" BEL "game/Mram_pal_t1_RAMB_D1" BEL
+        "game/Mram_pal_t1_RAMB" BEL "game/Mram_pal_t1_RAMC_D1" BEL
+        "game/Mram_pal_t1_RAMC" BEL "game/Mram_pal_t1_RAMD_D1" BEL
+        "game/Mram_pal_t1_RAMD" BEL "game/Mram_pal_u1_RAMA_D1" BEL
+        "game/Mram_pal_u1_RAMA" BEL "game/Mram_pal_u1_RAMB_D1" BEL
+        "game/Mram_pal_u1_RAMB" BEL "game/Mram_pal_u1_RAMC_D1" BEL
+        "game/Mram_pal_u1_RAMC" BEL "game/Mram_pal_u1_RAMD_D1" BEL
+        "game/Mram_pal_u1_RAMD" BEL "game/main/video/Mram_ctab1_RAMA_D1" BEL
+        "game/main/video/Mram_ctab1_RAMA" BEL
+        "game/main/video/Mram_ctab1_RAMB_D1" BEL
+        "game/main/video/Mram_ctab1_RAMB" BEL
+        "game/main/video/Mram_ctab1_RAMC_D1" BEL
+        "game/main/video/Mram_ctab1_RAMC" BEL
+        "game/main/video/Mram_ctab1_RAMD_D1" BEL
+        "game/main/video/Mram_ctab1_RAMD" BEL "game/main/video/Mram_sr01_RAMA"
+        BEL "game/main/video/Mram_sr01_RAMB" BEL
+        "game/main/video/Mram_sr01_RAMC" BEL "game/main/video/Mram_sr01_RAMD"
+        BEL "game/main/video/Mram_sr02_RAMA" BEL
+        "game/main/video/Mram_sr02_RAMB" BEL "game/main/video/Mram_sr02_RAMC"
+        BEL "game/main/video/Mram_sr02_RAMD" BEL
+        "game/main/video/Mram_sr11_RAMA" BEL "game/main/video/Mram_sr11_RAMB"
+        BEL "game/main/video/Mram_sr11_RAMC" BEL
+        "game/main/video/Mram_sr11_RAMD" BEL "game/main/video/Mram_sr12_RAMA"
+        BEL "game/main/video/Mram_sr12_RAMB" BEL
+        "game/main/video/Mram_sr12_RAMC" BEL "game/main/video/Mram_sr12_RAMD"
+        BEL "game/main/video/Mram_sr21_RAMA" BEL
+        "game/main/video/Mram_sr21_RAMB" BEL "game/main/video/Mram_sr21_RAMC"
+        BEL "game/main/video/Mram_sr21_RAMD" BEL
+        "game/main/video/Mram_sr22_RAMA" BEL "game/main/video/Mram_sr22_RAMB"
+        BEL "game/main/video/Mram_sr22_RAMC" BEL
+        "game/main/video/Mram_sr22_RAMD" BEL "game/main/video/Mram_sr31_RAMA"
+        BEL "game/main/video/Mram_sr31_RAMB" BEL
+        "game/main/video/Mram_sr31_RAMC" BEL "game/main/video/Mram_sr31_RAMD"
+        BEL "game/main/video/Mram_sr32_RAMA" BEL
+        "game/main/video/Mram_sr32_RAMB" BEL "game/main/video/Mram_sr32_RAMC"
+        BEL "game/main/video/Mram_sr32_RAMD" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH121/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH121/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH122/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH122/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH2/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH2/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH3/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH3/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH4/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH4/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH5/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH5/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH6/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH6/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH7/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH7/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH8/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH8/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH9/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH9/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL121/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL121/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL122/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL122/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL2/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL2/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL3/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL3/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL4/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL4/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL5/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL5/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL6/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL6/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL7/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL7/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL8/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL8/SP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL9/DP" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL9/SP" BEL
+        "game/Mram_fq_a1_RAMA_D1" BEL "game/Mram_fq_a1_RAMA" BEL
+        "game/Mram_fq_a1_RAMB_D1" BEL "game/Mram_fq_a1_RAMB" BEL
+        "game/Mram_fq_a1_RAMC_D1" BEL "game/Mram_fq_a1_RAMC" BEL
+        "game/Mram_fq_a1_RAMD_D1" BEL "game/Mram_fq_a1_RAMD" BEL
+        "game/Mram_fq_a2_RAMA_D1" BEL "game/Mram_fq_a2_RAMA" BEL
+        "game/Mram_fq_a2_RAMB_D1" BEL "game/Mram_fq_a2_RAMB" BEL
+        "game/Mram_fq_a2_RAMC_D1" BEL "game/Mram_fq_a2_RAMC" BEL
+        "game/Mram_fq_a2_RAMD_D1" BEL "game/Mram_fq_a2_RAMD" BEL
+        "game/Mram_fq_d1_RAMA_D1" BEL "game/Mram_fq_d1_RAMA" BEL
+        "game/Mram_fq_d1_RAMB_D1" BEL "game/Mram_fq_d1_RAMB" BEL
+        "game/Mram_fq_d1_RAMC_D1" BEL "game/Mram_fq_d1_RAMC" BEL
+        "game/Mram_fq_d1_RAMD_D1" BEL "game/Mram_fq_d1_RAMD" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH11_RAMA_D1" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH11_RAMA" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH11_RAMB_D1" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH11_RAMB" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH11_RAMC_D1" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH11_RAMC" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH11_RAMD_D1" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsH11_RAMD" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL11_RAMA_D1" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL11_RAMA" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL11_RAMB_D1" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL11_RAMB" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL11_RAMC_D1" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL11_RAMC" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL11_RAMD_D1" BEL
+        "game/main/cpu/i_tv80_core/i_reg/Mram_RegsL11_RAMD" PIN
+        "sram_we_ddr_pins<1>" PIN "sram_we_ddr_pins<2>" PIN
+        "sram_we_ddr_pins<1>" PIN "sram_we_ddr_pins<2>";
+PIN tmds_out/g1[0].to_serial_pins<2> = BEL "tmds_out/g1[0].to_serial" PINNAME
+        CK1;
+PIN tmds_out/g1[1].to_serial_pins<2> = BEL "tmds_out/g1[1].to_serial" PINNAME
+        CK1;
+PIN tmds_out/g1[2].to_serial_pins<2> = BEL "tmds_out/g1[2].to_serial" PINNAME
+        CK1;
+PIN tmds_out/g1[3].to_serial_pins<2> = BEL "tmds_out/g1[3].to_serial" PINNAME
+        CK1;
+TIMEGRP clock_system_clkout3 = BEL "clock_system/clkout4_buf" PIN
+        "tmds_out/g1[0].to_serial_pins<2>" PIN
+        "tmds_out/g1[1].to_serial_pins<2>" PIN
+        "tmds_out/g1[2].to_serial_pins<2>" PIN
+        "tmds_out/g1[3].to_serial_pins<2>";
+PIN tmds_out/g1[0].to_serial_pins<1> = BEL "tmds_out/g1[0].to_serial" PINNAME
+        CK0;
+PIN tmds_out/g1[1].to_serial_pins<1> = BEL "tmds_out/g1[1].to_serial" PINNAME
+        CK0;
+PIN tmds_out/g1[2].to_serial_pins<1> = BEL "tmds_out/g1[2].to_serial" PINNAME
+        CK0;
+PIN tmds_out/g1[3].to_serial_pins<1> = BEL "tmds_out/g1[3].to_serial" PINNAME
+        CK0;
+TIMEGRP clock_system_clkout2 = BEL "clock_system/clkout3_buf" BEL
+        "tmds_out/mod5_2" BEL "tmds_out/mod5_1" BEL "tmds_out/mod5_0" BEL
+        "tmds_out/shift_clk_3" BEL "tmds_out/shift_clk_1" BEL
+        "tmds_out/shift_clk_0" BEL "tmds_out/shift_b_9" BEL
+        "tmds_out/shift_b_8" BEL "tmds_out/shift_b_7" BEL "tmds_out/shift_b_6"
+        BEL "tmds_out/shift_b_5" BEL "tmds_out/shift_b_4" BEL
+        "tmds_out/shift_b_3" BEL "tmds_out/shift_b_2" BEL "tmds_out/shift_b_1"
+        BEL "tmds_out/shift_b_0" BEL "tmds_out/shift_g_9" BEL
+        "tmds_out/shift_g_8" BEL "tmds_out/shift_g_7" BEL "tmds_out/shift_g_6"
+        BEL "tmds_out/shift_g_5" BEL "tmds_out/shift_g_4" BEL
+        "tmds_out/shift_g_3" BEL "tmds_out/shift_g_2" BEL "tmds_out/shift_g_1"
+        BEL "tmds_out/shift_g_0" BEL "tmds_out/shift_r_9" BEL
+        "tmds_out/shift_r_8" BEL "tmds_out/shift_r_7" BEL "tmds_out/shift_r_6"
+        BEL "tmds_out/shift_r_5" BEL "tmds_out/shift_r_4" BEL
+        "tmds_out/shift_r_3" BEL "tmds_out/shift_r_2" BEL "tmds_out/shift_r_1"
+        BEL "tmds_out/shift_r_0" PIN "tmds_out/g1[0].to_serial_pins<1>" PIN
+        "tmds_out/g1[1].to_serial_pins<1>" PIN
+        "tmds_out/g1[2].to_serial_pins<1>" PIN
+        "tmds_out/g1[3].to_serial_pins<1>";
+PIN SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0_pins<0> = BEL
+        "SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0" PINNAME DIVCLK;
+PIN clock_system/pll_base_inst/PLL_ADV_pins<2> = BEL
+        "clock_system/pll_base_inst/PLL_ADV" PINNAME CLKIN1;
+TIMEGRP clock_50m0_i_net = PIN "SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0_pins<0>"
+        PIN "clock_system/pll_base_inst/PLL_ADV_pins<2>";
+TS_clock_50m0_i_net = PERIOD TIMEGRP "clock_50m0_i_net" 20 ns HIGH 50%;
+TS_clock_system_clkout3 = PERIOD TIMEGRP "clock_system_clkout3"
+        TS_clock_50m0_i_net / 2.5 PHASE 4 ns HIGH 50%;
+TS_clock_system_clkout0 = PERIOD TIMEGRP "clock_system_clkout0"
+        TS_clock_50m0_i_net / 0.5 HIGH 50%;
+TS_clock_system_clkout2 = PERIOD TIMEGRP "clock_system_clkout2"
+        TS_clock_50m0_i_net / 2.5 HIGH 50%;
+SCHEMATIC END;
+

@@ -1,0 +1,89 @@
+                                      1 ;; Phoenix Mr. Do! core boot loader startup (sdcc, Z80).
+                                      2 ;;
+                                      3 ;; Runs on the main Z80.  The loader starts in the sprite ROM's block RAM at
+                                      4 ;; 0000-1FFF.  It first copies itself to the SRAM at 20000 and switches to
+                                      5 ;; that copy, so that the sprite ROMs can be loaded.  Variables and stack in
+                                      6 ;; the work RAM (E000-EFFF), sector buffer at E800.  No interrupts in boot
+                                      7 ;; mode.
+                                      8 
+                                      9 	.module crt0
+                                     10 	.globl	_main
+                                     11 
+                                     12 	.area	_HEADER (ABS)
+      000000                         13 	.org	0
+      000000 F3               [ 4]   14 	di
+      000001 C3r00r01         [10]   15 	jp	init
+                                     16 
+      000038                         17 	.org	0x38
+      000038 ED 4D            [14]   18 	reti
+                                     19 
+      000066                         20 	.org	0x66
+      000066 ED 45            [14]   21 	retn
+                                     22 
+      000100                         23 	.org	0x100
+      000100                         24 init:
+      000100 31 00 F0         [10]   25 	ld	sp, #0xF000
+                                     26 	;; copy 0000-1FFF to load address 20000
+      000103 AF               [ 4]   27 	xor	a
+      000104 32 02 C0         [13]   28 	ld	(0xC002), a
+      000107 32 03 C0         [13]   29 	ld	(0xC003), a
+      00010A 3E 02            [ 7]   30 	ld	a, #2
+      00010C 32 04 C0         [13]   31 	ld	(0xC004), a
+      00010F 21 00 00         [10]   32 	ld	hl, #0
+      000112 0E 00            [ 7]   33 	ld	c, #0
+      000114 16 20            [ 7]   34 	ld	d, #32
+      000116 06 00            [ 7]   35 1$:	ld	b, #0
+      000118 ED B3            [21]   36 	otir				; 256 bytes, one I/O write each
+      00011A 15               [ 4]   37 	dec	d
+      00011B 20 F9            [12]   38 	jr	NZ, 1$
+      00011D 3A 02 C0         [13]   39 2$:	ld	a, (0xC002)		; wait for the last SRAM write
+      000120 0F               [ 4]   40 	rrca
+      000121 38 FA            [12]   41 	jr	C, 2$
+      000123 3E 01            [ 7]   42 	ld	a, #1
+      000125 32 0C C0         [13]   43 	ld	(0xC00C), a		; run from the copy
+      000128 CDr00r00         [17]   44 	call	gsinit
+      00012B CDr00r00         [17]   45 	call	_main
+      00012E 76               [ 4]   46 3$:	halt
+      00012F 18 FD            [12]   47 	jr	3$
+                                     48 
+                                     49 	;; Ordering of segments for the linker.
+                                     50 	.area	_HOME
+                                     51 	.area	_CODE
+                                     52 	.area	_INITIALIZER
+                                     53 	.area	_GSINIT
+                                     54 	.area	_GSFINAL
+                                     55 
+                                     56 	.area	_DATA
+                                     57 	.area	_INITIALIZED
+                                     58 	.area	_BSEG
+                                     59 	.area	_BSS
+                                     60 	.area	_HEAP
+                                     61 
+                                     62 	.area	_GSINIT
+      000000                         63 gsinit::
+      000000 01r00r00         [10]   64 	ld	bc, #l__DATA
+      000003 78               [ 4]   65 	ld	a, b
+      000004 B1               [ 4]   66 	or	a, c
+      000005 28 0F            [12]   67 	jr	Z, zeroed_data
+      000007 21r00r00         [10]   68 	ld	hl, #s__DATA
+      00000A 36 00            [10]   69 	ld	(hl), #0x00
+      00000C 0B               [ 6]   70 	dec	bc
+      00000D 78               [ 4]   71 	ld	a, b
+      00000E B1               [ 4]   72 	or	a, c
+      00000F 28 05            [12]   73 	jr	Z, zeroed_data
+      000011 5D               [ 4]   74 	ld	e, l
+      000012 54               [ 4]   75 	ld	d, h
+      000013 13               [ 6]   76 	inc	de
+      000014 ED B0            [21]   77 	ldir
+      000016                         78 zeroed_data:
+      000016 01r00r00         [10]   79 	ld	bc, #l__INITIALIZER
+      000019 78               [ 4]   80 	ld	a, b
+      00001A B1               [ 4]   81 	or	a, c
+      00001B 28 08            [12]   82 	jr	Z, gsinit_next
+      00001D 11r00r00         [10]   83 	ld	de, #s__INITIALIZED
+      000020 21r00r00         [10]   84 	ld	hl, #s__INITIALIZER
+      000023 ED B0            [21]   85 	ldir
+      000025                         86 gsinit_next:
+                                     87 
+                                     88 	.area	_GSFINAL
+      000000 C9               [10]   89 	ret

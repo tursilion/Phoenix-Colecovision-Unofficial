@@ -1,0 +1,74 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180 / ZX-Next / eZ80), page 1.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000000 L
+    ___sdcc_enter_ix                                               ****** GX
+  0 ___str_19                                                      0001BE R
+  0 ___str_20                                                      0001D8 R
+  0 ___str_21                                                      0001F4 R
+  0 ___str_22                                                      000470 R
+  0 ___str_23                                                      00047F R
+  0 ___str_24                                                      00048A R
+  0 ___str_25                                                      0004A2 R
+  0 ___str_26                                                      0004AD R
+  0 ___str_27                                                      0004B9 R
+  0 ___str_28                                                      0004C5 R
+  0 __str_0                                                        0000C2 R
+  0 __str_1                                                        0000C5 R
+  0 __str_10                                                       0000FB R
+  0 __str_11                                                       000105 R
+  0 __str_12                                                       00010F R
+  0 __str_13                                                       00011A R
+  0 __str_14                                                       000125 R
+  0 __str_15                                                       000130 R
+  0 __str_16                                                       000139 R
+  0 __str_17                                                       000140 R
+  0 __str_18                                                       000146 R
+  0 __str_2                                                        0000C8 R
+  0 __str_3                                                        0000D1 R
+  0 __str_4                                                        0000D4 R
+  0 __str_5                                                        0000DD R
+  0 __str_6                                                        0000E0 R
+  0 __str_7                                                        0000E3 R
+  0 __str_8                                                        0000E7 R
+  0 __str_9                                                        0000F1 R
+  0 _cls                                                           000147 R
+    _disk_initialize                                               ****** GX
+  0 _fail                                                          00015C R
+  1 _folder                                                        00004A R
+  0 _folders                                                       0000BA R
+  1 _fs                                                            000000 R
+  0 _main                                                          0002F9 GR
+  0 _open_in                                                       00022B R
+  0 _open_rom                                                      00028E R
+  1 _path                                                          00002A R
+    _pf_mount                                                      ****** GX
+    _pf_open                                                       ****** GX
+    _pf_read                                                       ****** GX
+  0 _roms                                                          000038 R
+  0 _set_load_addr                                                 0002EB R
+    _strcat                                                        ****** GX
+  0 _text                                                          000000 R
+  0 _try_open                                                      000209 R
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180 / ZX-Next / eZ80), page 2.
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size    4C8   flags    0
+   1 _DATA                                      size     4C   flags    0
+   2 _INITIALIZED                               size      0   flags    0
+   3 _DABS                                      size      0   flags    8
+   4 _HOME                                      size      0   flags    0
+   5 _GSINIT                                    size      0   flags    0
+   6 _GSFINAL                                   size      0   flags    0
+   7 _INITIALIZER                               size      0   flags    0
+   8 _CABS                                      size      0   flags    8
+
